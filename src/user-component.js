@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import image from './user-male.jpg';
+import  Typography  from '@material-ui/core/Typography';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -17,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(1),
   },
   title: {
-    flexGrow: 1,
+    position:"absolute", right:0
   },
 }));
 function TaskBar() {
@@ -29,6 +30,7 @@ function TaskBar() {
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton>
+        
           <Button color="inherit" >
             Main
               </Button>
@@ -42,10 +44,10 @@ function TaskBar() {
             Exams
               </Button>
 
-          <Button color="inherit">
+          <Button color="inherit"  >
             Contact
                   </Button>
-          <Button color="inherit">
+          <Button color="inherit" className={classes.title}>
             Logout
                   </Button>
         </Toolbar>
