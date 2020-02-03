@@ -55,12 +55,20 @@
     margin-bottom: 15vw;
 }
 .activeExamsList-container-Item
-{   font-size: 4.5vw;
+{   padding: 0px 0px 0px 0px;
+    border-style: solid;
+    border-radius: 10%;
+    border-color:dodgerblue;
+     font-size: 3vw;
     word-wrap: break-word;
     width: 20vw;
     height: 20vw;
     margin: 2vw;
     background-color: white;
+}
+.title
+{
+    text-align: center;
 }
 .activeExamsList-container-Item:hover
 {
