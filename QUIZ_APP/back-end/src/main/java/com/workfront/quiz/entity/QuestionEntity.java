@@ -1,8 +1,5 @@
 package com.workfront.quiz.entity;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
@@ -20,7 +17,7 @@ public class QuestionEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "topic_id", nullable = false)
-    private TopicEntity topicEntity;
+    private TopicEntity topic;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "question")
     private List<AnswerEntity> answers;
@@ -49,12 +46,12 @@ public class QuestionEntity {
         this.text = text;
     }
 
-    public TopicEntity getTopicEntity() {
-        return topicEntity;
+    public TopicEntity getTopic() {
+        return topic;
     }
 
-    public void setTopicEntity(TopicEntity topicEntity) {
-        this.topicEntity = topicEntity;
+    public void setTopic(TopicEntity topic) {
+        this.topic = topic;
     }
 
     @Override
@@ -64,13 +61,13 @@ public class QuestionEntity {
         QuestionEntity that = (QuestionEntity) o;
         return Objects.equals(getId(), that.getId()) &&
                 Objects.equals(getText(), that.getText()) &&
-                Objects.equals(getTopicEntity(), that.getTopicEntity()) &&
+                Objects.equals(getTopic(), that.getTopic()) &&
                 Objects.equals(getAnswers(), that.getAnswers());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getText(), getTopicEntity(), getAnswers());
+        return Objects.hash(getId(), getText(), getTopic(), getAnswers());
     }
 
     @Override
@@ -78,7 +75,7 @@ public class QuestionEntity {
         return "QuestionEntity{" +
                 "id=" + id +
                 ", text='" + text + '\'' +
-                ", topicEntity=" + topicEntity +
+                ", topic=" + topic +
                 ", answers=" + answers +
                 '}';
     }

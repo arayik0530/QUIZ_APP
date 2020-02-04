@@ -1,6 +1,7 @@
 package com.workfront.quiz.entity;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -13,6 +14,17 @@ public class TopicEntity {
 
     @Column(name = "name", nullable = false)
     private String name;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "topic")
+    private List<QuestionEntity> questions;
+
+    public List<QuestionEntity> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(List<QuestionEntity> questions) {
+        this.questions = questions;
+    }
 
     public Long getId() {
         return id;
@@ -36,12 +48,13 @@ public class TopicEntity {
         if (!(o instanceof TopicEntity)) return false;
         TopicEntity that = (TopicEntity) o;
         return Objects.equals(getId(), that.getId()) &&
-                Objects.equals(getName(), that.getName());
+                Objects.equals(getName(), that.getName()) &&
+                Objects.equals(getQuestions(), that.getQuestions());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName());
+        return Objects.hash(getId(), getName(), getQuestions());
     }
 
     @Override
@@ -49,6 +62,7 @@ public class TopicEntity {
         return "TopicEntity{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", questions=" + questions +
                 '}';
     }
 }

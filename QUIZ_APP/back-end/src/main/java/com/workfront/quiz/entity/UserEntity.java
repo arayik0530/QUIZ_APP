@@ -29,7 +29,7 @@ public class UserEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false)
-    private UserRole role;
+    private UserRole role = UserRole.USER;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private List<PassedQuizEntity> passedQuizes;

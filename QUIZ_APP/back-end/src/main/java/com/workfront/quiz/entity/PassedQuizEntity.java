@@ -1,6 +1,7 @@
 package com.workfront.quiz.entity;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -27,16 +28,16 @@ public class PassedQuizEntity  {
     private List<PassedQuizQuestionsEntity> questions;
 
 
-/*    @CreationTimestamp
-    @Column(name = "start_time", updatable = false) //TODO end time
+    @CreatedDate
+    @Column(name = "start_time", updatable = false)
     private LocalDate startTime;
 
-    @Column(name = "end_time", updatable = false)
+    @Column(name = "end_time")
     private LocalDate endTime;
 
     @Column(name = "success_percent", updatable = false, scale = 2, precision = 5)
     private Double successPercent;
-*/
+
 
     public Long getId() {
         return id;
