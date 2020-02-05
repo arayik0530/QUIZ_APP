@@ -69,7 +69,6 @@ function Global(){
     <br></br>
     <TextField size='medium' label="Phone Number"></TextField>
     <br></br>
-    
     <TextField fullWidth label="Institution"></TextField>
     <br></br>
     <br></br>
@@ -80,7 +79,7 @@ function Global(){
     <br></br>
     <br></br>
     <div style={{textAlign:'right'}}>
-    <Button  color='primary'>Cancel</Button>
+    
     <Button color='primary'>Save</Button>
     </div>
     </div>
@@ -98,7 +97,7 @@ function Global(){
     <br></br>
     <br></br>
     <div style={{textAlign:"right"}}>
-    <Button  color='primary'>Cancel</Button>
+    
     <Button color='primary'>Save</Button>
     </div>
     </div>
@@ -134,7 +133,10 @@ const setcontexthandler =(e)=>{
               <Button onClick={()=>setcontexthandler(1)}  color='primary'><LockIcon></LockIcon> Security</Button>
             </div>
            {context}
+           <br></br>
+           <Button onClick={handleClose}  color='primary'>Cancel</Button> 
           </div>
+         
         </Popover>
 
       </div>
