@@ -31,7 +31,8 @@
     
 }
 .about-container-list-item
-{   font-size: 2vw;
+{   
+    font-size: 2vw;
     overflow-wrap: break-word; 
     margin-bottom:20px;
 }
@@ -55,11 +56,12 @@
     margin-bottom: 15vw;
 }
 .activeExamsList-container-Item
-{   padding: 0px 0px 0px 0px;
+{   
+    padding: 0px 0px 0px 0px;
     border-style: solid;
     border-radius: 10%;
     border-color:dodgerblue;
-     font-size: 3vw;
+    font-size: 3vw;
     word-wrap: break-word;
     width: 20vw;
     height: 20vw;
@@ -67,11 +69,21 @@
     background-color: white;
 }
 .title
-{
+{  margin-top: 40%;
     text-align: center;
 }
 .activeExamsList-container-Item:hover
 {
     background-color: gray;
     cursor: pointer;
+}
+.sidebox
+{
+   float: left;
+   width: 40%;
+}
+.edit-content{
+    
+    float: right;
+    width: 50%;
 }

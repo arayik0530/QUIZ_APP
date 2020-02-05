@@ -1,13 +1,17 @@
 import React from 'react';
 import './styles.css';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import image from './user-male.jpg';
-import  Typography  from '@material-ui/core/Typography';
+import EditIcon from '@material-ui/icons/Edit';
+import Popover from '@material-ui/core/Popover';
+import TextField from '@material-ui/core/TextField';
+import LockIcon from '@material-ui/icons/Lock';
+import LanguageIcon from '@material-ui/icons/Language';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -18,7 +22,7 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(1),
   },
   title: {
-    position:"absolute", right:0
+    position: "absolute", right: 0
   },
 }));
 function TaskBar() {
@@ -30,16 +34,14 @@ function TaskBar() {
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton>
-        
+
           <Button color="inherit" >
             Main
               </Button>
           <Button color="inherit" >
             User
               </Button>
-          <Button color="inherit" >
-            Edit
-              </Button>
+
           <Button color="inherit" >
             Exams
               </Button>
@@ -56,11 +58,68 @@ function TaskBar() {
   );
 }
 
+function Global(){
+  return (
+    <div className="edit-content">
+    <TextField size='medium' label="Name"></TextField>
+    <br></br>
+    <TextField size='medium' label="Surname"></TextField>
+    <br></br>
+    <TextField size='medium' label="Email"></TextField>
+    <br></br>
+    <TextField size='medium' label="Phone Number"></TextField>
+    <br></br>
+    
+    <TextField fullWidth label="Institution"></TextField>
+    <br></br>
+    <br></br>
+    <Button color='primary'>Save</Button>
+    <br></br>
+    </div>
+  )}
+  function Security()
+  {
+    return(
+      <div className="edit-content">
+    <TextField size='medium' label="Password"></TextField>
+    <br></br>
+    <br></br>
+    <Button color='primary'>Save</Button>
+    </div>
+    )
+  }
 function GeneralInfo() {
+  
+  const [open, setopen] = React.useState(false);
+  const [context, setcontext] = React.useState(Global);
+  const handleClick = event => setopen(true)
+
+
+  const handleClose = () => setopen(false)
+const setcontexthandler =(e)=>{
+  if(e==0)
+    setcontext(Global)
+  else setcontext(Security)
+}
   return (
     <div className="general-row">
       <div className='image-container-row' >
         <img src={image} alt='userImage' className='image-container' ></img>
+        <Button onClick={handleClick} variant="contained" color="primary" style={{ fontSize: "1.5vw" }}>  <EditIcon></EditIcon>Edit Info</Button>
+        <Popover   open={open} onClose={handleClose}
+          anchorReference="anchorPosition"
+          anchorPosition={{top:100,left:200}}
+        >
+          <div style={{ padding: "1vw 10vw 10vw 1vw" }}>
+            <h2 style={{ textAlign: "center" }}>Edit Info</h2>
+            <div className="sidebox">
+              <Button onClick={()=>setcontexthandler(0)} color='primary'><LanguageIcon></LanguageIcon> General</Button>
+              
+              <Button onClick={()=>setcontexthandler(1)}  color='primary'><LockIcon></LockIcon> Security</Button>
+            </div>
+           {context}
+          </div>
+        </Popover>
 
       </div>
       <div className='about-container-row'>
@@ -86,13 +145,8 @@ function ActiveExams() {
         <div className="activeExamsList-container-Item"><div className='title'>Physics</div></div>
         <div className="activeExamsList-container-Item"><div className='title'>Mathematics</div></div>
         <div className="activeExamsList-container-Item"><div className='title'>English</div>
-          <ul>
-            <li>IELTS</li>
-            <li>TOEFL</li>
-          </ul>
         </div>
-        <div className="activeExamsList-container-Item"></div>
-        <div className="activeExamsList-container-Item"></div>
+       
       </div>
     </div>
   )
