@@ -141,16 +141,16 @@ const setcontexthandler =(e)=>{
 
       </div>
       <div className='about-container-row'>
-        <ul>
-          <li className="about-container-list-item"><b>Name:</b> Ruben</li>
-          <li className="about-container-list-item"><b>Surname:</b> Poghosyan</li>
-          <li className="about-container-list-item"><b>Country:</b>Armenia</li>
-          <li className="about-container-list-item"><b>City:</b>Yerevan</li>
-          <li className="about-container-list-item"><b>Email:</b> poghosyan26@gmail.com</li>
-          <li className="about-container-list-item"><b>Institution:</b> Yerevan State University</li>
-          <li className="about-container-list-item"><b>Course:</b>Physics</li>
-          <li className="about-container-list-item"><b>Phone:</b>0000000000</li>
-        </ul>
+      
+          <div className="about-container-list-item"><b>Name:</b> Ruben</div>
+          <div className="about-container-list-item"><b>Surname:</b> Poghosyan</div>
+          <div className="about-container-list-item"><b>Country:</b>Armenia</div>
+          <div className="about-container-list-item"><b>City:</b>Yerevan</div>
+          <div className="about-container-list-item"><b>Email:</b> poghosyan26@gmail.com</div>
+          <div className="about-container-list-item"><b>Institution:</b> Yerevan State University</div>
+          <div className="about-container-list-item"><b>Course:</b>Physics</div>
+          <div className="about-container-list-item"><b>Phone:</b>0000000000</div>
+      
       </div>
     </div>
   );
