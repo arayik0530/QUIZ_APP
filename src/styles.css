@@ -18,7 +18,7 @@
 .image-container
 {   
     width: 100%;
-    border-radius: 50%;
+    
     border-color: black;
     border-style: solid;
    
@@ -26,7 +26,7 @@
 
 .about-container-row 
 {   width: 50%;
-    border-radius: 10%;
+   
     border-width: 5px;
     border-color: white;
     border-style: solid;
@@ -63,7 +63,7 @@
 {   
     padding: 0px 0px 0px 0px;
     border-style: solid;
-    border-radius: 10%;
+   
     border-color:dodgerblue;
     font-size: 3vw;
     word-wrap: break-word;
