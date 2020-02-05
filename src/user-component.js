@@ -73,8 +73,16 @@ function Global(){
     <TextField fullWidth label="Institution"></TextField>
     <br></br>
     <br></br>
-    <Button color='primary'>Save</Button>
     <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <div style={{textAlign:'right'}}>
+    <Button  color='primary'>Cancel</Button>
+    <Button color='primary'>Save</Button>
+    </div>
     </div>
   )}
   function Security()
@@ -84,7 +92,15 @@ function Global(){
     <TextField size='medium' label="Password"></TextField>
     <br></br>
     <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <div style={{textAlign:"right"}}>
+    <Button  color='primary'>Cancel</Button>
     <Button color='primary'>Save</Button>
+    </div>
     </div>
     )
   }
@@ -108,7 +124,7 @@ const setcontexthandler =(e)=>{
         <Button onClick={handleClick} variant="contained" color="primary" style={{ fontSize: "1.5vw" }}>  <EditIcon></EditIcon>Edit Info</Button>
         <Popover   open={open} onClose={handleClose}
           anchorReference="anchorPosition"
-          anchorPosition={{top:100,left:200}}
+          anchorPosition={{top:50,left:500}}
         >
           <div style={{ padding: "1vw 10vw 10vw 1vw" }}>
             <h2 style={{ textAlign: "center" }}>Edit Info</h2>
@@ -131,7 +147,7 @@ const setcontexthandler =(e)=>{
           <li className="about-container-list-item"><b>Email:</b> poghosyan26@gmail.com</li>
           <li className="about-container-list-item"><b>Institution:</b> Yerevan State University</li>
           <li className="about-container-list-item"><b>Course:</b>Physics</li>
-          <li className="about-container-list-item"><b>Phone:</b>Physics</li>
+          <li className="about-container-list-item"><b>Phone:</b>0000000000</li>
         </ul>
       </div>
     </div>
