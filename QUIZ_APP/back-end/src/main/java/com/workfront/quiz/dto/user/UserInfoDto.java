@@ -1,6 +1,9 @@
-package com.workfront.quiz.dto;
+package com.workfront.quiz.dto.user;
 
 import com.workfront.quiz.entity.UserEntity;
+import com.workfront.quiz.entity.ImageEntity;
+
+import java.util.Objects;
 
 public class UserInfoDto {
     public static  UserInfoDto mapFromEntity(UserEntity userEntity) {
@@ -9,7 +12,8 @@ public class UserInfoDto {
         userInfoDto.email = userEntity.getEmail();
         userInfoDto.lastName = userEntity.getLastName();
         userInfoDto.firstName = userEntity.getFirstName();
-        userInfoDto.role = userEntity.getRole().toString();
+        userInfoDto.role = userEntity.getRoles().toString(); // TODO jshtel role petqa te che?
+        userInfoDto.image = userEntity.getProfileImage();// TODO jshtel es togh@
         return userInfoDto;
     }
 
@@ -17,6 +21,7 @@ public class UserInfoDto {
         userEntity.setEmail(this.email);
         userEntity.setFirstName(this.firstName);
         userEntity.setLastName(this.lastName);
+        userEntity.setProfileImage(this.image); // TODO jshtel es togh@
         return userEntity;
     }
 
@@ -30,6 +35,7 @@ public class UserInfoDto {
 
     private String role;
 
+    private ImageEntity image;
 
     @Override
     public String toString() {
@@ -39,17 +45,27 @@ public class UserInfoDto {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", role='" + role + '\'' +
+                ", image=" + image +
                 '}';
     }
 
-    public String getRole() {
-        return role;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof UserInfoDto)) return false;
+        UserInfoDto that = (UserInfoDto) o;
+        return Objects.equals(getId(), that.getId()) &&
+                Objects.equals(getFirstName(), that.getFirstName()) &&
+                Objects.equals(getLastName(), that.getLastName()) &&
+                Objects.equals(getEmail(), that.getEmail()) &&
+                Objects.equals(getRole(), that.getRole()) &&
+                Objects.equals(getImage(), that.getImage());
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getFirstName(), getLastName(), getEmail(), getRole(), getImage());
     }
-
 
     public Long getId() {
         return id;
@@ -81,5 +97,21 @@ public class UserInfoDto {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public ImageEntity getImage() {
+        return image;
+    }
+
+    public void setImage(ImageEntity image) {
+        this.image = image;
     }
 }

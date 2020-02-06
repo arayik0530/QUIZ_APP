@@ -3,8 +3,10 @@ package com.workfront.quiz.entity;
 import com.workfront.quiz.entity.enums.UserRole;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -15,25 +17,72 @@ public class UserEntity {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "first_name", nullable = false, length = 50)
+    @Column(name = "first_name", nullable = false, length = 100)
     private String firstName;
 
-    @Column(name = "last_name", nullable = false, length = 50)
+    @Column(name = "last_name", nullable = false, length = 100)
     private String lastName;
 
-    @Column(name = "e_mail", nullable = false)
+    @Column(name = "e_mail", nullable = false, unique = true)
     private String email;
 
     @Column(name = "password", nullable = false)
     private String password;
 
+    @OneToOne(mappedBy = "user")
+    private ImageEntity profileImage;
+
+    @Column(name = "active", nullable = false) //TODO nullable = false petq vabshe, ete defaultov active-@ false a
+    private boolean active;
+
+//    @Enumerated(EnumType.STRING)
+//    @Column(name = "role", nullable = false)
+//    private UserRole role = UserRole.USER;
+
+    @ElementCollection(targetClass = UserRole.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
-    @Column(name = "role", nullable = false)
-    private UserRole role = UserRole.USER;
+    private Set<UserRole> roles = new HashSet<>();
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-    private List<PassedQuizEntity> passedQuizes;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = {CascadeType.REMOVE}) //TODO aveli jisht chi lini vor orphanremoval true tanq vor xusapenq NPE-ic?
+    private List<QuizEntity> quizes;
 
+
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", profileImage=" + profileImage +
+                ", active=" + active +
+                ", roles=" + roles +
+                ", quizes=" + quizes +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof UserEntity)) return false;
+        UserEntity that = (UserEntity) o;
+        return isActive() == that.isActive() &&
+                Objects.equals(getId(), that.getId()) &&
+                Objects.equals(getFirstName(), that.getFirstName()) &&
+                Objects.equals(getLastName(), that.getLastName()) &&
+                Objects.equals(getEmail(), that.getEmail()) &&
+                Objects.equals(getPassword(), that.getPassword()) &&
+                Objects.equals(getProfileImage(), that.getProfileImage()) &&
+                Objects.equals(getRoles(), that.getRoles()) &&
+                Objects.equals(getQuizes(), that.getQuizes());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getFirstName(), getLastName(), getEmail(), getPassword(), getProfileImage(), isActive(), getRoles(), getQuizes());
+    }
 
     public Long getId() {
         return id;
@@ -67,22 +116,6 @@ public class UserEntity {
         this.email = email;
     }
 
-    public UserRole getRole() {
-        return role;
-    }
-
-    public void setRole(UserRole role) {
-        this.role = role;
-    }
-
-    public List<PassedQuizEntity> getPassedQuizes() {
-        return passedQuizes;
-    }
-
-    public void setPassedQuizes(List<PassedQuizEntity> passedQuizes) {
-        this.passedQuizes = passedQuizes;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -91,35 +124,35 @@ public class UserEntity {
         this.password = password;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof UserEntity)) return false;
-        UserEntity that = (UserEntity) o;
-        return Objects.equals(getId(), that.getId()) &&
-                Objects.equals(getFirstName(), that.getFirstName()) &&
-                Objects.equals(getLastName(), that.getLastName()) &&
-                Objects.equals(getEmail(), that.getEmail()) &&
-                Objects.equals(getPassword(), that.getPassword()) &&
-                getRole() == that.getRole() &&
-                Objects.equals(getPassedQuizes(), that.getPassedQuizes());
+    public ImageEntity getProfileImage() {
+        return profileImage;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId(), getFirstName(), getLastName(), getEmail(), getPassword(), getRole(), getPassedQuizes());
+    public void setProfileImage(ImageEntity profileImage) {
+        this.profileImage = profileImage;
     }
 
-    @Override
-    public String toString() {
-        return "UserEntity{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", role=" + role +
-                ", passedQuizes=" + passedQuizes +
-                '}';
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public Set<UserRole> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<UserRole> roles) {
+        this.roles = roles;
+    }
+
+    public List<QuizEntity> getQuizes() {
+        return quizes;
+    }
+
+    public void setQuizes(List<QuizEntity> quizes) {
+        this.quizes = quizes;
     }
 }

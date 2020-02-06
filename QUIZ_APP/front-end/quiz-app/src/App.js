@@ -1,5 +1,5 @@
 import React from 'react';
-
+import ImageUpload from "./ImageUpload";
 
 class App extends React.Component {
 
@@ -32,6 +32,10 @@ class App extends React.Component {
             <div>
               <h3>{this.state.user.firstName}</h3>
               <h3>{this.state.user.lastName}</h3>
+                <hr/>
+              <div>
+                  <ImageUpload />
+              </div>
             </div>
         );
     }

@@ -1,4 +1,4 @@
-package com.workfront.quiz.dto;
+package com.workfront.quiz.dto.user;
 
 public class PasswordChangingDto {
     private String email;

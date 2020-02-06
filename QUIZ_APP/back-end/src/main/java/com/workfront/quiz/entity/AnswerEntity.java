@@ -1,8 +1,5 @@
 package com.workfront.quiz.entity;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -23,6 +20,10 @@ public class AnswerEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "question_id")
     private QuestionEntity question;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "passed_quiz_question_id")
+    private PassedQuizQuestionEntity quizQuestion;
 
     public Long getId() {
         return id;
@@ -56,20 +57,12 @@ public class AnswerEntity {
         this.question = question;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof AnswerEntity)) return false;
-        AnswerEntity that = (AnswerEntity) o;
-        return Objects.equals(getId(), that.getId()) &&
-                Objects.equals(getText(), that.getText()) &&
-                Objects.equals(isRight, that.isRight) &&
-                Objects.equals(getQuestion(), that.getQuestion());
+    public PassedQuizQuestionEntity getQuizQuestion() {
+        return quizQuestion;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId(), getText(), isRight, getQuestion());
+    public void setQuizQuestion(PassedQuizQuestionEntity quizQuestion) {
+        this.quizQuestion = quizQuestion;
     }
 
     @Override
@@ -79,6 +72,24 @@ public class AnswerEntity {
                 ", text='" + text + '\'' +
                 ", isRight=" + isRight +
                 ", question=" + question +
+                ", quizQuestion=" + quizQuestion +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof AnswerEntity)) return false;
+        AnswerEntity that = (AnswerEntity) o;
+        return Objects.equals(getId(), that.getId()) &&
+                Objects.equals(getText(), that.getText()) &&
+                Objects.equals(isRight, that.isRight) &&
+                Objects.equals(getQuestion(), that.getQuestion()) &&
+                Objects.equals(getQuizQuestion(), that.getQuizQuestion());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getText(), isRight, getQuestion(), getQuizQuestion());
     }
 }

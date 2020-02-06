@@ -1,9 +1,9 @@
 package com.workfront.quiz.api.impl;
 
 import com.workfront.quiz.api.UserController;
-import com.workfront.quiz.dto.PasswordChangingDto;
-import com.workfront.quiz.dto.UserInfoDto;
-import com.workfront.quiz.dto.UserRegistrationDto;
+import com.workfront.quiz.dto.user.PasswordChangingDto;
+import com.workfront.quiz.dto.user.UserInfoDto;
+import com.workfront.quiz.dto.user.UserRegistrationDto;
 import com.workfront.quiz.service.UserService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -27,6 +27,12 @@ public class UserControllerImpl implements UserController {
     }
 
     @Override
+    @GetMapping("all")
+    public Page<UserInfoDto> getAllUsers(@PageableDefault Pageable pageable) {
+        return userService.getAllUsers(pageable);
+    }
+
+    @Override
     @GetMapping("search")
     public Page<UserInfoDto> search(@RequestParam String text, @PageableDefault Pageable pageable) {
         return userService.searchByName(text, pageable);
@@ -42,7 +48,7 @@ public class UserControllerImpl implements UserController {
     @PutMapping("update")
     public UserInfoDto update(@RequestBody UserInfoDto userInfoDto) {
         return userService.update(userInfoDto);
-    }
+    } //TODO uxxel
 
     @Override
     @PutMapping("change-password")

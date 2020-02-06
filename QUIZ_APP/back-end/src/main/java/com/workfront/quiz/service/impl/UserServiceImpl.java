@@ -1,8 +1,8 @@
 package com.workfront.quiz.service.impl;
 
-import com.workfront.quiz.dto.PasswordChangingDto;
-import com.workfront.quiz.dto.UserInfoDto;
-import com.workfront.quiz.dto.UserRegistrationDto;
+import com.workfront.quiz.dto.user.PasswordChangingDto;
+import com.workfront.quiz.dto.user.UserInfoDto;
+import com.workfront.quiz.dto.user.UserRegistrationDto;
 import com.workfront.quiz.entity.UserEntity;
 import com.workfront.quiz.repository.UserRepository;
 import com.workfront.quiz.service.UserService;
@@ -44,7 +44,15 @@ public class UserServiceImpl implements UserService {
         } else {
             users = userRepository.searchByName(name, name, pageable);
         }
-        return users.map(userEntity -> UserInfoDto.mapFromEntity(userEntity));
+        return users.map(UserInfoDto::mapFromEntity);
+    }
+
+    @Override
+    public Page<UserInfoDto> getAllUsers(Pageable pageable) { //TODO jshtel senc normala?
+
+        Page<UserEntity> users = userRepository.findAll(pageable);
+
+        return users.map(UserInfoDto::mapFromEntity);
     }
 
     @Override
@@ -60,7 +68,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserInfoDto update(UserInfoDto user) {
+    public UserInfoDto update(UserInfoDto user) { //TODO jshtel es method@ sxala ashxatum, mek el image loading@ stex
         Optional<UserEntity> byId = userRepository.findById(user.getId());
         if (byId.isPresent()) {
 

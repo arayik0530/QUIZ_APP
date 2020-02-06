@@ -15,7 +15,7 @@ public class TopicEntity {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "topic")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "topic", cascade = {CascadeType.REMOVE})
     private List<QuestionEntity> questions;
 
     public List<QuestionEntity> getQuestions() {

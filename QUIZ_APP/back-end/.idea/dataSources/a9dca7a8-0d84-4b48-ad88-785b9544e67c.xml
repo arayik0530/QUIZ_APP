@@ -33,14 +33,15 @@
       <ObjectId>17796</ObjectId>
       <StateNumber>1562</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>2392</IntrospectionStateNumber>
+      <IntrospectionStateNumber>3040</IntrospectionStateNumber>
       <Visible>1</Visible>
-      <Relations>sequence|table|20135|20137|1
-sequence|table|20143|20145|1
-sequence|table|20151|20153|1
-sequence|table|20159|20161|1
-sequence|table|20167|20169|1
-sequence|table|20175|20177|1
+      <Relations>sequence|table|21874|21876|1
+sequence|table|21882|21884|1
+sequence|table|21890|21892|1
+sequence|table|21898|21900|1
+sequence|table|21906|21908|1
+sequence|table|21914|21916|1
+sequence|table|21925|21927|1
 </Relations>
     </database>
     <database id="7" parent="1" name="sweater">
@@ -136,7 +137,7 @@ sequence|table|20175|20177|1
       <Comment>standard public schema</Comment>
       <StateNumber>351</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>2393</IntrospectionStateNumber>
+      <IntrospectionStateNumber>3041</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -197,404 +198,499 @@ sequence|table|20175|20177|1
       <SchemaId>11</SchemaId>
     </extension>
     <sequence id="31" parent="23" name="answers_id_seq">
-      <ObjectId>20135</ObjectId>
+      <ObjectId>21874</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>2375</StateNumber>
+      <StateNumber>3017</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>bigint</DataType>
     </sequence>
-    <sequence id="32" parent="23" name="passed_quiz_questions_id_seq">
-      <ObjectId>20143</ObjectId>
+    <sequence id="32" parent="23" name="images_id_seq">
+      <ObjectId>21882</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>2376</StateNumber>
+      <StateNumber>3018</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>bigint</DataType>
     </sequence>
-    <sequence id="33" parent="23" name="passed_quizes_id_seq">
-      <ObjectId>20151</ObjectId>
+    <sequence id="33" parent="23" name="passed_quiz_questions_id_seq">
+      <ObjectId>21890</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>2377</StateNumber>
+      <StateNumber>3019</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>bigint</DataType>
     </sequence>
     <sequence id="34" parent="23" name="questions_id_seq">
-      <ObjectId>20159</ObjectId>
+      <ObjectId>21898</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>2378</StateNumber>
+      <StateNumber>3020</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>bigint</DataType>
     </sequence>
-    <sequence id="35" parent="23" name="topics_id_seq">
-      <ObjectId>20167</ObjectId>
+    <sequence id="35" parent="23" name="quizes_id_seq">
+      <ObjectId>21906</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>2379</StateNumber>
+      <StateNumber>3021</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>bigint</DataType>
     </sequence>
-    <sequence id="36" parent="23" name="users_id_seq">
-      <ObjectId>20175</ObjectId>
+    <sequence id="36" parent="23" name="topics_id_seq">
+      <ObjectId>21914</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>2380</StateNumber>
+      <StateNumber>3022</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>bigint</DataType>
     </sequence>
-    <table id="37" parent="23" name="answers">
-      <ObjectId>20137</ObjectId>
+    <sequence id="37" parent="23" name="users_id_seq">
+      <ObjectId>21925</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>2382</StateNumber>
-    </table>
-    <table id="38" parent="23" name="passed_quiz_questions">
-      <ObjectId>20145</ObjectId>
+      <StateNumber>3024</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+      <CacheSize>1</CacheSize>
+      <DataType>bigint</DataType>
+    </sequence>
+    <table id="38" parent="23" name="answers">
+      <ObjectId>21876</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>2384</StateNumber>
+      <StateNumber>3027</StateNumber>
     </table>
-    <table id="39" parent="23" name="passed_quizes">
-      <ObjectId>20153</ObjectId>
+    <table id="39" parent="23" name="images">
+      <ObjectId>21884</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>2386</StateNumber>
+      <StateNumber>3028</StateNumber>
     </table>
-    <table id="40" parent="23" name="questions">
-      <ObjectId>20161</ObjectId>
+    <table id="40" parent="23" name="passed_quiz_questions">
+      <ObjectId>21892</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>2387</StateNumber>
+      <StateNumber>3030</StateNumber>
     </table>
-    <table id="41" parent="23" name="topics">
-      <ObjectId>20169</ObjectId>
+    <table id="41" parent="23" name="questions">
+      <ObjectId>21900</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>2387</StateNumber>
+      <StateNumber>3031</StateNumber>
     </table>
-    <table id="42" parent="23" name="users">
-      <ObjectId>20177</ObjectId>
+    <table id="42" parent="23" name="quizes">
+      <ObjectId>21908</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>2386</StateNumber>
+      <StateNumber>3033</StateNumber>
     </table>
-    <column id="43" parent="37" name="id">
+    <table id="43" parent="23" name="topics">
+      <ObjectId>21916</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>3032</StateNumber>
+    </table>
+    <table id="44" parent="23" name="user_role">
+      <ObjectId>21922</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>3034</StateNumber>
+    </table>
+    <table id="45" parent="23" name="users">
+      <ObjectId>21927</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>3034</StateNumber>
+    </table>
+    <column id="46" parent="38" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>2375</StateNumber>
+      <StateNumber>3017</StateNumber>
       <DefaultExpression>nextval(&apos;answers_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>20</TypeId>
     </column>
-    <column id="44" parent="37" name="is_right">
+    <column id="47" parent="38" name="is_right">
       <Position>2</Position>
       <DataType>boolean|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>2375</StateNumber>
+      <StateNumber>3017</StateNumber>
       <TypeId>16</TypeId>
     </column>
-    <column id="45" parent="37" name="text">
+    <column id="48" parent="38" name="text">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>2375</StateNumber>
+      <StateNumber>3017</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="46" parent="37" name="question_id">
+    <column id="49" parent="38" name="question_id">
       <Position>4</Position>
       <DataType>bigint|0s</DataType>
-      <StateNumber>2375</StateNumber>
+      <StateNumber>3017</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <index id="47" parent="37" name="answers_pkey">
-      <ObjectId>20141</ObjectId>
-      <StateNumber>2375</StateNumber>
+    <column id="50" parent="38" name="passed_quiz_question_id">
+      <Position>5</Position>
+      <DataType>bigint|0s</DataType>
+      <StateNumber>3017</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <index id="51" parent="38" name="answers_pkey">
+      <ObjectId>21880</ObjectId>
+      <StateNumber>3017</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="48" parent="37" name="answers_pkey">
-      <ObjectId>20142</ObjectId>
-      <StateNumber>2375</StateNumber>
+    <key id="52" parent="38" name="answers_pkey">
+      <ObjectId>21881</ObjectId>
+      <StateNumber>3017</StateNumber>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>answers_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="49" parent="37" name="fk3erw1a3t0r78st8ty27x6v3g1">
-      <ObjectId>20186</ObjectId>
-      <StateNumber>2381</StateNumber>
+    <foreign-key id="53" parent="38" name="fk3erw1a3t0r78st8ty27x6v3g1">
+      <ObjectId>21938</ObjectId>
+      <StateNumber>3026</StateNumber>
       <ColNames>question_id</ColNames>
-      <RefTableId>20161</RefTableId>
+      <RefTableId>21900</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>questions</RefTableName>
       <RefKeyName>questions_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="50" parent="38" name="id">
+    <foreign-key id="54" parent="38" name="fk1exglermei92t4o6be1lfgnvk">
+      <ObjectId>21943</ObjectId>
+      <StateNumber>3027</StateNumber>
+      <ColNames>passed_quiz_question_id</ColNames>
+      <RefTableId>21892</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>passed_quiz_questions</RefTableName>
+      <RefKeyName>passed_quiz_questions_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="55" parent="39" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>2376</StateNumber>
-      <DefaultExpression>nextval(&apos;passed_quiz_questions_id_seq&apos;::regclass)</DefaultExpression>
+      <StateNumber>3018</StateNumber>
+      <DefaultExpression>nextval(&apos;images_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>20</TypeId>
     </column>
-    <column id="51" parent="38" name="answer_id">
+    <column id="56" parent="39" name="data">
       <Position>2</Position>
-      <DataType>bigint|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>2376</StateNumber>
-      <TypeId>20</TypeId>
+      <DataType>oid|0s</DataType>
+      <StateNumber>3018</StateNumber>
+      <TypeId>26</TypeId>
     </column>
-    <column id="52" parent="38" name="quiz_id">
+    <column id="57" parent="39" name="user_id">
       <Position>3</Position>
       <DataType>bigint|0s</DataType>
-      <StateNumber>2376</StateNumber>
+      <StateNumber>3018</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="53" parent="38" name="question_id">
-      <Position>4</Position>
-      <DataType>bigint|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>2376</StateNumber>
-      <TypeId>20</TypeId>
-    </column>
-    <index id="54" parent="38" name="passed_quiz_questions_pkey">
-      <ObjectId>20149</ObjectId>
-      <StateNumber>2376</StateNumber>
+    <index id="58" parent="39" name="images_pkey">
+      <ObjectId>21888</ObjectId>
+      <StateNumber>3018</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="55" parent="38" name="passed_quiz_questions_pkey">
-      <ObjectId>20150</ObjectId>
-      <StateNumber>2376</StateNumber>
+    <key id="59" parent="39" name="images_pkey">
+      <ObjectId>21889</ObjectId>
+      <StateNumber>3018</StateNumber>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>passed_quiz_questions_pkey</UnderlyingIndexName>
+      <UnderlyingIndexName>images_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="56" parent="38" name="fke67ufd99fswm4vqv4r72k21jj">
-      <ObjectId>20191</ObjectId>
-      <StateNumber>2382</StateNumber>
-      <ColNames>answer_id</ColNames>
-      <RefTableId>20137</RefTableId>
-      <RefColPositions>1</RefColPositions>
-      <RefTableName>answers</RefTableName>
-      <RefKeyName>answers_pkey</RefKeyName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="57" parent="38" name="fkl1idmwj8pe4efk6m8rms21kjm">
-      <ObjectId>20196</ObjectId>
-      <StateNumber>2383</StateNumber>
-      <ColNames>quiz_id</ColNames>
-      <RefTableId>20153</RefTableId>
-      <RefColPositions>1</RefColPositions>
-      <RefTableName>passed_quizes</RefTableName>
-      <RefKeyName>passed_quizes_pkey</RefKeyName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="58" parent="38" name="fkf2pc3ajam7y00a642psptblij">
-      <ObjectId>20201</ObjectId>
-      <StateNumber>2384</StateNumber>
-      <ColNames>question_id</ColNames>
-      <RefTableId>20161</RefTableId>
-      <RefColPositions>1</RefColPositions>
-      <RefTableName>questions</RefTableName>
-      <RefKeyName>questions_pkey</RefKeyName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <column id="59" parent="39" name="id">
-      <Position>1</Position>
-      <DataType>bigint|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>2377</StateNumber>
-      <DefaultExpression>nextval(&apos;passed_quizes_id_seq&apos;::regclass)</DefaultExpression>
-      <TypeId>20</TypeId>
-    </column>
-    <column id="60" parent="39" name="end_time">
-      <Position>2</Position>
-      <DataType>date|0s</DataType>
-      <StateNumber>2377</StateNumber>
-      <TypeId>1082</TypeId>
-    </column>
-    <column id="61" parent="39" name="start_time">
-      <Position>3</Position>
-      <DataType>date|0s</DataType>
-      <StateNumber>2377</StateNumber>
-      <TypeId>1082</TypeId>
-    </column>
-    <column id="62" parent="39" name="success_percent">
-      <Position>4</Position>
-      <DataType>double precision|0s</DataType>
-      <StateNumber>2377</StateNumber>
-      <TypeId>701</TypeId>
-    </column>
-    <column id="63" parent="39" name="topic_id">
-      <Position>5</Position>
-      <DataType>bigint|0s</DataType>
-      <StateNumber>2377</StateNumber>
-      <TypeId>20</TypeId>
-    </column>
-    <column id="64" parent="39" name="user_id">
-      <Position>6</Position>
-      <DataType>bigint|0s</DataType>
-      <StateNumber>2377</StateNumber>
-      <TypeId>20</TypeId>
-    </column>
-    <index id="65" parent="39" name="passed_quizes_pkey">
-      <ObjectId>20157</ObjectId>
-      <StateNumber>2377</StateNumber>
-      <ColNames>id</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <key id="66" parent="39" name="passed_quizes_pkey">
-      <ObjectId>20158</ObjectId>
-      <StateNumber>2377</StateNumber>
-      <ColNames>id</ColNames>
-      <UnderlyingIndexName>passed_quizes_pkey</UnderlyingIndexName>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="67" parent="39" name="fksmqo1x8j1s7x4649usr71ndg4">
-      <ObjectId>20206</ObjectId>
-      <StateNumber>2385</StateNumber>
-      <ColNames>topic_id</ColNames>
-      <RefTableId>20169</RefTableId>
-      <RefColPositions>1</RefColPositions>
-      <RefTableName>topics</RefTableName>
-      <RefKeyName>topics_pkey</RefKeyName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="68" parent="39" name="fkmtnrgn8g9ghng9c76w3c5a89l">
-      <ObjectId>20211</ObjectId>
-      <StateNumber>2386</StateNumber>
+    <foreign-key id="60" parent="39" name="fk13ljqfrfwbyvnsdhihwta8cpr">
+      <ObjectId>21948</ObjectId>
+      <StateNumber>3028</StateNumber>
       <ColNames>user_id</ColNames>
-      <RefTableId>20177</RefTableId>
+      <RefTableId>21927</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>users</RefTableName>
       <RefKeyName>users_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="69" parent="40" name="id">
+    <column id="61" parent="40" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>2378</StateNumber>
-      <DefaultExpression>nextval(&apos;questions_id_seq&apos;::regclass)</DefaultExpression>
+      <StateNumber>3019</StateNumber>
+      <DefaultExpression>nextval(&apos;passed_quiz_questions_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>20</TypeId>
     </column>
-    <column id="70" parent="40" name="text">
+    <column id="62" parent="40" name="question_id">
       <Position>2</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>2378</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="71" parent="40" name="topic_id">
-      <Position>3</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>2378</StateNumber>
+      <StateNumber>3019</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <index id="72" parent="40" name="questions_pkey">
-      <ObjectId>20165</ObjectId>
-      <StateNumber>2378</StateNumber>
+    <column id="63" parent="40" name="quiz_id">
+      <Position>3</Position>
+      <DataType>bigint|0s</DataType>
+      <StateNumber>3019</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <index id="64" parent="40" name="passed_quiz_questions_pkey">
+      <ObjectId>21896</ObjectId>
+      <StateNumber>3019</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="73" parent="40" name="questions_pkey">
-      <ObjectId>20166</ObjectId>
-      <StateNumber>2378</StateNumber>
+    <key id="65" parent="40" name="passed_quiz_questions_pkey">
+      <ObjectId>21897</ObjectId>
+      <StateNumber>3019</StateNumber>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>passed_quiz_questions_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="66" parent="40" name="fkf2pc3ajam7y00a642psptblij">
+      <ObjectId>21953</ObjectId>
+      <StateNumber>3029</StateNumber>
+      <ColNames>question_id</ColNames>
+      <RefTableId>21900</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>questions</RefTableName>
+      <RefKeyName>questions_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="67" parent="40" name="fkc2qxtnmd5j63etks1m08ca9ou">
+      <ObjectId>21958</ObjectId>
+      <StateNumber>3030</StateNumber>
+      <ColNames>quiz_id</ColNames>
+      <RefTableId>21908</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>quizes</RefTableName>
+      <RefKeyName>quizes_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="68" parent="41" name="id">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>3020</StateNumber>
+      <DefaultExpression>nextval(&apos;questions_id_seq&apos;::regclass)</DefaultExpression>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="69" parent="41" name="text">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>3020</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="70" parent="41" name="topic_id">
+      <Position>3</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>3020</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <index id="71" parent="41" name="questions_pkey">
+      <ObjectId>21904</ObjectId>
+      <StateNumber>3020</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="72" parent="41" name="questions_pkey">
+      <ObjectId>21905</ObjectId>
+      <StateNumber>3020</StateNumber>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>questions_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="74" parent="40" name="fkdb5p6ukb0v76he4pq87cbymhg">
-      <ObjectId>20216</ObjectId>
-      <StateNumber>2387</StateNumber>
+    <foreign-key id="73" parent="41" name="fkdb5p6ukb0v76he4pq87cbymhg">
+      <ObjectId>21963</ObjectId>
+      <StateNumber>3031</StateNumber>
       <ColNames>topic_id</ColNames>
-      <RefTableId>20169</RefTableId>
+      <RefTableId>21916</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>topics</RefTableName>
       <RefKeyName>topics_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="75" parent="41" name="id">
+    <column id="74" parent="42" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>2379</StateNumber>
-      <DefaultExpression>nextval(&apos;topics_id_seq&apos;::regclass)</DefaultExpression>
+      <StateNumber>3021</StateNumber>
+      <DefaultExpression>nextval(&apos;quizes_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>20</TypeId>
     </column>
-    <column id="76" parent="41" name="name">
+    <column id="75" parent="42" name="end_time">
       <Position>2</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>2379</StateNumber>
-      <TypeId>1043</TypeId>
+      <DataType>date|0s</DataType>
+      <StateNumber>3021</StateNumber>
+      <TypeId>1082</TypeId>
     </column>
-    <index id="77" parent="41" name="topics_pkey">
-      <ObjectId>20173</ObjectId>
-      <StateNumber>2379</StateNumber>
+    <column id="76" parent="42" name="start_time">
+      <Position>3</Position>
+      <DataType>date|0s</DataType>
+      <StateNumber>3021</StateNumber>
+      <TypeId>1082</TypeId>
+    </column>
+    <column id="77" parent="42" name="success_percent">
+      <Position>4</Position>
+      <DataType>double precision|0s</DataType>
+      <StateNumber>3021</StateNumber>
+      <TypeId>701</TypeId>
+    </column>
+    <column id="78" parent="42" name="topic_id">
+      <Position>5</Position>
+      <DataType>bigint|0s</DataType>
+      <StateNumber>3021</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="79" parent="42" name="user_id">
+      <Position>6</Position>
+      <DataType>bigint|0s</DataType>
+      <StateNumber>3021</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <index id="80" parent="42" name="quizes_pkey">
+      <ObjectId>21912</ObjectId>
+      <StateNumber>3021</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="78" parent="41" name="topics_pkey">
-      <ObjectId>20174</ObjectId>
-      <StateNumber>2379</StateNumber>
+    <key id="81" parent="42" name="quizes_pkey">
+      <ObjectId>21913</ObjectId>
+      <StateNumber>3021</StateNumber>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>quizes_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="82" parent="42" name="fkqj70xomn6r4vvrvmp5j3fitc7">
+      <ObjectId>21968</ObjectId>
+      <StateNumber>3032</StateNumber>
+      <ColNames>topic_id</ColNames>
+      <RefTableId>21916</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>topics</RefTableName>
+      <RefKeyName>topics_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="83" parent="42" name="fksx3wbj10h4hi9v5ah9os12p0i">
+      <ObjectId>21973</ObjectId>
+      <StateNumber>3033</StateNumber>
+      <ColNames>user_id</ColNames>
+      <RefTableId>21927</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>users</RefTableName>
+      <RefKeyName>users_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="84" parent="43" name="id">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>3022</StateNumber>
+      <DefaultExpression>nextval(&apos;topics_id_seq&apos;::regclass)</DefaultExpression>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="85" parent="43" name="name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>3022</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="86" parent="43" name="topics_pkey">
+      <ObjectId>21920</ObjectId>
+      <StateNumber>3022</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="87" parent="43" name="topics_pkey">
+      <ObjectId>21921</ObjectId>
+      <StateNumber>3022</StateNumber>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>topics_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="79" parent="42" name="id">
+    <column id="88" parent="44" name="user_id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>2380</StateNumber>
+      <StateNumber>3023</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="89" parent="44" name="roles">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>3023</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <foreign-key id="90" parent="44" name="fkj345gk1bovqvfame88rcx7yyx">
+      <ObjectId>21978</ObjectId>
+      <StateNumber>3034</StateNumber>
+      <ColNames>user_id</ColNames>
+      <RefTableId>21927</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>users</RefTableName>
+      <RefKeyName>users_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="91" parent="45" name="id">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>3024</StateNumber>
       <DefaultExpression>nextval(&apos;users_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>20</TypeId>
     </column>
-    <column id="80" parent="42" name="e_mail">
+    <column id="92" parent="45" name="active">
       <Position>2</Position>
-      <DataType>varchar(255)|0s</DataType>
+      <DataType>boolean|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>2380</StateNumber>
-      <TypeId>1043</TypeId>
+      <StateNumber>3024</StateNumber>
+      <TypeId>16</TypeId>
     </column>
-    <column id="81" parent="42" name="first_name">
+    <column id="93" parent="45" name="e_mail">
       <Position>3</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>2380</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="82" parent="42" name="last_name">
-      <Position>4</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>2380</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="83" parent="42" name="password">
-      <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>2380</StateNumber>
+      <StateNumber>3024</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="84" parent="42" name="role">
+    <column id="94" parent="45" name="first_name">
+      <Position>4</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>3024</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="95" parent="45" name="last_name">
+      <Position>5</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>3024</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="96" parent="45" name="password">
       <Position>6</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>2380</StateNumber>
+      <StateNumber>3024</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="85" parent="42" name="users_pkey">
-      <ObjectId>20184</ObjectId>
-      <StateNumber>2380</StateNumber>
+    <index id="97" parent="45" name="users_pkey">
+      <ObjectId>21934</ObjectId>
+      <StateNumber>3024</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="86" parent="42" name="users_pkey">
-      <ObjectId>20185</ObjectId>
-      <StateNumber>2380</StateNumber>
+    <index id="98" parent="45" name="uk_ehv2osdo3bfokh566calsfx32">
+      <ObjectId>21936</ObjectId>
+      <StateNumber>3025</StateNumber>
+      <ColNames>e_mail</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="99" parent="45" name="users_pkey">
+      <ObjectId>21935</ObjectId>
+      <StateNumber>3024</StateNumber>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>users_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
+    </key>
+    <key id="100" parent="45" name="uk_ehv2osdo3bfokh566calsfx32">
+      <ObjectId>21937</ObjectId>
+      <StateNumber>3025</StateNumber>
+      <ColNames>e_mail</ColNames>
+      <UnderlyingIndexName>uk_ehv2osdo3bfokh566calsfx32</UnderlyingIndexName>
     </key>
   </database-model>
 </dataSource>
