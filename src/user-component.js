@@ -12,6 +12,13 @@ import Popover from '@material-ui/core/Popover';
 import TextField from '@material-ui/core/TextField';
 import LockIcon from '@material-ui/icons/Lock';
 import LanguageIcon from '@material-ui/icons/Language';
+import {useRef} from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -28,19 +35,18 @@ const useStyles = makeStyles(theme => ({
 function TaskBar() {
   const classes = useStyles();
   return (
+    <Router>
     <div className={classes.root}>
       <AppBar position="static" >
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
+          
 
-          <Button color="inherit" >
+        <Link style={{ color:'white', textDecoration: 'none' }} to="/">  <Button color="inherit" >
             Main
-              </Button>
-          <Button color="inherit" >
+              </Button></Link>
+              <Link style={{  color:'white', textDecoration: 'none' }} to="/users">    <Button color="inherit" >
             User
-              </Button>
+              </Button> </Link>
 
           <Button color="inherit" >
             Exams
@@ -54,10 +60,40 @@ function TaskBar() {
                   </Button>
         </Toolbar>
       </AppBar>
+      <Switch>
+          
+          <Route path="/users">
+            <User />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
     </div>
+    
+    </Router>
   );
 }
+function User() {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
 
+
+  return (
+    <div className="main-container"  >
+      
+      <GeneralInfo></GeneralInfo>
+      <ActiveExams></ActiveExams>
+
+    </div>
+  );
+
+}
+function Home()
+{
+  return(
+    <div>Hello</div>
+  )
+}
 function Global(){
   return (
     <div className="edit-content">
@@ -71,13 +107,7 @@ function Global(){
     <br></br>
     <TextField fullWidth label="Institution"></TextField>
     <br></br>
-    <br></br>
-    <br></br>
-    <br></br>
-    <br></br>
-    <br></br>
-    <br></br>
-    <br></br>
+   
     <div style={{textAlign:'right'}}>
     
     <Button color='primary'>Save</Button>
@@ -88,14 +118,10 @@ function Global(){
   {
     return(
       <div className="edit-content">
+        <br></br>
     <TextField size='medium' label="Password"></TextField>
     <br></br>
-    <br></br>
-    <br></br>
-    <br></br>
-    <br></br>
-    <br></br>
-    <br></br>
+    
     <div style={{textAlign:"right"}}>
     
     <Button color='primary'>Save</Button>
@@ -104,7 +130,7 @@ function Global(){
     )
   }
 function GeneralInfo() {
-  
+  const inputEl = useRef(null);
   const [open, setopen] = React.useState(false);
   const [context, setcontext] = React.useState(Global);
   const handleClick = event => setopen(true)
@@ -116,16 +142,27 @@ const setcontexthandler =(e)=>{
     setcontext(Global)
   else setcontext(Security)
 }
+ function uploadimagehandler()
+{
+ inputEl.current.click();
+
+}
   return (
     <div className="general-row">
       <div className='image-container-row' >
-        <img src={image} alt='userImage' className='image-container' ></img>
+        <div className="image-container" >
+        <img  src={image} alt='userImage' className='image' ></img>
+        <div class="middle">
+    <Button onClick ={uploadimagehandler} color='primary' variant='contained' >Upload</Button>
+    </div>
+  </div>
+        <input type="file" ref={inputEl} style={{display: "none"}} ></input>
         <Button onClick={handleClick} variant="contained" color="primary" style={{ fontSize: "1.5vw" }}>  <EditIcon></EditIcon>Edit Info</Button>
         <Popover   open={open} onClose={handleClose}
           anchorReference="anchorPosition"
           anchorPosition={{top:50,left:500}}
         >
-          <div style={{ padding: "1vw 10vw 10vw 1vw" }}>
+          <div style={{ padding: "1vw 10vw 20vw 1vw" }}>
             <h2 style={{ textAlign: "center" }}>Edit Info</h2>
             <div className="sidebox">
               <Button onClick={()=>setcontexthandler(0)} color='primary'><LanguageIcon></LanguageIcon> General</Button>
@@ -169,17 +206,5 @@ function ActiveExams() {
     </div>
   )
 }
-export default function user_component() {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-
-
-  return (
-    <div className="main-container"  >
-      <TaskBar></TaskBar>
-      <GeneralInfo></GeneralInfo>
-      <ActiveExams></ActiveExams>
-
-    </div>
-  );
-
-}
+ 
+export default TaskBar;
