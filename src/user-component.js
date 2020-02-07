@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import image from './user-male.jpg';
+import Drawer from '@material-ui/core/Drawer';
 import EditIcon from '@material-ui/icons/Edit';
 import Popover from '@material-ui/core/Popover';
 import TextField from '@material-ui/core/TextField';
@@ -21,26 +22,48 @@ import {
 } from "react-router-dom";
 import { Dialog } from '@material-ui/core';
 
-const useStyles = makeStyles(theme => ({
-  root: {
 
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(1),
-  },
-  title: {
-    position: "absolute", right: 0
-  },
-}));
 function TaskBar() {
-  const classes = useStyles();
-  return (
+  const [state,Setstate]=React.useState(false);
+  const toggleDrawer=(e)=> event => Setstate(e)
+    return (
     <Router>
-    <div className={classes.root}>
+    <div >
       <AppBar position="static" >
         <Toolbar>
-          
+          <div className="menu">
+        <IconButton  onClick={ toggleDrawer(true)}ge="start"  color="inherit" aria-label="menu">
+      <MenuIcon />
+
+    </IconButton>
+    <Drawer open={state} onClose={toggleDrawer(false)}>
+      <div>
+    <Link  style={{ color:'white', textDecoration: 'none' }} to="/">  <Button color="primary" >
+            Main
+              </Button></Link>
+              </div>
+              <div>
+              <Link style={{  color:'white', textDecoration: 'none' }} to="/users">    <Button color="primary" >
+            User
+              </Button> </Link>
+              </div>
+              <div>
+              <Link  style={{ color:'white', textDecoration: 'none' }} to="/">  <Button color="primary" >
+            Exams
+              </Button></Link>
+              </div>
+              <div>
+              <Link  style={{ color:'white', textDecoration: 'none' }} to="/">  <Button color="primary" >
+            Contact
+              </Button></Link>
+              </div>
+              <div>
+              <Link  style={{ color:'white', textDecoration: 'none' }} to="/">  <Button color="primary" >
+            Logout
+              </Button></Link>
+              </div>
+      </Drawer>
+    </div>
 
         <Link style={{ color:'white', textDecoration: 'none' }} to="/">  <Button color="inherit" >
             Main
@@ -56,7 +79,8 @@ function TaskBar() {
           <Button color="inherit"  >
             Contact
                   </Button>
-          <Button color="inherit" className={classes.title}>
+                  <div className="spacer"></div>
+          <Button color="inherit" >
             Logout
                   </Button>
         </Toolbar>
