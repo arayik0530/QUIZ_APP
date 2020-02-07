@@ -153,7 +153,7 @@ const setcontexthandler =(e)=>{
       <div className='image-container-row' >
         <div className="image-container" >
         <img  src={image} alt='userImage' className='image' ></img>
-        <div class="middle">
+        <div className="middle">
     <Button onClick ={uploadimagehandler} color='primary' variant='contained' >Upload</Button>
     </div>
   </div>
