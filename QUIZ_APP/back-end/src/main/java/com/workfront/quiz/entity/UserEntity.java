@@ -26,10 +26,13 @@ public class UserEntity {
     @Column(name = "e_mail", nullable = false, unique = true)
     private String email;
 
+    @Column(name = "phone", unique = true, length = 15)
+    private String phone;
+
     @Column(name = "password", nullable = false)
     private String password;
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne //TODO fetch ?
     private ImageEntity profileImage;
 
     @Column(name = "active", nullable = false) //TODO nullable = false petq vabshe, ete defaultov active-@ false a
@@ -44,24 +47,8 @@ public class UserEntity {
     @Enumerated(EnumType.STRING)
     private Set<UserRole> roles = new HashSet<>();
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = {CascadeType.REMOVE}) //TODO aveli jisht chi lini vor orphanremoval true tanq vor xusapenq NPE-ic?
+    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}) //TODO aveli jisht chi lini vor orphanremoval true tanq vor xusapenq NPE-ic?
     private List<QuizEntity> quizes;
-
-
-    @Override
-    public String toString() {
-        return "UserEntity{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", profileImage=" + profileImage +
-                ", active=" + active +
-                ", roles=" + roles +
-                ", quizes=" + quizes +
-                '}';
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -73,6 +60,7 @@ public class UserEntity {
                 Objects.equals(getFirstName(), that.getFirstName()) &&
                 Objects.equals(getLastName(), that.getLastName()) &&
                 Objects.equals(getEmail(), that.getEmail()) &&
+                Objects.equals(getPhone(), that.getPhone()) &&
                 Objects.equals(getPassword(), that.getPassword()) &&
                 Objects.equals(getProfileImage(), that.getProfileImage()) &&
                 Objects.equals(getRoles(), that.getRoles()) &&
@@ -81,7 +69,31 @@ public class UserEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getFirstName(), getLastName(), getEmail(), getPassword(), getProfileImage(), isActive(), getRoles(), getQuizes());
+        return Objects.hash(getId(), getFirstName(), getLastName(), getEmail(), getPhone(), getPassword(), getProfileImage(), isActive(), getRoles(), getQuizes());
+    }
+
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", password='" + password + '\'' +
+                ", profileImage=" + profileImage +
+                ", active=" + active +
+                ", roles=" + roles +
+                ", quizes=" + quizes +
+                '}';
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public Long getId() {

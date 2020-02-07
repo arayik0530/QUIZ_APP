@@ -11,11 +11,7 @@ public class PassedQuizQuestionEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JoinColumn(name = "quiz_id")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private QuizEntity quiz;
-
-    @OneToOne
+    @OneToOne //TODO fetch ?
     @JoinColumn(name = "question_id", nullable = false, updatable = false)
     private QuestionEntity question;
 
@@ -28,14 +24,6 @@ public class PassedQuizQuestionEntity {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public QuizEntity getQuiz() {
-        return quiz;
-    }
-
-    public void setQuiz(QuizEntity quiz) {
-        this.quiz = quiz;
     }
 
     public QuestionEntity getQuestion() {
@@ -60,21 +48,19 @@ public class PassedQuizQuestionEntity {
         if (!(o instanceof PassedQuizQuestionEntity)) return false;
         PassedQuizQuestionEntity that = (PassedQuizQuestionEntity) o;
         return Objects.equals(getId(), that.getId()) &&
-                Objects.equals(getQuiz(), that.getQuiz()) &&
                 Objects.equals(getQuestion(), that.getQuestion()) &&
                 Objects.equals(getGivenAnswers(), that.getGivenAnswers());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getQuiz(), getQuestion(), getGivenAnswers());
+        return Objects.hash(getId(), getQuestion(), getGivenAnswers());
     }
 
     @Override
     public String toString() {
         return "PassedQuizQuestionEntity{" +
                 "id=" + id +
-                ", quiz=" + quiz +
                 ", question=" + question +
                 ", givenAnswers=" + givenAnswers +
                 '}';

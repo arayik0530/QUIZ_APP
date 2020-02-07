@@ -1,6 +1,7 @@
 package com.workfront.quiz.api.impl;
 
 import com.workfront.quiz.api.QuestionController;
+import com.workfront.quiz.dto.question.CreateQuestionDto;
 import com.workfront.quiz.dto.question.QuestionDto;
 import com.workfront.quiz.entity.TopicEntity;
 import com.workfront.quiz.service.QuestionService;
@@ -54,5 +55,11 @@ public class QuestionControllerImpl implements QuestionController {
     @PutMapping("update")
     public void update(QuestionDto question) {
         questionService.update(question);
+    }
+
+    @Override
+    @PostMapping("create")
+    public void create(@RequestBody CreateQuestionDto question, @RequestBody int answerCount) {
+        questionService.create(question, answerCount);
     }
 }

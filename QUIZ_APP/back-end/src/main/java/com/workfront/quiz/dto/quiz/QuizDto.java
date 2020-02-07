@@ -83,7 +83,6 @@ public class QuizDto {
 
     public QuizEntity toEntity(QuizEntity quiz){
         quiz.setQuestions(this.getQuestions());
-        quiz.setUser(this.getUser()); //TODO jshtel es tox@ petq a te che?
         quiz.setTopic(this.getTopic()); //TODO jshtel es tox@ petq a te che?
         quiz.setSuccessPercent(this.getSuccessPercent());
         quiz.setEndTime(this.getEndTime());
@@ -95,7 +94,6 @@ public class QuizDto {
         QuizDto quizDto = new QuizDto();
 
         quizDto.setId(quiz.getId());
-        quizDto.setUser(quiz.getUser());
         quizDto.setTopic(quiz.getTopic());
         quizDto.setQuestions(quiz.getQuestions());
         quizDto.setSuccessPercent(quiz.getSuccessPercent());

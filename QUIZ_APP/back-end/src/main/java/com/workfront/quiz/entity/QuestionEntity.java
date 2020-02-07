@@ -19,7 +19,7 @@ public class QuestionEntity {
     @JoinColumn(name = "topic_id", nullable = false)
     private TopicEntity topic;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "question")
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
     private List<AnswerEntity> answers;
 
     public Long getId() {

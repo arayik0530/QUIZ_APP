@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(value = "*")
 public class TopicControllerImpl implements TopicController {
 
-    TopicService topicService;
+    private TopicService topicService;
 
     public TopicControllerImpl(TopicService topicService) {
         this.topicService = topicService;
@@ -28,7 +28,7 @@ public class TopicControllerImpl implements TopicController {
 
     @Override
     @GetMapping("search")
-    public Page<TopicDto> searchByName(String name, Pageable pageable) {
+    public Page<TopicDto> searchByName(String name, @PageableDefault Pageable pageable) {
         return topicService.searchByName(name, pageable);
     }
 

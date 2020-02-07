@@ -1,6 +1,8 @@
 package com.workfront.quiz.api;
 
+import com.workfront.quiz.dto.question.CreateQuestionDto;
 import com.workfront.quiz.dto.question.QuestionDto;
+import com.workfront.quiz.entity.QuestionEntity;
 import com.workfront.quiz.entity.TopicEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,4 +20,6 @@ public interface QuestionController {
     void remove(Long id);
 
     void update(QuestionDto question);
+
+    void create(CreateQuestionDto question, int answerCount);
 }

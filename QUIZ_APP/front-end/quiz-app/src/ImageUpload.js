@@ -14,10 +14,11 @@ export default class ImageUpload extends React.Component {
     };
 
     onSubmit = (e) => {
-        alert(111)
+        alert("beforeStart");
         e.preventDefault();
         const formData = new FormData();
         formData.append('file', this.state.selectedFile);
+        alert("start");
         fetch('http://localhost:8080/upload', {
             method: 'post',
             body: formData
@@ -27,6 +28,7 @@ export default class ImageUpload extends React.Component {
                 alert("File uploaded successfully.")
             }
         });
+        alert("end")
     };
 
     render() {

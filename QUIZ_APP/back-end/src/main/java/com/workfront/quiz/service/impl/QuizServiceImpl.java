@@ -34,6 +34,7 @@ public class QuizServiceImpl implements QuizService {
             return QuizDto.mapFromEntity(byId.get());
         }
         else {
+
             throw new QuizNotFoundException(id);
         }
     }

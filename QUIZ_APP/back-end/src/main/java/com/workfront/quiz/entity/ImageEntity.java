@@ -1,8 +1,6 @@
 package com.workfront.quiz.entity;
 
 
-import com.workfront.quiz.entity.UserEntity;
-
 import javax.persistence.*;
 
 @Entity
@@ -19,7 +17,4 @@ public class ImageEntity {
     @Basic(fetch = FetchType.LAZY)
     private byte[] data;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private UserEntity user;
 }

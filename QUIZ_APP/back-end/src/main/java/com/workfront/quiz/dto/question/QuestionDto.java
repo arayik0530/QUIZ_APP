@@ -17,7 +17,8 @@ public class QuestionDto {
 
     private List<AnswerEntity> answers;
 
-    public QuestionEntity toEntity(QuestionEntity question){
+    public QuestionEntity toEntity(){
+        QuestionEntity question = new QuestionEntity();
         question.setText(this.text);
         question.setTopic(this.topic);
         question.setAnswers(this.answers);
@@ -32,6 +33,7 @@ public class QuestionDto {
         questionDto.setId(question.getId());
         questionDto.setText(question.getText());
         questionDto.setTopic(question.getTopic());
+        questionDto.setAnswers(question.getAnswers());
 
         return questionDto;
     }

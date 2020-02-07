@@ -15,14 +15,10 @@ public class QuizEntity {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private UserEntity user;
-
-    @ManyToOne
     @JoinColumn(name = "topic_id")
     private TopicEntity topic;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "quiz")
+    @OneToMany(fetch = FetchType.LAZY)
     private List<PassedQuizQuestionEntity> questions;
 
     @CreatedDate
@@ -42,14 +38,6 @@ public class QuizEntity {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public UserEntity getUser() {
-        return user;
-    }
-
-    public void setUser(UserEntity user) {
-        this.user = user;
     }
 
     public TopicEntity getTopic() {
@@ -98,21 +86,19 @@ public class QuizEntity {
         if (!(o instanceof QuizEntity)) return false;
         QuizEntity that = (QuizEntity) o;
         return Objects.equals(getId(), that.getId()) &&
-                Objects.equals(getUser(), that.getUser()) &&
                 Objects.equals(getTopic(), that.getTopic()) &&
                 Objects.equals(getQuestions(), that.getQuestions());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getUser(), getTopic(), getQuestions());
+        return Objects.hash(getId(), getTopic(), getQuestions());
     }
 
     @Override
     public String toString() {
         return "QuizEntity{" +
                 "id=" + id +
-                ", user=" + user +
                 ", topic=" + topic +
                 ", questions=" + questions +
                 '}';

@@ -12,6 +12,7 @@ public class UserInfoDto {
         userInfoDto.email = userEntity.getEmail();
         userInfoDto.lastName = userEntity.getLastName();
         userInfoDto.firstName = userEntity.getFirstName();
+        userInfoDto.phone = userEntity.getPhone();
         userInfoDto.role = userEntity.getRoles().toString(); // TODO jshtel role petqa te che?
         userInfoDto.image = userEntity.getProfileImage();// TODO jshtel es togh@
         return userInfoDto;
@@ -22,6 +23,7 @@ public class UserInfoDto {
         userEntity.setFirstName(this.firstName);
         userEntity.setLastName(this.lastName);
         userEntity.setProfileImage(this.image); // TODO jshtel es togh@
+        userEntity.setPhone(this.phone); // TODO jshtel es togh@
         return userEntity;
     }
 
@@ -33,21 +35,11 @@ public class UserInfoDto {
 
     private String email;
 
+    private String phone;
+
     private String role;
 
     private ImageEntity image;
-
-    @Override
-    public String toString() {
-        return "UserInfoDto{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", role='" + role + '\'' +
-                ", image=" + image +
-                '}';
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -58,13 +50,35 @@ public class UserInfoDto {
                 Objects.equals(getFirstName(), that.getFirstName()) &&
                 Objects.equals(getLastName(), that.getLastName()) &&
                 Objects.equals(getEmail(), that.getEmail()) &&
+                Objects.equals(getPhone(), that.getPhone()) &&
                 Objects.equals(getRole(), that.getRole()) &&
                 Objects.equals(getImage(), that.getImage());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getFirstName(), getLastName(), getEmail(), getRole(), getImage());
+        return Objects.hash(getId(), getFirstName(), getLastName(), getEmail(), getPhone(), getRole(), getImage());
+    }
+
+    @Override
+    public String toString() {
+        return "UserInfoDto{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", role='" + role + '\'' +
+                ", image=" + image +
+                '}';
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public Long getId() {

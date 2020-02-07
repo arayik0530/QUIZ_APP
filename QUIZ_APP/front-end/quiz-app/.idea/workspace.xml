@@ -20,28 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4e8dddd-ad9b-481a-b8e9-70d5cd024298" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/entity/PassedQuizQuestionEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../back-end/.idea/dataSources/a9dca7a8-0d84-4b48-ad88-785b9544e67c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/.idea/dataSources/a9dca7a8-0d84-4b48-ad88-785b9544e67c.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../back-end/.idea/dataSources/a9dca7a8-0d84-4b48-ad88-785b9544e67c/storage_v2/_src_/database/quiz_app.N5muwQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/.idea/dataSources/a9dca7a8-0d84-4b48-ad88-785b9544e67c/storage_v2/_src_/database/quiz_app.N5muwQ/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../back-end/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/api/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/api/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/api/impl/UserControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/api/impl/UserControllerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/dto/LoginRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/dto/user/LoginRequestDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/dto/PasswordChangingDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/dto/user/PasswordChangingDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/dto/UserInfoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/dto/user/UserInfoDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/dto/UserRegistrationDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/dto/user/UserRegistrationDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/entity/AnswerEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/entity/AnswerEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/entity/PassedQuizEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/entity/QuizEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/entity/PassedQuizQuestionsEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/entity/TopicEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/entity/TopicEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/entity/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/entity/UserEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/service/util/exception/UserAlreadyExistsException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/service/util/exception/UserAlreadyExistsException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/service/util/exception/UserNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/service/util/exception/UserNotFoundException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/service/util/exception/WrongPasswordException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/service/util/exception/WrongPasswordException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ImageUpload.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageUpload.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +78,8 @@
       <workItem from="1580632152977" duration="674000" />
       <workItem from="1580632870618" duration="19000" />
       <workItem from="1580733399817" duration="5174000" />
-      <workItem from="1580987117928" duration="2463000" />
+      <workItem from="1580987117928" duration="3466000" />
+      <workItem from="1580993264349" duration="688000" />
     </task>
     <servers />
   </component>

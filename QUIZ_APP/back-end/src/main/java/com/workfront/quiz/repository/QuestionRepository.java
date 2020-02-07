@@ -12,6 +12,9 @@ public interface QuestionRepository extends JpaRepository<QuestionEntity, Long> 
     @Query(value = "from QuestionEntity as question where question.text like ?1%")
     Page<QuestionEntity> searchByText(String text, Pageable pageable);
 
+    @Query(value = "from QuestionEntity as question where question.text = ?1")
+    QuestionEntity searchByTextExact(String text);
+
     Page<QuestionEntity> findAllByTopic(TopicEntity topic, Pageable pageable); //TODO jshtel ashxatuma te che
 
     @Query(value = "from QuestionEntity as question where question.topic = ?1")
