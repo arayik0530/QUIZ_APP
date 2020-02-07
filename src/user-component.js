@@ -19,6 +19,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import { Dialog } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -158,11 +159,10 @@ const setcontexthandler =(e)=>{
   </div>
         <input type="file" ref={inputEl} style={{display: "none"}} ></input>
         <Button onClick={handleClick} variant="contained" color="primary" style={{ fontSize: "1.5vw" }}>  <EditIcon></EditIcon>Edit Info</Button>
-        <Popover   open={open} onClose={handleClose}
-          anchorReference="anchorPosition"
-          anchorPosition={{top:50,left:500}}
+        <Dialog  maxWidth="xl" open={open} onClose={handleClose}
+         
         >
-          <div style={{ padding: "1vw 10vw 20vw 1vw" }}>
+          <div  style={{padding:"2vw 2vw 10vw 1vw"}}>
             <h2 style={{ textAlign: "center" }}>Edit Info</h2>
             <div className="sidebox">
               <Button onClick={()=>setcontexthandler(0)} color='primary'><LanguageIcon></LanguageIcon> General</Button>
@@ -174,7 +174,7 @@ const setcontexthandler =(e)=>{
            <Button onClick={handleClose}  color='primary'>Cancel</Button> 
           </div>
          
-        </Popover>
+        </Dialog>
 
       </div>
       <div className='about-container-row'>
