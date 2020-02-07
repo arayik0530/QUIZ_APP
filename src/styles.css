@@ -2,6 +2,9 @@
 {
     box-sizing:border-box ;
 }
+.spacer{
+    flex: 1;
+}
 .main-container{
    
     background-color: antiquewhite;
