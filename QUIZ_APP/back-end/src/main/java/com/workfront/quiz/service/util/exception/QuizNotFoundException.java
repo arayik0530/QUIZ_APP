@@ -8,11 +8,12 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class QuizNotFoundException extends RuntimeException {
 
     public QuizNotFoundException(String s) {
+
         super(s);
     }
 
     public QuizNotFoundException(Long id) {
-        super(id.toString());
+        super("Quiz " + id + " not found.");
     }
 }
 

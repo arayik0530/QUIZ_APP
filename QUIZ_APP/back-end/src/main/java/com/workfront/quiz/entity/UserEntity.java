@@ -3,10 +3,7 @@ package com.workfront.quiz.entity;
 import com.workfront.quiz.entity.enums.UserRole;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "users")
@@ -32,19 +29,13 @@ public class UserEntity {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @OneToOne //TODO fetch ?
+    @OneToOne
     private ImageEntity profileImage;
 
     @Column(name = "active", nullable = false) //TODO nullable = false petq vabshe, ete defaultov active-@ false a
     private boolean active;
 
-//    @Enumerated(EnumType.STRING)
-//    @Column(name = "role", nullable = false)
-//    private UserRole role = UserRole.USER;
-
     @ElementCollection(targetClass = UserRole.class, fetch = FetchType.EAGER)
-    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
-    @Enumerated(EnumType.STRING)
     private Set<UserRole> roles = new HashSet<>();
 
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}) //TODO aveli jisht chi lini vor orphanremoval true tanq vor xusapenq NPE-ic?

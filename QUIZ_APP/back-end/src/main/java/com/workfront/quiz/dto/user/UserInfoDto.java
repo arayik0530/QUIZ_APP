@@ -4,6 +4,7 @@ import com.workfront.quiz.entity.UserEntity;
 import com.workfront.quiz.entity.ImageEntity;
 
 import java.util.Objects;
+import java.util.stream.Stream;
 
 public class UserInfoDto {
     public static  UserInfoDto mapFromEntity(UserEntity userEntity) {
@@ -13,7 +14,10 @@ public class UserInfoDto {
         userInfoDto.lastName = userEntity.getLastName();
         userInfoDto.firstName = userEntity.getFirstName();
         userInfoDto.phone = userEntity.getPhone();
-        userInfoDto.role = userEntity.getRoles().toString(); // TODO jshtel role petqa te che?
+
+        userInfoDto.roles = Stream.of(userEntity.getRoles())
+                .map(Object::toString).toArray(String[]::new); // TODO jshtel roles petqa te che?
+
         userInfoDto.image = userEntity.getProfileImage();// TODO jshtel es togh@
         return userInfoDto;
     }
@@ -37,7 +41,7 @@ public class UserInfoDto {
 
     private String phone;
 
-    private String role;
+    private String[] roles;
 
     private ImageEntity image;
 
@@ -51,13 +55,13 @@ public class UserInfoDto {
                 Objects.equals(getLastName(), that.getLastName()) &&
                 Objects.equals(getEmail(), that.getEmail()) &&
                 Objects.equals(getPhone(), that.getPhone()) &&
-                Objects.equals(getRole(), that.getRole()) &&
+                Objects.equals(getRoles(), that.getRoles()) &&
                 Objects.equals(getImage(), that.getImage());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getFirstName(), getLastName(), getEmail(), getPhone(), getRole(), getImage());
+        return Objects.hash(getId(), getFirstName(), getLastName(), getEmail(), getPhone(), getRoles(), getImage());
     }
 
     @Override
@@ -68,7 +72,7 @@ public class UserInfoDto {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
-                ", role='" + role + '\'' +
+                ", roles='" + roles + '\'' +
                 ", image=" + image +
                 '}';
     }
@@ -113,12 +117,12 @@ public class UserInfoDto {
         this.email = email;
     }
 
-    public String getRole() {
-        return role;
+    public String[] getRoles() {
+        return roles;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setRoles(String... roles) {
+        this.roles = roles;
     }
 
     public ImageEntity getImage() {

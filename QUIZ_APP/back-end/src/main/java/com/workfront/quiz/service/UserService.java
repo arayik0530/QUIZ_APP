@@ -10,6 +10,8 @@ public interface UserService {
 
     UserInfoDto findById(Long id);
 
+    UserInfoDto findByEmail(String email);
+
     Page<UserInfoDto> searchByName(String name, Pageable pageable);
 
     Page<UserInfoDto> getAllUsers(Pageable pageable);

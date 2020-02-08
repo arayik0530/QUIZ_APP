@@ -4,6 +4,7 @@ import com.workfront.quiz.api.UserController;
 import com.workfront.quiz.dto.user.PasswordChangingDto;
 import com.workfront.quiz.dto.user.UserInfoDto;
 import com.workfront.quiz.dto.user.UserRegistrationDto;
+import com.workfront.quiz.security.jwt.JwtAuthenticationException;
 import com.workfront.quiz.service.UserService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -56,9 +57,5 @@ public class UserControllerImpl implements UserController {
         userService.updatePassword(passwordChangingDto);
     }
 
-    @Override
-    @PostMapping("register")
-    public UserInfoDto register(@RequestBody UserRegistrationDto registrationDto) {
-       return userService.register(registrationDto);
-    }
+
 }

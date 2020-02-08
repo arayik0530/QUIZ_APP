@@ -20,5 +20,4 @@ public interface UserController {
 
     void changePassword(PasswordChangingDto passwordChangingDto);
 
-    UserInfoDto register(UserRegistrationDto registrationDto);
 }

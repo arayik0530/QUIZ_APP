@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
+import java.util.stream.Stream;
 
 @Component
 public class JwtTokenProvider {
@@ -41,12 +42,10 @@ public class JwtTokenProvider {
         secret = Base64.getEncoder().encodeToString(secret.getBytes());
     }
 
-    public String createToken(Long userId, String email, Set<UserRole> roleSet) {
+    public String createToken(Long userId, String email, String... roles) {
 
 
         Map<String, Object> claimsMap = new HashMap<>();
-        String[] roles = roleSet.stream()
-                .map(role -> role.toString()).toArray(String[]::new);
         claimsMap.put(USER_ID, userId);
         claimsMap.put(USER_EMAIL, email);
         claimsMap.put(USER_ROLES, roles);
@@ -66,28 +65,28 @@ public class JwtTokenProvider {
         boolean validateToken = validateToken(token);
         if (validateToken) {
 
-            //TODO add userInfoDto
+
             Long userId = getUserId(token);
             String email = getUsername(token);
             String[] userRoles = getUserRoles(token);
-            JwtUser userDetails = new JwtUser(userId,email,null);
+            JwtUser userDetails = new JwtUser(userId, email, "", userRoles);
             return new PreAuthenticatedAuthenticationToken(userDetails, "", userDetails.getAuthorities());
-        } else throw new JwtAuthenticationException("");
+        } else throw new JwtAuthenticationException();
     }
 
     public String getUsername(String token) {
-        return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody().getSubject();
+        return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody().get(USER_EMAIL,String.class);
     }
 
     public String[] getUserRoles(String token) {
-        String[] roles = Jwts.parser().setSigningKey(secret)
-                .parseClaimsJws(token).getBody().get(USER_ROLES, String[].class);
-        return roles;
+        List<String> roles= Jwts.parser().setSigningKey(secret)
+                .parseClaimsJws(token).getBody().get(USER_ROLES,ArrayList.class);
+        return Stream.of(roles).map(Object::toString).toArray(String[]::new);
     }
 
     public Long getUserId(String token) {
-        String id = Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody().getId();
-        return Long.parseLong(id);
+      return (long) Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody().get(USER_ID,Integer.class);
+
     }
 
     public Optional<String> resolveToken(HttpServletRequest req) {
@@ -106,7 +105,7 @@ public class JwtTokenProvider {
             }
             return true;
         } catch (JwtException | IllegalArgumentException e) {
-            throw new JwtAuthenticationException("JWT token is expired or invalid");
+            throw new JwtAuthenticationException();
         }
     }
 

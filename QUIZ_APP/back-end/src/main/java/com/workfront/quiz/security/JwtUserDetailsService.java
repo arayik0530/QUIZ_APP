@@ -6,6 +6,7 @@ import com.workfront.quiz.security.jwt.JwtUser;
 import org.springframework.context.annotation.Primary;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
@@ -24,10 +25,10 @@ public class JwtUserDetailsService implements UserDetailsService {
         Optional<UserEntity> optionalUserEntity = userRepository.findByEmail(email);
 
         if (optionalUserEntity.isPresent()) {
-            UserEntity userEntity= optionalUserEntity.get();
-            return new JwtUser(userEntity.getId(),userEntity.getEmail(),userEntity.getPassword());
-        }//TODO need to set ROLES to JWTUser with 2 ways, because we have to put roles both from JWT token and UserRepository
-        return new JwtUser();
+            UserEntity userEntity = optionalUserEntity.get();
+            return new JwtUser(userEntity.getId(), userEntity.getEmail(), userEntity.getPassword(), userEntity.getRoles());
+        }
+        throw new UsernameNotFoundException(email);
     }
 
 }

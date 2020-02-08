@@ -1,31 +1,51 @@
 package com.workfront.quiz.security.jwt;
 
+import com.workfront.quiz.entity.enums.UserRole;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.Collections;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class JwtUser implements UserDetails {
     private Long id;
     private String email;
     private String password;
+    private Collection<? extends GrantedAuthority> authorities;
 
-    public JwtUser() {
-    }
 
-    public JwtUser(Long id, String email, String password,String[] roles) {
+    public JwtUser(Long id, String email, String password, String... roles) {
         this.id = id;
         this.email = email;
         this.password = password;
+        setAuthorities(roles);
+    }
+
+    public JwtUser(Long id, String email, String password, Set<UserRole> roles) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        setAuthorities(roles);
     }
 
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singletonList(new SimpleGrantedAuthority("USER"));
+        return authorities;
     }
+
+    private void setAuthorities(String... roles) {
+        this.authorities = Stream.of(roles).map(SimpleGrantedAuthority::new).collect(Collectors.toSet());
+    }
+
+    private void setAuthorities(Set<UserRole> roles) {
+        this.authorities = Stream.of(roles).map(role -> new SimpleGrantedAuthority(role.toString()))
+                .collect(Collectors.toSet());
+    }
+
 
     public Long getId() {
         return id;
