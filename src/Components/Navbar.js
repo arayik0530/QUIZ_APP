@@ -14,8 +14,11 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+
 } from "react-router-dom";
+import Search_List from './Search_List';
+
 
 
 
@@ -41,7 +44,7 @@ const useStyles = makeStyles(theme => ({
       backgroundColor: fade(theme.palette.common.white, 0.25),
     },
     marginLeft: 0,
-    width: '100%',
+   
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(1),
       width: 'auto',
@@ -66,7 +69,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('sm')]: {
       width: 200,
       '&:focus': {
-        width: 300,
+        width: 250,
       },
     },
   },
@@ -74,31 +77,22 @@ const useStyles = makeStyles(theme => ({
 
 function Navbar() {
   //states
+  
   const classes = useStyles();
   const [state, Setstate] = React.useState(false);
   const [search, Setsearchstate] = React.useState("");
 
   const toggleDrawer = (e) => event => Setstate(e)
-  const onKeyDown = (e, message) => {
-     let url = new URL("http://localhost:8090/api/user/search");
-     url.search= new URLSearchParams(
-       {
-         text:message
-       }
-     )
-    if (!(e.key == "Enter")) return
-    else {
-      
-      fetch(url)
-  .then((response) => {
-    return response.json();
-  })
-  .then((myJson) => {
-    console.log(myJson);
-  });
-    
+  const onKeyDown=(e,message)=>
+  {  
+    if(e.key==="Enter")
+    {
+      localStorage.setItem("input",message)
+      window.location.href = '/search';
+  
     }
   }
+  
   return (
     <Router>
       <div >
@@ -110,11 +104,14 @@ function Navbar() {
                 <MenuIcon />
 
               </IconButton>
+              <div className="spacerphone"> </div>
               <div className={classes.search}>
                 <div className={classes.searchIcon}>
                   <SearchIcon />
                 </div>
                 <InputBase
+                onKeyDown={(e) => onKeyDown(e, search)}
+                onChange={(e) => Setsearchstate(e.target.value)}
                   placeholder="Search…"
                   classes={{
                     root: classes.inputRoot,
@@ -189,18 +186,22 @@ function Navbar() {
             </div>
           </Toolbar>
         </AppBar>
+       
         <Switch>
 
           <Route path="/users">
             <User />
           </Route>
-          <Route path="/">
+          <Route  exact path="/">
             Hello
             </Route>
+            <Route path="/search">
+            <Search_List />
+          </Route>
         </Switch>
       </div>
 
     </Router>
   );
 }
-export default Navbar;
+export default (Navbar);
