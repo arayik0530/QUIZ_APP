@@ -1,3 +1,4 @@
+
 *
 {
     box-sizing:border-box ;
@@ -21,14 +22,7 @@
     width: 100%;
     display: flex;
 }
-@media only screen and (max-width: 678px) 
-{ .navbar-menu{
-    display: none;
-}
-.menu{
-display: flex;
-}
-}
+
 .main-container{
    
     background-color: antiquewhite;
@@ -148,4 +142,36 @@ display: flex;
     
     float: right;
     width: 50%;
+}
+.find-main-container
+{
+    background-color: antiquewhite;
+    
+}
+.UserField
+{   margin-left: 20%;
+    display: flex;
+    margin-bottom: 4vw;
+}
+.UserFieldImage
+{  
+    width: 20vw;
+    height: 20vw;
+    background-color: black;
+}
+.UserFieldAbout
+{   
+    width:82%;
+    height: 100%;
+}
+@media only screen and (max-width: 678px) 
+{ .navbar-menu{
+    display: none;
+}
+.menu{
+display: flex;
+}
+.UserField{
+    display: block !important;
+}
 }

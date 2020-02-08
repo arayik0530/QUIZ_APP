@@ -23,7 +23,9 @@ function Search_List()
     }
     ,[]);
 return(
-    state
+    <div className='find-main-container'>
+    {state}
+    </div>
 )
 }
 export default Search_List;
