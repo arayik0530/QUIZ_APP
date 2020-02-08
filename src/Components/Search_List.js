@@ -4,7 +4,7 @@ function Search_List()
 {   let NumberofPages=0,NumberofElements=0;
     const [state,Setstate]= React.useState(null);
     useEffect(()=>{
-        let url = new URL("http://192.168.5.7:8090/api/user/search")
+        let url = new URL("http://localhost:8090/api/user/search")
     url.search = new URLSearchParams({text:localStorage.getItem("input")})
     fetch(url)
     .then((response) => {
