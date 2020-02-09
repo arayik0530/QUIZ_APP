@@ -151,7 +151,7 @@ function Navbar() {
               </Drawer>
             </div>
             <div className="navbar-menu">
-              <Link style={{ color: 'white', textDecoration: 'none' }} to="/">  <Button color="inherit" >
+              <Link style={{ color: 'white', textDecoration: 'none' }} to="/main">  <Button color="inherit" >
                 Main
                 </Button></Link>
               <Link style={{ color: 'white', textDecoration: 'none' }} to="/users">    <Button color="inherit" >
@@ -193,10 +193,10 @@ function Navbar() {
           <Route path="/users">
             <User />
           </Route>
-          <Route  exact path="/">
+          <Route   path="/main">
             Hello
             </Route>
-            <Route path="/search">
+            <Route  path="/search">
             <Search_List />
           </Route>
         </Switch>

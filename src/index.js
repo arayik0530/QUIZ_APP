@@ -2,8 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './Css/index.css';
 import Navbar from './Components/Navbar';
-import Login from './Components/Login'
 import * as serviceWorker from './serviceWorker';
+import Register from './Components/Register';
+import Login from './Components/Login'
+
 
 ReactDOM.render(<Login/>, document.getElementById('root'));
 
