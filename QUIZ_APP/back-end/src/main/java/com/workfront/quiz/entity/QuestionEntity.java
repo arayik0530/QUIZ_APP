@@ -1,10 +1,11 @@
 package com.workfront.quiz.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
 @Table(name = "questions")
@@ -20,6 +21,7 @@ public class QuestionEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "topic_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private TopicEntity topic;
 
 

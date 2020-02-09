@@ -4,16 +4,18 @@ import com.workfront.quiz.dto.question.CreateQuestionDto;
 import com.workfront.quiz.dto.question.QuestionDto;
 import com.workfront.quiz.entity.QuestionEntity;
 import com.workfront.quiz.entity.TopicEntity;
+import com.workfront.quiz.repository.AnswerRepository;
 import com.workfront.quiz.repository.QuestionRepository;
+import com.workfront.quiz.repository.TopicRepository;
 import com.workfront.quiz.service.QuestionService;
-import com.workfront.quiz.service.util.exception.InvalidAnswerCountException;
-import com.workfront.quiz.service.util.exception.QuestionAlreadyExistException;
 import com.workfront.quiz.service.util.exception.QuestionNotFoundException;
+import com.workfront.quiz.service.util.exception.TopicNotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.SQLOutput;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -23,8 +25,14 @@ public class QuestionServiceImpl implements QuestionService {
 
     private QuestionRepository questionRepository;
 
-    public QuestionServiceImpl(QuestionRepository questionRepository) {
+    private AnswerRepository answerRepository;
+
+    private TopicRepository topicRepository;
+
+    public QuestionServiceImpl(QuestionRepository questionRepository, AnswerRepository answerRepository, TopicRepository topicRepository) {
         this.questionRepository = questionRepository;
+        this.answerRepository = answerRepository;
+        this.topicRepository = topicRepository;
     }
 
     @Override
@@ -87,6 +95,20 @@ public class QuestionServiceImpl implements QuestionService {
     @Override
     @Transactional
     public void create(CreateQuestionDto question) {
+        QuestionEntity questionEntity = question.toEntity();
+        Optional<TopicEntity> byId = topicRepository.findById(question.getTopicId());
+        if(byId.isPresent()){
+            questionEntity.setTopic(byId.get());
+        }
+        else {
+            throw new TopicNotFoundException(question.getTopicId());
+        }
 
+        questionEntity
+                .getAnswers()
+                .stream()
+                .forEach(answer -> answer.setQuestion(questionEntity));
+
+        questionRepository.save(questionEntity);
     }
 }

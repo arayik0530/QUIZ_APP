@@ -5,7 +5,6 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
-import java.util.Objects;
 
 @Entity
 @Table(name = "answers")
@@ -19,7 +18,7 @@ public class AnswerEntity {
     @Column(name = "text", nullable = false)
     private String text;
 
-    @Column(name = "is_right", nullable = false)
+    @Column(name = "is_right")
     private Boolean isRight = Boolean.FALSE;
 
     @ManyToOne(fetch = FetchType.LAZY)

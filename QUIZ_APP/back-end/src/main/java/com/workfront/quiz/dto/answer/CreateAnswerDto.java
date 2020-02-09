@@ -5,9 +5,6 @@ import lombok.Data;
 
 @Data
 public class CreateAnswerDto {
-    private Long id;
-
-    private Long questionId;
 
     private String text;
 
@@ -20,15 +17,4 @@ public class CreateAnswerDto {
         answer.setText(this.text);
         return answer;
     }
-//
-//    public static CreateAnswerDto mapFromEntity(AnswerEntity answer){
-//        CreateAnswerDto createAnswerDto = new CreateAnswerDto();
-//
-//        createAnswerDto.setId(answer.getId());
-//        createAnswerDto.setQuestionId(answer.getQuestion().getId());
-//        createAnswerDto.setText(answer.getText());
-//        createAnswerDto.setIsRight(answer.getIsRight());
-//
-//        return createAnswerDto;
-//    }
 }
