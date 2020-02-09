@@ -26,19 +26,29 @@ function Search_List()
     }
     ,[]);
     const  handleClick= async (e,i)=>
-    {   
+    {   window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      });
         if((index+i)>=0)
         {
-        index=index+i;
-        console.log(index);
+       let k=index+i;
+        
         let url = new URL("http://localhost:8090/api/user/search")
-        url.search = new URLSearchParams({text:localStorage.getItem("input"),page:index})
+        url.search = new URLSearchParams({text:localStorage.getItem("input"),page:k})
         let x= await fetch(url);
         let myJson=await x.json();
          if(myJson.content.length!=0)
          {
+             
         let y = myJson.content.map  ((a)=>{ return <UserField name={a.firstName} surname={a.lastName} email={a.email}></UserField>})
-         Setstate(y);}
+         Setstate(y);
+        
+        index=k;
+        }
+        
+        
         
     }
     

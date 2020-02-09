@@ -18,7 +18,7 @@ import {
 
 } from "react-router-dom";
 import Search_List from './Search_List';
-
+import { AnimatedSwitch } from 'react-router-transition';
 
 
 
@@ -95,6 +95,7 @@ function Navbar() {
   
   return (
     <Router>
+      
       <div >
         <AppBar position="static" >
           <Toolbar>
@@ -200,7 +201,6 @@ function Navbar() {
           </Route>
         </Switch>
       </div>
-
     </Router>
   );
 }

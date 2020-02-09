@@ -181,3 +181,10 @@ display: flex;
 {
     text-align: center;
 }
+.login
+{  background-color:antiquewhite;
+    padding: 50px 0 600px 0px;
+    text-align: center;
+    box-shadow: 10px 10px 5px grey;
+}
+
