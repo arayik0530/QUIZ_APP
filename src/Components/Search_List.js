@@ -1,8 +1,12 @@
 import React, { useEffect } from 'react';
-import UserField from './UserField'
+import UserField from './UserField';
+import Button from '@material-ui/core/Button';
+const x="<<",y=">>";
+let index=0;
 function Search_List()
-{   let NumberofPages=0,NumberofElements=0;
-    const [state,Setstate]= React.useState(null);
+{   
+    
+    let [state,Setstate]= React.useState(null);
     useEffect(()=>{
         let url = new URL("http://localhost:8090/api/user/search")
     url.search = new URLSearchParams({text:localStorage.getItem("input")})
@@ -12,8 +16,7 @@ function Search_List()
     })
     .then((myJson) => {
     console.log(myJson);
-     NumberofPages=myJson.totalPages;
-      NumberofElements=myJson.pageable.pageSize;
+    
       let x= myJson.content.map  ((a)=>{ return <UserField name={a.firstName} surname={a.lastName} email={a.email}></UserField>})
      Setstate(x);
     });
@@ -22,9 +25,32 @@ function Search_List()
 
     }
     ,[]);
+    const  handleClick= async (e,i)=>
+    {   
+        if((index+i)>=0)
+        {
+        index=index+i;
+        console.log(index);
+        let url = new URL("http://localhost:8090/api/user/search")
+        url.search = new URLSearchParams({text:localStorage.getItem("input"),page:index})
+        let x= await fetch(url);
+        let myJson=await x.json();
+         if(myJson.content.length!=0)
+         {
+        let y = myJson.content.map  ((a)=>{ return <UserField name={a.firstName} surname={a.lastName} email={a.email}></UserField>})
+         Setstate(y);}
+        
+    }
+    
+        
+    }
 return(
     <div className='find-main-container'>
     {state}
+    <div className="bottom-navbar">
+    <Button onClick={(e)=>handleClick(e,-1)} variant="contained"  color="primary">{x}</Button>
+    <Button onClick={(e)=>handleClick(e,1)} variant="contained"  color="primary">{y}</Button>
+    </div>
     </div>
 )
 }

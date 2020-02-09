@@ -149,19 +149,21 @@
     
 }
 .UserField
-{   margin-left: 20%;
+{   border-color: white;
+    border-width: 10px;
+    border-style: solid;
     display: flex;
-    margin-bottom: 4vw;
+    
 }
 .UserFieldImage
 {  
-    width: 20vw;
-    height: 20vw;
+    width: 200px;
+    height: 200px;
     background-color: black;
 }
 .UserFieldAbout
 {   
-    width:82%;
+    
     height: 100%;
 }
 @media only screen and (max-width: 678px) 
@@ -174,4 +176,8 @@ display: flex;
 .UserField{
     display: block !important;
 }
+}
+.bottom-navbar
+{
+    text-align: center;
 }
