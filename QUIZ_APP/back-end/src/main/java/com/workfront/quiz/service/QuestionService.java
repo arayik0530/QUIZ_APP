@@ -8,6 +8,7 @@ import com.workfront.quiz.entity.TopicEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.Collection;
 import java.util.List;
 
 public interface QuestionService {
@@ -24,7 +25,7 @@ public interface QuestionService {
 
     void update(QuestionDto question);
 
-    QuestionDto generateQuestion(TopicEntity topic);
+    Collection<QuestionEntity> generateQuestions(Long topicId);
 
     void create(CreateQuestionDto question, int AnswerCount);
 }

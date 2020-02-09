@@ -11,7 +11,7 @@ public class QuestionDto {
 
     private Long id;
 
-    private TopicEntity topic;
+    private Long topicId;
 
     private String text;
 
@@ -20,7 +20,6 @@ public class QuestionDto {
     public QuestionEntity toEntity(){
         QuestionEntity question = new QuestionEntity();
         question.setText(this.text);
-        question.setTopic(this.topic);
         question.setAnswers(this.answers);
 
         return question;
@@ -32,7 +31,7 @@ public class QuestionDto {
 
         questionDto.setId(question.getId());
         questionDto.setText(question.getText());
-        questionDto.setTopic(question.getTopic());
+        questionDto.setTopicId(question.getTopic().getId());
         questionDto.setAnswers(question.getAnswers());
 
         return questionDto;
@@ -42,7 +41,7 @@ public class QuestionDto {
     public String toString() {
         return "QuestionDto{" +
                 "id=" + id +
-                ", topic=" + topic +
+                ", topic=" + topicId +
                 ", text='" + text + '\'' +
                 ", answers=" + answers +
                 '}';
@@ -54,14 +53,14 @@ public class QuestionDto {
         if (!(o instanceof QuestionDto)) return false;
         QuestionDto that = (QuestionDto) o;
         return Objects.equals(getId(), that.getId()) &&
-                Objects.equals(getTopic(), that.getTopic()) &&
+                Objects.equals(getTopicId(), that.getTopicId()) &&
                 Objects.equals(getText(), that.getText()) &&
                 Objects.equals(getAnswers(), that.getAnswers());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getTopic(), getText(), getAnswers());
+        return Objects.hash(getId(), getTopicId(), getText(), getAnswers());
     }
 
     public Long getId() {
@@ -72,12 +71,12 @@ public class QuestionDto {
         this.id = id;
     }
 
-    public TopicEntity getTopic() {
-        return topic;
+    public Long getTopicId() {
+        return topicId;
     }
 
-    public void setTopic(TopicEntity topic) {
-        this.topic = topic;
+    public void setTopicId(Long topicId) {
+        this.topicId = topicId;
     }
 
     public String getText() {

@@ -1,7 +1,7 @@
 package com.workfront.quiz.security.jwt;
 
 import com.workfront.quiz.api.impl.ExceptionHandlerController;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.workfront.quiz.config.ExceptionHandlerControllerConfig.ExceptionHandlerControllerProvider;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.GenericFilterBean;
@@ -14,12 +14,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Optional;
+
 @Component
 public class JwtTokenFilter extends GenericFilterBean {
     private final JwtTokenProvider jwtTokenProvider;
 
 
-    private ExceptionHandlerController exceptionHandlerController = new ExceptionHandlerController();
+    private ExceptionHandlerController exceptionHandlerController = new ExceptionHandlerControllerProvider().provide();
 
     public JwtTokenFilter(JwtTokenProvider jwtTokenProvider) {
         this.jwtTokenProvider = jwtTokenProvider;
@@ -35,7 +36,7 @@ public class JwtTokenFilter extends GenericFilterBean {
                     .ifPresent(SecurityContextHolder.getContext()::setAuthentication);
             filterChain.doFilter(servletRequest, servletResponse);
         } catch (JwtAuthenticationException jwtException) {
-            exceptionHandlerController.handleFilterExceptions(jwtException,(HttpServletResponse) servletResponse);
+            exceptionHandlerController.handleFilterExceptions(jwtException, (HttpServletResponse) servletResponse);
         }
     }
 }

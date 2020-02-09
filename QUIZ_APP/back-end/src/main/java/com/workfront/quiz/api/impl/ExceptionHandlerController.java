@@ -42,6 +42,7 @@ public class ExceptionHandlerController {
             TopicNotFoundException.class,
             QuestionNotFoundException.class,
             QuizNotFoundException.class,
+            UpcomingQuizNotFoundException.class
     })
     public ResponseEntity<String> handleAllNotFoundExceptions(RuntimeException exception) {
         return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);

@@ -19,7 +19,8 @@ public class QuestionEntity {
     @JoinColumn(name = "topic_id", nullable = false)
     private TopicEntity topic;
 
-    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
+
+    @OneToMany(mappedBy = "question", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private List<AnswerEntity> answers;
 
     public Long getId() {

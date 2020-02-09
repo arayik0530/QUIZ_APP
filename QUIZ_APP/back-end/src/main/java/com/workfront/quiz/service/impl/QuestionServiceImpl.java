@@ -2,7 +2,6 @@ package com.workfront.quiz.service.impl;
 
 import com.workfront.quiz.dto.question.CreateQuestionDto;
 import com.workfront.quiz.dto.question.QuestionDto;
-import com.workfront.quiz.entity.AnswerEntity;
 import com.workfront.quiz.entity.QuestionEntity;
 import com.workfront.quiz.entity.TopicEntity;
 import com.workfront.quiz.repository.QuestionRepository;
@@ -13,11 +12,13 @@ import com.workfront.quiz.service.util.exception.QuestionNotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import java.util.Collection;
 import java.util.Optional;
 
 @Service
+@Transactional(readOnly = true)
 public class QuestionServiceImpl implements QuestionService {
 
     private QuestionRepository questionRepository;
@@ -29,10 +30,9 @@ public class QuestionServiceImpl implements QuestionService {
     @Override
     public QuestionDto findById(Long id) {
         Optional<QuestionEntity> byId = questionRepository.findById(id);
-        if(byId.isPresent()){
+        if (byId.isPresent()) {
             return QuestionDto.mapFromEntity(byId.get());
-        }
-        else {
+        } else {
             throw new QuestionNotFoundException(id);
         }
     }
@@ -56,51 +56,44 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
+    @Transactional
     public void remove(Long id) {
         Optional<QuestionEntity> byId = questionRepository.findById(id);
-        if(byId.isPresent()){
+        if (byId.isPresent()) {
             questionRepository.deleteById(id);
-        }
-
-        else {
+        } else {
             throw new QuestionNotFoundException(id);
         }
     }
 
     @Override
+    @Transactional
     public void update(QuestionDto question) {
         Optional<QuestionEntity> byId = questionRepository.findById(question.getId());
-        if(byId.isPresent()){
+        if (byId.isPresent()) {
             QuestionEntity questionEntity = byId.get();
             questionEntity = question.toEntity();
             questionRepository.save(questionEntity);
-        }
-        else {
+        } else {
             throw new QuestionNotFoundException(question.getId());
         }
     }
 
     @Override
-    public QuestionDto generateQuestion(TopicEntity topic) {
-        Optional<QuestionEntity> byTopic = Optional.ofNullable(questionRepository.generateQuestion(topic));
-        if (byTopic.isPresent()){
-            return QuestionDto.mapFromEntity(byTopic.get());
-        }
-        else {
-            throw new QuestionNotFoundException("Topic: " + topic.toString());
-        }
+    public Collection<QuestionEntity> generateQuestions(Long topicId) {
+        return questionRepository.generateQuestion(topicId);
     }
 
     @Override
+    @Transactional
     public void create(CreateQuestionDto question, int answerCount) {
         Optional<QuestionEntity> byText = Optional.ofNullable(questionRepository.searchByTextExact(question.getText()));
-        if(byText.isPresent()){
+        if (byText.isPresent()) {
             throw new QuestionAlreadyExistException(question.getText());
-        }
-        else {
+        } else {
 
             QuestionEntity questionEntity = question.toEntity();
-            if(questionEntity.getAnswers().size() != answerCount){
+            if (questionEntity.getAnswers().size() != answerCount) {
                 throw new InvalidAnswerCountException("Current count: " + questionEntity.getAnswers().size());
             }
             questionRepository.save(questionEntity);

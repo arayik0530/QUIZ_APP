@@ -3,7 +3,10 @@ package com.workfront.quiz.entity;
 import com.workfront.quiz.entity.enums.UserRole;
 
 import javax.persistence.*;
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -32,13 +35,20 @@ public class UserEntity {
     @OneToOne
     private ImageEntity profileImage;
 
-    @Column(name = "active", nullable = false) //TODO nullable = false petq vabshe, ete defaultov active-@ false a
-    private boolean active;
+    @OneToOne
+    private SmallImageEntity smallImage;
+
+    @Column(name = "active", nullable = false)
+    private Boolean active = Boolean.FALSE;
 
     @ElementCollection(targetClass = UserRole.class, fetch = FetchType.EAGER)
+    @JoinTable(name = "user_roles")
     private Set<UserRole> roles = new HashSet<>();
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}) //TODO aveli jisht chi lini vor orphanremoval true tanq vor xusapenq NPE-ic?
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = {CascadeType.REMOVE})
+    private List<UpcomingQuizEntity> upcommingQuizes;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = {CascadeType.REMOVE})
     private List<QuizEntity> quizes;
 
     @Override
@@ -54,13 +64,14 @@ public class UserEntity {
                 Objects.equals(getPhone(), that.getPhone()) &&
                 Objects.equals(getPassword(), that.getPassword()) &&
                 Objects.equals(getProfileImage(), that.getProfileImage()) &&
+                Objects.equals(getSmallImage(), that.getSmallImage()) &&
                 Objects.equals(getRoles(), that.getRoles()) &&
                 Objects.equals(getQuizes(), that.getQuizes());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getFirstName(), getLastName(), getEmail(), getPhone(), getPassword(), getProfileImage(), isActive(), getRoles(), getQuizes());
+        return Objects.hash(getId(), getFirstName(), getLastName(), getEmail(), getPhone(), getPassword(), getProfileImage(), getSmallImage(), isActive(), getRoles(), getQuizes());
     }
 
     @Override
@@ -73,6 +84,7 @@ public class UserEntity {
                 ", phone='" + phone + '\'' +
                 ", password='" + password + '\'' +
                 ", profileImage=" + profileImage +
+                ", smallImage=" + smallImage +
                 ", active=" + active +
                 ", roles=" + roles +
                 ", quizes=" + quizes +
@@ -157,5 +169,13 @@ public class UserEntity {
 
     public void setQuizes(List<QuizEntity> quizes) {
         this.quizes = quizes;
+    }
+
+    public SmallImageEntity getSmallImage() {
+        return smallImage;
+    }
+
+    public void setSmallImage(SmallImageEntity smallImage) {
+        this.smallImage = smallImage;
     }
 }

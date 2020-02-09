@@ -10,7 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Set;
+import java.util.Collection;
 
 @RestController
 @RequestMapping("/api/quiz/") //TODO jshtel sen jishta te che
@@ -55,7 +55,8 @@ public class QuizControllerImpl implements QuizController {
 
     @Override
     @GetMapping("start")
-    public Set<QuestionDto> startQuiz(@RequestParam TopicEntity topic, @RequestParam int count) {
-        return quizService.generateQuestions(topic, count);
+    public Collection<QuestionDto> startQuiz(@RequestParam Long upComingQuizId) {
+
+        return quizService.generateQuiz(upComingQuizId);
     }
 }

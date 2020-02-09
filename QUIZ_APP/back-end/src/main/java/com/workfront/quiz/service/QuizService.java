@@ -6,8 +6,7 @@ import com.workfront.quiz.entity.TopicEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.util.List;
-import java.util.Set;
+import java.util.Collection;
 
 public interface QuizService {
 
@@ -17,7 +16,7 @@ public interface QuizService {
 
     Page<QuizDto> getQuizesByTopic(TopicEntity topic, Pageable pageable);
 
-    Set<QuestionDto> generateQuestions(TopicEntity topic, int count);
+    Collection<QuestionDto> generateQuiz(Long topicId);
 
     void remove(Long id);
 

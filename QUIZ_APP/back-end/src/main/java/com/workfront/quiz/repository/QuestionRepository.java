@@ -6,6 +6,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import java.util.List;
 
 public interface QuestionRepository extends JpaRepository<QuestionEntity, Long> {
 
@@ -17,6 +20,6 @@ public interface QuestionRepository extends JpaRepository<QuestionEntity, Long> 
 
     Page<QuestionEntity> findAllByTopic(TopicEntity topic, Pageable pageable); //TODO jshtel ashxatuma te che
 
-    @Query(value = "from QuestionEntity as question where question.topic = ?1")
-    QuestionEntity generateQuestion(TopicEntity topic);
+    @Query(value = "SELECT  * from questions where topic_id=:topicId group by id order by random () limit 20",nativeQuery =  true)
+    List<QuestionEntity> generateQuestion(@Param("topicId") Long topicId);
 }

@@ -6,6 +6,7 @@ import com.workfront.quiz.entity.TopicEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.Collection;
 import java.util.Set;
 
 public interface QuizController {
@@ -20,5 +21,5 @@ public interface QuizController {
 
     void update(QuizDto quiz);
 
-    Set<QuestionDto> startQuiz(TopicEntity topic, int count);
+    Collection<QuestionDto> startQuiz(Long upComingQuizId);
 }

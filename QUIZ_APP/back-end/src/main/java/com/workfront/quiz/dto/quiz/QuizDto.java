@@ -1,6 +1,6 @@
 package com.workfront.quiz.dto.quiz;
 
-import com.workfront.quiz.entity.PassedQuizQuestionEntity;
+import com.workfront.quiz.entity.QuizQuestionEntity;
 import com.workfront.quiz.entity.QuizEntity;
 import com.workfront.quiz.entity.TopicEntity;
 import com.workfront.quiz.entity.UserEntity;
@@ -17,7 +17,7 @@ public class QuizDto {
 
     private TopicEntity topic;
 
-    private List<PassedQuizQuestionEntity> questions;
+    private List<QuizQuestionEntity> questions;
 
     private LocalDate startTime;
 
@@ -49,11 +49,11 @@ public class QuizDto {
         this.topic = topic;
     }
 
-    public List<PassedQuizQuestionEntity> getQuestions() {
+    public List<QuizQuestionEntity> getQuestions() {
         return questions;
     }
 
-    public void setQuestions(List<PassedQuizQuestionEntity> questions) {
+    public void setQuestions(List<QuizQuestionEntity> questions) {
         this.questions = questions;
     }
 
@@ -82,7 +82,7 @@ public class QuizDto {
     }
 
     public QuizEntity toEntity(QuizEntity quiz){
-        quiz.setQuestions(this.getQuestions());
+        quiz.setQuizQuestions(this.getQuestions());
         quiz.setTopic(this.getTopic()); //TODO jshtel es tox@ petq a te che?
         quiz.setSuccessPercent(this.getSuccessPercent());
         quiz.setEndTime(this.getEndTime());
@@ -95,7 +95,7 @@ public class QuizDto {
 
         quizDto.setId(quiz.getId());
         quizDto.setTopic(quiz.getTopic());
-        quizDto.setQuestions(quiz.getQuestions());
+        quizDto.setQuestions(quiz.getQuizQuestions());
         quizDto.setSuccessPercent(quiz.getSuccessPercent());
         quizDto.setStartTime(quiz.getStartTime());
         quizDto.setEndTime(quiz.getEndTime());
