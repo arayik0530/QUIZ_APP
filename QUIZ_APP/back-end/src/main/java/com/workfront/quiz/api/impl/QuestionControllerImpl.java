@@ -59,7 +59,7 @@ public class QuestionControllerImpl implements QuestionController {
 
     @Override
     @PostMapping("create")
-    public void create(@RequestBody CreateQuestionDto question, @RequestBody int answerCount) {
-        questionService.create(question, answerCount);
+    public void create(@RequestBody CreateQuestionDto question) {
+        questionService.create(question);
     }
 }

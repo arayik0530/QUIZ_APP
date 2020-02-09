@@ -1,5 +1,6 @@
 package com.workfront.quiz.entity;
 
+import lombok.Data;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -8,6 +9,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "answers")
+@Data
 public class AnswerEntity {
 
     @Id
@@ -24,70 +26,4 @@ public class AnswerEntity {
     @JoinColumn(name = "question_id")
     @OnDelete(action = OnDeleteAction.CASCADE) //TODO xi esi ete voch orphanremovel, u xi orphan removal@ chi ashxatum
     private QuestionEntity question;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public Boolean getRight() {
-        return isRight;
-    }
-
-    public void setRight(Boolean right) {
-        isRight = right;
-    }
-
-    public QuestionEntity getQuestion() {
-        return question;
-    }
-
-    public void setQuestion(QuestionEntity question) {
-        this.question = question;
-    }
-//
-//    public QuizQuestionEntity getQuizQuestion() {
-//        return quizQuestion;
-//    }
-//
-//    public void setQuizQuestion(QuizQuestionEntity quizQuestion) {
-//        this.quizQuestion = quizQuestion;
-//    }
-
-    @Override
-    public String toString() {
-        return "AnswerEntity{" +
-                "id=" + id +
-                ", text='" + text + '\'' +
-                ", isRight=" + isRight +
-                ", question=" + question +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof AnswerEntity)) return false;
-        AnswerEntity that = (AnswerEntity) o;
-        return Objects.equals(getId(), that.getId()) &&
-                Objects.equals(getText(), that.getText()) &&
-                Objects.equals(isRight, that.isRight) &&
-                Objects.equals(getQuestion(), that.getQuestion());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId(), getText(), isRight, getQuestion());
-    }
 }

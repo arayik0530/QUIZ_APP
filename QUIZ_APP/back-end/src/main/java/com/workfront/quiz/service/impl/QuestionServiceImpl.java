@@ -86,17 +86,7 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     @Transactional
-    public void create(CreateQuestionDto question, int answerCount) {
-        Optional<QuestionEntity> byText = Optional.ofNullable(questionRepository.searchByTextExact(question.getText()));
-        if (byText.isPresent()) {
-            throw new QuestionAlreadyExistException(question.getText());
-        } else {
+    public void create(CreateQuestionDto question) {
 
-            QuestionEntity questionEntity = question.toEntity();
-            if (questionEntity.getAnswers().size() != answerCount) {
-                throw new InvalidAnswerCountException("Current count: " + questionEntity.getAnswers().size());
-            }
-            questionRepository.save(questionEntity);
-        }
     }
 }

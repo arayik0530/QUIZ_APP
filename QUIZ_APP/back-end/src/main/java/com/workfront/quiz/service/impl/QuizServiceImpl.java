@@ -100,7 +100,9 @@ public class QuizServiceImpl implements QuizService {
         Collection<QuestionEntity> questionEntities = questionService
                 .generateQuestions(upcomingQuizEntity.getTopic().getId());
         JwtUser authentication = (JwtUser) SecurityContextHolder.getContext().getAuthentication();
-        UserEntity userEntity = userRepository.findById(authentication.getId()).orElseThrow(UserNotFoundException);
+        Long userId = authentication.getId();
+        UserEntity userEntity = userRepository.findById(userId).orElseThrow(
+                () -> new UserNotFoundException(userId));
         QuizEntity quizEntity = new QuizEntity();
         quizEntity.setUser(userEntity);
         //TODO mnacac set()-er@
@@ -110,5 +112,7 @@ public class QuizServiceImpl implements QuizService {
             quizQuestionEntity.setQuestion(questionEntity);
             //TODO save in repo
         }
+
+        return null;
     }
 }

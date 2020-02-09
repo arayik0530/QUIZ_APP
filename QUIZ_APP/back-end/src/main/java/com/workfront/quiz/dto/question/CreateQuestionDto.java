@@ -1,13 +1,15 @@
 package com.workfront.quiz.dto.question;
 
 import com.workfront.quiz.dto.answer.CreateAnswerDto;
+import com.workfront.quiz.dto.topic.TopicDto;
 import com.workfront.quiz.entity.AnswerEntity;
 import com.workfront.quiz.entity.QuestionEntity;
-import com.workfront.quiz.entity.TopicEntity;
+import lombok.Data;
 
 import java.util.List;
-import java.util.Objects;
+import java.util.stream.Collectors;
 
+@Data
 public class CreateQuestionDto {
 
     private Long id;
@@ -17,101 +19,25 @@ public class CreateQuestionDto {
     private String text;
 
     private List<CreateAnswerDto> createAnswerDtoList;
+    private List<AnswerEntity> answerEntities;
 
     public QuestionEntity toEntity(){
+
         QuestionEntity question = new QuestionEntity();
+        answerEntities =
+        createAnswerDtoList
+                            .stream()
+                            .map(CreateAnswerDto::toEntity)
+                            .collect(Collectors.toList());
 
-        List<AnswerEntity> answers = question.getAnswers();
+        question.setAnswers(this.answerEntities);
 
-        for(int i = 0; i < answers.size(); ++i){
-            answers.get(i).setRight(this.createAnswerDtoList.get(i).getRight());
-            answers.get(i).setText(this.createAnswerDtoList.get(i).getText());
-        }
+        TopicDto topicDto = new TopicDto();
+        topicDto.setTitle(this.topic);
 
+        question.setTopic(topicDto.toEntity());
         question.setText(this.text);
-        TopicEntity topicEntity = new TopicEntity();
-        topicEntity.setName(this.text);
-        question.setTopic(topicEntity);
-
-        question.setAnswers(answers);
 
         return question;
-    }
-
-    public static CreateQuestionDto mapFromEntity(QuestionEntity question){
-
-        CreateQuestionDto createQuestionDto = new CreateQuestionDto();
-
-        createQuestionDto.setText(question.getText());
-
-        List<CreateAnswerDto> createAnswerDtoList1 = createQuestionDto.getCreateAnswerDtoList();
-        for(int i = 0; i < createAnswerDtoList1.size(); ++i){
-            createAnswerDtoList1.get(i).setRight(question.getAnswers().get(i).getRight());
-            createAnswerDtoList1.get(i).setText(question.getAnswers().get(i).getText());
-
-        }
-
-        createQuestionDto.setCreateAnswerDtoList(createAnswerDtoList1);
-
-        return createQuestionDto;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTopic() {
-        return topic;
-    }
-
-    public void setTopic(String topic) {
-        this.topic = topic;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
-
-    public List<CreateAnswerDto> getCreateAnswerDtoList() {
-        return createAnswerDtoList;
-    }
-
-    public void setCreateAnswerDtoList(List<CreateAnswerDto> createAnswerDtoList) {
-        this.createAnswerDtoList = createAnswerDtoList;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof CreateQuestionDto)) return false;
-        CreateQuestionDto that = (CreateQuestionDto) o;
-        return Objects.equals(getId(), that.getId()) &&
-                Objects.equals(getTopic(), that.getTopic()) &&
-                Objects.equals(getText(), that.getText()) &&
-                Objects.equals(getCreateAnswerDtoList(), that.getCreateAnswerDtoList());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId(), getTopic(), getText(), getCreateAnswerDtoList());
-    }
-
-    @Override
-    public String toString() {
-        return "CreateQuestionDto{" +
-                "id=" + id +
-                ", topic='" + topic + '\'' +
-                ", text='" + text + '\'' +
-                ", createAnswerDtoList=" + createAnswerDtoList +
-                '}';
     }
 }

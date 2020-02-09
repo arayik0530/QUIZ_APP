@@ -21,5 +21,5 @@ public interface QuestionController {
 
     void update(QuestionDto question);
 
-    void create(CreateQuestionDto question, int answerCount);
+    void create(CreateQuestionDto question);
 }

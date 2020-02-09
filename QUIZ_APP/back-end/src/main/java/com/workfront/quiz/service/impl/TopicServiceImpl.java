@@ -35,13 +35,13 @@ public class TopicServiceImpl implements TopicService {
     }
 
     @Override
-    public Page<TopicDto> searchByName(String name, Pageable pageable) {
-        Page<TopicEntity> topics = topicRepository.searchByName(name, pageable);
+    public Page<TopicDto> searchByTitle(String title, Pageable pageable) {
+        Page<TopicEntity> topics = topicRepository.searchByTitle(title, pageable);
         return topics.map(TopicDto::mapFromEntity);
     }
 
     @Override
-    public Page<TopicDto> getAllTpoics(Pageable pageable) {
+    public Page<TopicDto> getAllTopics(Pageable pageable) {
 
         Page<TopicEntity> topics = topicRepository.findAll(pageable);
         return topics.map(TopicDto::mapFromEntity);
@@ -64,7 +64,7 @@ public class TopicServiceImpl implements TopicService {
         Optional<TopicEntity> byId = topicRepository.findById(topic.getId());
         if(byId.isPresent()){
             TopicEntity topicEntity = byId.get();
-            topic.toEntity(topicEntity);
+            topicEntity = topic.toEntity();
             topicRepository.save(topicEntity);
         }
         else {

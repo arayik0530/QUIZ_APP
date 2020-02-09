@@ -28,14 +28,14 @@ public class TopicControllerImpl implements TopicController {
 
     @Override
     @GetMapping("search")
-    public Page<TopicDto> searchByName(String name, @PageableDefault Pageable pageable) {
-        return topicService.searchByName(name, pageable);
+    public Page<TopicDto> searchByTitle(String title, @PageableDefault Pageable pageable) {
+        return topicService.searchByTitle(title, pageable);
     }
 
     @Override
     @GetMapping("all")
     public Page<TopicDto> getAllTopics(@PageableDefault Pageable pageable) {
-        return topicService.getAllTpoics(pageable);
+        return topicService.getAllTopics(pageable);
     }
 
     @Override

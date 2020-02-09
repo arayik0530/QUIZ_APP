@@ -8,7 +8,7 @@ public interface TopicController {
 
     TopicDto findById(Long id);
 
-    Page<TopicDto> searchByName(String Name, Pageable pageable);
+    Page<TopicDto> searchByTitle(String title, Pageable pageable);
 
     Page<TopicDto> getAllTopics(Pageable pageable);
 

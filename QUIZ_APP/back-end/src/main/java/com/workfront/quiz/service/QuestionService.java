@@ -27,5 +27,5 @@ public interface QuestionService {
 
     Collection<QuestionEntity> generateQuestions(Long topicId);
 
-    void create(CreateQuestionDto question, int AnswerCount);
+    void create(CreateQuestionDto question);
 }
