@@ -15,11 +15,11 @@ import {
   Switch,
   Route,
   Link,
-
+useHistory
 } from "react-router-dom";
 import Search_List from './Search_List';
 import { AnimatedSwitch } from 'react-router-transition';
-
+import Redirect from 'react-router-dom/Redirect';
 
 
 const useStyles = makeStyles(theme => ({
@@ -78,19 +78,16 @@ const useStyles = makeStyles(theme => ({
 function Navbar() {
   //states
   
+  
   const classes = useStyles();
   const [state, Setstate] = React.useState(false);
   const [search, Setsearchstate] = React.useState("");
 
   const toggleDrawer = (e) => event => Setstate(e)
-  const onKeyDown=(e,message)=>
-  {  
-    if(e.key==="Enter")
-    {
-      localStorage.setItem("input",message)
-      window.location.href = '/search';
+  const onKeyDown=(e,history)=>
+  {   
+    
   
-    }
   }
   
   return (
@@ -105,7 +102,7 @@ function Navbar() {
                 <MenuIcon />
 
               </IconButton>
-              <div className="spacerphone"> </div>
+            <div className="spacerphone"></div>
               <div className={classes.search}>
                 <div className={classes.searchIcon}>
                   <SearchIcon />
@@ -121,6 +118,9 @@ function Navbar() {
                   inputProps={{ 'aria-label': 'search' }}
                 />
               </div>
+              <Link style={{ color: 'white', textDecoration: 'none' }} to="/search">    <Button color="inherit" >
+                Search
+                </Button> </Link>
 
               <Drawer open={state} onClose={toggleDrawer(false)}>
                 <div className="drawer">
@@ -165,13 +165,16 @@ function Navbar() {
               <Button color="inherit"  >
                 Contact
                     </Button>
-              <div className="spacer"></div>
+                    <Button color="inherit"  >
+                Logout
+                    </Button>
+                    <div className="spacer"></div>
               <div className={classes.search}>
                 <div className={classes.searchIcon}>
                   <SearchIcon />
                 </div>
                 <InputBase
-                  onKeyDown={(e) => onKeyDown(e, search)}
+                  onKeyDown={e=>{console.log(this)}}
                   onChange={(e) => Setsearchstate(e.target.value)}
                   placeholder="Search…"
                   classes={{
@@ -181,9 +184,10 @@ function Navbar() {
                   inputProps={{ 'aria-label': 'search' }}
                 />
               </div>
-              <Button color="inherit" >
-                Logout
-                    </Button>
+              
+              <Link style={{ color: 'white', textDecoration: 'none' }} to="/search">    <Button color="inherit" >
+                Search
+                </Button> </Link>
             </div>
           </Toolbar>
         </AppBar>
@@ -197,11 +201,11 @@ function Navbar() {
             Hello
             </Route>
             <Route  path="/search">
-            <Search_List />
+            <Search_List  />
           </Route>
         </Switch>
       </div>
     </Router>
   );
 }
-export default (Navbar);
+export default Navbar;

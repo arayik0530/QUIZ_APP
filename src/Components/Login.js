@@ -1,44 +1,23 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useContext } from "react"
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import EmailIcon from '@material-ui/icons/Email';
 import Button from "@material-ui/core/Button";
 import icon from '../Image/quiz.png';
-import {styled} from '@material-ui/core';
 import '../Css/styles.css';
-import Navbar from './Navbar';
-import Register from './Register'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
+import {UpdateUserContext} from '../Contexts/user';
+import {postData} from '../utlis/utils';
 
-} from "react-router-dom";
-function Main(props)
-{ 
-    return(
-        <Router>
-         <Switch>
-           <Route exact path='/'>
-             <Login redirect={props.redirect}></Login>
-             
-           </Route>
-           <Route exact path='/register'>
-             <Register></Register>
-           </Route>
-         </Switch>
-      </Router>
-  )
-
-}
-function Login(props)
+ export default function Login()
 {
   const [values, setValues] = React.useState({
     email:'',
     password: '',
     
   });
+
+  const updateUser = useContext(UpdateUserContext);
+
   const handleChange = prop => event => {
     setValues({ ...values, [prop]: event.target.value });
   };
@@ -49,16 +28,21 @@ function Login(props)
   }, []);
   useEffect(() => {document.body.style.overflow="hidden" }, []);
   
-  const handleLogin=()=>
-  {let ok=true,token="";
+  const handleLogin= async ()=>
+  {   let ok=false;
+     let respone = await postData("http://localhost:8090/api/auth/login/",{
+      email:"admin@admin.com",
+      password:"admin"
+    });
+     console.log(respone)
+
     if(ok)
     {
-        props.redirect(true);
-        localStorage.setItem("loggedin",1)
+      updateUser({email: values.email, password: values.password})
     }
     else{
       //show error message
-      alert("Wrong shit")
+      alert("Wrong credentials")
     }
   }
   return(  <div className="login">
@@ -106,13 +90,3 @@ function Login(props)
 
  </div>)
 }
-function  Real()
-{ const [redirect,Setredirect]=React.useState(false);
-   
-   
-  let x= localStorage.getItem("loggedin")?<Navbar></Navbar>:<Main redirect={Setredirect}></Main>;
-  return(
-   x
-  )
-}
-export default Real;

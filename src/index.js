@@ -4,10 +4,10 @@ import './Css/index.css';
 import Navbar from './Components/Navbar';
 import * as serviceWorker from './serviceWorker';
 import Register from './Components/Register';
-import Login from './Components/Login'
+import Controller from './Components/Controller'
 
 
-ReactDOM.render(<Login/>, document.getElementById('root'));
+ReactDOM.render(<Controller/>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
