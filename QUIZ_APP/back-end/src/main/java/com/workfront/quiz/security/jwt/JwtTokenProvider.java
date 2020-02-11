@@ -80,7 +80,7 @@ public class JwtTokenProvider {
 
     public String[] getUserRoles(String token) {
         List<String> roles= Jwts.parser().setSigningKey(secret)
-                .parseClaimsJws(token).getBody().get(USER_ROLES,ArrayList.class);
+                .parseClaimsJws(token).getBody().get(USER_ROLES, ArrayList.class);
         return Stream.of(roles).map(Object::toString).toArray(String[]::new);
     }
 

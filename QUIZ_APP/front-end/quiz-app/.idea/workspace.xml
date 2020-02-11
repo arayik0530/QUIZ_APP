@@ -20,8 +20,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4e8dddd-ad9b-481a-b8e9-70d5cd024298" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../back-end/.idea/dataSources/a9dca7a8-0d84-4b48-ad88-785b9544e67c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/.idea/dataSources/a9dca7a8-0d84-4b48-ad88-785b9544e67c.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../back-end/.idea/dataSources/a9dca7a8-0d84-4b48-ad88-785b9544e67c/storage_v2/_src_/database/quiz_app.N5muwQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/.idea/dataSources/a9dca7a8-0d84-4b48-ad88-785b9544e67c/storage_v2/_src_/database/quiz_app.N5muwQ/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../back-end/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/api/impl/AuthControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/api/impl/AuthControllerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/api/impl/UserControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/api/impl/UserControllerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/entity/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/entity/UserEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/security/jwt/JwtTokenProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/security/jwt/JwtTokenProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/security/jwt/JwtUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/security/jwt/JwtUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../back-end/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/target/classes/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageUpload.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageUpload.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,8 +44,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="TypeScript File" />
+        <option value="JavaScript File" />
         <option value="CSS File" />
       </list>
     </option>
@@ -58,6 +71,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
@@ -80,6 +94,7 @@
       <workItem from="1580733399817" duration="5174000" />
       <workItem from="1580987117928" duration="3466000" />
       <workItem from="1580993264349" duration="688000" />
+      <workItem from="1581407491571" duration="7173000" />
     </task>
     <servers />
   </component>

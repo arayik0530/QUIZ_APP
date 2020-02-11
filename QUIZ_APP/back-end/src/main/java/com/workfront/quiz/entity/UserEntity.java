@@ -42,7 +42,8 @@ public class UserEntity {
     private Boolean active = Boolean.FALSE;
 
     @ElementCollection(targetClass = UserRole.class, fetch = FetchType.EAGER)
-    @JoinTable(name = "user_roles")
+    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
+    @Enumerated(EnumType.STRING)
     private Set<UserRole> roles = new HashSet<>();
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = {CascadeType.REMOVE})

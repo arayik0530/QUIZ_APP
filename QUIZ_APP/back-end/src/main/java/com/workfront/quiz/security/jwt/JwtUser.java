@@ -21,14 +21,14 @@ public class JwtUser implements UserDetails {
         this.id = id;
         this.email = email;
         this.password = password;
-        setAuthorities(roles);
+        this.setAuthorities(roles);
     }
 
     public JwtUser(Long id, String email, String password, Set<UserRole> roles) {
         this.id = id;
         this.email = email;
         this.password = password;
-        setAuthorities(roles);
+        this.setAuthorities(roles);
     }
 
 

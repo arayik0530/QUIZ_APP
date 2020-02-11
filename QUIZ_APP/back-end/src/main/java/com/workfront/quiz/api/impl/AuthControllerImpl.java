@@ -4,9 +4,13 @@ import com.workfront.quiz.api.AuthController;
 import com.workfront.quiz.dto.user.LoginRequestDto;
 import com.workfront.quiz.dto.user.UserInfoDto;
 import com.workfront.quiz.dto.user.UserRegistrationDto;
+import com.workfront.quiz.entity.UserEntity;
+import com.workfront.quiz.entity.enums.UserRole;
+import com.workfront.quiz.repository.UserRepository;
 import com.workfront.quiz.security.jwt.JwtTokenProvider;
 import com.workfront.quiz.security.jwt.JwtUser;
 import com.workfront.quiz.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,9 +18,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/api/auth/")
 public class AuthControllerImpl implements AuthController {
+
     private UserService userService;
     private AuthenticationManager authenticationManager;
     private JwtTokenProvider jwtTokenProvider;
@@ -30,6 +37,7 @@ public class AuthControllerImpl implements AuthController {
     @Override
     @PostMapping("register")
     public void register(@RequestBody UserRegistrationDto registrationDto) {
+
         userService.register(registrationDto);
     }
 

@@ -4,16 +4,23 @@ import com.workfront.quiz.dto.user.PasswordChangingDto;
 import com.workfront.quiz.dto.user.UserInfoDto;
 import com.workfront.quiz.dto.user.UserRegistrationDto;
 import com.workfront.quiz.entity.UserEntity;
+import com.workfront.quiz.entity.enums.UserRole;
 import com.workfront.quiz.repository.UserRepository;
+import com.workfront.quiz.security.jwt.JwtUser;
 import com.workfront.quiz.service.UserService;
 import com.workfront.quiz.service.util.exception.UserAlreadyExistsException;
 import com.workfront.quiz.service.util.exception.UserNotFoundException;
 import com.workfront.quiz.service.util.exception.WrongPasswordException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Optional;
 
 @Service
@@ -61,7 +68,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Page<UserInfoDto> getAllUsers(Pageable pageable) { //TODO jshtel senc normala?
+    public Page<UserInfoDto> getAllUsers(Pageable pageable) {
 
         Page<UserEntity> users = userRepository.findAll(pageable);
 
@@ -100,7 +107,6 @@ public class UserServiceImpl implements UserService {
     public void updatePassword(PasswordChangingDto passwordChangingDto) {
         Optional<UserEntity> byEmail = userRepository.findByEmail(passwordChangingDto.getEmail());
         if (byEmail.isPresent()) {
-            //TODO check password encoding principles
             UserEntity userEntity = byEmail.get();
             if (userEntity.getPassword().equals(passwordChangingDto.getOldPassword())) {
                 userEntity.setPassword(passwordChangingDto.getNewPassword());
@@ -123,9 +129,12 @@ public class UserServiceImpl implements UserService {
 
         UserEntity userEntity = registrationDto.toEntity();
 
+        userEntity.getRoles().add(UserRole.USER);
+
         userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
 
         UserEntity savedEntity = userRepository.save(userEntity);
+
         return UserInfoDto.mapFromEntity(savedEntity);
     }
 }
