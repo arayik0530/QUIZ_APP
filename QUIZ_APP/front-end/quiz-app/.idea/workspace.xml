@@ -20,21 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4e8dddd-ad9b-481a-b8e9-70d5cd024298" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../back-end/.idea/dataSources/a9dca7a8-0d84-4b48-ad88-785b9544e67c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/.idea/dataSources/a9dca7a8-0d84-4b48-ad88-785b9544e67c.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../back-end/.idea/dataSources/a9dca7a8-0d84-4b48-ad88-785b9544e67c/storage_v2/_src_/database/quiz_app.N5muwQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/.idea/dataSources/a9dca7a8-0d84-4b48-ad88-785b9544e67c/storage_v2/_src_/database/quiz_app.N5muwQ/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../back-end/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/api/impl/AuthControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/api/impl/AuthControllerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/api/impl/UserControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/api/impl/UserControllerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/entity/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/entity/UserEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/security/jwt/JwtTokenProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/security/jwt/JwtTokenProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/security/jwt/JwtUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/security/jwt/JwtUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../back-end/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/target/classes/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Quiz.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Quiz.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Quiz.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Quiz.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +82,7 @@
       <workItem from="1580733399817" duration="5174000" />
       <workItem from="1580987117928" duration="3466000" />
       <workItem from="1580993264349" duration="688000" />
-      <workItem from="1581407491571" duration="7173000" />
+      <workItem from="1581407491571" duration="11991000" />
     </task>
     <servers />
   </component>
@@ -121,5 +109,21 @@
       <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="466" y="154" width="424" height="484" key="FileChooserDialogImpl/0.27.1366.741@0.27.1366.741" timestamp="1580733466746" />
+    <state width="1343" height="267" key="GridCell.Tab.0.bottom" timestamp="1581415843685">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1343" height="267" key="GridCell.Tab.0.bottom/0.27.1366.741@0.27.1366.741" timestamp="1581415843685" />
+    <state width="1343" height="267" key="GridCell.Tab.0.center" timestamp="1581415843684">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1343" height="267" key="GridCell.Tab.0.center/0.27.1366.741@0.27.1366.741" timestamp="1581415843684" />
+    <state width="1343" height="267" key="GridCell.Tab.0.left" timestamp="1581415843684">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1343" height="267" key="GridCell.Tab.0.left/0.27.1366.741@0.27.1366.741" timestamp="1581415843684" />
+    <state width="1343" height="267" key="GridCell.Tab.0.right" timestamp="1581415843685">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1343" height="267" key="GridCell.Tab.0.right/0.27.1366.741@0.27.1366.741" timestamp="1581415843685" />
   </component>
 </project>

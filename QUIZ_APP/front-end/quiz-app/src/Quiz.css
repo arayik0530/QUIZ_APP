@@ -1,17 +1,17 @@
-.question{
+.container{
     margin-left: 20vw;
-    margin-top: 20vh;
+    margin-right: 20vw;
+    margin-top: 10vh;
 }
 
-h3{
-    color: #426d88;
+.questionContainer{
+    margin-left: 23vw;
 }
 
-.answers{
-    margin-left: 20vw;
+.nextButtonContainer{
+    float: right;
 }
 
-.answer{
-
+.previousButtonContainer{
+    float: left;
 }
-
