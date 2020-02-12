@@ -5,7 +5,9 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.management.relation.Role;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -38,7 +40,12 @@ public class JwtUser implements UserDetails {
     }
 
     private void setAuthorities(String... roles) {
-        this.authorities = Stream.of(roles).map(SimpleGrantedAuthority::new).collect(Collectors.toSet());
+        Set<GrantedAuthority> roleSet = new HashSet<>();
+        for (String role : roles) {
+            SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(role);
+            roleSet.add(simpleGrantedAuthority);
+        }
+        this.authorities = roleSet;
     }
 
     private void setAuthorities(Set<UserRole> roles) {

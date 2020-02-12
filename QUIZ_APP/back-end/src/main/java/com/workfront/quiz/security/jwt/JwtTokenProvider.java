@@ -69,9 +69,28 @@ public class JwtTokenProvider {
             Long userId = getUserId(token);
             String email = getUsername(token);
             String[] userRoles = getUserRoles(token);
+            userRoles = splitRoles(userRoles);
             JwtUser userDetails = new JwtUser(userId, email, "", userRoles);
             return new PreAuthenticatedAuthenticationToken(userDetails, "", userDetails.getAuthorities());
         } else throw new JwtAuthenticationException();
+    }
+
+    private String[] splitRoles(String[] userRoles) {
+        List<String> newRoles = new ArrayList<>();
+        for (String role : userRoles) {
+             role = role.replace("[", "");
+             role = role.replace("]", "");
+            String[] split = role.split(",");
+            for (int x = 0; x < split.length; x++) {
+                split[x] = split[x].trim();
+            }
+            newRoles.addAll(Arrays.asList(split));
+        }
+        String[] roles = new String[newRoles.size()];
+        for (int x = 0; x < newRoles.size(); x++) {
+            roles[x] = newRoles.get(x);
+        }
+        return roles;
     }
 
     public String getUsername(String token) {

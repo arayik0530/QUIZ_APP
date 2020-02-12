@@ -6,9 +6,8 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
-import Checkbox from "@material-ui/core/Checkbox";
 import Button from '@material-ui/core/Button';
-import './Quiz.css';
+import './Question.css';
 
 const useStyles = makeStyles({
     root: {
@@ -67,24 +66,24 @@ function StyledRadio(props) {
     );
 }
 
-export default function Quiz() {
+export default function SingleChoice() {
     return (
         <div className="container">
             <div className="questionContainer">
                 <FormControl component="fieldset">
                     <FormLabel component="legend">1/3 What is true about...</FormLabel>
                     <br/>
-                    <RadioGroup defaultValue="1" aria-label="gender" name="radios">
+                    <RadioGroup  aria-label="question" name="radios">
                         <FormControlLabel value="1" control={<StyledRadio />} label="Some answer..." />
                         <FormControlLabel value="2" control={<StyledRadio />} label="Some answer..." />
                         <FormControlLabel value="3" control={<StyledRadio />} label="Some answer..." />
-
                     </RadioGroup>
                 </FormControl>
             </div>
-            <div className="footer">
-                <span className="previousButtonContainer"><Button color="primary" left="0">previous</Button></span>
-                <span className="nextButtonContainer"><Button color="primary" right="0">next</Button></span>
+            <div style={{display: 'flex'}}>
+                <Button color="primary">previous</Button>
+                <div style={{flex: 1}}></div>
+                <Button color="primary">next</Button>
             </div>
         </div>
     );
