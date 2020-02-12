@@ -29,21 +29,21 @@ import {postData} from '../utlis/utils';
   useEffect(() => {document.body.style.overflow="hidden" }, []);
   
   const handleLogin= async ()=>
-  {   let ok=false;
-     let respone = await postData("http://localhost:8090/api/auth/login/",{
-      email:"admin@admin.com",
-      password:"admin"
+  {   
+     let respone = await postData("http://localhost:8090/api/auth/login",{
+      email:values.email,
+      password:values.password
     });
-     console.log(respone)
-
-    if(ok)
+    if(respone.status=="200")
     {
-      updateUser({email: values.email, password: values.password})
+      updateUser({token: await respone.text()})
     }
-    else{
-      //show error message
-      alert("Wrong credentials")
+    else 
+    {
+      alert("Wrong Credentials")
     }
+
+   
   }
   return(  <div className="login">
   <img width='50px' src={icon}></img>

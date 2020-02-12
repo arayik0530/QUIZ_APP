@@ -14,12 +14,9 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
-useHistory
+  Link
 } from "react-router-dom";
 import Search_List from './Search_List';
-import { AnimatedSwitch } from 'react-router-transition';
-import Redirect from 'react-router-dom/Redirect';
 
 
 const useStyles = makeStyles(theme => ({
@@ -83,13 +80,8 @@ function Navbar() {
   const [state, Setstate] = React.useState(false);
   const [search, Setsearchstate] = React.useState("");
 
-  const toggleDrawer = (e) => event => Setstate(e)
-  const onKeyDown=(e,history)=>
-  {   
-    
-  
-  }
-  
+  const toggleDrawer = (e) => () => Setstate(e)
+ 
   return (
     <Router>
       
@@ -108,7 +100,7 @@ function Navbar() {
                   <SearchIcon />
                 </div>
                 <InputBase
-                onKeyDown={(e) => onKeyDown(e, search)}
+               
                 onChange={(e) => Setsearchstate(e.target.value)}
                   placeholder="Search…"
                   classes={{
@@ -118,7 +110,7 @@ function Navbar() {
                   inputProps={{ 'aria-label': 'search' }}
                 />
               </div>
-              <Link style={{ color: 'white', textDecoration: 'none' }} to="/search">    <Button color="inherit" >
+              <Link  style={{ color: 'white', textDecoration: 'none' }}  to={`/search/${search}`}>    <Button  color="inherit" >
                 Search
                 </Button> </Link>
 
@@ -174,7 +166,7 @@ function Navbar() {
                   <SearchIcon />
                 </div>
                 <InputBase
-                  onKeyDown={e=>{console.log(this)}}
+                  onKeyDown={()=>{console.log(this)}}
                   onChange={(e) => Setsearchstate(e.target.value)}
                   placeholder="Search…"
                   classes={{
@@ -185,7 +177,7 @@ function Navbar() {
                 />
               </div>
               
-              <Link style={{ color: 'white', textDecoration: 'none' }} to="/search">    <Button color="inherit" >
+              <Link style={{ color: 'white', textDecoration: 'none' }} to={`/search/${search}`}>    <Button  color="inherit" >
                 Search
                 </Button> </Link>
             </div>
@@ -200,8 +192,8 @@ function Navbar() {
           <Route   path="/main">
             Hello
             </Route>
-            <Route  path="/search">
-            <Search_List  />
+            <Route  exact path= {`/search/${search}`}>
+            <Search_List input={search} />
           </Route>
         </Switch>
       </div>

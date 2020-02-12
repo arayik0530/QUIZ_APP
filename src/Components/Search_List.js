@@ -1,18 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useContext } from 'react';
 import UserField from './UserField';
 import Button from '@material-ui/core/Button';
 import {useHistory} from 'react-router-dom';
+import {UserContext} from '../Contexts/user';
 const x = "<<", y = ">>";
 let index = 0;
 function Search_List(props) {
-  let history =useHistory();
-  
+   
+  const User = useContext(UserContext);
+
   let [state, Setstate] = React.useState(null);
   useEffect(() => {
-    console.log(history)
+    
     let url = new URL("http://localhost:8090/api/user/search")
-    url.search = new URLSearchParams({ text: localStorage.getItem("input") })
-    fetch(url)
+    url.search = new URLSearchParams({  text: props.input })
+    fetch(url,{
+      method:"GET",
+      headers:{
+      "Content-Type":"application/json",
+      "Authorization": "Bearer_ "+User.token
+    }})
       .then((response) => {
         return response.json();
       })
@@ -37,8 +44,13 @@ function Search_List(props) {
       let k = index + i;
 
       let url = new URL("http://localhost:8090/api/user/search")
-      url.search = new URLSearchParams({ text: localStorage.getItem("input"), page: k })
-      let x = await fetch(url);
+      url.search = new URLSearchParams({ text: props.input, page: k })
+      let x = await fetch(url,{
+        method:"GET",
+        headers:{
+        "Content-Type":"application/json",
+        "Authorization": "Bearer_ "+User.token
+      }});
       let myJson = await x.json();
       if (myJson.content.length != 0) {
 
