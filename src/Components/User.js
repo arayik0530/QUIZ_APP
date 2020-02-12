@@ -19,10 +19,7 @@ function Global() {
             <br></br>
             <TextField size='medium' label="Email"></TextField>
             <br></br>
-            <TextField size='medium' label="Phone Number"></TextField>
-            <br></br>
-            <TextField fullWidth label="Institution"></TextField>
-            <br></br>
+          
 
             <div style={{ textAlign: 'right' }}>
 
@@ -110,12 +107,8 @@ function GeneralInfo() {
 
                 <div className="about-container-list-item"><b>Name:</b> Ruben</div>
                 <div className="about-container-list-item"><b>Surname:</b> Poghosyan</div>
-                <div className="about-container-list-item"><b>Country:</b>Armenia</div>
-                <div className="about-container-list-item"><b>City:</b>Yerevan</div>
                 <div className="about-container-list-item"><b>Email:</b> poghosyan26@gmail.com</div>
-                <div className="about-container-list-item"><b>Institution:</b> Yerevan State University</div>
-                <div className="about-container-list-item"><b>Course:</b>Physics</div>
-                <div className="about-container-list-item"><b>Phone:</b>0000000000</div>
+               
 
             </div>
         </div>
