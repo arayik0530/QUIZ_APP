@@ -5,6 +5,7 @@ import com.workfront.quiz.dto.user.UserInfoDto;
 import com.workfront.quiz.dto.user.UserRegistrationDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 
 public interface UserService {
 
@@ -23,4 +24,6 @@ public interface UserService {
     void updatePassword(PasswordChangingDto passwordChangingDto);
 
     UserInfoDto register(UserRegistrationDto registrationDto);
+
+    Long getMe();
 }

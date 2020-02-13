@@ -21,16 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f4e8dddd-ad9b-481a-b8e9-70d5cd024298" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../../back-end/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../back-end/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/api/impl/UserControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/api/impl/UserControllerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/src/main/java/com/workfront/quiz/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../back-end/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../back-end/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/target/classes/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Quiz.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Question.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Quiz.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/SingleChoice.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,6 +87,7 @@
       <workItem from="1580993264349" duration="688000" />
       <workItem from="1581407491571" duration="18722000" />
       <workItem from="1581434397054" duration="6687000" />
+      <workItem from="1581581095202" duration="3685000" />
     </task>
     <servers />
   </component>

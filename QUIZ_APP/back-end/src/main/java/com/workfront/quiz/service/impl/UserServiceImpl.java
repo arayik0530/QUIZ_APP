@@ -13,6 +13,8 @@ import com.workfront.quiz.service.util.exception.UserNotFoundException;
 import com.workfront.quiz.service.util.exception.WrongPasswordException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -136,5 +138,14 @@ public class UserServiceImpl implements UserService {
         UserEntity savedEntity = userRepository.save(userEntity);
 
         return UserInfoDto.mapFromEntity(savedEntity);
+    }
+
+    @Override
+    public Long getMe() {
+        JwtUser user = (JwtUser)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        Long userId = user.getId();
+
+        return userId;
     }
 }
