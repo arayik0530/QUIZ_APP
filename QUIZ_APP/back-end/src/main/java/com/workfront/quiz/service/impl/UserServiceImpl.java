@@ -3,26 +3,24 @@ package com.workfront.quiz.service.impl;
 import com.workfront.quiz.dto.user.PasswordChangingDto;
 import com.workfront.quiz.dto.user.UserInfoDto;
 import com.workfront.quiz.dto.user.UserRegistrationDto;
+import com.workfront.quiz.entity.ConfirmationTokenEntity;
 import com.workfront.quiz.entity.UserEntity;
 import com.workfront.quiz.entity.enums.UserRole;
 import com.workfront.quiz.repository.UserRepository;
 import com.workfront.quiz.security.jwt.JwtUser;
+import com.workfront.quiz.service.ConfirmationTokenService;
 import com.workfront.quiz.service.UserService;
 import com.workfront.quiz.service.util.exception.UserAlreadyExistsException;
 import com.workfront.quiz.service.util.exception.UserNotFoundException;
 import com.workfront.quiz.service.util.exception.WrongPasswordException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Optional;
 
 @Service
@@ -30,10 +28,14 @@ public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
     private PasswordEncoder passwordEncoder;
+    private JavaMailSender mailSender;
+    private ConfirmationTokenService confirmationTokenService;
 
-    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder, JavaMailSender mailSender, ConfirmationTokenService confirmationTokenService) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.mailSender = mailSender;
+        this.confirmationTokenService = confirmationTokenService;
     }
 
     @Override
@@ -90,17 +92,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserInfoDto update(UserInfoDto user) { //TODO jshtel es method@ sxala ashxatum, mek el image loading@ stex
-        Optional<UserEntity> byId = userRepository.findById(user.getId());
+    public UserInfoDto update(UserInfoDto userInfoDto) { //TODO jshtel es method@ sxala ashxatum, mek el image loading@ stex
+
+        Optional<UserEntity> byId = userRepository.findById(userInfoDto.getId());
         if (byId.isPresent()) {
 
-            UserEntity userEntity = byId.get();
-            user.toEntity(userEntity);
+            UserEntity userEntity =  userInfoDto.toEntity();
             userRepository.save(userEntity);
 
             return UserInfoDto.mapFromEntity(userEntity);
         } else {
-            throw new UserNotFoundException(user.getId());
+            throw new UserNotFoundException(userInfoDto.getId());
         }
 
     }
@@ -124,6 +126,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserInfoDto register(UserRegistrationDto registrationDto) {
+
         Optional<UserEntity> byEmail = userRepository.findByEmail(registrationDto.getEmail());
         if (byEmail.isPresent()) {
             throw new UserAlreadyExistsException(registrationDto.getEmail());
@@ -137,15 +140,27 @@ public class UserServiceImpl implements UserService {
 
         UserEntity savedEntity = userRepository.save(userEntity);
 
-        return UserInfoDto.mapFromEntity(savedEntity);
+        UserInfoDto user = UserInfoDto.mapFromEntity(savedEntity);
+
+        ConfirmationTokenEntity token = new ConfirmationTokenEntity();
+        token.setUser(savedEntity);
+
+        confirmationTokenService.save(token);
+
+        SimpleMailMessage msg = new SimpleMailMessage();
+        msg.setTo(user.getEmail());
+        msg.setText("To confirm your account, please click here: "
+                +"http://localhost:8090/api/auth/confirm-account?token=" + token.getText());
+        msg.setSubject("Email Confirmation");
+        mailSender.send(msg);
+
+        return user;
     }
 
     @Override
     public Long getMe() {
         JwtUser user = (JwtUser)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        Long userId = user.getId();
-
-        return userId;
+        return user.getId();
     }
 }

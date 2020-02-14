@@ -22,7 +22,6 @@
     <list default="true" id="f4e8dddd-ad9b-481a-b8e9-70d5cd024298" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../../back-end/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,6 +87,7 @@
       <workItem from="1581407491571" duration="18722000" />
       <workItem from="1581434397054" duration="6687000" />
       <workItem from="1581581095202" duration="3685000" />
+      <workItem from="1581667663784" duration="729000" />
     </task>
     <servers />
   </component>
@@ -119,10 +119,10 @@
       <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="416" y="145" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.1366.741@0.27.1366.741" timestamp="1580632270154" />
-    <state x="466" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1580733466746">
+    <state x="466" y="154" width="424" height="484" key="FileChooserDialogImpl" timestamp="1581677157430">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state x="466" y="154" width="424" height="484" key="FileChooserDialogImpl/0.27.1366.741@0.27.1366.741" timestamp="1580733466746" />
+    <state x="466" y="154" width="424" height="484" key="FileChooserDialogImpl/0.27.1366.741@0.27.1366.741" timestamp="1581677157430" />
     <state width="1343" height="267" key="GridCell.Tab.0.bottom" timestamp="1581433800815">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
