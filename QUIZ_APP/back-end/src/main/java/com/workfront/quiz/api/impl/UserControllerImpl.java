@@ -49,7 +49,7 @@ public class UserControllerImpl implements UserController {
     @Override
     @PutMapping("update")
     public void update(@RequestBody UserInfoDto userInfoDto) {
-         userService.update(userInfoDto);
+        userService.update(userInfoDto);
     }
 
     @Override
@@ -59,8 +59,9 @@ public class UserControllerImpl implements UserController {
     }
 
     @Override
-    @GetMapping("me")
-    public Long getMe() {
-        return userService.getMe();
+    @GetMapping
+    @PreAuthorize(value = "isAuthenticated()")
+    public UserInfoDto getMe() {
+        return userService.findById(userService.getMe());
     }
 }

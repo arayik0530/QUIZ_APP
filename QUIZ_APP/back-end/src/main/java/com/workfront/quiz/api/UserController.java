@@ -20,5 +20,5 @@ public interface UserController {
 
     void changePassword(PasswordChangingDto passwordChangingDto);
 
-    Long getMe();
+    UserInfoDto getMe();
 }
