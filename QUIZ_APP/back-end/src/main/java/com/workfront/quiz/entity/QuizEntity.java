@@ -1,26 +1,32 @@
 package com.workfront.quiz.entity;
 
+import lombok.Data;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
+@Data
 @Entity
 @Table(name = "quizes")
 public class QuizEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @JoinColumn(name = "user_id", nullable = false)
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private UserEntity user;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "topic_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private TopicEntity topic;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "quiz")
@@ -39,102 +45,33 @@ public class QuizEntity {
     @Column(name = "success_percent", updatable = false, scale = 2, precision = 5)
     private Double successPercent;
 
-
-    public Long getId() {
-        return id;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof QuizEntity)) return false;
+        QuizEntity that = (QuizEntity) o;
+        return Objects.equals(getId(), that.getId()) &&
+                Objects.equals(getStartTime(), that.getStartTime()) &&
+                Objects.equals(getEndTime(), that.getEndTime()) &&
+                Objects.equals(getDuration(), that.getDuration());
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public UserEntity getUser() {
-        return user;
-    }
-
-    public void setUser(UserEntity user) {
-        this.user = user;
-    }
-
-    public TopicEntity getTopic() {
-        return topic;
-    }
-
-    public void setTopic(TopicEntity topic) {
-        this.topic = topic;
-    }
-
-    public List<QuizQuestionEntity> getQuizQuestions() {
-        return quizQuestions;
-    }
-
-    public void setQuizQuestions(List<QuizQuestionEntity> quizQuestions) {
-        this.quizQuestions = quizQuestions;
-    }
-
-    public LocalDateTime getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(LocalDateTime startTime) {
-        this.startTime = startTime;
-    }
-
-    public LocalDateTime getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(LocalDateTime endTime) {
-        this.endTime = endTime;
-    }
-
-    public Integer getDuration() {
-        return duration;
-    }
-
-    public void setDuration(Integer duration) {
-        this.duration = duration;
-    }
-
-    public Double getSuccessPercent() {
-        return successPercent;
-    }
-
-    public void setSuccessPercent(Double successPercent) {
-        this.successPercent = successPercent;
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getStartTime(), getEndTime(), getDuration());
     }
 
     @Override
     public String toString() {
         return "QuizEntity{" +
                 "id=" + id +
-                ", user=" + user +
-                ", topic=" + topic +
+                ", user=" + user.getId() +
+                ", topic=" + topic.getId() +
                 ", quizQuestions=" + quizQuestions +
                 ", startTime=" + startTime +
                 ", endTime=" + endTime +
                 ", duration=" + duration +
                 ", successPercent=" + successPercent +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof QuizEntity)) return false;
-        QuizEntity that = (QuizEntity) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(user, that.user) &&
-                Objects.equals(topic, that.topic) &&
-                Objects.equals(quizQuestions, that.quizQuestions) &&
-                Objects.equals(startTime, that.startTime) &&
-                Objects.equals(endTime, that.endTime) &&
-                Objects.equals(duration, that.duration) &&
-                Objects.equals(successPercent, that.successPercent);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, user, topic, quizQuestions, startTime, endTime, duration, successPercent);
     }
 }

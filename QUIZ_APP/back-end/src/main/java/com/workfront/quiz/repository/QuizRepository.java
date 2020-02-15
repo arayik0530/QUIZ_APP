@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface QuizRepository extends JpaRepository<QuizEntity, Long> {
 
-    Page<QuizEntity> findAllByTopic(TopicEntity topic, Pageable pageable); //TODO jshtel ashxatuma te che
+    Page<QuizEntity> findAllByTopic(TopicEntity topic, Pageable pageable);
 
 }

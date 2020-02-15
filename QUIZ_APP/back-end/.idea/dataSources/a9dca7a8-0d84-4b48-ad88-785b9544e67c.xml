@@ -33,7 +33,7 @@
       <ObjectId>17796</ObjectId>
       <StateNumber>1562</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>4899</IntrospectionStateNumber>
+      <IntrospectionStateNumber>4927</IntrospectionStateNumber>
       <Visible>1</Visible>
       <Relations>sequence|table|26628|26630|1
 sequence|table|26641|26643|1
@@ -139,7 +139,7 @@ sequence|table|26703|26705|1
       <Comment>standard public schema</Comment>
       <StateNumber>351</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>4900</IntrospectionStateNumber>
+      <IntrospectionStateNumber>4928</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -287,7 +287,7 @@ sequence|table|26703|26705|1
     <table id="42" parent="23" name="confirmation_token">
       <ObjectId>26636</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>4859</StateNumber>
+      <StateNumber>4926</StateNumber>
     </table>
     <table id="43" parent="23" name="images">
       <ObjectId>26643</ObjectId>
@@ -332,12 +332,12 @@ sequence|table|26703|26705|1
     <table id="51" parent="23" name="user_role">
       <ObjectId>26700</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>4898</StateNumber>
+      <StateNumber>4914</StateNumber>
     </table>
     <table id="52" parent="23" name="users">
       <ObjectId>26705</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>4898</StateNumber>
+      <StateNumber>4926</StateNumber>
     </table>
     <column id="53" parent="41" name="id">
       <Position>1</Position>
@@ -423,14 +423,15 @@ sequence|table|26703|26705|1
       <Primary>1</Primary>
     </key>
     <foreign-key id="65" parent="42" name="fkah4p1rycwibwm6s9bsyeckq51">
-      <ObjectId>26725</ObjectId>
-      <StateNumber>4859</StateNumber>
+      <ObjectId>26809</ObjectId>
+      <StateNumber>4926</StateNumber>
       <ColNames>user_id</ColNames>
       <RefTableId>26705</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>users</RefTableName>
       <RefKeyName>users_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
+      <OnDelete>cascade</OnDelete>
     </foreign-key>
     <column id="66" parent="43" name="id">
       <Position>1</Position>
@@ -817,9 +818,9 @@ sequence|table|26703|26705|1
       <StateNumber>4853</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <foreign-key id="119" parent="51" name="fkj345gk1bovqvfame88rcx7yyx">
-      <ObjectId>26791</ObjectId>
-      <StateNumber>4898</StateNumber>
+    <foreign-key id="119" parent="51" name="user_id_fk">
+      <ObjectId>26799</ObjectId>
+      <StateNumber>4914</StateNumber>
       <ColNames>user_id</ColNames>
       <RefTableId>26705</RefTableId>
       <RefColPositions>1</RefColPositions>
@@ -907,26 +908,41 @@ sequence|table|26703|26705|1
       <ColNames>phone</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="132" parent="52" name="users_pkey">
+    <index id="132" parent="52" name="users_email_idx">
+      <ObjectId>26798</ObjectId>
+      <StateNumber>4907</StateNumber>
+      <ColNames>e_mail</ColNames>
+    </index>
+    <index id="133" parent="52" name="users_first_name_idx">
+      <ObjectId>26796</ObjectId>
+      <StateNumber>4905</StateNumber>
+      <ColNames>first_name</ColNames>
+    </index>
+    <index id="134" parent="52" name="users_last_name_idx">
+      <ObjectId>26797</ObjectId>
+      <StateNumber>4906</StateNumber>
+      <ColNames>last_name</ColNames>
+    </index>
+    <key id="135" parent="52" name="users_pkey">
       <ObjectId>26713</ObjectId>
       <StateNumber>4854</StateNumber>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>users_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <key id="133" parent="52" name="uk_ehv2osdo3bfokh566calsfx32">
+    <key id="136" parent="52" name="uk_ehv2osdo3bfokh566calsfx32">
       <ObjectId>26717</ObjectId>
       <StateNumber>4856</StateNumber>
       <ColNames>e_mail</ColNames>
       <UnderlyingIndexName>uk_ehv2osdo3bfokh566calsfx32</UnderlyingIndexName>
     </key>
-    <key id="134" parent="52" name="uk_du5v5sr43g5bfnji4vb8hg5s3">
+    <key id="137" parent="52" name="uk_du5v5sr43g5bfnji4vb8hg5s3">
       <ObjectId>26719</ObjectId>
       <StateNumber>4857</StateNumber>
       <ColNames>phone</ColNames>
       <UnderlyingIndexName>uk_du5v5sr43g5bfnji4vb8hg5s3</UnderlyingIndexName>
     </key>
-    <foreign-key id="135" parent="52" name="fke9m3buhrd541cj89320px18t4">
+    <foreign-key id="138" parent="52" name="fke9m3buhrd541cj89320px18t4">
       <ObjectId>26780</ObjectId>
       <StateNumber>4870</StateNumber>
       <ColNames>profile_image_id</ColNames>
@@ -936,7 +952,7 @@ sequence|table|26703|26705|1
       <RefKeyName>images_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="136" parent="52" name="fkkc9glr90dqh0c5xr4a5awek7q">
+    <foreign-key id="139" parent="52" name="fkkc9glr90dqh0c5xr4a5awek7q">
       <ObjectId>26785</ObjectId>
       <StateNumber>4871</StateNumber>
       <ColNames>small_image_id</ColNames>

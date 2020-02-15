@@ -4,6 +4,8 @@ import java.util.UUID;
 import javax.persistence.*;
 
 import lombok.Data;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Data
@@ -21,6 +23,7 @@ public class ConfirmationTokenEntity {
 
     @OneToOne(targetEntity = UserEntity.class, fetch = FetchType.LAZY)
     @JoinColumn(nullable = false, name = "user_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private UserEntity user;
 
 }

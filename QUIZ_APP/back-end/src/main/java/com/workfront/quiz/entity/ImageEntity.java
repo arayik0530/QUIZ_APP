@@ -1,9 +1,14 @@
 package com.workfront.quiz.entity;
 
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
 import javax.persistence.*;
 
 @Entity
+@Data
 @Table(name = "images")
 public class ImageEntity {
 
@@ -16,7 +21,9 @@ public class ImageEntity {
 
     @Column(name = "picture")
     @Lob
-    @Basic(fetch = FetchType.LAZY)
+    @Basic
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private byte[] picture;
 
 }

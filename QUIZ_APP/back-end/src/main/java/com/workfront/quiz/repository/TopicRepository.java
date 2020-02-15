@@ -10,6 +10,6 @@ import java.util.List;
 
 public interface TopicRepository extends JpaRepository<TopicEntity, Long> {
 
-    @Query(value = "from TopicEntity as topic where topic.title like ?1%")
+    @Query(value = "from TopicEntity as topic where topic.title like %?1%")
     Page<TopicEntity> searchByTitle(String title, Pageable pageable);
 }

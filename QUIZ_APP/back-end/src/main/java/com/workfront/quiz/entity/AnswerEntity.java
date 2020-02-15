@@ -23,6 +23,6 @@ public class AnswerEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "question_id")
-    @OnDelete(action = OnDeleteAction.CASCADE) //TODO xi esi ete voch orphanremovel, u xi orphan removal@ chi ashxatum
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private QuestionEntity question;
 }
