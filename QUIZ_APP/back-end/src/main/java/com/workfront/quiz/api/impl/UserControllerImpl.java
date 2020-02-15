@@ -22,6 +22,7 @@ public class UserControllerImpl implements UserController {
 
     @Override
     @GetMapping("{id}")
+    @PreAuthorize(value = "isAuthenticated()")
     public UserInfoDto getById(@PathVariable Long id) {
         return userService.findById(id);
     }
@@ -63,5 +64,17 @@ public class UserControllerImpl implements UserController {
     @PreAuthorize(value = "isAuthenticated()")
     public UserInfoDto getMe() {
         return userService.findById(userService.getMe());
+    }
+
+    @Override
+    @GetMapping(value = "image/{userId}")
+    public byte[] getOriginalImage(@PathVariable Long userId) {
+        return userService.getOriginalImage(userId);
+    }
+
+    @Override
+    @GetMapping(value = "small-image/{userId}")
+    public byte[] getSmallImage(@PathVariable Long userId) {
+        return userService.getSmallImage(userId);
     }
 }

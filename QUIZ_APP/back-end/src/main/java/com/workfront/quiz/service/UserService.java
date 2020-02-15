@@ -5,7 +5,6 @@ import com.workfront.quiz.dto.user.UserInfoDto;
 import com.workfront.quiz.dto.user.UserRegistrationDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.transaction.annotation.Transactional;
 
 public interface UserService {
 
@@ -30,4 +29,8 @@ public interface UserService {
     String generateToken(String email);
 
     void activateByEmailToken(String token);
+
+    byte[] getOriginalImage(Long userId);
+
+    byte[] getSmallImage(Long userId);
 }

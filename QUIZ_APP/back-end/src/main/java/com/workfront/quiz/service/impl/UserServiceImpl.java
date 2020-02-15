@@ -7,6 +7,8 @@ import com.workfront.quiz.entity.ConfirmationTokenEntity;
 import com.workfront.quiz.entity.UserEntity;
 import com.workfront.quiz.entity.enums.UserRole;
 import com.workfront.quiz.repository.ConfirmationTokenRepository;
+import com.workfront.quiz.repository.ImageRepository;
+import com.workfront.quiz.repository.SmallImageRepository;
 import com.workfront.quiz.repository.UserRepository;
 import com.workfront.quiz.security.jwt.JwtUser;
 import com.workfront.quiz.service.UserService;
@@ -14,6 +16,7 @@ import com.workfront.quiz.service.util.exception.InvalidTokenException;
 import com.workfront.quiz.service.util.exception.UserAlreadyExistsException;
 import com.workfront.quiz.service.util.exception.UserNotFoundException;
 import com.workfront.quiz.service.util.exception.WrongPasswordException;
+import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -25,18 +28,15 @@ import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
+@AllArgsConstructor
 public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
     private PasswordEncoder passwordEncoder;
     private ConfirmationTokenRepository tokenRepository;
+    private ImageRepository imageRepository;
+    private SmallImageRepository smallImageRepository;
 
-    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder,
-                           ConfirmationTokenRepository tokenRepository) {
-        this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
-        this.tokenRepository = tokenRepository;
-    }
 
     @Override
     public UserInfoDto findById(Long id) {
@@ -146,5 +146,17 @@ public class UserServiceImpl implements UserService {
         token.getUser().setActive(true);
         userRepository.save(token.getUser());
         tokenRepository.delete(token);
+    }
+
+    @Override
+    public byte[] getOriginalImage(Long userId) {
+        UserEntity userEntity = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException(userId));
+        return userEntity.getProfileImage().getPicture();
+    }
+
+    @Override
+    public byte[] getSmallImage(Long userId) {
+        UserEntity userEntity = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException(userId));
+        return userEntity.getSmallImage().getPicture();
     }
 }

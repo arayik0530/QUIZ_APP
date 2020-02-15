@@ -21,4 +21,9 @@ public interface UserController {
     void changePassword(PasswordChangingDto passwordChangingDto);
 
     UserInfoDto getMe();
+
+    byte[] getOriginalImage(Long userId);
+
+    byte[] getSmallImage(Long userId);
+
 }
