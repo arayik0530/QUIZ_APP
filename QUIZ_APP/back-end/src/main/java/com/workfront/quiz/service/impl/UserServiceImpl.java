@@ -4,6 +4,7 @@ import com.workfront.quiz.dto.user.PasswordChangingDto;
 import com.workfront.quiz.dto.user.UserInfoDto;
 import com.workfront.quiz.dto.user.UserRegistrationDto;
 import com.workfront.quiz.entity.ConfirmationTokenEntity;
+import com.workfront.quiz.entity.ImageEntity;
 import com.workfront.quiz.entity.UserEntity;
 import com.workfront.quiz.entity.enums.UserRole;
 import com.workfront.quiz.repository.ConfirmationTokenRepository;
@@ -23,7 +24,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Optional;
 
 @Service
@@ -158,5 +161,30 @@ public class UserServiceImpl implements UserService {
     public byte[] getSmallImage(Long userId) {
         UserEntity userEntity = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException(userId));
         return userEntity.getSmallImage().getPicture();
+    }
+
+    @Override
+    public void saveImage(MultipartFile image, Long userId) {
+        try {
+            saveOriginalImage(image.getBytes(),userId);
+            compressAndImage(image.getBytes(),userId);
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
+    private void saveOriginalImage(byte[] imagesBytes, Long userId) {
+        ImageEntity imageEntity = new ImageEntity();
+        imageEntity.setPicture(imagesBytes);
+        UserEntity userEntity = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException(userId));
+
+        imageRepository.save(imageEntity);
+        userEntity.setProfileImage(imageEntity);
+        userRepository.save(userEntity);
+
+    }
+
+    private void compressAndImage(byte[] imageBytes, Long userId) {
+            //TODO need to write functionality
     }
 }

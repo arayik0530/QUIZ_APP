@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/api/user/")
@@ -76,5 +77,10 @@ public class UserControllerImpl implements UserController {
     @GetMapping(value = "small-image/{userId}")
     public byte[] getSmallImage(@PathVariable Long userId) {
         return userService.getSmallImage(userId);
+    }
+
+    @Override
+    public void uploadImage(MultipartFile image) {
+        userService.saveImage(image, userService.getMe());
     }
 }
