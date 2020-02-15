@@ -74,18 +74,6 @@ public class QuizServiceImpl implements QuizService {
         }
     }
 
-    @Override
-    @Transactional
-    public void update(QuizDto quiz) {
-        Optional<QuizEntity> byId = quizRepository.findById(quiz.getId());
-        if (byId.isPresent()) {
-            QuizEntity quizEntity = byId.get();
-            quiz.toEntity(quizEntity);
-            quizRepository.save(quizEntity);
-        } else {
-            throw new QuizNotFoundException(quiz.getId());
-        }
-    }
 
     @Override
     @Transactional

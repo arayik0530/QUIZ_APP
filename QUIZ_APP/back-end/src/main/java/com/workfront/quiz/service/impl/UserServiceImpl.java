@@ -91,7 +91,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserInfoDto update(UserInfoDto user) { //TODO jshtel es method@ sxala ashxatum, mek el image loading@ stex
+    public UserInfoDto update(UserInfoDto user) { //TODO jshtel es method@ sxala ashxatum, mek el imageId loading@ stex
         Optional<UserEntity> byId = userRepository.findById(user.getId());
         if (byId.isPresent()) {
 

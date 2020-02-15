@@ -19,7 +19,6 @@ public interface QuizController {
 
     void remove(Long id);
 
-    void update(QuizDto quiz);
 
     Collection<QuestionDto> startQuiz(Long upComingQuizId);
 }

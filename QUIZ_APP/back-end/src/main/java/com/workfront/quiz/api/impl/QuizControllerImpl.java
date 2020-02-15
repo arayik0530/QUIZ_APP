@@ -47,11 +47,7 @@ public class QuizControllerImpl implements QuizController {
         quizService.remove(id);
     }
 
-    @Override
-    @PutMapping("update")
-    public void update(@RequestBody QuizDto quiz) {
-        quizService.update(quiz);
-    }
+
 
     @Override
     @GetMapping("start")
