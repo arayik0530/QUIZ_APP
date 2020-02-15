@@ -22,7 +22,13 @@
     <list default="true" id="f4e8dddd-ad9b-481a-b8e9-70d5cd024298" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../../back-end/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../back-end/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MultipleChoice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MultipleChoice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SingleChoice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SingleChoice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/index.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +57,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../js/ClassWork/dogApi" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -67,6 +73,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src/test" />
     </key>
   </component>
@@ -88,6 +95,8 @@
       <workItem from="1581407491571" duration="18722000" />
       <workItem from="1581434397054" duration="6687000" />
       <workItem from="1581581095202" duration="3685000" />
+      <workItem from="1581707556558" duration="2897000" />
+      <workItem from="1581752815432" duration="2455000" />
     </task>
     <servers />
   </component>

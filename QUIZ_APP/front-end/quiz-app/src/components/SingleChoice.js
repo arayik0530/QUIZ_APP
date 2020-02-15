@@ -66,6 +66,11 @@ function StyledRadio(props) {
     );
 }
 
+function handleChange(e){
+    e.preventDefault();
+    alert(e.target.value + " is checked");
+}
+
 export default function SingleChoice() {
     return (
         <div className="container">
@@ -74,14 +79,14 @@ export default function SingleChoice() {
                     <FormLabel component="legend">1/3 What is true about...</FormLabel>
                     <br/>
                     <RadioGroup  aria-label="question" name="radios">
-                        <FormControlLabel value="1" control={<StyledRadio />} label="Some answer..." />
-                        <FormControlLabel value="2" control={<StyledRadio />} label="Some answer..." />
-                        <FormControlLabel value="3" control={<StyledRadio />} label="Some answer..." />
+                        <FormControlLabel onChange={handleChange} value="1" control={<StyledRadio />} label="Some answer..." />
+                        <FormControlLabel onChange={handleChange} value="2" control={<StyledRadio />} label="Some answer..." />
+                        <FormControlLabel onChange={handleChange} value="3" control={<StyledRadio />} label="Some answer..." />
+                        <FormControlLabel onChange={handleChange} value="4" control={<StyledRadio />} label="Some answer..." />
                     </RadioGroup>
                 </FormControl>
             </div>
             <div style={{display: 'flex'}}>
-                <Button color="primary">previous</Button>
                 <div style={{flex: 1}}></div>
                 <Button color="primary">next</Button>
             </div>

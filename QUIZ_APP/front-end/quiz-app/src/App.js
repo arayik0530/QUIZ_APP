@@ -1,24 +1,15 @@
 import React from 'react';
-import SingleChoice from "./SingleChoice";
-import MultipleChoice from "./MultipleChoice";
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import Main from "./components/Main";
 
-class App extends React.Component {
+function App(props) {
 
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
-
-
-    render() {
-        return (
-            <>
-                <SingleChoice/>
-                <MultipleChoice/>
-                <SingleChoice/>
-            </>
-        );
-    }
+    return (
+        <Provider store={store}>
+            <Main />
+        </Provider>
+    );
 }
 
 export default App;

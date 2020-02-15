@@ -6,7 +6,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Button from "@material-ui/core/Button";
-import './Question.css'
+import '../Question.css'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -26,7 +26,9 @@ export default function CheckboxesGroup() {
     });
 
     const handleChange = name => event => {
-        setState({ ...state, [name]: event.target.checked });
+
+        alert(event.target.value + " " + event.target.checked);
+        //setState({ ...state, [name]: event.target.checked });
     };
 
     const { some_answer_1, some_answer_2, some_answer_3 } = state;
@@ -38,16 +40,16 @@ export default function CheckboxesGroup() {
                     <FormLabel component="legend">2/3 What is true about...</FormLabel>
                     <FormGroup>
                         <FormControlLabel
-                            control={<Checkbox color="primary" onChange={handleChange('Some answer...')} value="Some answer..." />}
+                            control={<Checkbox color="primary" onChange={handleChange('Some answer...')} value="1" />}
                             label="Some answer..." checked={some_answer_1}
                         />
                         <FormControlLabel
-                            control={<Checkbox color="primary" onChange={handleChange('Some answer...')} value="Some answer..." />}
+                            control={<Checkbox color="primary" onChange={handleChange('Some answer...')} value="2" />}
                             label="Some answer..." checked={some_answer_2}
                         />
                         <FormControlLabel
                             control={
-                                <Checkbox color="primary"  onChange={handleChange('Some answer...')} value="Some answer..." />
+                                <Checkbox color="primary"  onChange={handleChange('Some answer...')} value="3" />
                             }
                             label="Some answer..." checked={some_answer_3}
                         />
