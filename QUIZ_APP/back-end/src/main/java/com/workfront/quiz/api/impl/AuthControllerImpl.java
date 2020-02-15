@@ -46,36 +46,21 @@ public class AuthControllerImpl implements AuthController {
     public void register(@RequestBody UserRegistrationDto registrationDto) {
 
         UserInfoDto user= userService.register(registrationDto);
-        ConfirmationTokenEntity confirmationToken = new ConfirmationTokenEntity();
-        confirmationToken.setUser(userRepository.findByEmail(user.getEmail()).get());
-        confirmationTokenRepository.save(confirmationToken);
+
         SimpleMailMessage msg = new SimpleMailMessage();
         msg.setTo(user.getEmail());
-        msg.setText("To confirm your account, please click here : "
-                +"http://localhost:8090/api/auth/confirm-account?token="+confirmationToken.getText());
+        String messageBody = "To confirm your account, please click here : "
+                + "http://localhost:8090/api/auth/confirm-account?token="
+                + userService.generateToken(user.getEmail());
+        msg.setText(messageBody);
         msg.setSubject("Email Confirmation");
         javaMailSender.send(msg);
     }
 
-    @RequestMapping(value="/confirm-account", method= {RequestMethod.GET, RequestMethod.POST})
-    public ModelAndView confirmUserAccount(ModelAndView modelAndView, @RequestParam("token")String confirmationToken)
+    @GetMapping(value="/confirm-account")
+    public void confirmUserAccount(@RequestParam("token") String confirmationToken)
     {
-        ConfirmationTokenEntity token = confirmationTokenRepository.findByText(confirmationToken);
-
-        if(token != null)
-        {
-            UserEntity user = userRepository.findByEmail(token.getUser().getEmail()).get();
-            user.setActive(true);
-            userRepository.save(user);
-            modelAndView.setViewName("accountVerified");
-        }
-        else
-        {
-            modelAndView.addObject("message","The link is invalid or broken!");
-            modelAndView.setViewName("error");
-        }
-
-        return modelAndView;
+            userService.activateByEmailToken(confirmationToken);
     }
 
     @Override

@@ -3,26 +3,24 @@ package com.workfront.quiz.service.impl;
 import com.workfront.quiz.dto.user.PasswordChangingDto;
 import com.workfront.quiz.dto.user.UserInfoDto;
 import com.workfront.quiz.dto.user.UserRegistrationDto;
+import com.workfront.quiz.entity.ConfirmationTokenEntity;
 import com.workfront.quiz.entity.UserEntity;
 import com.workfront.quiz.entity.enums.UserRole;
+import com.workfront.quiz.repository.ConfirmationTokenRepository;
 import com.workfront.quiz.repository.UserRepository;
 import com.workfront.quiz.security.jwt.JwtUser;
 import com.workfront.quiz.service.UserService;
+import com.workfront.quiz.service.util.exception.InvalidTokenException;
 import com.workfront.quiz.service.util.exception.UserAlreadyExistsException;
 import com.workfront.quiz.service.util.exception.UserNotFoundException;
 import com.workfront.quiz.service.util.exception.WrongPasswordException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Optional;
 
 @Service
@@ -30,10 +28,13 @@ public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
     private PasswordEncoder passwordEncoder;
+    private ConfirmationTokenRepository tokenRepository;
 
-    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder,
+                           ConfirmationTokenRepository tokenRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.tokenRepository = tokenRepository;
     }
 
     @Override
@@ -142,10 +143,27 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Long getMe() {
-        JwtUser user = (JwtUser)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        JwtUser user = (JwtUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return user.getId();
+    }
 
-        Long userId = user.getId();
+    @Override
+    @Transactional
+    public String generateToken(String email) {
+        UserEntity userEntity = userRepository.findByEmail(email).orElseThrow(() -> new UserNotFoundException(email));
 
-        return userId;
+        ConfirmationTokenEntity confirmationToken = new ConfirmationTokenEntity();
+        confirmationToken.setUser(userEntity);
+        ConfirmationTokenEntity saved = tokenRepository.save(confirmationToken);
+        return saved.getText();
+    }
+
+    @Override
+    @Transactional
+    public void activateByEmailToken(String tokenText) {
+        ConfirmationTokenEntity token = tokenRepository.findByText(tokenText).orElseThrow(InvalidTokenException::new);
+        token.getUser().setActive(true);
+        userRepository.save(token.getUser());
+        tokenRepository.delete(token);
     }
 }

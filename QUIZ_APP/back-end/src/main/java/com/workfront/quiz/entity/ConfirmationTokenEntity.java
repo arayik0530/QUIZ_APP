@@ -19,7 +19,7 @@ public class ConfirmationTokenEntity {
     private String text = UUID.randomUUID().toString();
 
 
-    @OneToOne(targetEntity = UserEntity.class, fetch = FetchType.EAGER) //TODO ardyoq Eager jishta?
+    @OneToOne(targetEntity = UserEntity.class, fetch = FetchType.LAZY)
     @JoinColumn(nullable = false, name = "user_id")
     private UserEntity user;
 

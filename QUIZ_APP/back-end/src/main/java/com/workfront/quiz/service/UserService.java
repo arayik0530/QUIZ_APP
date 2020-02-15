@@ -6,6 +6,7 @@ import com.workfront.quiz.dto.user.UserRegistrationDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 
 public interface UserService {
 
@@ -26,4 +27,9 @@ public interface UserService {
     UserInfoDto register(UserRegistrationDto registrationDto);
 
     Long getMe();
+
+    String generateToken(String email);
+
+    @Transactional
+    void activateByEmailToken(String token);
 }

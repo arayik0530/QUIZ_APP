@@ -33,7 +33,7 @@
       <ObjectId>17796</ObjectId>
       <StateNumber>1562</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>4872</IntrospectionStateNumber>
+      <IntrospectionStateNumber>4899</IntrospectionStateNumber>
       <Visible>1</Visible>
       <Relations>sequence|table|26628|26630|1
 sequence|table|26641|26643|1
@@ -139,7 +139,7 @@ sequence|table|26703|26705|1
       <Comment>standard public schema</Comment>
       <StateNumber>351</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>4873</IntrospectionStateNumber>
+      <IntrospectionStateNumber>4900</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -332,12 +332,12 @@ sequence|table|26703|26705|1
     <table id="51" parent="23" name="user_role">
       <ObjectId>26700</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>4869</StateNumber>
+      <StateNumber>4898</StateNumber>
     </table>
     <table id="52" parent="23" name="users">
       <ObjectId>26705</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>4871</StateNumber>
+      <StateNumber>4898</StateNumber>
     </table>
     <column id="53" parent="41" name="id">
       <Position>1</Position>
@@ -818,14 +818,15 @@ sequence|table|26703|26705|1
       <TypeId>1043</TypeId>
     </column>
     <foreign-key id="119" parent="51" name="fkj345gk1bovqvfame88rcx7yyx">
-      <ObjectId>26775</ObjectId>
-      <StateNumber>4869</StateNumber>
+      <ObjectId>26791</ObjectId>
+      <StateNumber>4898</StateNumber>
       <ColNames>user_id</ColNames>
       <RefTableId>26705</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>users</RefTableName>
       <RefKeyName>users_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
+      <OnDelete>cascade</OnDelete>
     </foreign-key>
     <column id="120" parent="52" name="id">
       <Position>1</Position>
