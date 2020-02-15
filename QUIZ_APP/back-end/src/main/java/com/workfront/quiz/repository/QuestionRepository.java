@@ -20,6 +20,7 @@ public interface QuestionRepository extends JpaRepository<QuestionEntity, Long> 
 
     Page<QuestionEntity> findAllByTopic(TopicEntity topic, Pageable pageable);
 
-    @Query(value = "SELECT  * from questions where topic_id=:topicId group by id order by random () limit 20", nativeQuery = true)
-    List<QuestionEntity> generateQuestion(@Param("topicId") Long topicId);
+    @Query(value = "SELECT  * from questions where topic_id=:topicId " +
+            "group by id order by random () limit :questionLimit", nativeQuery = true)
+    List<QuestionEntity> generateQuestion(@Param("topicId") Long topicId, @Param("questionLimit") Long questionLimit);
 }

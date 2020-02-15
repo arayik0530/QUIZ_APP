@@ -24,6 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @Service
+@Transactional(readOnly = true)
 public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
@@ -39,22 +40,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserInfoDto findById(Long id) {
-        Optional<UserEntity> byId = userRepository.findById(id);
-        if (byId.isPresent()) {
-            return UserInfoDto.mapFromEntity(byId.get());
-        } else {
-            throw new UserNotFoundException(id);
-        }
+        UserEntity userEntity = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
+        return UserInfoDto.mapFromEntity(userEntity);
     }
 
     @Override
     public UserInfoDto findByEmail(String email) {
-        Optional<UserEntity> byEmail = userRepository.findByEmail(email);
-        if (byEmail.isPresent()) {
-            return UserInfoDto.mapFromEntity(byEmail.get());
-        } else {
-            throw new UserNotFoundException(email);
-        }
+        UserEntity userEntity = userRepository.findByEmail(email).orElseThrow(() -> new UserNotFoundException(email));
+        return UserInfoDto.mapFromEntity(userEntity);
     }
 
     @Override
@@ -79,47 +72,35 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public void remove(Long id) {
 
-        Optional<UserEntity> byId = userRepository.findById(id);
-        if (byId.isPresent()) {
-            userRepository.deleteById(id);
-        } else {
-            throw new UserNotFoundException(id);
-        }
+        userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
+        userRepository.deleteById(id);
+    }
+
+    @Override
+    @Transactional
+    public void update(UserInfoDto user) { //TODO jshtel es method@ sxala ashxatum, mek el imageId loading@ stex
+        UserEntity userEntity = userRepository.findById(user.getId())
+                .orElseThrow(() -> new UserNotFoundException(user.getId()));
+        user.toEntity(userEntity);
+        userRepository.save(userEntity);
 
     }
 
     @Override
-    public UserInfoDto update(UserInfoDto user) { //TODO jshtel es method@ sxala ashxatum, mek el imageId loading@ stex
-        Optional<UserEntity> byId = userRepository.findById(user.getId());
-        if (byId.isPresent()) {
-
-            UserEntity userEntity = byId.get();
-            user.toEntity(userEntity);
-            userRepository.save(userEntity);
-
-            return UserInfoDto.mapFromEntity(userEntity);
-        } else {
-            throw new UserNotFoundException(user.getId());
-        }
-
-    }
-
-    @Override
+    @Transactional
     public void updatePassword(PasswordChangingDto passwordChangingDto) {
-        Optional<UserEntity> byEmail = userRepository.findByEmail(passwordChangingDto.getEmail());
-        if (byEmail.isPresent()) {
-            UserEntity userEntity = byEmail.get();
-            if (userEntity.getPassword().equals(passwordChangingDto.getOldPassword())) {
-                userEntity.setPassword(passwordChangingDto.getNewPassword());
-                userRepository.save(userEntity);
-            } else {
-                throw new WrongPasswordException();
-            }
 
+        UserEntity userEntity = userRepository.findByEmail(passwordChangingDto.getEmail())
+                .orElseThrow(() -> new UserNotFoundException(passwordChangingDto.getEmail()));
+
+        if (userEntity.getPassword().equals(passwordChangingDto.getOldPassword())) {
+            userEntity.setPassword(passwordChangingDto.getNewPassword());
+            userRepository.save(userEntity);
         } else {
-            throw new UserNotFoundException(passwordChangingDto.getEmail());
+            throw new WrongPasswordException();
         }
     }
 

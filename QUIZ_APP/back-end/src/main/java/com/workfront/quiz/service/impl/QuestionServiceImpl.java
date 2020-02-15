@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.SQLOutput;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -88,8 +89,8 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public Collection<QuestionEntity> generateQuestions(Long topicId) {
-        return questionRepository.generateQuestion(topicId);
+    public List<QuestionEntity> generateQuestions(Long topicId, Long count) {
+        return questionRepository.generateQuestion(topicId, count);
     }
 
     @Override

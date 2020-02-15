@@ -33,6 +33,9 @@ public class UpcomingQuizEntity {
     @Column(name = "deadline")
     private LocalDateTime deadline;
 
+    @Column(name = "count", nullable = false)
+    private Long count;
+
     @Override
     public String toString() {
         return "UpcomingQuizEntity{" +

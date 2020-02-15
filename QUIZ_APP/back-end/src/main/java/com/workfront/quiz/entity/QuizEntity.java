@@ -45,6 +45,9 @@ public class QuizEntity {
     @Column(name = "success_percent", updatable = false, scale = 2, precision = 5)
     private Double successPercent;
 
+    @Column(name = "is_finished", nullable = false)
+    private Boolean isFinished = Boolean.FALSE;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

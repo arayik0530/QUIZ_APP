@@ -17,5 +17,5 @@ public interface TopicService {
 
     void remove(Long id);
 
-    void update(TopicDto topic); //TODO or param must be Entity or DTO
+    void update(TopicDto topic);
 }

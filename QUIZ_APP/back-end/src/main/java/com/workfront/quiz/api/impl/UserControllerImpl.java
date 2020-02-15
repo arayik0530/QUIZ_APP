@@ -48,9 +48,9 @@ public class UserControllerImpl implements UserController {
 
     @Override
     @PutMapping("update")
-    public UserInfoDto update(@RequestBody UserInfoDto userInfoDto) {
-        return userService.update(userInfoDto);
-    } //TODO uxxel
+    public void update(@RequestBody UserInfoDto userInfoDto) {
+         userService.update(userInfoDto);
+    }
 
     @Override
     @PutMapping("change-password")

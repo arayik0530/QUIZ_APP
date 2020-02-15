@@ -16,7 +16,7 @@ public interface UserController {
 
     void remove(Long id);
 
-    UserInfoDto update(UserInfoDto user);
+    void update(UserInfoDto user);
 
     void changePassword(PasswordChangingDto passwordChangingDto);
 

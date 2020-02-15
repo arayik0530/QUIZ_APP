@@ -5,7 +5,6 @@ import com.workfront.quiz.dto.user.UserInfoDto;
 import com.workfront.quiz.dto.user.UserRegistrationDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 
 public interface UserService {
@@ -20,7 +19,7 @@ public interface UserService {
 
     void remove(Long id);
 
-    UserInfoDto update(UserInfoDto user);  //TODO or void?
+    void update(UserInfoDto user);
 
     void updatePassword(PasswordChangingDto passwordChangingDto);
 
@@ -30,6 +29,5 @@ public interface UserService {
 
     String generateToken(String email);
 
-    @Transactional
     void activateByEmailToken(String token);
 }
