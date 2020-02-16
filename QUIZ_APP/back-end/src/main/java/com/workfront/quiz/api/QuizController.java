@@ -1,14 +1,13 @@
 package com.workfront.quiz.api;
 
 import com.workfront.quiz.dto.question.QuestionDto;
-import com.workfront.quiz.dto.quiz.PastQuizInfoDto;
-import com.workfront.quiz.dto.quiz.QuizDto;
-import com.workfront.quiz.dto.quiz.QuizDtoShortInfo;
-import com.workfront.quiz.dto.quiz.UpcomingQuizDto;
+import com.workfront.quiz.dto.quiz.*;
 import com.workfront.quiz.entity.TopicEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.jws.soap.SOAPBinding;
 import java.util.Collection;
@@ -34,4 +33,5 @@ public interface QuizController {
 
     Page<UpcomingQuizDto> getUpcomingQuizForUser(Long userId, Pageable pageable);
 
+    void createUpcomingQuizForUser(UpcomingQuizCreationDto upcomingQuizCreationDto);
 }

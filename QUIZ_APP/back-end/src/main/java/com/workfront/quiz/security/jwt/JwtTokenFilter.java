@@ -38,17 +38,10 @@ public class JwtTokenFilter extends GenericFilterBean {
             Optional<String> optionalJwtToken = jwtTokenProvider
                     .resolveToken((HttpServletRequest) servletRequest);
 
-            if (optionalJwtToken.isPresent()) {
-                if (isUserActive(optionalJwtToken.get())) {
-
                     optionalJwtToken.map(jwtTokenProvider::getAuthentication)
                             .ifPresent(SecurityContextHolder.getContext()::setAuthentication);
                     filterChain.doFilter(servletRequest, servletResponse);
 
-                } else {
-                    throw new InactiveUserException(jwtTokenProvider.getUsername(optionalJwtToken.get()));
-                }
-            }
 
         } catch (JwtAuthenticationException jwtException) {
             exceptionHandlerController.handleFilterExceptions(jwtException, (HttpServletResponse) servletResponse);

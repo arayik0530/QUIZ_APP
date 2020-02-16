@@ -33,7 +33,7 @@ public class UserInfoDto {
         userInfoDto.roles = Stream.of(userEntity.getRoles())
                 .map(Object::toString).toArray(String[]::new);
 
-        userInfoDto.imageId = userEntity.getProfileImage().getId();
+        userInfoDto.imageId = (userEntity.getProfileImage()!= null) ? userEntity.getProfileImage().getId() : null;
         return userInfoDto;
     }
 

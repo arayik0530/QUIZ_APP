@@ -3,14 +3,12 @@ package com.workfront.quiz.service.impl;
 import com.workfront.quiz.dto.question.QuestionDto;
 import com.workfront.quiz.dto.quiz.*;
 import com.workfront.quiz.entity.*;
-import com.workfront.quiz.repository.QuizQuestionRepository;
-import com.workfront.quiz.repository.QuizRepository;
-import com.workfront.quiz.repository.UpComingQuizRepository;
-import com.workfront.quiz.repository.UserRepository;
+import com.workfront.quiz.repository.*;
 import com.workfront.quiz.service.QuestionService;
 import com.workfront.quiz.service.QuizService;
 import com.workfront.quiz.service.UserService;
 import com.workfront.quiz.service.util.exception.QuizNotFoundException;
+import com.workfront.quiz.service.util.exception.TopicNotFoundException;
 import com.workfront.quiz.service.util.exception.UpcomingQuizNotFoundException;
 import com.workfront.quiz.service.util.exception.UserNotFoundException;
 import org.springframework.data.domain.Page;
@@ -29,6 +27,7 @@ public class QuizServiceImpl implements QuizService {
     private QuizRepository quizRepository;
 
     private QuestionService questionService;
+    private TopicRepository topicRepository;
 
     private UpComingQuizRepository upComingQuizRepository;
     private UserRepository userRepository;
@@ -136,5 +135,27 @@ public class QuizServiceImpl implements QuizService {
         UserEntity userEntity = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException(userId));
         Page<UpcomingQuizEntity> allByUser = upComingQuizRepository.findAllByUser(userEntity, pageable);
         return allByUser.map(UpcomingQuizDto::mapFromEntity);
+    }
+
+    @Override
+    @Transactional
+    public void createUpcomingQuiz(UpcomingQuizCreationDto quizCreationDto) {
+        UpcomingQuizEntity upcomingQuizEntity = new UpcomingQuizEntity();
+
+        UserEntity userEntity = userRepository.findById(quizCreationDto.getUserId())
+                .orElseThrow(() -> new UserNotFoundException(quizCreationDto.getUserId()));
+
+        TopicEntity topicEntity = topicRepository.findById(quizCreationDto.getTopicId())
+                .orElseThrow(() -> new TopicNotFoundException(quizCreationDto.getTopicId()));
+
+        upcomingQuizEntity.setUser(userEntity);
+        upcomingQuizEntity.setTopic(topicEntity);
+
+        upcomingQuizEntity.setDeadline(quizCreationDto.getDeadline().atStartOfDay());
+        upcomingQuizEntity.setCount(quizCreationDto.getQuestionCount());
+        upcomingQuizEntity.setDurationInMinutes(quizCreationDto.getDurationInMinutes());
+        upComingQuizRepository.save(upcomingQuizEntity);
+        userEntity.getUpcomingQuizes().add(upcomingQuizEntity);
+        userRepository.save(userEntity);
     }
 }

@@ -2,10 +2,7 @@ package com.workfront.quiz.api.impl;
 
 import com.workfront.quiz.api.QuizController;
 import com.workfront.quiz.dto.question.QuestionDto;
-import com.workfront.quiz.dto.quiz.PastQuizInfoDto;
-import com.workfront.quiz.dto.quiz.QuizDto;
-import com.workfront.quiz.dto.quiz.QuizDtoShortInfo;
-import com.workfront.quiz.dto.quiz.UpcomingQuizDto;
+import com.workfront.quiz.dto.quiz.*;
 import com.workfront.quiz.entity.TopicEntity;
 import com.workfront.quiz.service.QuizService;
 import com.workfront.quiz.service.UserService;
@@ -75,13 +72,19 @@ public class QuizControllerImpl implements QuizController {
     @Override
     @GetMapping("upcoming/own")
     public Page<UpcomingQuizDto> getUpcomingQuizForAuthenticatedUser(Pageable pageable) {
-        return quizService.getUpcomingQuizes(userService.getMe(),pageable);
+        return quizService.getUpcomingQuizes(userService.getMe(), pageable);
     }
 
     @Override
     @GetMapping("upcoming/user/{userId}")
     @PreAuthorize(value = "hasAnyAuthority('ADMIN,OBSERVER')")
     public Page<UpcomingQuizDto> getUpcomingQuizForUser(@PathVariable Long userId, @PageableDefault Pageable pageable) {
-        return quizService.getUpcomingQuizes(userId,pageable);
+        return quizService.getUpcomingQuizes(userId, pageable);
+    }
+
+    @Override
+    @PostMapping("create-upcoming-quiz")
+    public void createUpcomingQuizForUser(@RequestBody UpcomingQuizCreationDto upcomingQuizCreationDto) {
+        quizService.createUpcomingQuiz(upcomingQuizCreationDto);
     }
 }
