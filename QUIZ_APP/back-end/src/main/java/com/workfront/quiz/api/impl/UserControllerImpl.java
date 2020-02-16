@@ -65,11 +65,12 @@ public class UserControllerImpl implements UserController {
     @PreAuthorize(value = "isAuthenticated()")
     public UserInfoDto getMe() {
         return userService.findById(userService.getMe());
-    }
+    } //TODO
 
     @Override
     @GetMapping(value = "image/{userId}")
     public byte[] getOriginalImage(@PathVariable Long userId) {
+
         return userService.getOriginalImage(userId);
     }
 
