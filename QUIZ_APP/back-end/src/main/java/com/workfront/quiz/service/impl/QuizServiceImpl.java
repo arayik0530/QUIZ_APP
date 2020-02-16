@@ -7,16 +7,12 @@ import com.workfront.quiz.repository.*;
 import com.workfront.quiz.service.QuestionService;
 import com.workfront.quiz.service.QuizService;
 import com.workfront.quiz.service.UserService;
-import com.workfront.quiz.service.util.exception.QuizNotFoundException;
-import com.workfront.quiz.service.util.exception.TopicNotFoundException;
-import com.workfront.quiz.service.util.exception.UpcomingQuizNotFoundException;
-import com.workfront.quiz.service.util.exception.UserNotFoundException;
+import com.workfront.quiz.service.util.exception.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -81,8 +77,8 @@ public class QuizServiceImpl implements QuizService {
 
     @Override
     @Transactional
-    public Collection<QuestionDto> generateQuiz(Long upComingQuizId) {
-
+    public QuestionDto generateQuiz(Long upComingQuizId) {
+        int startId = 0;
         UpcomingQuizEntity upcomingQuizEntity = upComingQuizRepository.findById(upComingQuizId)
                 .orElseThrow(() -> new UpcomingQuizNotFoundException(upComingQuizId));
 
@@ -106,9 +102,17 @@ public class QuizServiceImpl implements QuizService {
             quizQuestionEntity.setQuiz(quizEntity);
             quizQuestionEntity.setQuestion(questionEntity);
             quizQuestionRepository.save(quizQuestionEntity);
+            quizEntity.getQuizQuestions().add(quizQuestionEntity);
         }
+        quizRepository.save(quizEntity);
 
-        return null;//TODO check this
+//TODO need to split his method
+
+        QuestionDto questionDto = QuestionDto.mapFromEntity(quizEntity.getQuizQuestions().get(startId).getQuestion());
+        if (quizEntity.getQuizQuestions().size() > startId + 1) {
+            questionDto.setNextQuestionId(quizEntity.getQuizQuestions().get(++startId).getId());
+        }
+        return questionDto;//TODO check this, if quizQuestions is empty, throw exception
     }
 
     @Override
@@ -157,5 +161,21 @@ public class QuizServiceImpl implements QuizService {
         upComingQuizRepository.save(upcomingQuizEntity);
         userEntity.getUpcomingQuizes().add(upcomingQuizEntity);
         userRepository.save(userEntity);
+    }
+
+    @Override
+    public QuestionDto getNextQuestion(Long nextQuestionId) {
+        QuizQuestionEntity quizQuestionEntity = quizQuestionRepository.findById(nextQuestionId)
+                .orElseThrow(() -> new QuizQuestionNotFoundException(nextQuestionId));
+        QuestionDto questionDto = QuestionDto.mapFromEntity(quizQuestionEntity.getQuestion());
+        QuizEntity quiz = quizQuestionEntity.getQuiz();
+        int offsetOfQuestion = quiz.getQuizQuestions().indexOf(quizQuestionEntity);
+        if (quiz.getQuizQuestions().size() > offsetOfQuestion + 1) {
+            Long nextId = quiz.getQuizQuestions().get(++offsetOfQuestion).getId();
+
+            questionDto.setNextQuestionId(nextId);
+            return questionDto;
+        }
+        return null;
     }
 }

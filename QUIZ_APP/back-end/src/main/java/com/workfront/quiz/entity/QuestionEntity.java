@@ -33,6 +33,8 @@ public class QuestionEntity {
     @EqualsAndHashCode.Exclude
     private List<AnswerEntity> answers;
 
+    private Boolean isMultiAnswer;
+
     @Override
     public String toString() {
         return "QuestionEntity{" +

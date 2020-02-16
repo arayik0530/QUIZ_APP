@@ -16,6 +16,8 @@ public class CreateQuestionDto {
     private String text;
 
     private List<CreateAnswerDto> createAnswerDtoList;
+    private Boolean isMultiAnswer;
+
 
     public QuestionEntity toEntity() {
 
@@ -26,6 +28,7 @@ public class CreateQuestionDto {
                         .map(CreateAnswerDto::toEntity)
                         .collect(Collectors.toList());
 
+        question.setIsMultiAnswer(isMultiAnswer);
         question.setAnswers(answerEntities);
         question.setText(this.text);
         return question;

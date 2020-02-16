@@ -6,8 +6,10 @@ import com.workfront.quiz.entity.TopicEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.jws.soap.SOAPBinding;
 import java.util.Collection;
@@ -22,8 +24,11 @@ public interface QuizController {
 
     void remove(Long id);
 
-    Collection<QuestionDto> startQuiz(Long upComingQuizId);
+    QuestionDto startQuiz(Long upComingQuizId);
 
+
+    @GetMapping("question")
+    QuestionDto getQuestion(@RequestParam Long nextQuestionId);
 
     Page<QuizDtoShortInfo> getQuizesForAuthenticatedUser(Pageable pageable);
 

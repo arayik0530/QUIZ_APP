@@ -18,12 +18,17 @@ public class QuestionDto {
 
     private List<AnswerDto> answers;
 
+    private Boolean isMultiAnswer;
+
+    private Long nextQuestionId;
+
     public QuestionEntity toEntity() {
         QuestionEntity question = new QuestionEntity();
         question.setText(this.text);
 
         return question;
     }
+
 
     public static QuestionDto mapFromEntity(QuestionEntity question) {
 
@@ -34,6 +39,7 @@ public class QuestionDto {
         questionDto.setTopicId(question.getTopic().getId());
         questionDto.setAnswers(question.getAnswers().stream()
                 .map(AnswerDto::mapFromEntity).collect(Collectors.toList()));
+        questionDto.setIsMultiAnswer(question.getIsMultiAnswer());
         return questionDto;
     }
 

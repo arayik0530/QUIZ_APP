@@ -16,6 +16,8 @@ public class QuestionForPastQuizDto
 
     private String text;
 
+    private Boolean isMultiAnswer;
+
     private List<AnswerForPastQuizDto> answers;
 
     public QuestionEntity toEntity() {
@@ -34,6 +36,8 @@ public class QuestionForPastQuizDto
         questionForPastQuizDto.setTopicId(question.getTopic().getId());
         questionForPastQuizDto.setAnswers(question.getAnswers().stream()
                 .map(AnswerForPastQuizDto::mapFromEntity).collect(Collectors.toList()));
+
+        questionForPastQuizDto.setIsMultiAnswer(question.getIsMultiAnswer());
         return questionForPastQuizDto;
     }
 

@@ -16,7 +16,7 @@ public interface QuizService {
 
     Page<QuizDto> getQuizesByTopic(TopicEntity topic, Pageable pageable);
 
-    Collection<QuestionDto> generateQuiz(Long topicId);
+    QuestionDto generateQuiz(Long topicId);
 
     void remove(Long id);
 
@@ -27,4 +27,7 @@ public interface QuizService {
     Page<UpcomingQuizDto> getUpcomingQuizes(Long userId, Pageable pageable);
 
     void createUpcomingQuiz(UpcomingQuizCreationDto quizCreationDto);
+
+    QuestionDto getNextQuestion(Long nextQuestionId);
+
 }

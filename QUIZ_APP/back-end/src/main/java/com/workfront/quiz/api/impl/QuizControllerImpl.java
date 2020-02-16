@@ -50,9 +50,21 @@ public class QuizControllerImpl implements QuizController {
 
     @Override
     @GetMapping("start")
-    public Collection<QuestionDto> startQuiz(@RequestParam Long upComingQuizId) {
+    public QuestionDto startQuiz(@RequestParam Long upComingQuizId) {
 
         return quizService.generateQuiz(upComingQuizId);
+    }
+
+    @Override
+    @GetMapping("get-question")
+    public QuestionDto getQuestion(@RequestParam Long nextQuestionId) {
+        return quizService.getNextQuestion(nextQuestionId);
+    }
+
+    @PostMapping("finish")
+    public PastQuizInfoDto finishQuiz(@RequestParam Long quizId){
+        //TODO compute answers and set successPercent
+       return quizService.getQuizInfo(quizId);
     }
 
     @Override
