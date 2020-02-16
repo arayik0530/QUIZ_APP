@@ -1,7 +1,10 @@
 package com.workfront.quiz.service.impl;
 
 import com.workfront.quiz.dto.question.QuestionDto;
+import com.workfront.quiz.dto.quiz.PastQuizInfoDto;
 import com.workfront.quiz.dto.quiz.QuizDto;
+import com.workfront.quiz.dto.quiz.QuizDtoShortInfo;
+import com.workfront.quiz.dto.quiz.QuizQuestionDto;
 import com.workfront.quiz.entity.*;
 import com.workfront.quiz.repository.QuizQuestionRepository;
 import com.workfront.quiz.repository.QuizRepository;
@@ -71,6 +74,14 @@ public class QuizServiceImpl implements QuizService {
         quizRepository.deleteById(id);
     }
 
+    @Override
+    public Page<QuizDtoShortInfo> getQuizesByUserId(Long userId, Pageable pageable) {
+        UserEntity userEntity = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException(userId));
+
+        Page<QuizEntity> allByUser = quizRepository.findAllByUser(userEntity, pageable);
+        return allByUser.map(QuizDtoShortInfo::mapFromEntity);
+    }
+
 
     @Override
     @Transactional
@@ -80,7 +91,7 @@ public class QuizServiceImpl implements QuizService {
                 .orElseThrow(() -> new UpcomingQuizNotFoundException(upComingQuizId));
 
         List<QuestionEntity> questionEntities = questionService
-                .generateQuestions(upcomingQuizEntity.getTopic().getId(),upcomingQuizEntity.getCount());
+                .generateQuestions(upcomingQuizEntity.getTopic().getId(), upcomingQuizEntity.getCount());
 
         Long userId = userService.getMe();
 
@@ -101,6 +112,25 @@ public class QuizServiceImpl implements QuizService {
             quizQuestionRepository.save(quizQuestionEntity);
         }
 
-        return null;
+        return null;//TODO check this
+    }
+
+    @Override
+    public PastQuizInfoDto getQuizInfo(Long quizId) {
+        PastQuizInfoDto pastQuizInfoDto = new PastQuizInfoDto();
+        QuizEntity quizEntity = quizRepository.findById(quizId)
+                .orElseThrow(() -> new QuizNotFoundException(quizId));
+
+        pastQuizInfoDto.setId(quizEntity.getId());
+        pastQuizInfoDto.setTopic(quizEntity.getTopic().getTitle());
+        pastQuizInfoDto.setStartTime(quizEntity.getStartTime());
+        pastQuizInfoDto.setEndTime(quizEntity.getEndTime());
+        pastQuizInfoDto.setSuccessPercent(quizEntity.getSuccessPercent());
+
+        for (QuizQuestionEntity quizQuestionEntity : quizEntity.getQuizQuestions()) {
+            pastQuizInfoDto.getQuizQuestions()
+                    .add(QuizQuestionDto.mapFromEntity(quizQuestionEntity));
+        }
+        return pastQuizInfoDto;
     }
 }

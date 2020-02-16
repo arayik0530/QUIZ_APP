@@ -7,6 +7,7 @@ import com.workfront.quiz.repository.UserRepository;
 import com.workfront.quiz.service.util.exception.InactiveUserException;
 import com.workfront.quiz.service.util.exception.UserNotFoundException;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.GenericFilterBean;
@@ -21,7 +22,7 @@ import java.io.IOException;
 import java.util.Optional;
 
 @Component
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class JwtTokenFilter extends GenericFilterBean {
     private final JwtTokenProvider jwtTokenProvider;
     private final UserRepository userRepository;
