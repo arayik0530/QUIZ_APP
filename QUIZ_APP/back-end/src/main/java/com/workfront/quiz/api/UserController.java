@@ -4,8 +4,7 @@ import com.workfront.quiz.dto.user.PasswordChangingDto;
 import com.workfront.quiz.dto.user.UserInfoDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.ResponseEntity;
-
+import org.springframework.web.multipart.MultipartFile;
 public interface UserController {
 
     UserInfoDto getById(Long id);
@@ -16,9 +15,16 @@ public interface UserController {
 
     void remove(Long id);
 
-    UserInfoDto update(UserInfoDto user);
+    void update(UserInfoDto user);
 
     void changePassword(PasswordChangingDto passwordChangingDto);
 
-    Long getMe();
+    UserInfoDto getMe();
+
+    byte[] getOriginalImage(Long userId);
+
+    byte[] getSmallImage(Long userId);
+
+    void uploadImage(MultipartFile image);
+
 }

@@ -1,8 +1,14 @@
 package com.workfront.quiz.entity;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 
 @Entity
+@Data
 @Table(name = "small_images")
 public class SmallImageEntity {
     @Id
@@ -13,7 +19,10 @@ public class SmallImageEntity {
 
     @Column(name = "picture")
     @Lob
-    @Basic(fetch = FetchType.LAZY)
+    @Basic
+    @Type(type = "org.hibernate.type.BinaryType")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private byte[] picture;
 
 }

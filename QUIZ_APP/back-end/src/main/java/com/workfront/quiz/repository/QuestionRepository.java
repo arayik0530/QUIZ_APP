@@ -12,14 +12,15 @@ import java.util.List;
 
 public interface QuestionRepository extends JpaRepository<QuestionEntity, Long> {
 
-    @Query(value = "from QuestionEntity as question where question.text like ?1%")
+    @Query(value = "from QuestionEntity as question where lower(question.text) like lower(concat(?1,'%'))")
     Page<QuestionEntity> searchByText(String text, Pageable pageable);
 
-    @Query(value = "from QuestionEntity as question where question.text = ?1")
+    @Query(value = "from QuestionEntity as question where lower(question.text) = lower( ?1 )")
     QuestionEntity searchByTextExact(String text);
 
-    Page<QuestionEntity> findAllByTopic(TopicEntity topic, Pageable pageable); //TODO jshtel ashxatuma te che
+    Page<QuestionEntity> findAllByTopic(TopicEntity topic, Pageable pageable);
 
-    @Query(value = "SELECT  * from questions where topic_id=:topicId group by id order by random () limit 20",nativeQuery =  true)
-    List<QuestionEntity> generateQuestion(@Param("topicId") Long topicId);
+    @Query(value = "SELECT  * from questions where topic_id=:topicId " +
+            "group by id order by random () limit :questionLimit", nativeQuery = true)
+    List<QuestionEntity> generateQuestion(@Param("topicId") Long topicId, @Param("questionLimit") Long questionLimit);
 }

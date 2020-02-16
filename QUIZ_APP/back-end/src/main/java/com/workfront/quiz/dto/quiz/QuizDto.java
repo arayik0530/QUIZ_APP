@@ -1,26 +1,23 @@
 package com.workfront.quiz.dto.quiz;
 
-import com.workfront.quiz.entity.QuizQuestionEntity;
 import com.workfront.quiz.entity.QuizEntity;
-import com.workfront.quiz.entity.TopicEntity;
-import com.workfront.quiz.entity.UserEntity;
 import lombok.Data;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Data
 public class QuizDto {
 
     private Long id;
 
-    private UserEntity user;
+    private Long userId;
 
-    private TopicEntity topic;
+    private Long topicId;
 
-    private List<QuizQuestionEntity> questions;
+    private List<QuizQuestionDto> questions;
 
     private LocalDateTime startTime;
 
@@ -29,22 +26,13 @@ public class QuizDto {
     private Double successPercent;
 
 
-
-    public QuizEntity toEntity(QuizEntity quiz){
-        quiz.setQuizQuestions(this.getQuestions());
-        quiz.setTopic(this.getTopic()); //TODO jshtel es tox@ petq a te che?
-        quiz.setSuccessPercent(this.getSuccessPercent());
-        quiz.setEndTime(this.getEndTime());
-
-        return quiz;
-    }
-
-    public static QuizDto mapFromEntity(QuizEntity quiz){
+    public static QuizDto mapFromEntity(QuizEntity quiz) {
         QuizDto quizDto = new QuizDto();
 
         quizDto.setId(quiz.getId());
-        quizDto.setTopic(quiz.getTopic());
-        quizDto.setQuestions(quiz.getQuizQuestions());
+        quizDto.setTopicId(quiz.getTopic().getId());
+        quizDto.setQuestions(quiz.getQuizQuestions().stream()
+                .map(QuizQuestionDto::mapFromEntity).collect(Collectors.toList()));
         quizDto.setSuccessPercent(quiz.getSuccessPercent());
         quizDto.setStartTime(quiz.getStartTime());
         quizDto.setEndTime(quiz.getEndTime());

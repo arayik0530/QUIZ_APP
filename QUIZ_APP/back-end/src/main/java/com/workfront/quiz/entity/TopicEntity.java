@@ -1,6 +1,8 @@
 package com.workfront.quiz.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;
@@ -19,6 +21,8 @@ public class TopicEntity {
     private String title;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "topic", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     private List<QuestionEntity> questions;
 
 }

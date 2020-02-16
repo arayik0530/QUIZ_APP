@@ -7,10 +7,9 @@ import com.workfront.quiz.service.UserService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/api/user/")
@@ -24,6 +23,7 @@ public class UserControllerImpl implements UserController {
 
     @Override
     @GetMapping("{id}")
+    @PreAuthorize(value = "isAuthenticated()")
     public UserInfoDto getById(@PathVariable Long id) {
         return userService.findById(id);
     }
@@ -50,9 +50,9 @@ public class UserControllerImpl implements UserController {
 
     @Override
     @PutMapping("update")
-    public UserInfoDto update(@RequestBody UserInfoDto userInfoDto) {
-        return userService.update(userInfoDto);
-    } //TODO uxxel
+    public void update(@RequestBody UserInfoDto userInfoDto) {
+        userService.update(userInfoDto);
+    }
 
     @Override
     @PutMapping("change-password")
@@ -61,8 +61,26 @@ public class UserControllerImpl implements UserController {
     }
 
     @Override
-    @GetMapping("me")
-    public Long getMe() {
-        return userService.getMe();
+    @GetMapping
+    @PreAuthorize(value = "isAuthenticated()")
+    public UserInfoDto getMe() {
+        return userService.findById(userService.getMe());
+    }
+
+    @Override
+    @GetMapping(value = "image/{userId}")
+    public byte[] getOriginalImage(@PathVariable Long userId) {
+        return userService.getOriginalImage(userId);
+    }
+
+    @Override
+    @GetMapping(value = "small-image/{userId}")
+    public byte[] getSmallImage(@PathVariable Long userId) {
+        return userService.getSmallImage(userId);
+    }
+
+    @Override
+    public void uploadImage(MultipartFile image) {
+        userService.saveImage(image, userService.getMe());
     }
 }

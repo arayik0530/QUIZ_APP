@@ -2,7 +2,6 @@ package com.workfront.quiz.service;
 
 import com.workfront.quiz.dto.question.CreateQuestionDto;
 import com.workfront.quiz.dto.question.QuestionDto;
-import com.workfront.quiz.entity.AnswerEntity;
 import com.workfront.quiz.entity.QuestionEntity;
 import com.workfront.quiz.entity.TopicEntity;
 import org.springframework.data.domain.Page;
@@ -25,7 +24,7 @@ public interface QuestionService {
 
     void update(QuestionDto question);
 
-    Collection<QuestionEntity> generateQuestions(Long topicId);
+    List<QuestionEntity> generateQuestions(Long topicId, Long count);
 
     void create(CreateQuestionDto question);
 }

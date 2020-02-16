@@ -1,6 +1,7 @@
 package com.workfront.quiz.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -8,7 +9,9 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "questions")
+@Table(name = "questions", indexes = {
+        @Index(name = "questions_text_IDX", columnList = "text")
+})
 @Data
 public class QuestionEntity {
 
@@ -22,10 +25,21 @@ public class QuestionEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "topic_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
+    @EqualsAndHashCode.Exclude
     private TopicEntity topic;
 
 
     @OneToMany(mappedBy = "question", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @EqualsAndHashCode.Exclude
     private List<AnswerEntity> answers;
 
+    @Override
+    public String toString() {
+        return "QuestionEntity{" +
+                "id=" + id +
+                ", text='" + text + '\'' +
+                ", topic=" + topic.getId() +
+                ", answers=" + answers +
+                '}';
+    }
 }

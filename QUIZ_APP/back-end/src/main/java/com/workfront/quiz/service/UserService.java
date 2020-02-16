@@ -5,7 +5,9 @@ import com.workfront.quiz.dto.user.UserInfoDto;
 import com.workfront.quiz.dto.user.UserRegistrationDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.ResponseEntity;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 public interface UserService {
 
@@ -19,11 +21,21 @@ public interface UserService {
 
     void remove(Long id);
 
-    UserInfoDto update(UserInfoDto user);  //TODO or void?
+    void update(UserInfoDto user);
 
     void updatePassword(PasswordChangingDto passwordChangingDto);
 
     UserInfoDto register(UserRegistrationDto registrationDto);
 
     Long getMe();
+
+    String generateToken(String email);
+
+    void activateByEmailToken(String token);
+
+    byte[] getOriginalImage(Long userId);
+
+    byte[] getSmallImage(Long userId);
+
+    void saveImage(MultipartFile image,Long userId);
 }

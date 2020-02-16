@@ -5,16 +5,16 @@ import com.workfront.quiz.entity.TopicEntity;
 import com.workfront.quiz.repository.TopicRepository;
 import com.workfront.quiz.service.TopicService;
 import com.workfront.quiz.service.util.exception.TopicNotFoundException;
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Optional;
 
 
 @Service
+@Transactional(readOnly = true)
 public class TopicServiceImpl implements TopicService {
 
     private TopicRepository topicRepository;
@@ -26,10 +26,9 @@ public class TopicServiceImpl implements TopicService {
     @Override
     public TopicDto findById(Long id) {
         Optional<TopicEntity> byId = topicRepository.findById(id);
-        if(byId.isPresent()){
+        if (byId.isPresent()) {
             return TopicDto.mapFromEntity(byId.get());
-        }
-        else {
+        } else {
             throw new TopicNotFoundException(id);
         }
     }
@@ -48,27 +47,23 @@ public class TopicServiceImpl implements TopicService {
     }
 
     @Override
+    @Transactional
     public void remove(Long id) {
         Optional<TopicEntity> byId = topicRepository.findById(id);
-        if(byId.isPresent()){
+        if (byId.isPresent()) {
             topicRepository.deleteById(id);
-        }
-
-        else {
+        } else {
             throw new TopicNotFoundException(id);
         }
     }
 
     @Override
-    public void update(TopicDto topic) { //TODO id?
-        Optional<TopicEntity> byId = topicRepository.findById(topic.getId());
-        if(byId.isPresent()){
-            TopicEntity topicEntity = byId.get();
-            topicEntity = topic.toEntity();
+    @Transactional
+    public void update(TopicDto topic) {
+        TopicEntity topicEntity = topicRepository.findById(topic.getId())
+                .orElseThrow(() -> new TopicNotFoundException(topic.getId()));
+
+        topicEntity.setTitle(topic.getTitle());
             topicRepository.save(topicEntity);
-        }
-        else {
-            throw new TopicNotFoundException(topic.getId());
-        }
     }
 }
