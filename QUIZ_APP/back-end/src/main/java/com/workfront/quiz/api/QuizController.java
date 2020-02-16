@@ -19,6 +19,7 @@ public interface QuizController {
 
     void remove(Long id);
 
-
     Collection<QuestionDto> startQuiz(Long upComingQuizId);
+
+
 }

@@ -65,7 +65,7 @@ public class UserControllerImpl implements UserController {
     @PreAuthorize(value = "isAuthenticated()")
     public UserInfoDto getMe() {
         return userService.findById(userService.getMe());
-    } //TODO
+    }
 
     @Override
     @GetMapping(value = "image/{userId}")
