@@ -1,10 +1,7 @@
 package com.workfront.quiz.service.impl;
 
 import com.workfront.quiz.dto.question.QuestionDto;
-import com.workfront.quiz.dto.quiz.PastQuizInfoDto;
-import com.workfront.quiz.dto.quiz.QuizDto;
-import com.workfront.quiz.dto.quiz.QuizDtoShortInfo;
-import com.workfront.quiz.dto.quiz.QuizQuestionDto;
+import com.workfront.quiz.dto.quiz.*;
 import com.workfront.quiz.entity.*;
 import com.workfront.quiz.repository.QuizQuestionRepository;
 import com.workfront.quiz.repository.QuizRepository;
@@ -132,5 +129,12 @@ public class QuizServiceImpl implements QuizService {
                     .add(QuizQuestionDto.mapFromEntity(quizQuestionEntity));
         }
         return pastQuizInfoDto;
+    }
+
+    @Override
+    public Page<UpcomingQuizDto> getUpcomingQuizes(Long userId, Pageable pageable) {
+        UserEntity userEntity = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException(userId));
+        Page<UpcomingQuizEntity> allByUser = upComingQuizRepository.findAllByUser(userEntity, pageable);
+        return allByUser.map(UpcomingQuizDto::mapFromEntity);
     }
 }

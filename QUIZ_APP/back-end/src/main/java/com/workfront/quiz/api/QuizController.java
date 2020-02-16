@@ -4,9 +4,11 @@ import com.workfront.quiz.dto.question.QuestionDto;
 import com.workfront.quiz.dto.quiz.PastQuizInfoDto;
 import com.workfront.quiz.dto.quiz.QuizDto;
 import com.workfront.quiz.dto.quiz.QuizDtoShortInfo;
+import com.workfront.quiz.dto.quiz.UpcomingQuizDto;
 import com.workfront.quiz.entity.TopicEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 
 import javax.jws.soap.SOAPBinding;
 import java.util.Collection;
@@ -26,5 +28,10 @@ public interface QuizController {
 
     Page<QuizDtoShortInfo> getQuizesForAuthenticatedUser(Pageable pageable);
 
-    Page<QuizDtoShortInfo> getQuizesForAuthenticatedUser(Long userId, Pageable pageable);
+    Page<QuizDtoShortInfo> getQuizesForUser(Long userId, Pageable pageable);
+
+    Page<UpcomingQuizDto> getUpcomingQuizForAuthenticatedUser(Pageable pageable);
+
+    Page<UpcomingQuizDto> getUpcomingQuizForUser(Long userId, Pageable pageable);
+
 }
