@@ -107,7 +107,6 @@ public class QuestionServiceImpl implements QuestionService {
 
         questionEntity
                 .getAnswers()
-                .stream()
                 .forEach(answer -> answer.setQuestion(questionEntity));
 
         questionRepository.save(questionEntity);

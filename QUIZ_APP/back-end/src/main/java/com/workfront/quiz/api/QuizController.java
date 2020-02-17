@@ -30,6 +30,9 @@ public interface QuizController {
     @GetMapping("question")
     QuestionDto getQuestion(@RequestParam Long nextQuestionId);
 
+    @PostMapping("finish")
+    PastQuizInfoDto finishQuiz(@RequestParam Long quizId);
+
     Page<QuizDtoShortInfo> getQuizesForAuthenticatedUser(Pageable pageable);
 
     Page<QuizDtoShortInfo> getQuizesForUser(Long userId, Pageable pageable);

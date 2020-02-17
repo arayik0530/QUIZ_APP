@@ -1,0 +1,2 @@
+//export const CHANGE_QUESTION = 'CHANGE_QUESTION';
+export const SELECT_ANSWER = 'SELECT_ANSWER';

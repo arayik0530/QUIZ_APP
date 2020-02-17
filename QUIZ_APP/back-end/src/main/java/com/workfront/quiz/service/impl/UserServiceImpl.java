@@ -111,6 +111,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public UserInfoDto register(UserRegistrationDto registrationDto) {
         Optional<UserEntity> byEmail = userRepository.findByEmail(registrationDto.getEmail());
         if (byEmail.isPresent()) {

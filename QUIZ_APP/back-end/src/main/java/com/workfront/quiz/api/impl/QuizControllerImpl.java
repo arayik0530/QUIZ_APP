@@ -61,6 +61,7 @@ public class QuizControllerImpl implements QuizController {
         return quizService.getNextQuestion(nextQuestionId);
     }
 
+    @Override
     @PostMapping("finish")
     public PastQuizInfoDto finishQuiz(@RequestParam Long quizId){
         //TODO compute answers and set successPercent
