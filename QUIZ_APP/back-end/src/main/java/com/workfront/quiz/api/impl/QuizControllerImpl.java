@@ -49,11 +49,10 @@ public class QuizControllerImpl implements QuizController {
     }
 
     @Override
-    @GetMapping("start")
-    public QuestionDto startQuiz(@RequestParam Long upComingQuizId) {
-
-        return quizService.generateQuiz(upComingQuizId);
+    public QuestionDto startQuiz(Long upComingQuizId) {
+        return null;
     }
+
 
     @Override
     @GetMapping("get-question")
@@ -76,7 +75,7 @@ public class QuizControllerImpl implements QuizController {
 
     @Override
     @GetMapping("user/{userId}")
-    @PreAuthorize(value = "hasAnyAuthority('ADMIN,OBSERVER')")
+    @PreAuthorize(value = "hasAnyAuthority('ADMIN','OBSERVER')")
     public Page<QuizDtoShortInfo> getQuizesForUser(@PathVariable Long userId,
                                                    @PageableDefault Pageable pageable) {
         return quizService.getQuizesByUserId(userId, pageable);

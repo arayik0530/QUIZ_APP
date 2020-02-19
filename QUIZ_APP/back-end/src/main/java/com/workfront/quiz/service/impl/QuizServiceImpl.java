@@ -104,7 +104,9 @@ public class QuizServiceImpl implements QuizService {
             quizQuestionRepository.save(quizQuestionEntity);
             quizEntity.getQuizQuestions().add(quizQuestionEntity);
         }
+
         quizRepository.save(quizEntity);
+        upComingQuizRepository.delete(upcomingQuizEntity);
 
 //TODO need to split his method
 
