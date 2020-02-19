@@ -7,11 +7,11 @@ import com.workfront.quiz.repository.*;
 import com.workfront.quiz.service.QuestionService;
 import com.workfront.quiz.service.QuizService;
 import com.workfront.quiz.service.UserService;
+import com.workfront.quiz.service.scheduler.QuizDurationChecker;
 import com.workfront.quiz.service.util.exception.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -29,16 +29,18 @@ public class QuizServiceImpl implements QuizService {
     private UpComingQuizRepository upComingQuizRepository;
     private UserRepository userRepository;
     private QuizQuestionRepository quizQuestionRepository;
+    private QuizDurationChecker quizDurationChecker;
 
     public QuizServiceImpl(UserService userService, QuizRepository quizRepository, QuestionService questionService,
                            UpComingQuizRepository upComingQuizRepository, UserRepository userRepository,
-                           QuizQuestionRepository quizQuestionRepository) {
+                           QuizQuestionRepository quizQuestionRepository, QuizDurationChecker quizDurationChecker) {
         this.userService = userService;
         this.quizRepository = quizRepository;
         this.questionService = questionService;
         this.upComingQuizRepository = upComingQuizRepository;
         this.userRepository = userRepository;
         this.quizQuestionRepository = quizQuestionRepository;
+        this.quizDurationChecker = quizDurationChecker;
     }
 
     @Override
@@ -97,6 +99,7 @@ public class QuizServiceImpl implements QuizService {
         quizEntity.setTopic(upcomingQuizEntity.getTopic());
 
         quizRepository.save(quizEntity);
+        quizDurationChecker.addQuizToCheckingList(quizEntity);
 
         for (QuestionEntity questionEntity : questionEntities) {
             QuizQuestionEntity quizQuestionEntity = new QuizQuestionEntity();
@@ -201,10 +204,10 @@ public class QuizServiceImpl implements QuizService {
         for (QuizQuestionEntity quizQuestion : quizQuestions) {
             QuestionEntity question = quizQuestion.getQuestion();
 
-                int trueAnswersCount = getTrueAnswersCount(question.getAnswers());
-                int usersTrueAnswers = getTrueAnswersCount(quizQuestion.getGivenAnswers());
-                double answerScore = (double) usersTrueAnswers / trueAnswersCount;
-                userScoreCount += answerScore;
+            int trueAnswersCount = getTrueAnswersCount(question.getAnswers());
+            int usersTrueAnswers = getTrueAnswersCount(quizQuestion.getGivenAnswers());
+            double answerScore = (double) usersTrueAnswers / trueAnswersCount;
+            userScoreCount += answerScore;
         }
         Double percent = (userScoreCount / quizQuestions.size()) * 100;
         quizEntity.setSuccessPercent(percent);
@@ -222,12 +225,30 @@ public class QuizServiceImpl implements QuizService {
     }
 
 
-
     @Override
     @Transactional
     public void finishQuiz(Long quizId) {
-        computePercentage(quizId);
         QuizEntity quizEntity = quizRepository.findById(quizId).orElseThrow(() -> new QuizNotFoundException(quizId));
         quizEntity.setIsFinished(Boolean.TRUE);
+        computePercentage(quizId);
+    }
+
+    @Override
+    public void failQuiz(Long upcomingQuizId) {
+        UpcomingQuizEntity upcomingQuizEntity = upComingQuizRepository.findById(upcomingQuizId)
+                .orElseThrow(() -> new UpcomingQuizNotFoundException(upcomingQuizId));
+
+
+        UserEntity userEntity = userRepository.findById(userService.getMe()).orElseThrow(
+                () -> new UserNotFoundException(userService.getMe()));
+
+        QuizEntity quizEntity = new QuizEntity();
+        quizEntity.setUser(userEntity);
+        quizEntity.setDuration(upcomingQuizEntity.getDurationInMinutes());
+        quizEntity.setTopic(upcomingQuizEntity.getTopic());
+
+        QuizEntity savedQuiz = quizRepository.save(quizEntity);
+        finishQuiz(savedQuiz.getId());
+        upComingQuizRepository.deleteById(upcomingQuizId);
     }
 }

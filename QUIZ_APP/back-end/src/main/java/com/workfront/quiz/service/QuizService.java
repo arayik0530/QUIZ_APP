@@ -34,4 +34,6 @@ public interface QuizService {
 
     void finishQuiz(Long quizId);
 
+    void failQuiz(Long upcomingQuizId);
+
 }

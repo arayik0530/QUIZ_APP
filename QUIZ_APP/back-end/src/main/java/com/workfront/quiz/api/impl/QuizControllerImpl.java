@@ -6,6 +6,7 @@ import com.workfront.quiz.dto.quiz.*;
 import com.workfront.quiz.entity.TopicEntity;
 import com.workfront.quiz.service.QuizService;
 import com.workfront.quiz.service.UserService;
+import com.workfront.quiz.service.scheduler.QuizDurationChecker;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
