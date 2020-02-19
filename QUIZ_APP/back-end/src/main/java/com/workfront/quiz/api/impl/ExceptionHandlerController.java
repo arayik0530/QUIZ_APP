@@ -59,7 +59,8 @@ public class ExceptionHandlerController {
 
     @ExceptionHandler({UserAlreadyExistsException.class,
             TopicAlreadyExistException.class,
-            QuestionAlreadyExistException.class
+            QuestionAlreadyExistException.class,
+            QuizFinishedException.class
     })
     public ResponseEntity<String> handleAllAlreadyExistExceptions(RuntimeException exception) {
         return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);

@@ -13,8 +13,6 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
-
 @RestController
 @RequestMapping("/api/quiz/") //TODO jshtel sen jishta te che
 @CrossOrigin(value = "*")
@@ -50,21 +48,20 @@ public class QuizControllerImpl implements QuizController {
 
     @Override
     public QuestionDto startQuiz(Long upComingQuizId) {
-        return null;
+        return quizService.generateQuiz(upComingQuizId);
     }
 
-
     @Override
-    @GetMapping("get-question")
+    @GetMapping("next-question")
     public QuestionDto getQuestion(@RequestParam Long nextQuestionId) {
         return quizService.getNextQuestion(nextQuestionId);
     }
 
     @Override
     @PostMapping("finish")
-    public PastQuizInfoDto finishQuiz(@RequestParam Long quizId){
+    public PastQuizInfoDto finishQuiz(@RequestParam Long quizId) {
         //TODO compute answers and set successPercent
-       return quizService.getQuizInfo(quizId);
+        return quizService.getQuizInfo(quizId);
     }
 
     @Override

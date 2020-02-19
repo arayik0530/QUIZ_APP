@@ -11,6 +11,7 @@ import com.workfront.quiz.service.util.exception.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -166,11 +167,19 @@ public class QuizServiceImpl implements QuizService {
     }
 
     @Override
-    public QuestionDto getNextQuestion(Long nextQuestionId) {
-        QuizQuestionEntity quizQuestionEntity = quizQuestionRepository.findById(nextQuestionId)
-                .orElseThrow(() -> new QuizQuestionNotFoundException(nextQuestionId));
+    public QuestionDto getNextQuestion(Long nextQuizQuestionId) {
+
+        QuizQuestionEntity quizQuestionEntity = quizQuestionRepository.findById(nextQuizQuestionId)
+                .orElseThrow(() -> new QuizQuestionNotFoundException(nextQuizQuestionId));
+
         QuestionDto questionDto = QuestionDto.mapFromEntity(quizQuestionEntity.getQuestion());
+
         QuizEntity quiz = quizQuestionEntity.getQuiz();
+
+        if (quiz.getIsFinished()) {
+            throw new QuizFinishedException();
+        }
+
         int offsetOfQuestion = quiz.getQuizQuestions().indexOf(quizQuestionEntity);
         if (quiz.getQuizQuestions().size() > offsetOfQuestion + 1) {
             Long nextId = quiz.getQuizQuestions().get(++offsetOfQuestion).getId();
@@ -178,6 +187,47 @@ public class QuizServiceImpl implements QuizService {
             questionDto.setNextQuestionId(nextId);
             return questionDto;
         }
-        return null;
+        return questionDto;
+    }
+
+    @Override
+    @Transactional
+    public void computePercentage(Long quizId) {
+        QuizEntity quizEntity = quizRepository.findById(quizId).orElseThrow(() -> new QuizNotFoundException(quizId));
+
+        List<QuizQuestionEntity> quizQuestions = quizEntity.getQuizQuestions();
+        int answersCount = quizQuestions.size();//for computing percentage
+        double userScoreCount = 0;
+        for (QuizQuestionEntity quizQuestion : quizQuestions) {
+            QuestionEntity question = quizQuestion.getQuestion();
+
+                int trueAnswersCount = getTrueAnswersCount(question.getAnswers());
+                int usersTrueAnswers = getTrueAnswersCount(quizQuestion.getGivenAnswers());
+                double answerScore = (double) usersTrueAnswers / trueAnswersCount;
+                userScoreCount += answerScore;
+        }
+        Double percent = (userScoreCount / quizQuestions.size()) * 100;
+        quizEntity.setSuccessPercent(percent);
+        quizRepository.save(quizEntity);
+    }
+
+    private int getTrueAnswersCount(List<AnswerEntity> answers) {
+        int count = 0;
+        for (AnswerEntity answerEntity : answers) {
+            if (answerEntity.getIsRight()) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+
+
+    @Override
+    @Transactional
+    public void finishQuiz(Long quizId) {
+        computePercentage(quizId);
+        QuizEntity quizEntity = quizRepository.findById(quizId).orElseThrow(() -> new QuizNotFoundException(quizId));
+        quizEntity.setIsFinished(Boolean.TRUE);
     }
 }
