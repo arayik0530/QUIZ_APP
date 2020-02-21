@@ -2,7 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8f781bac-a305-459e-98b8-67823d07390e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/scheduler/QuizDurationChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/scheduler/QuizDurationChecker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/e/0ebd3a1ed5c5c714bd5ae620d8e9438848765862" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/e/0ebd3a1ed5c5c714bd5ae620d8e9438848765862" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/e/1e1756305307c6cd2505e9dc312ff3e0d0f90694" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/e/1e1756305307c6cd2505e9dc312ff3e0d0f90694" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/3/d33895dcd4c411dd1678d660bc31527eafe92b24" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/3/d33895dcd4c411dd1678d660bc31527eafe92b24" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/QuizController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/QuizController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/impl/ExceptionHandlerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/impl/ExceptionHandlerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/impl/QuizControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/impl/QuizControllerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/QuizService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/QuizService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/impl/QuizServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/impl/QuizServiceImpl.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -74,10 +82,13 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/question/QuestionDto.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/quiz/QuizDtoForLocalStorage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="24" column="44" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="44" />
+            <state relative-caret-position="166">
+              <caret line="13" column="36" lean-forward="true" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -85,41 +96,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/impl/QuizControllerImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="27" selection-start-line="27" selection-end-line="27" />
+            <state relative-caret-position="165">
+              <caret line="32" column="37" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1116#1117#0" expanded="true" />
+                <element signature="e#1149#1150#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/scheduler/QuizDurationChecker.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/impl/QuizServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="32" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="32" />
+            <state relative-caret-position="155">
+              <caret line="291" column="77" selection-start-line="291" selection-start-column="77" selection-end-line="291" selection-end-column="77" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#getQuizInfo#0;class#QuizServiceImpl#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/quiz/PastQuizInfoDto.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/QuizNotFoundException.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="19" column="46" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/quiz/QuizDto.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+            <state relative-caret-position="90">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -137,7 +142,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/quiz/UpcomingQuizCreationDto.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
-              <caret line="14" column="38" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="38" />
+              <caret line="14" column="38" lean-forward="true" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -145,8 +150,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/quiz/UpcomingQuizDto.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+            <state relative-caret-position="229">
+              <caret line="21" column="5" lean-forward="true" selection-start-line="15" selection-start-column="2" selection-end-line="21" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/QuizService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="42" column="49" selection-start-line="42" selection-start-column="49" selection-end-line="42" selection-end-column="49" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/QuizController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="79">
+              <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -156,18 +182,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
               <caret line="20" selection-start-line="20" selection-end-line="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/QuizService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="40" column="69" selection-start-line="40" selection-start-column="69" selection-end-line="40" selection-end-column="69" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -206,8 +220,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/impl/UserControllerImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/InactiveUserException.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/quiz/QuizDto.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/workfront/quiz/config/SecurityConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/workfront/quiz/security/jwt/JwtConfigurer.java" />
@@ -241,7 +253,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/impl/QuestionServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/impl/QuestionControllerImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/QuizFinishedException.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/impl/ExceptionHandlerController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/workfront/quiz/repository/QuizRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/workfront/quiz/repository/UpComingQuizRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/scheduler/DeadlineCheckerScheduler.java" />
@@ -250,13 +261,16 @@
         <option value="$PROJECT_DIR$/src/test/java/com/workfront/quiz/service/UserServiceImplUT.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/answer/AnswerDto.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/answer/AnswerForPastQuizDto.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/QuizController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/QuizService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/impl/QuizServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/question/QuestionDto.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/quiz/PastQuizInfoDto.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/impl/QuizControllerImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/scheduler/QuizDurationChecker.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/AnswerNotFoundException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/impl/ExceptionHandlerController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/quiz/QuizDtoForLocalStorage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/impl/QuizControllerImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/QuizService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/QuizController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/impl/QuizServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -313,6 +327,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -466,6 +481,29 @@
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="workfront" type="462c0819:PsiDirectoryNode" />
               <item name="quiz" type="462c0819:PsiDirectoryNode" />
+              <item name="security" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="quiz_app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="back-end" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="workfront" type="462c0819:PsiDirectoryNode" />
+              <item name="quiz" type="462c0819:PsiDirectoryNode" />
+              <item name="security" type="462c0819:PsiDirectoryNode" />
+              <item name="jwt" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="quiz_app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="back-end" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="workfront" type="462c0819:PsiDirectoryNode" />
+              <item name="quiz" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -572,7 +610,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -584,7 +621,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1582289403236" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1582303364716" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -702,12 +739,13 @@
       <workItem from="1582123806732" duration="10350000" />
       <workItem from="1582268621277" duration="888000" />
       <workItem from="1582272180423" duration="10663000" />
-      <workItem from="1582289797544" duration="507000" />
+      <workItem from="1582289797544" duration="735000" />
+      <workItem from="1582300474619" duration="2813000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="273624000" />
+    <option name="totallyTimeSpent" value="276665000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -722,7 +760,7 @@
     <frame x="0" y="25" width="1366" height="743" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.87616825" visible="true" weight="0.26363635" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.87616825" visible="true" weight="0.26818183" />
       <window_info id="Structure" order="1" sideWeight="0.50233644" side_tool="true" weight="0.24772727" />
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -733,7 +771,7 @@
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.3291536" />
       <window_info anchor="bottom" id="Run" order="3" weight="0.677116" />
-      <window_info active="true" anchor="bottom" id="Debug" order="4" visible="true" weight="0.18495297" />
+      <window_info active="true" anchor="bottom" id="Debug" order="4" visible="true" weight="0.4184953" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.3291536" />
@@ -847,7 +885,7 @@
       <breakpoints>
         <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/impl/QuizServiceImpl.java</url>
-          <line>74</line>
+          <line>77</line>
           <properties class="com.workfront.quiz.service.impl.QuizServiceImpl" method="getQuizesByUserId" />
           <option name="timeStamp" value="7" />
         </line-breakpoint>
@@ -912,37 +950,6 @@ Long userId = authentication.getId();</expression-string>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/impl/TopicControllerImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="27" column="4" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="35" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/TopicService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://a9dca7a8-0d84-4b48-ad88-785b9544e67c/database/quiz_app/schema/public/table/images">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://a9dca7a8-0d84-4b48-ad88-785b9544e67c/database/quiz_app/schema/public/table/users">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -1009,13 +1016,6 @@ Long userId = authentication.getId();</expression-string>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/impl/ExceptionHandlerController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="62" column="39" selection-start-line="62" selection-start-column="39" selection-end-line="62" selection-end-column="39" />
         </state>
       </provider>
     </entry>
@@ -1201,28 +1201,45 @@ Long userId = authentication.getId();</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/QuizController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/quiz/QuizInfo.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/scheduler/QuizDurationChecker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="31" column="70" selection-start-line="31" selection-start-column="70" selection-end-line="31" selection-end-column="70" />
+        <state relative-caret-position="71">
+          <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/quiz/QuizInfo.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/impl/QuizServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/QuestionNotFoundException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1575">
-          <caret line="121" column="9" selection-start-line="121" selection-start-column="9" selection-end-line="121" selection-end-column="9" />
+        <state relative-caret-position="60">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/AnswerNotFoundException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="34" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="34" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#getQuizInfo#0;class#QuizServiceImpl#0" />
+            <element signature="e#160#161#0" expanded="true" />
+            <element signature="e#183#184#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/impl/ExceptionHandlerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="53" column="48" selection-start-line="53" selection-start-column="48" selection-end-line="53" selection-end-column="48" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/question/QuestionDto.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
+        <state relative-caret-position="240">
           <caret line="24" column="44" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="44" />
         </state>
       </provider>
@@ -1236,8 +1253,15 @@ Long userId = authentication.getId();</expression-string>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/quiz/QuizDto.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        <state relative-caret-position="135">
+          <caret line="21" column="36" lean-forward="true" selection-start-line="21" selection-start-column="3" selection-end-line="21" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/quiz/QuizDtoShortInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
         </state>
       </provider>
     </entry>
@@ -1251,50 +1275,70 @@ Long userId = authentication.getId();</expression-string>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/quiz/UpcomingQuizCreationDto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
-          <caret line="14" column="38" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="38" />
+          <caret line="14" column="38" lean-forward="true" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/quiz/UpcomingQuizDto.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        <state relative-caret-position="229">
+          <caret line="21" column="5" lean-forward="true" selection-start-line="15" selection-start-column="2" selection-end-line="21" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/quiz/QuizDtoShortInfo.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/quiz/QuizDtoForLocalStorage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        <state relative-caret-position="166">
+          <caret line="13" column="36" lean-forward="true" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/QuizService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="40" column="69" selection-start-line="40" selection-start-column="69" selection-end-line="40" selection-end-column="69" />
+        <state relative-caret-position="289">
+          <caret line="42" column="49" selection-start-line="42" selection-start-column="49" selection-end-line="42" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/QuizController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="79">
+          <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/impl/QuizControllerImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
+        <state relative-caret-position="165">
+          <caret line="32" column="37" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1116#1117#0" expanded="true" />
+            <element signature="e#1149#1150#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/scheduler/QuizDurationChecker.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/QuizNotFoundException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="32" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="32" />
+        <state relative-caret-position="90">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/impl/QuizServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="291" column="77" selection-start-line="291" selection-start-column="77" selection-end-line="291" selection-end-column="77" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#getQuizInfo#0;class#QuizServiceImpl#0" />
           </folding>
         </state>
       </provider>

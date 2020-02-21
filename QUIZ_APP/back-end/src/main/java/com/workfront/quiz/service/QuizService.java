@@ -38,5 +38,7 @@ public interface QuizService {
 
     void failQuiz(Long upcomingQuizId);
 
-    void answerToQuestion(Long questionId, List<AnswerDto> answerDtos);
+    void answerToQuestion(Long questionId, List<Long> answeredIds);
+
+    QuizDtoForLocalStorage findByQuizId(Long id);
 }

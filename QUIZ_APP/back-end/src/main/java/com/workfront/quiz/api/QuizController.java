@@ -15,6 +15,8 @@ import java.util.List;
 
 public interface QuizController {
 
+    QuizDtoForLocalStorage findByQuizId( Long id);
+
     PastQuizInfoDto findById(Long id);
 
     Page<QuizDto> getAllQuizes(Pageable pageable);
@@ -29,7 +31,7 @@ public interface QuizController {
 
     PastQuizInfoDto finishQuiz( Long quizId);
 
-    void answerToQuestion( Long questionId, List<AnswerDto> answerDtos);
+    void answerToQuestion( Long questionId, List<Long> answeredIds);
 
     Page<QuizDtoShortInfo> getQuizesForAuthenticatedUser(Pageable pageable);
 

@@ -28,6 +28,12 @@ public class QuizControllerImpl implements QuizController {
 
 
     @Override
+    @GetMapping("{id}/info")
+    public QuizDtoForLocalStorage findByQuizId(@PathVariable Long id){
+        return quizService.findByQuizId(id);
+    }
+
+    @Override
     @GetMapping("{id}")
     public PastQuizInfoDto findById(@PathVariable Long id) {
         return quizService.getQuizInfo(id);
@@ -52,7 +58,8 @@ public class QuizControllerImpl implements QuizController {
     }
 
     @Override
-    public QuestionDto startQuiz(Long upComingQuizId) {
+    @GetMapping("{upComingQuizId}")
+    public QuestionDto startQuiz(@PathVariable Long upComingQuizId) {
         return quizService.generateQuiz(upComingQuizId);
     }
 
@@ -71,8 +78,8 @@ public class QuizControllerImpl implements QuizController {
 
     @Override
     @PostMapping("{questionId}/question-answers")
-    public void answerToQuestion(@PathVariable Long questionId, @RequestBody List<AnswerDto> answerDtos){ //TODO esi em poxel
-        quizService.answerToQuestion(questionId, answerDtos);
+    public void answerToQuestion(@PathVariable Long questionId, @RequestBody List<Long> answeredIds){ //TODO esi em poxel
+        quizService.answerToQuestion(questionId, answeredIds);
     }
 
     @Override

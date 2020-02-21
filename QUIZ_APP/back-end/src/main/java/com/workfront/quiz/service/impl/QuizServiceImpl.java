@@ -15,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,10 +33,11 @@ public class QuizServiceImpl implements QuizService {
     private UserRepository userRepository;
     private QuizQuestionRepository quizQuestionRepository;
     private  QuizDurationChecker quizDurationChecker;
+    private AnswerRepository answerRepository;
 
     public QuizServiceImpl(UserService userService, QuizRepository quizRepository, QuestionService questionService,
                            UpComingQuizRepository upComingQuizRepository, UserRepository userRepository,
-                           QuizQuestionRepository quizQuestionRepository, QuizDurationChecker quizDurationChecker) {
+                           QuizQuestionRepository quizQuestionRepository, QuizDurationChecker quizDurationChecker, AnswerRepository answerRepository) {
         this.userService = userService;
         this.quizRepository = quizRepository;
         this.questionService = questionService;
@@ -43,6 +45,7 @@ public class QuizServiceImpl implements QuizService {
         this.userRepository = userRepository;
         this.quizQuestionRepository = quizQuestionRepository;
         this.quizDurationChecker = quizDurationChecker;
+        this.answerRepository = answerRepository;
     }
 
     @Override
@@ -261,27 +264,39 @@ public class QuizServiceImpl implements QuizService {
 
     @Override
     @Transactional
-    public void answerToQuestion(Long questionId, List<AnswerDto> answerDtos) {//TODO esi em poxel
+    public void answerToQuestion(Long questionId, List<Long> answeredIds) {//TODO esi em poxel
+
         QuizQuestionEntity quizQuestion;
         Optional<QuizQuestionEntity> byId = quizQuestionRepository.findById(questionId);
         if(byId.isPresent()){
             quizQuestion = byId.get();
 
-            QuestionEntity question = quizQuestion.getQuestion();
-
-            List<AnswerEntity> answers = question.getAnswers();
-
-            for (AnswerEntity answer: answers){
-                for (AnswerDto answerDto: answerDtos) {
-                    if(answer.getText().equalsIgnoreCase(answerDto.getText())){
-                        quizQuestion.getGivenAnswers().add(answer);
-                    }
+            for (Long id: answeredIds){
+                Optional<AnswerEntity> answerEntity = answerRepository.findById(id);
+                if(answerEntity.isPresent()){
+                    quizQuestion.getGivenAnswers().add(answerEntity.get());
+                }
+                else {
+                    throw new AnswerNotFoundException(id);
                 }
             }
+
         }
         else
             throw new QuizQuestionNotFoundException(questionId);
 
         quizQuestionRepository.save(quizQuestion);
+    }
+
+    @Override
+    public QuizDtoForLocalStorage findByQuizId(Long id) { //TODO esi em poxel
+        Optional<QuizEntity> quizEntity = quizRepository.findById(id);
+        if(quizEntity.isPresent()) {
+            return QuizDtoForLocalStorage.mapFromEntity(quizEntity.get());
+        }
+
+        else {
+            throw new QuizNotFoundException(id);
+        }
     }
 }
