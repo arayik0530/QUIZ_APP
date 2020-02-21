@@ -1,6 +1,7 @@
 package com.workfront.quiz.api.impl;
 
 import com.workfront.quiz.api.QuizController;
+import com.workfront.quiz.dto.answer.AnswerDto;
 import com.workfront.quiz.dto.question.QuestionDto;
 import com.workfront.quiz.dto.quiz.*;
 import com.workfront.quiz.entity.TopicEntity;
@@ -13,6 +14,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/quiz/") //TODO jshtel sen jishta te che
@@ -63,6 +66,12 @@ public class QuizControllerImpl implements QuizController {
     public PastQuizInfoDto finishQuiz(@RequestParam Long quizId) {
         //TODO compute answers and set successPercent
         return quizService.getQuizInfo(quizId);
+    }
+
+    @Override
+    @PostMapping("{questionId}/question-answers")
+    public void answerToQuestion(@PathVariable Long questionId, @RequestBody List<AnswerDto> answerDtos){ //TODO esi em poxel
+        quizService.answerToQuestion(questionId, answerDtos);
     }
 
     @Override

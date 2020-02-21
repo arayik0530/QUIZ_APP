@@ -151,3 +151,13 @@ q
 Asrc/main/java/com/workfront/quiz/dto/topic/TopicOnlyTitleDto.java,8/e/8e7bc8d05a9b273d2d51f00701dce103f0e270d9
 r
 Bsrc/main/java/com/workfront/quiz/api/impl/TopicControllerImpl.java,d/8/d863ec58ba378927e8ad94d2dac033067af439b4
+‚
+Rsrc/main/java/com/workfront/quiz/service/util/exception/QuizFinishedException.java,7/d/7d9fa85edcc32e2e98de2a5a79617dbbb7897e5d
+€
+Psrc/main/java/com/workfront/quiz/service/scheduler/DeadlineCheckerScheduler.java,f/5/f53d6c37dc157caf7a77d2bf725a1ee5fc474aa3
+{
+Ksrc/main/java/com/workfront/quiz/service/scheduler/QuizDurationChecker.java,d/3/d33895dcd4c411dd1678d660bc31527eafe92b24
+o
+?src/test/java/com/workfront/quiz/service/UserServiceImplUT.java,5/6/563b685e8b026defea592e562c40bce514da5c2b
+_
+/src/main/java/com/workfront/quiz/Bootstrap.java,d/f/df39eb0acaf4aeb60a107121c0572b86031223b7

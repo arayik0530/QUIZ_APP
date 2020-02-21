@@ -10,6 +10,7 @@ public class AnswerForPastQuizDto {
     private Boolean isRight;
 
     public static AnswerForPastQuizDto mapFromEntity(AnswerEntity answerEntity) {
+
         AnswerForPastQuizDto answerForPastQuizDto = new AnswerForPastQuizDto();
         answerForPastQuizDto.id = answerEntity.getId();
         answerForPastQuizDto.text = answerEntity.getText();

@@ -1,5 +1,6 @@
 package com.workfront.quiz.service.impl;
 
+import com.workfront.quiz.dto.answer.AnswerDto;
 import com.workfront.quiz.dto.question.QuestionDto;
 import com.workfront.quiz.dto.quiz.*;
 import com.workfront.quiz.entity.*;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
@@ -29,7 +31,7 @@ public class QuizServiceImpl implements QuizService {
     private UpComingQuizRepository upComingQuizRepository;
     private UserRepository userRepository;
     private QuizQuestionRepository quizQuestionRepository;
-    private QuizDurationChecker quizDurationChecker;
+    private  QuizDurationChecker quizDurationChecker;
 
     public QuizServiceImpl(UserService userService, QuizRepository quizRepository, QuestionService questionService,
                            UpComingQuizRepository upComingQuizRepository, UserRepository userRepository,
@@ -179,14 +181,17 @@ public class QuizServiceImpl implements QuizService {
 
         QuizEntity quiz = quizQuestionEntity.getQuiz();
 
-        if (quiz.getIsFinished()) {
+        if (Boolean.TRUE.equals(quiz.getIsFinished())) {
             throw new QuizFinishedException();
         }
 
         int offsetOfQuestion = quiz.getQuizQuestions().indexOf(quizQuestionEntity);
         if (quiz.getQuizQuestions().size() > offsetOfQuestion + 1) {
-            Long nextId = quiz.getQuizQuestions().get(++offsetOfQuestion).getId();
-
+            Long nextId;
+            if((null == quizQuestionEntity.getGivenAnswers()) || (quizQuestionEntity.getGivenAnswers().isEmpty())) //TODO esi em poxel
+                nextId = quiz.getQuizQuestions().get(++offsetOfQuestion).getId();
+            else
+                nextId = quiz.getQuizQuestions().get(offsetOfQuestion).getId();
             questionDto.setNextQuestionId(nextId);
             return questionDto;
         }
@@ -250,5 +255,31 @@ public class QuizServiceImpl implements QuizService {
         QuizEntity savedQuiz = quizRepository.save(quizEntity);
         finishQuiz(savedQuiz.getId());
         upComingQuizRepository.deleteById(upcomingQuizId);
+    }
+
+    @Override
+    @Transactional
+    public void answerToQuestion(Long questionId, List<AnswerDto> answerDtos) {//TODO esi em poxel
+        QuizQuestionEntity quizQuestion;
+        Optional<QuizQuestionEntity> byId = quizQuestionRepository.findById(questionId);
+        if(byId.isPresent()){
+            quizQuestion = byId.get();
+
+            QuestionEntity question = quizQuestion.getQuestion();
+
+            List<AnswerEntity> answers = question.getAnswers();
+
+            for (AnswerEntity answer: answers){
+                for (AnswerDto answerDto: answerDtos) {
+                    if(answer.getText().equalsIgnoreCase(answerDto.getText())){
+                        quizQuestion.getGivenAnswers().add(answer);
+                    }
+                }
+            }
+        }
+        else
+            throw new QuizQuestionNotFoundException(questionId);
+
+        quizQuestionRepository.save(quizQuestion);
     }
 }

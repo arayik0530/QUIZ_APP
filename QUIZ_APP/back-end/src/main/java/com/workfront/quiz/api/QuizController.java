@@ -1,18 +1,17 @@
 package com.workfront.quiz.api;
 
+import com.workfront.quiz.dto.answer.AnswerDto;
 import com.workfront.quiz.dto.question.QuestionDto;
 import com.workfront.quiz.dto.quiz.*;
 import com.workfront.quiz.entity.TopicEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.jws.soap.SOAPBinding;
 import java.util.Collection;
+import java.util.List;
 
 public interface QuizController {
 
@@ -26,12 +25,11 @@ public interface QuizController {
 
     QuestionDto startQuiz(Long upComingQuizId);
 
+    QuestionDto getQuestion(Long nextQuestionId);
 
-    @GetMapping("question")
-    QuestionDto getQuestion(@RequestParam Long nextQuestionId);
+    PastQuizInfoDto finishQuiz( Long quizId);
 
-    @PostMapping("finish")
-    PastQuizInfoDto finishQuiz(@RequestParam Long quizId);
+    void answerToQuestion( Long questionId, List<AnswerDto> answerDtos);
 
     Page<QuizDtoShortInfo> getQuizesForAuthenticatedUser(Pageable pageable);
 

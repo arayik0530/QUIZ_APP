@@ -23,6 +23,7 @@ public class QuestionDto {
     private Long nextQuestionId;
 
     public QuestionEntity toEntity() {
+
         QuestionEntity question = new QuestionEntity();
         question.setText(this.text);
 

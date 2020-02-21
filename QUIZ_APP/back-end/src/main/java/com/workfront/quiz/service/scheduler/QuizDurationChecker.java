@@ -31,7 +31,6 @@ public class QuizDurationChecker {
     @Async
     public void checkDuration() {
         while (true) {
-
             try {
                 Thread.sleep(MINUTE);
             } catch (InterruptedException e) {
@@ -39,7 +38,7 @@ public class QuizDurationChecker {
             }
             for (QuizEntity quiz : quizList) {
 
-                LocalDateTime expectedFinishTime = quiz.getStartTime().plusMinutes(quiz.getDuration()).plusMinutes(1L);
+                LocalDateTime expectedFinishTime = quiz.getStartTime().plusMinutes(quiz.getDuration()).minusMinutes(1L);
 
                 if (LocalDateTime.now().isAfter(expectedFinishTime)) {
                     Long quizId = quiz.getId();

@@ -8,6 +8,14 @@ public class AnswerDto {
     private Long id;
     private String text;
 
+    public AnswerEntity toEntity(){
+
+        AnswerEntity answer = new AnswerEntity();
+        answer.setText(this.text);
+
+        return answer;
+    }
+
     public static AnswerDto mapFromEntity(AnswerEntity answerEntity) {
         AnswerDto answerDto = new AnswerDto();
 

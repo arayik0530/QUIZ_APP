@@ -1,4 +1,9 @@
 
-Msquid:S2201A"/The return value of "orElseThrow" must be used.(ãÙÍ8‡Ù¯ò„.
-Usquid:S1135m"2Complete the task associated to this TODO comment.(ı˜¼¨ıÿÿÿÿ8Îòùö„.
-Usquid:S1135s"2Complete the task associated to this TODO comment.(²½Éšúÿÿÿÿ8ˆ»ğö„.
+_squid:S1854Ê"@Remove this useless assignment to local variable "answersCount".(ìıì­8â–Ÿó….
+Psquid:S1481Ê"1Remove this unused "answersCount" local variable.(ìıì­8â–Ÿó….
+Msquid:S2201D"/The return value of "orElseThrow" must be used.(ãÙÍ8‡Ù¯ò„.
+Nsquid:S5411Ü"*Use the primitive boolean expression here.(Á–ÚÂøÿÿÿÿ8ØÓÄó….
+Usquid:S1135y"2Complete the task associated to this TODO comment.(²½Éšúÿÿÿÿ8ˆ»ğö„.
+esquid:S3518Ñ"FMake sure "trueAnswersCount" can't be zero before doing this division.(ÅåÖ8ÍÖó….
+Usquid:S1135s"2Complete the task associated to this TODO comment.(ı˜¼¨ıÿÿÿÿ8Îòùö„.
+Nsquid:S5411¶"*Use the primitive boolean expression here.(†Û‘¡úÿÿÿÿ8ìÅòó….
