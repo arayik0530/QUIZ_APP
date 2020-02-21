@@ -22,6 +22,8 @@ public class QuestionDto {
 
     private Long nextQuestionId;
 
+    private Long quizId; //TODO esi em poxel
+
     public QuestionEntity toEntity() {
 
         QuestionEntity question = new QuestionEntity();

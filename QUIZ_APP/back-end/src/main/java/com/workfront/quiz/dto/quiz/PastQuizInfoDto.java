@@ -19,6 +19,4 @@ public class PastQuizInfoDto {
 
     private List<QuizQuestionDto> quizQuestions;
 
-
-
 }

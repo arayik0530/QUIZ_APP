@@ -26,6 +26,7 @@ public class QuizControllerImpl implements QuizController {
     private QuizService quizService;
     private UserService userService;
 
+
     @Override
     @GetMapping("{id}")
     public PastQuizInfoDto findById(@PathVariable Long id) {

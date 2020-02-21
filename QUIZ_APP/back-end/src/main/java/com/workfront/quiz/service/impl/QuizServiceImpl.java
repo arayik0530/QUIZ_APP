@@ -120,6 +120,8 @@ public class QuizServiceImpl implements QuizService {
         if (quizEntity.getQuizQuestions().size() > startId + 1) {
             questionDto.setNextQuestionId(quizEntity.getQuizQuestions().get(++startId).getId());
         }
+        questionDto.setQuizId(quizEntity.getId());
+
         return questionDto;//TODO check this, if quizQuestions is empty, throw exception
     }
 
