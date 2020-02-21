@@ -5,6 +5,7 @@ import com.workfront.quiz.repository.QuizRepository;
 import com.workfront.quiz.service.QuizService;
 import com.workfront.quiz.service.util.exception.QuizNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +14,6 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 @Component
-@RequiredArgsConstructor
 public class QuizDurationChecker {
     private static final int MINUTE = 60 * 1000;
 
@@ -21,6 +21,12 @@ public class QuizDurationChecker {
     private final QuizRepository quizRepository;
 
     private List<QuizEntity> quizList = new CopyOnWriteArrayList<>();
+
+    public QuizDurationChecker( @Lazy QuizService quizService, QuizRepository quizRepository) {
+
+        this.quizService = quizService;
+        this.quizRepository = quizRepository;
+    }
 
     public void addQuizToCheckingList(QuizEntity quizEntity) {
         quizList.add(quizEntity);
