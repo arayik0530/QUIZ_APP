@@ -1,12 +1,14 @@
 package com.workfront.quiz.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -30,9 +32,9 @@ public class QuizEntity {
     private TopicEntity topic;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "quiz")
-    private List<QuizQuestionEntity> quizQuestions;
+    private List<QuizQuestionEntity> quizQuestions = new ArrayList<>();
 
-    @CreatedDate
+    @CreationTimestamp
     @Column(name = "start_time", updatable = false)
     private LocalDateTime startTime;
 

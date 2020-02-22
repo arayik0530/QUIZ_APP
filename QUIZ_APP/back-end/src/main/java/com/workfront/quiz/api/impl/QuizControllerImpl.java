@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/quiz/") //TODO jshtel sen jishta te che
+@RequestMapping("/api/quiz/")
 @CrossOrigin(value = "*")
 @AllArgsConstructor
 public class QuizControllerImpl implements QuizController {
@@ -46,11 +46,11 @@ public class QuizControllerImpl implements QuizController {
     }
 
     @Override
-    @GetMapping("{topic}") //TODO jshtel sen jishta te che
+    @GetMapping("by-topic/{topic}")
+    @PreAuthorize(value = "hasAnyAuthority('ADMIN','OBSERVER')")
     public Page<QuizDto> getQuizesByTopic(@PathVariable TopicEntity topic, @PageableDefault Pageable pageable) {
         return quizService.getQuizesByTopic(topic, pageable);
     }
-
     @Override
     @DeleteMapping("{id}")
     public void remove(@PathVariable Long id) {
@@ -58,7 +58,7 @@ public class QuizControllerImpl implements QuizController {
     }
 
     @Override
-    @GetMapping("{upComingQuizId}")
+    @GetMapping("start/{upComingQuizId}")
     public QuestionDto startQuiz(@PathVariable Long upComingQuizId) {
         return quizService.generateQuiz(upComingQuizId);
     }
@@ -72,13 +72,13 @@ public class QuizControllerImpl implements QuizController {
     @Override
     @PostMapping("finish")
     public PastQuizInfoDto finishQuiz(@RequestParam Long quizId) {
-        //TODO compute answers and set successPercent
+        quizService.finishQuiz(quizId);
         return quizService.getQuizInfo(quizId);
     }
 
     @Override
     @PostMapping("{questionId}/question-answers")
-    public void answerToQuestion(@PathVariable Long questionId, @RequestBody List<Long> answeredIds){ //TODO esi em poxel
+    public void answerToQuestion(@PathVariable Long questionId, @RequestBody List<Long> answeredIds) {
         quizService.answerToQuestion(questionId, answeredIds);
     }
 

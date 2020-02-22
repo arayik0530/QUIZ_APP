@@ -10,16 +10,19 @@ import com.workfront.quiz.service.QuizService;
 import com.workfront.quiz.service.UserService;
 import com.workfront.quiz.service.scheduler.QuizDurationChecker;
 import com.workfront.quiz.service.util.exception.*;
+import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 @Transactional(readOnly = true)
 public class QuizServiceImpl implements QuizService {
     private UserService userService;
@@ -35,18 +38,7 @@ public class QuizServiceImpl implements QuizService {
     private  QuizDurationChecker quizDurationChecker;
     private AnswerRepository answerRepository;
 
-    public QuizServiceImpl(UserService userService, QuizRepository quizRepository, QuestionService questionService,
-                           UpComingQuizRepository upComingQuizRepository, UserRepository userRepository,
-                           QuizQuestionRepository quizQuestionRepository, QuizDurationChecker quizDurationChecker, AnswerRepository answerRepository) {
-        this.userService = userService;
-        this.quizRepository = quizRepository;
-        this.questionService = questionService;
-        this.upComingQuizRepository = upComingQuizRepository;
-        this.userRepository = userRepository;
-        this.quizQuestionRepository = quizQuestionRepository;
-        this.quizDurationChecker = quizDurationChecker;
-        this.answerRepository = answerRepository;
-    }
+
 
     @Override
     public QuizDto findById(Long id) {
@@ -119,13 +111,20 @@ public class QuizServiceImpl implements QuizService {
 
 //TODO need to split his method
 
-        QuestionDto questionDto = QuestionDto.mapFromEntity(quizEntity.getQuizQuestions().get(startId).getQuestion());
+        QuizQuestionEntity quizQuestionEntity = quizEntity.getQuizQuestions().get(startId);
+        if (quizQuestionEntity.getQuestion() == null) {
+            throw new QuestionAreNotAvailableException();
+        }
+        QuestionDto questionDto = QuestionDto
+                .mapFromEntity(quizQuestionEntity.getQuestion());
+        questionDto.setQuizQuestionId(quizQuestionEntity.getId());
         if (quizEntity.getQuizQuestions().size() > startId + 1) {
-            questionDto.setNextQuestionId(quizEntity.getQuizQuestions().get(++startId).getId());
+            QuizQuestionEntity nextQuizQuestionEntity = quizEntity.getQuizQuestions().get(++startId);
+            questionDto.setNextQuizQuestionId(nextQuizQuestionEntity.getId());
         }
         questionDto.setQuizId(quizEntity.getId());
 
-        return questionDto;//TODO check this, if quizQuestions is empty, throw exception
+        return questionDto;
     }
 
     @Override
@@ -191,13 +190,14 @@ public class QuizServiceImpl implements QuizService {
         }
 
         int offsetOfQuestion = quiz.getQuizQuestions().indexOf(quizQuestionEntity);
+        questionDto.setQuizQuestionId(quizQuestionEntity.getId());
         if (quiz.getQuizQuestions().size() > offsetOfQuestion + 1) {
             Long nextId;
-            if((null == quizQuestionEntity.getGivenAnswers()) || (quizQuestionEntity.getGivenAnswers().isEmpty())) //TODO esi em poxel
+            if((null == quizQuestionEntity.getGivenAnswers()) || (quizQuestionEntity.getGivenAnswers().isEmpty()))
                 nextId = quiz.getQuizQuestions().get(++offsetOfQuestion).getId();
             else
                 nextId = quiz.getQuizQuestions().get(offsetOfQuestion).getId();
-            questionDto.setNextQuestionId(nextId);
+            questionDto.setNextQuizQuestionId(nextId);
             return questionDto;
         }
         return questionDto;
@@ -239,7 +239,9 @@ public class QuizServiceImpl implements QuizService {
     @Transactional
     public void finishQuiz(Long quizId) {
         QuizEntity quizEntity = quizRepository.findById(quizId).orElseThrow(() -> new QuizNotFoundException(quizId));
-        quizEntity.setIsFinished(Boolean.TRUE);
+        quizEntity.setEndTime(LocalDateTime.now());
+        quizEntity.setIsFinished(true);
+        quizRepository.save(quizEntity);
         computePercentage(quizId);
     }
 
@@ -264,13 +266,19 @@ public class QuizServiceImpl implements QuizService {
 
     @Override
     @Transactional
-    public void answerToQuestion(Long questionId, List<Long> answeredIds) {//TODO esi em poxel
+    public void answerToQuestion(Long quizQuestionId, List<Long> answeredIds) {
 
         QuizQuestionEntity quizQuestion;
-        Optional<QuizQuestionEntity> byId = quizQuestionRepository.findById(questionId);
+        Optional<QuizQuestionEntity> byId = quizQuestionRepository.findById(quizQuestionId);
         if(byId.isPresent()){
             quizQuestion = byId.get();
-
+            QuizEntity quiz = quizQuestion.getQuiz();
+            if (Boolean.TRUE.equals(quiz.getIsFinished())) {
+                throw new QuizFinishedException();
+            }
+            if (!quizQuestion.getGivenAnswers().isEmpty()) {
+                throw new QuestionIsAlreadyAnsweredException();
+            }
             for (Long id: answeredIds){
                 Optional<AnswerEntity> answerEntity = answerRepository.findById(id);
                 if(answerEntity.isPresent()){
@@ -282,14 +290,15 @@ public class QuizServiceImpl implements QuizService {
             }
 
         }
-        else
-            throw new QuizQuestionNotFoundException(questionId);
+        else{
+            throw new QuizQuestionNotFoundException(quizQuestionId);
+        }
 
         quizQuestionRepository.save(quizQuestion);
     }
 
     @Override
-    public QuizDtoForLocalStorage findByQuizId(Long id) { //TODO esi em poxel
+    public QuizDtoForLocalStorage findByQuizId(Long id) {
         Optional<QuizEntity> quizEntity = quizRepository.findById(id);
         if(quizEntity.isPresent()) {
             return QuizDtoForLocalStorage.mapFromEntity(quizEntity.get());

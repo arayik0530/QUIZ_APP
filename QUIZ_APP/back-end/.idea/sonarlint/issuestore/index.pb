@@ -161,3 +161,15 @@ o
 ?src/test/java/com/workfront/quiz/service/UserServiceImplUT.java,5/6/563b685e8b026defea592e562c40bce514da5c2b
 _
 /src/main/java/com/workfront/quiz/Bootstrap.java,d/f/df39eb0acaf4aeb60a107121c0572b86031223b7
+Ñ
+Tsrc/main/java/com/workfront/quiz/service/util/exception/AnswerNotFoundException.java,0/e/0e6c45ac08a069f36d0ba36798f4a7d1d0369915
+u
+Esrc/main/java/com/workfront/quiz/dto/quiz/QuizDtoForLocalStorage.java,3/5/3563dfd62fb746e0d31997a36dc1715f1e6e2732
+ä
+Zsrc/main/java/com/workfront/quiz/service/util/exception/UpcomingQuizNotFoundException.java,6/9/693684bfc66097fdfd16fc66a0e7a7d319a32462
+è
+_src/main/java/com/workfront/quiz/service/util/exception/QuestionIsAlreadyAnsweredException.java,0/c/0ca2bc62bd2f0563bc45b63ba47991f69d0901bf
+ç
+]src/main/java/com/workfront/quiz/service/util/exception/QuestionAreNotAvailableException.java,5/0/50434c59901fe06533e5363101cc88439d37c055
+Ö
+Usrc/main/java/com/workfront/quiz/service/util/exception/ActionForbiddenException.java,d/7/d76d2565b92f24b6510ca11eb3ba295e4e6184d6

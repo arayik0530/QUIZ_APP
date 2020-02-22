@@ -3,6 +3,7 @@ package com.workfront.quiz.dto.quiz;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -17,6 +18,6 @@ public class PastQuizInfoDto {
 
     private Double successPercent;
 
-    private List<QuizQuestionDto> quizQuestions;
+    private List<QuizQuestionDto> quizQuestions = new ArrayList<>();
 
 }

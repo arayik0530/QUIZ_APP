@@ -44,7 +44,7 @@ public class QuizDurationChecker {
             }
             for (QuizEntity quiz : quizList) {
 
-                LocalDateTime expectedFinishTime = quiz.getStartTime().plusMinutes(quiz.getDuration()).minusMinutes(1L);
+                LocalDateTime expectedFinishTime = quiz.getStartTime().plusMinutes(quiz.getDuration()).minusMinutes(2L);
 
                 if (LocalDateTime.now().isAfter(expectedFinishTime)) {
                     Long quizId = quiz.getId();

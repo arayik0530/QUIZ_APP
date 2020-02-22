@@ -4,6 +4,7 @@ import com.workfront.quiz.api.UserController;
 import com.workfront.quiz.dto.user.PasswordChangingDto;
 import com.workfront.quiz.dto.user.UserInfoDto;
 import com.workfront.quiz.service.UserService;
+import com.workfront.quiz.service.util.exception.ActionForbiddenException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -51,7 +52,11 @@ public class UserControllerImpl implements UserController {
     @Override
     @PutMapping("update")
     public void update(@RequestBody UserInfoDto userInfoDto) {
-        userService.update(userInfoDto);
+        if (userInfoDto.getId().equals(userService.getMe())) {
+            userService.update(userInfoDto);
+        }else {
+            throw new ActionForbiddenException();
+        }
     }
 
     @Override
@@ -81,6 +86,7 @@ public class UserControllerImpl implements UserController {
     }
 
     @Override
+    @PostMapping("upload-image")
     public void uploadImage(MultipartFile image) {
         userService.saveImage(image, userService.getMe());
     }

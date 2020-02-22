@@ -3,6 +3,7 @@ package com.workfront.quiz.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -22,11 +23,11 @@ public class QuizQuestionEntity {
     @JoinColumn(name = "question_id", nullable = false, updatable = false)
     private QuestionEntity question;
 
-   @OneToMany
-   @JoinTable(name = "quiz_questions_answers",
-           joinColumns = {@JoinColumn(name = "quiz_question_id")},
-   inverseJoinColumns = {@JoinColumn(name = "answer_id")})
-    private List<AnswerEntity> givenAnswers;
+    @OneToMany
+    @JoinTable(name = "quiz_questions_answers",
+            joinColumns = {@JoinColumn(name = "quiz_question_id")},
+            inverseJoinColumns = {@JoinColumn(name = "answer_id")})
+    private List<AnswerEntity> givenAnswers = new ArrayList<>();
 
     @Override
     public String toString() {

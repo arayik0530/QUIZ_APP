@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 
 @Data
-public class QuizDtoForLocalStorage {//Todo esi em poxel
+public class QuizDtoForLocalStorage {
 
     private Long id;
 

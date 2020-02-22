@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 public class QuestionDto {
 
     private Long id;
+    private Long quizQuestionId;
 
     private Long topicId;
 
@@ -20,10 +21,9 @@ public class QuestionDto {
 
     private Boolean isMultiAnswer;
 
-    private Long nextQuestionId;
+    private Long nextQuizQuestionId;
 
-    private Long quizId; //TODO esi em poxel
-
+    private Long quizId;
     public QuestionEntity toEntity() {
 
         QuestionEntity question = new QuestionEntity();
@@ -36,7 +36,6 @@ public class QuestionDto {
     public static QuestionDto mapFromEntity(QuestionEntity question) {
 
         QuestionDto questionDto = new QuestionDto();
-
         questionDto.setId(question.getId());
         questionDto.setText(question.getText());
         questionDto.setTopicId(question.getTopic().getId());

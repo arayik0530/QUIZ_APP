@@ -1,10 +1,9 @@
 
-_squid:S1854Ñ"@Remove this useless assignment to local variable "answersCount".(ìıì­8¡Ç·†.
-Vsquid:S1135Á"2Complete the task associated to this TODO comment.(¬À‡ëúÿÿÿÿ8óÊ·†.
-Usquid:S1135u"2Complete the task associated to this TODO comment.(ı˜¼¨ıÿÿÿÿ8Îòùö„.
-Qsquid:S1135ˆ"2Complete the task associated to this TODO comment.(‚¿É8´Ÿéº†.
-Usquid:S1135}"2Complete the task associated to this TODO comment.(²½Éšúÿÿÿÿ8ˆ»ğö„.
-Psquid:S1481Ñ"1Remove this unused "answersCount" local variable.(ìıì­8¡Ç·†.
-Nsquid:S5411ã"*Use the primitive boolean expression here.(Á–ÚÂøÿÿÿÿ8¡Ç·†.
-Msquid:S2201F"/The return value of "orElseThrow" must be used.(ãÙÍ8‡Ù¯ò„.
-esquid:S3518Ø"FMake sure "trueAnswersCount" can't be zero before doing this division.(ÅåÖ8¡Ç·†.
+Usquid:S1135p"2Complete the task associated to this TODO comment.(ı˜¼¨ıÿÿÿÿ8Îòùö„.
+Msquid:S2201A"/The return value of "orElseThrow" must be used.(ãÙÍ8‡Ù¯ò„.
+_squid:S1854Ô"@Remove this useless assignment to local variable "answersCount".(ìıì­8¡Ç·†.
+[squid:UselessImportCheck"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8®„©Ä†.
+Nsquid:S5411æ"*Use the primitive boolean expression here.(Á–ÚÂøÿÿÿÿ8¡Ç·†.
+osquid:UselessImportCheck"DRemove this unused import 'com.workfront.quiz.dto.answer.AnswerDto'.(ØšùÖ8ÏÖ°Ä†.
+esquid:S3518Û"FMake sure "trueAnswersCount" can't be zero before doing this division.(ÅåÖ8¡Ç·†.
+Psquid:S1481Ô"1Remove this unused "answersCount" local variable.(ìıì­8¡Ç·†.
