@@ -8,6 +8,7 @@ import com.workfront.quiz.service.QuestionService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -47,6 +48,7 @@ public class QuestionControllerImpl implements QuestionController {
 
     @Override
     @DeleteMapping("{id}")
+    @PreAuthorize(value = "hasAuthority('ADMIN')")
     public void remove(@PathVariable Long id) {
         questionService.remove(id);
     }
@@ -59,6 +61,7 @@ public class QuestionControllerImpl implements QuestionController {
 
     @Override
     @PostMapping("create")
+    @PreAuthorize(value = "hasAuthority('ADMIN')")
     public void create(@RequestBody CreateQuestionDto question) {
         questionService.create(question);
     }

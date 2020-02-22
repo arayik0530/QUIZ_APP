@@ -7,7 +7,8 @@ import com.workfront.quiz.entity.TopicEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-public interface QuestionController {
+public interface
+QuestionController {
 
     QuestionDto findById(Long id);
 

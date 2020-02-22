@@ -13,6 +13,7 @@ public class AnswerDto {
 
         answerDto.id = answerEntity.getId();
         answerDto.text = answerEntity.getText();
+
         return answerDto;
     }
 

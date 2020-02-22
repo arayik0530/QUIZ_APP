@@ -17,10 +17,10 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.sun.media</groupId>
+            <groupId>ome</groupId>
             <artifactId>jai_imageio</artifactId>
-            <version>1.0_01</version>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>

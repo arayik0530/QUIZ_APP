@@ -1,9 +1,11 @@
 package com.workfront.quiz.service.impl;
 
 import com.workfront.quiz.dto.topic.TopicDto;
+import com.workfront.quiz.dto.topic.TopicOnlyTitleDto;
 import com.workfront.quiz.entity.TopicEntity;
 import com.workfront.quiz.repository.TopicRepository;
 import com.workfront.quiz.service.TopicService;
+import com.workfront.quiz.service.util.exception.TopicAlreadyExistException;
 import com.workfront.quiz.service.util.exception.TopicNotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -65,5 +67,20 @@ public class TopicServiceImpl implements TopicService {
 
         topicEntity.setTitle(topic.getTitle());
             topicRepository.save(topicEntity);
+    }
+
+    @Override
+    @Transactional
+    public void create(TopicOnlyTitleDto topicDto) {
+
+        TopicEntity topic = topicDto.toEntity();
+
+        Optional<TopicEntity> byTitle = topicRepository.findByTitle(topic.getTitle());
+
+        if (byTitle.isPresent()){
+            throw new TopicAlreadyExistException(topic.getTitle());
+        }
+
+        topicRepository.save(topic);
     }
 }

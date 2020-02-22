@@ -70,6 +70,7 @@ public class UserControllerImpl implements UserController {
     @Override
     @GetMapping(value = "image/{userId}")
     public byte[] getOriginalImage(@PathVariable Long userId) {
+
         return userService.getOriginalImage(userId);
     }
 

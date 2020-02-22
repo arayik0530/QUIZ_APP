@@ -1,24 +1,18 @@
 package com.workfront.quiz.service.impl;
 
 import com.workfront.quiz.dto.question.QuestionDto;
-import com.workfront.quiz.dto.quiz.QuizDto;
+import com.workfront.quiz.dto.quiz.*;
 import com.workfront.quiz.entity.*;
-import com.workfront.quiz.repository.QuizQuestionRepository;
-import com.workfront.quiz.repository.QuizRepository;
-import com.workfront.quiz.repository.UpComingQuizRepository;
-import com.workfront.quiz.repository.UserRepository;
+import com.workfront.quiz.repository.*;
 import com.workfront.quiz.service.QuestionService;
 import com.workfront.quiz.service.QuizService;
 import com.workfront.quiz.service.UserService;
-import com.workfront.quiz.service.util.exception.QuizNotFoundException;
-import com.workfront.quiz.service.util.exception.UpcomingQuizNotFoundException;
-import com.workfront.quiz.service.util.exception.UserNotFoundException;
+import com.workfront.quiz.service.util.exception.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -29,6 +23,7 @@ public class QuizServiceImpl implements QuizService {
     private QuizRepository quizRepository;
 
     private QuestionService questionService;
+    private TopicRepository topicRepository;
 
     private UpComingQuizRepository upComingQuizRepository;
     private UserRepository userRepository;
@@ -71,16 +66,24 @@ public class QuizServiceImpl implements QuizService {
         quizRepository.deleteById(id);
     }
 
+    @Override
+    public Page<QuizDtoShortInfo> getQuizesByUserId(Long userId, Pageable pageable) {
+        UserEntity userEntity = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException(userId));
+
+        Page<QuizEntity> allByUser = quizRepository.findAllByUser(userEntity, pageable);
+        return allByUser.map(QuizDtoShortInfo::mapFromEntity);
+    }
+
 
     @Override
     @Transactional
-    public Collection<QuestionDto> generateQuiz(Long upComingQuizId) {
-
+    public QuestionDto generateQuiz(Long upComingQuizId) {
+        int startId = 0;
         UpcomingQuizEntity upcomingQuizEntity = upComingQuizRepository.findById(upComingQuizId)
                 .orElseThrow(() -> new UpcomingQuizNotFoundException(upComingQuizId));
 
         List<QuestionEntity> questionEntities = questionService
-                .generateQuestions(upcomingQuizEntity.getTopic().getId(),upcomingQuizEntity.getCount());
+                .generateQuestions(upcomingQuizEntity.getTopic().getId(), upcomingQuizEntity.getCount());
 
         Long userId = userService.getMe();
 
@@ -99,8 +102,80 @@ public class QuizServiceImpl implements QuizService {
             quizQuestionEntity.setQuiz(quizEntity);
             quizQuestionEntity.setQuestion(questionEntity);
             quizQuestionRepository.save(quizQuestionEntity);
+            quizEntity.getQuizQuestions().add(quizQuestionEntity);
         }
+        quizRepository.save(quizEntity);
 
+//TODO need to split his method
+
+        QuestionDto questionDto = QuestionDto.mapFromEntity(quizEntity.getQuizQuestions().get(startId).getQuestion());
+        if (quizEntity.getQuizQuestions().size() > startId + 1) {
+            questionDto.setNextQuestionId(quizEntity.getQuizQuestions().get(++startId).getId());
+        }
+        return questionDto;//TODO check this, if quizQuestions is empty, throw exception
+    }
+
+    @Override
+    public PastQuizInfoDto getQuizInfo(Long quizId) {
+        PastQuizInfoDto pastQuizInfoDto = new PastQuizInfoDto();
+        QuizEntity quizEntity = quizRepository.findById(quizId)
+                .orElseThrow(() -> new QuizNotFoundException(quizId));
+
+        pastQuizInfoDto.setId(quizEntity.getId());
+        pastQuizInfoDto.setTopic(quizEntity.getTopic().getTitle());
+        pastQuizInfoDto.setStartTime(quizEntity.getStartTime());
+        pastQuizInfoDto.setEndTime(quizEntity.getEndTime());
+        pastQuizInfoDto.setSuccessPercent(quizEntity.getSuccessPercent());
+
+        for (QuizQuestionEntity quizQuestionEntity : quizEntity.getQuizQuestions()) {
+            pastQuizInfoDto.getQuizQuestions()
+                    .add(QuizQuestionDto.mapFromEntity(quizQuestionEntity));
+        }
+        return pastQuizInfoDto;
+    }
+
+    @Override
+    public Page<UpcomingQuizDto> getUpcomingQuizes(Long userId, Pageable pageable) {
+        UserEntity userEntity = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException(userId));
+        Page<UpcomingQuizEntity> allByUser = upComingQuizRepository.findAllByUser(userEntity, pageable);
+        return allByUser.map(UpcomingQuizDto::mapFromEntity);
+    }
+
+    @Override
+    @Transactional
+    public void createUpcomingQuiz(UpcomingQuizCreationDto quizCreationDto) {
+        UpcomingQuizEntity upcomingQuizEntity = new UpcomingQuizEntity();
+
+        UserEntity userEntity = userRepository.findById(quizCreationDto.getUserId())
+                .orElseThrow(() -> new UserNotFoundException(quizCreationDto.getUserId()));
+
+        TopicEntity topicEntity = topicRepository.findById(quizCreationDto.getTopicId())
+                .orElseThrow(() -> new TopicNotFoundException(quizCreationDto.getTopicId()));
+
+        upcomingQuizEntity.setUser(userEntity);
+        upcomingQuizEntity.setTopic(topicEntity);
+
+        upcomingQuizEntity.setDeadline(quizCreationDto.getDeadline().atStartOfDay());
+        upcomingQuizEntity.setCount(quizCreationDto.getQuestionCount());
+        upcomingQuizEntity.setDurationInMinutes(quizCreationDto.getDurationInMinutes());
+        upComingQuizRepository.save(upcomingQuizEntity);
+        userEntity.getUpcomingQuizes().add(upcomingQuizEntity);
+        userRepository.save(userEntity);
+    }
+
+    @Override
+    public QuestionDto getNextQuestion(Long nextQuestionId) {
+        QuizQuestionEntity quizQuestionEntity = quizQuestionRepository.findById(nextQuestionId)
+                .orElseThrow(() -> new QuizQuestionNotFoundException(nextQuestionId));
+        QuestionDto questionDto = QuestionDto.mapFromEntity(quizQuestionEntity.getQuestion());
+        QuizEntity quiz = quizQuestionEntity.getQuiz();
+        int offsetOfQuestion = quiz.getQuizQuestions().indexOf(quizQuestionEntity);
+        if (quiz.getQuizQuestions().size() > offsetOfQuestion + 1) {
+            Long nextId = quiz.getQuizQuestions().get(++offsetOfQuestion).getId();
+
+            questionDto.setNextQuestionId(nextId);
+            return questionDto;
+        }
         return null;
     }
 }

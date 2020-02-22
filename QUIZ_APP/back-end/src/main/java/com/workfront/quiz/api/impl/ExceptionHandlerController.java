@@ -36,6 +36,13 @@ public class ExceptionHandlerController {
         return new ResponseEntity<>("JWT token is expired or invalid.", HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(value = {InactiveUserException.class})
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+    public ResponseEntity handleInactiveUserException(InactiveUserException exception) {
+        return new ResponseEntity<>("User with email " + exception.getMessage() + " is not activated.",
+                HttpStatus.BAD_REQUEST);
+    }
+
     @ExceptionHandler({
             UserNotFoundException.class,
             UsernameNotFoundException.class,
@@ -43,7 +50,8 @@ public class ExceptionHandlerController {
             QuestionNotFoundException.class,
             QuizNotFoundException.class,
             UpcomingQuizNotFoundException.class,
-            InvalidTokenException.class
+            InvalidTokenException.class,
+            QuizQuestionNotFoundException.class
     })
     public ResponseEntity<String> handleAllNotFoundExceptions(RuntimeException exception) {
         return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);

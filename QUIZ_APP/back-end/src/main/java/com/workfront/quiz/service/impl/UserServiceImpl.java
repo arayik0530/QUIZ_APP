@@ -5,6 +5,7 @@ import com.workfront.quiz.dto.user.UserInfoDto;
 import com.workfront.quiz.dto.user.UserRegistrationDto;
 import com.workfront.quiz.entity.ConfirmationTokenEntity;
 import com.workfront.quiz.entity.ImageEntity;
+import com.workfront.quiz.entity.SmallImageEntity;
 import com.workfront.quiz.entity.UserEntity;
 import com.workfront.quiz.entity.enums.UserRole;
 import com.workfront.quiz.repository.ConfirmationTokenRepository;
@@ -12,6 +13,7 @@ import com.workfront.quiz.repository.ImageRepository;
 import com.workfront.quiz.repository.SmallImageRepository;
 import com.workfront.quiz.repository.UserRepository;
 import com.workfront.quiz.security.jwt.JwtUser;
+import com.workfront.quiz.service.ImageService;
 import com.workfront.quiz.service.UserService;
 import com.workfront.quiz.service.util.exception.InvalidTokenException;
 import com.workfront.quiz.service.util.exception.UserAlreadyExistsException;
@@ -39,6 +41,7 @@ public class UserServiceImpl implements UserService {
     private ConfirmationTokenRepository tokenRepository;
     private ImageRepository imageRepository;
     private SmallImageRepository smallImageRepository;
+    private ImageService imageService;
 
 
     @Override
@@ -108,6 +111,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public UserInfoDto register(UserRegistrationDto registrationDto) {
         Optional<UserEntity> byEmail = userRepository.findByEmail(registrationDto.getEmail());
         if (byEmail.isPresent()) {
@@ -164,27 +168,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public void saveImage(MultipartFile image, Long userId) {
         try {
-            saveOriginalImage(image.getBytes(),userId);
-            compressAndImage(image.getBytes(),userId);
+            imageService.deleteImage(userId);
+            imageService.saveOriginalImage(image.getBytes(),userId);
+            imageService.saveSmallImage(image.getBytes(),userId);
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
     }
 
-    private void saveOriginalImage(byte[] imagesBytes, Long userId) {
-        ImageEntity imageEntity = new ImageEntity();
-        imageEntity.setPicture(imagesBytes);
-        UserEntity userEntity = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException(userId));
 
-        imageRepository.save(imageEntity);
-        userEntity.setProfileImage(imageEntity);
-        userRepository.save(userEntity);
-
-    }
-
-    private void compressAndImage(byte[] imageBytes, Long userId) {
-            //TODO need to write functionality
-    }
 }

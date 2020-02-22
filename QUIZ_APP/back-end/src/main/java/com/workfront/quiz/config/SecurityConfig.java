@@ -1,5 +1,6 @@
 package com.workfront.quiz.config;
 
+import com.workfront.quiz.repository.UserRepository;
 import com.workfront.quiz.security.jwt.JwtConfigurer;
 import com.workfront.quiz.security.jwt.JwtTokenProvider;
 import org.springframework.context.annotation.Bean;
@@ -17,9 +18,11 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 @EnableGlobalMethodSecurity(prePostEnabled=true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final JwtTokenProvider jwtTokenProvider;
+    private final UserRepository userRepository;
 
-    public SecurityConfig(JwtTokenProvider jwtTokenProvider) {
+    public SecurityConfig(JwtTokenProvider jwtTokenProvider, UserRepository userRepository) {
         this.jwtTokenProvider = jwtTokenProvider;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -45,7 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/**").authenticated()
                 .anyRequest().permitAll()
                 .and()
-                .apply(new JwtConfigurer(jwtTokenProvider));
+                .apply(new JwtConfigurer(jwtTokenProvider, userRepository));
     }
 
 }

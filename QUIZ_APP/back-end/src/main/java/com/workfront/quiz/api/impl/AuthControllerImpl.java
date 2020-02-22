@@ -4,20 +4,20 @@ import com.workfront.quiz.api.AuthController;
 import com.workfront.quiz.dto.user.LoginRequestDto;
 import com.workfront.quiz.dto.user.UserInfoDto;
 import com.workfront.quiz.dto.user.UserRegistrationDto;
-import com.workfront.quiz.entity.ConfirmationTokenEntity;
 import com.workfront.quiz.entity.UserEntity;
 import com.workfront.quiz.repository.ConfirmationTokenRepository;
 import com.workfront.quiz.repository.UserRepository;
 import com.workfront.quiz.security.jwt.JwtTokenProvider;
 import com.workfront.quiz.security.jwt.JwtUser;
 import com.workfront.quiz.service.UserService;
+import com.workfront.quiz.service.util.exception.InactiveUserException;
+import com.workfront.quiz.service.util.exception.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 @RequestMapping("/api/auth/")
@@ -68,7 +68,11 @@ public class AuthControllerImpl implements AuthController {
     public String login(@RequestBody LoginRequestDto loginRequestDto) {
         String email = loginRequestDto.getEmail();
         UserInfoDto userInfoDto = userService.findByEmail(email);
-
+        UserEntity userEntity = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UserNotFoundException(email));
+        if (!userEntity.getActive()) {
+            throw new InactiveUserException(email);
+        }
         JwtUser jwtUser = (JwtUser) authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         email, loginRequestDto.getPassword()))
