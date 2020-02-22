@@ -126,9 +126,7 @@ function Navbar() {
                 </Button> </Link>
 
 
-                  <Link style={{ color: 'white', textDecoration: 'none' }} to="/">  <Button onClick={toggleDrawer(false)} fullWidth color="primary" >
-                    Exams
-                </Button></Link>
+                 
 
 
                   <Link style={{ color: 'white', textDecoration: 'none' }} to="/">  <Button onClick={toggleDrawer(false)} fullWidth color="primary" >
@@ -150,9 +148,7 @@ function Navbar() {
                 User
                 </Button> </Link>
 
-              <Button color="inherit" >
-                Exams
-                </Button>
+           
 
               <Button color="inherit"  >
                 Contact

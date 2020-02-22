@@ -10,12 +10,25 @@ import {
     Route,
     Link
   } from "react-router-dom";
+  import {postData} from '../utlis/utils.js';
 function Register_comp()
-{ 
+{   const [state,Setstate]=React.useState({
+  email:"",
+  password:"",
+  firstName:"",
+  lastName:""
+});
     const HandleRegister = async ()=>
     {
-       
-        window.location.href = "/";
+         let response = await postData("http://localhost:8090/api/auth/register",state)
+         if(response.status=="200")
+         {
+           alert("Registration was successfull")
+         }
+         else 
+         {
+           alert("Something went wrong please try again")
+         }
        
     }
     const HandleBack =()=>
@@ -26,16 +39,16 @@ function Register_comp()
         <div className="register-main">
              <img width='50px' src={icon}></img>
             <h2 style={{color:"#1976d2",textDecoration:"underline"}}>Register</h2>
-            <TextField  style={{backgroundColor:'whitesmoke'}} label="Name" variant="outlined"></TextField>
+            <TextField onChange={(e)=>{Setstate({...state,firstName:e.target.value})}} style={{backgroundColor:'whitesmoke'}} label="Name" variant="outlined"></TextField>
             <br/>
             <br/>
-            <TextField  style={{backgroundColor:'whitesmoke'}}  label="Surname" variant="outlined"></TextField>
+            <TextField  onChange={(e)=>{Setstate({...state,lastName:e.target.value})}}  style={{backgroundColor:'whitesmoke'}}  label="Surname" variant="outlined"></TextField>
             <br/>
             <br/>
-            <TextField  style={{backgroundColor:'whitesmoke'}}  required label="email" variant="outlined"></TextField>
+            <TextField  onChange={(e)=>{Setstate({...state,email:e.target.value})}} style={{backgroundColor:'whitesmoke'}}  required label="email" variant="outlined"></TextField>
             <br/>
             <br/>
-            <TextField  style={{backgroundColor:'whitesmoke'}}  required label="password" type='password' variant="outlined"></TextField>
+            <TextField  onChange={(e)=>{Setstate({...state,password:e.target.value})}} style={{backgroundColor:'whitesmoke'}}  required label="password" type='password' variant="outlined"></TextField>
          <br></br>
          <br></br>
          <Button style={{marginRight:'10px'}} onClick={HandleBack} color='primary' variant='contained'>Go Back</Button>

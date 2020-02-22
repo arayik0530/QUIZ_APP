@@ -35,12 +35,17 @@ import {postData} from '../utlis/utils';
       password:values.password
     });
     if(respone.status=="200")
-    {
-      updateUser({token: await respone.text()})
+    { let x=await respone.text();
+      updateUser({token:x});
+      localStorage.setItem("token",x);
     }
-    else 
+     if(respone.status=="404")
     {
       alert("Wrong Credentials")
+    }
+    if(respone.status=="400")
+    {
+      alert("User is not activated")
     }
 
    
