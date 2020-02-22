@@ -10,8 +10,8 @@ import TextField from '@material-ui/core/TextField';
 import image from '../Image/user-male.jpg';
 import {UserContext} from '../Contexts/user';
 import QuizItem from './QuizItem.js';
-
-
+import IconButton from '@material-ui/core/IconButton';
+import SecurityIcon from '@material-ui/icons/Security';
 function User() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     
@@ -25,31 +25,49 @@ function User() {
     );
 
 }
+function UserGeneral()
+{ let [state,Setstate]= useState({firstName:"",lastName:"",email:"",phone:""});
+useEffect(()=>{
+    async function getdata()
+    {
+        let response = await fetch("http://localhost:8090/api/user/",{
+            method:"GET",
+            headers:{
+               "Content-Type":"application/json",
+               "Authorization": "Bearer_ "+localStorage.getItem("token")
+            }
+        });
+        let x= await response.json();
+        Setstate({firstName:x.firstName,lastName:x.lastName,email:x.email})
 
+    }
+    getdata();
+},[])
+ const uploadData = async ()=>{
+ }
+return ( <div style={{paddingRight:"20px"}}>
+<div className="about-container-list-item"><TextField helperText="Name" fullWidth="true" variant="filled"  onChange={(e)=>Setstate({...state,firstName:e.target.value})} value={state.firstName}></TextField></div>
+<div className="about-container-list-item"><TextField  helperText="Surname" fullWidth="true" variant="filled"  onChange={(e)=>Setstate({...state,lastName:e.target.value})}  value={state.lastName}></TextField></div>
+<div className="about-container-list-item"><TextField   helperText="Email" fullWidth="true" variant="filled"   onChange={(e)=>Setstate({...state,email:e.target.value})} value={state.email}></TextField></div>
+<div className="about-container-list-item"><TextField   helperText="Phone" fullWidth="true" variant="filled"   onChange={(e)=>Setstate({...state,phone:e.target.value})} value={state.phone}></TextField></div>
+<Button onClick={uploadData} color="primary" variant="contained">Change</Button>
+</div>)
+}
+function UserSecurity()
+{
+    let [state,Setstate]=useState({});
+    const uploadData= ()=>[]
+    return ( <div style={{paddingRight:"20px"}}>
+<div className="about-container-list-item"><TextField helperText="Old Password" fullWidth="true" variant="filled"  onChange={(e)=>Setstate({...state,oldPassword:e.target.value})} value={state.oldPassword}></TextField></div>
+<div className="about-container-list-item"><TextField  helperText="New Password" fullWidth="true" variant="filled"  onChange={(e)=>Setstate({...state,newPassword:e.target.value})}  value={state.newPassword}></TextField></div>
+
+<Button onClick={uploadData} color="primary" variant="contained">Change</Button>
+</div>)
+    
+}
 function GeneralInfo(props) {
-
-    let [state,Setstate]= useState({firstName:"",lastName:"",email:"",phone:""});
-    useEffect(()=>{
-        async function getdata()
-        {
-            let response = await fetch("http://localhost:8090/api/user/",{
-                method:"GET",
-                headers:{
-                   "Content-Type":"application/json",
-                   "Authorization": "Bearer_ "+localStorage.getItem("token")
-                }
-            });
-            let x= await response.json();
-            Setstate({firstName:x.firstName,lastName:x.lastName,email:x.email})
-
-        }
-        getdata();
-    },[])
-     const uploadData = async ()=>{
-              
-             
-            
-     }
+  let [state,Setstate]=useState({info:<UserGeneral></UserGeneral>})
+   
     return (
         <div className="general-row">
             <div className='image-container-row' >
@@ -60,21 +78,19 @@ function GeneralInfo(props) {
                     </div>
                 </div>
                 <input type="file"  style={{ display: "none" }} ></input>
-               
+                
 
             </div>
             <div className='about-container-row'>
-
-                <div className="about-container-list-item"><TextField helperText="Name" fullWidth="true" variant="filled"  onChange={(e)=>Setstate({...state,firstName:e.target.value})} value={state.firstName}></TextField></div>
-                <div className="about-container-list-item"><TextField  helperText="Surname" fullWidth="true" variant="filled"  onChange={(e)=>Setstate({...state,lastName:e.target.value})}  value={state.lastName}></TextField></div>
-                <div className="about-container-list-item"><TextField   helperText="Email" fullWidth="true" variant="filled"   onChange={(e)=>Setstate({...state,email:e.target.value})} value={state.email}></TextField></div>
-                <div className="about-container-list-item"><TextField   helperText="Phone" fullWidth="true" variant="filled"   onChange={(e)=>Setstate({...state,phone:e.target.value})} value={state.phone}></TextField></div>
-                <Button onClick={uploadData} color="primary" variant="contained">Save</Button>
-
+            <IconButton onClick={()=>Setstate({info:<UserGeneral></UserGeneral>})} color='primary'><LanguageIcon></LanguageIcon></IconButton>
+            <IconButton onClick={()=>Setstate({info:<UserSecurity></UserSecurity>})} color="primary"><SecurityIcon></SecurityIcon></IconButton>
+            {state.info}
             </div>
         </div>
     );
 }
+
+
 
 function ActiveExams() {
      

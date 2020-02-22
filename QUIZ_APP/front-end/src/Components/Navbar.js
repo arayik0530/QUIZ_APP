@@ -153,9 +153,9 @@ function Navbar() {
               <Button color="inherit"  >
                 Contact
                     </Button>
-                    <Button color="inherit"  >
+                    <Link style={{ color: 'white', textDecoration: 'none' }} to="/">    <Button onClick={()=>{window.location.replace("/");}} color="inherit" >
                 Logout
-                    </Button>
+                </Button> </Link>
                     <div className="spacer"></div>
               <div className={classes.search}>
                 <div className={classes.searchIcon}>
