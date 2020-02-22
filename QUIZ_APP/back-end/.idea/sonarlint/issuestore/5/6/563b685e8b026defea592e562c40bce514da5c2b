@@ -1,0 +1,4 @@
+
+¤squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(³ªÎ…üÿÿÿÿ8©š±ö….
+rsquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³ªÎ…üÿÿÿÿ8©š±ö….
+‘"squid:ClassVariableVisibilityCheck"WMake userService a static final constant or non-public and provide accessors if needed.(ŽÑ¯¥ùÿÿÿÿ8¼Õ´ö….

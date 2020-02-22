@@ -1,0 +1,9 @@
+
+Usquid:S1135p"2Complete the task associated to this TODO comment.(ı˜¼¨ıÿÿÿÿ8Îòùö„.
+Msquid:S2201A"/The return value of "orElseThrow" must be used.(ãÙÍ8‡Ù¯ò„.
+_squid:S1854Ô"@Remove this useless assignment to local variable "answersCount".(ìıì­8¡Ç·†.
+[squid:UselessImportCheck"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8®„©Ä†.
+Nsquid:S5411æ"*Use the primitive boolean expression here.(Á–ÚÂøÿÿÿÿ8¡Ç·†.
+osquid:UselessImportCheck"DRemove this unused import 'com.workfront.quiz.dto.answer.AnswerDto'.(ØšùÖ8ÏÖ°Ä†.
+esquid:S3518Û"FMake sure "trueAnswersCount" can't be zero before doing this division.(ÅåÖ8¡Ç·†.
+Psquid:S1481Ô"1Remove this unused "answersCount" local variable.(ìıì­8¡Ç·†.
