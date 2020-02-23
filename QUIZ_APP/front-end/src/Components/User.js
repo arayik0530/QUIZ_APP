@@ -12,6 +12,7 @@ import {UserContext} from '../Contexts/user';
 import QuizItem from './QuizItem.js';
 import IconButton from '@material-ui/core/IconButton';
 import SecurityIcon from '@material-ui/icons/Security';
+
 function User() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     
@@ -27,6 +28,7 @@ function User() {
 }
 function UserGeneral()
 { let [state,Setstate]= useState({firstName:"",lastName:"",email:"",phone:""});
+const User = useContext(UserContext);
 useEffect(()=>{
     async function getdata()
     {
@@ -38,12 +40,31 @@ useEffect(()=>{
             }
         });
         let x= await response.json();
-        Setstate({firstName:x.firstName,lastName:x.lastName,email:x.email})
+        Setstate(x)
 
     }
     getdata();
-},[])
+},[]);
  const uploadData = async ()=>{
+     console.log("asd")
+     let response = await fetch("http://localhost:8090/api/user/update",{
+         method:"PUT",
+         headers:{
+            "Content-Type":"application/json",
+            "Authorization": "Bearer_ "+localStorage.getItem("token")
+         },
+         body:JSON.stringify({
+            "firstName":state.firstName,
+            "lastName":state.lastName,
+            "email":state.email,
+            "phone":state.phone,
+            "imageId":null,
+            "id":User.id
+         })
+    
+         
+     });
+    
  }
 return ( <div style={{paddingRight:"20px"}}>
 <div className="about-container-list-item"><TextField helperText="Name" fullWidth="true" variant="filled"  onChange={(e)=>Setstate({...state,firstName:e.target.value})} value={state.firstName}></TextField></div>
@@ -54,9 +75,32 @@ return ( <div style={{paddingRight:"20px"}}>
 </div>)
 }
 function UserSecurity()
-{
+{const User = useContext(UserContext);
     let [state,Setstate]=useState({});
-    const uploadData= ()=>[]
+    
+    const uploadData=  async ()=>{
+        
+        let response = await fetch("http://localhost:8090/api/user/change-password",{
+            method:"PUT",
+            headers:{
+                "Content-Type":"application/json",
+                "Authorization": "Bearer_ "+localStorage.getItem("token")
+            },
+            body:JSON.stringify({
+                "email":User.email,
+                "oldPassword":state.oldPassword,
+                "newPassword":state.newPassword
+            })
+        });
+       
+        if(response.status=="400")
+        {
+            //alert wrong password
+        }
+        else{
+            //alert password changed successfully
+        }
+    }
     return ( <div style={{paddingRight:"20px"}}>
 <div className="about-container-list-item"><TextField helperText="Old Password" fullWidth="true" variant="filled"  onChange={(e)=>Setstate({...state,oldPassword:e.target.value})} value={state.oldPassword}></TextField></div>
 <div className="about-container-list-item"><TextField  helperText="New Password" fullWidth="true" variant="filled"  onChange={(e)=>Setstate({...state,newPassword:e.target.value})}  value={state.newPassword}></TextField></div>

@@ -5,12 +5,9 @@ function AlertComp(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
   }
 export default function Alert(props)
-{  const [open, setOpen] = React.useState(true);
-    const handleClose = () => {
-        setOpen(false);
-      };
-    return ( <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-        <AlertComp onClose={handleClose} severity="success">
+{  
+    return ( <Snackbar open={props.open} autoHideDuration={6000} onClose={props.handleClose}>
+        <AlertComp onClose={props.handleClose} severity={props.severity}>
           {props.message}
         </AlertComp>
       </Snackbar>)

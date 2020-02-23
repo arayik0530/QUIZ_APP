@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import '../Css/styles.css';
 import icon from '../Image/quiz.png';
 import TextField from '@material-ui/core/TextField';
@@ -25,16 +25,19 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function Register_comp() {
+
   const classes = useStyles();
+  const Severities={success:"success",error:"error",warning:"warning",info:"info"};
+  const [open, setOpen] = React.useState(false);
+  const [severity,Setseverity]=React.useState("");
+  const [message,Setmessage]=React.useState("");
   const [state, Setstate] = React.useState({
     email: "",
     password: "",
     firstName: "",
     lastName: ""
   });
-  const [open, setOpen] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
-  const [message, Setmessage] = React.useState("");
   const handleClose = () => {
     setOpen(false);
   };
@@ -44,12 +47,14 @@ function Register_comp() {
 
     if (response.status == "200") {
       setLoading(false);
+      Setseverity(Severities.success)
       Setmessage(" Registration was successfull,please check your email for the confirmation link");
     
       setOpen(true);
     }
     else {
       setLoading(false);
+      Setseverity(Severities.info)
       Setmessage("Something went wrong please try again");
       
       setOpen(true);
@@ -59,11 +64,14 @@ function Register_comp() {
   const HandleBack = () => {
     window.location.href = '/'
   }
+
+  useEffect(() => {document.body.style.overflow="hidden" }, []);
   return (
     <div>
-      {loading && <LinearProgress></LinearProgress>}
+     
     <div className="register-main">
-      
+    {loading && <LinearProgress></LinearProgress>}
+    <br></br>
       <img width='50px' src={icon}></img>
       <h2 style={{ color: "#1976d2", textDecoration: "underline" }}>Register</h2>
       <TextField onChange={(e) => { Setstate({ ...state, firstName: e.target.value }) }} style={{ backgroundColor: 'whitesmoke' }} label="Name" variant="outlined"></TextField>
@@ -89,9 +97,7 @@ function Register_comp() {
       >
         Register
         </Button>
-      <Backdrop className={classes.backdrop} open={open} onClick={handleClose}>
-        {message}
-      </Backdrop>
+        <Alert open={open} message={message} handleClose={handleClose} severity={severity}></Alert>
      
 
 

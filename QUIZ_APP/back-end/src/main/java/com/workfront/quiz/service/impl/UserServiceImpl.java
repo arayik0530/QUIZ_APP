@@ -101,9 +101,8 @@ public class UserServiceImpl implements UserService {
 
         UserEntity userEntity = userRepository.findByEmail(passwordChangingDto.getEmail())
                 .orElseThrow(() -> new UserNotFoundException(passwordChangingDto.getEmail()));
-
-        if (userEntity.getPassword().equals(passwordChangingDto.getOldPassword())) {
-            userEntity.setPassword(passwordChangingDto.getNewPassword());
+        if (passwordEncoder.matches(passwordChangingDto.getOldPassword(),userEntity.getPassword())) {
+            userEntity.setPassword(passwordEncoder.encode(passwordChangingDto.getNewPassword()));
             userRepository.save(userEntity);
         } else {
             throw new WrongPasswordException();

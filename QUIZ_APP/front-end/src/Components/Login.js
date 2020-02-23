@@ -7,9 +7,16 @@ import icon from '../Image/quiz.png';
 import '../Css/styles.css';
 import {UpdateUserContext} from '../Contexts/user';
 import {postData} from '../utlis/utils';
+import Alert from './Alert';
 
  export default function Login()
-{
+{ const Severities={success:"success",error:"error",warning:"warning",info:"info"};
+  const [open, setOpen] = React.useState(false);
+  const [severity,Setseverity]=React.useState("");
+    const handleClose = () => {
+        setOpen(false);
+      };
+  const [message,Setmessage]=React.useState("");
   const [values, setValues] = React.useState({
     email:'',
     password: '',
@@ -17,7 +24,7 @@ import {postData} from '../utlis/utils';
   });
 
   const updateUser = useContext(UpdateUserContext);
-
+ 
   const handleChange = prop => event => {
     setValues({ ...values, [prop]: event.target.value });
   };
@@ -34,18 +41,32 @@ import {postData} from '../utlis/utils';
       email:values.email,
       password:values.password
     });
+
     if(respone.status=="200")
     { let x=await respone.text();
-      updateUser({token:x});
       localStorage.setItem("token",x);
+      let response = await fetch("http://localhost:8090/api/user/",{
+            method:"GET",
+            headers:{
+               "Content-Type":"application/json",
+               "Authorization": "Bearer_ "+x
+            }
+        });
+         x= await response.json();
+      updateUser(x);
+      
     }
-     if(respone.status=="404")
-    {
-      alert("Wrong Credentials")
+     if(respone.status=="404" || respone.status=="403")
+    { setOpen(true)
+      Setseverity(Severities.error)
+      Setmessage("Wrong Credentials")
+      
     }
     if(respone.status=="400")
-    {
-      alert("User is not activated")
+    {setOpen(true)
+      Setseverity(Severities.error)
+      Setmessage("User is not activated")
+      
     }
 
    
@@ -91,7 +112,7 @@ import {postData} from '../utlis/utils';
  <Button onClick={handleLogin} color="primary" variant="contained">Login</Button>
  <p style={{fontSize:'15px'}}>Not registered?<a href='/register' style={{color:'Green'}}>Create an account</a></p>
  </div>
- 
+ <Alert open={open} message={message} handleClose={handleClose} severity={severity}></Alert>
 
  </div>)
 }
