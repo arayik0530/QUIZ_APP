@@ -84,11 +84,11 @@ export default function Topics()
         SetTopic(newValue);
         
       }}
-      
+      style={{marginBottom:10}}
       renderInput={params => <TextField {...params} label="Topic" variant="outlined" />}
     />
        </div>
-       <br></br>
+       
             <TextField size="medium" variant="standard"></TextField>
            
             <IconButton onClick={UpdateTopic}><CheckIcon></CheckIcon></IconButton>
