@@ -1,0 +1,41 @@
+.main{
+    padding: 100px 100px 100px 100px;
+    display: flex;
+   
+   background-color: antiquewhite;
+    
+}
+.control{
+    margin-left: 20px;
+    margin-top: 30px;
+    flex: 1;
+    border-width: 2px;
+   
+}
+.control>h1{
+    text-align: center;
+    color: aqua;
+}
+.control >div >h2{
+    text-align: center;
+   
+    font-size: 60px;
+    margin: 0 0 10px 0;
+    cursor: pointer;
+}
+.control>div>h2:hover{
+    background-color: antiquewhite;
+}
+.workarea{
+    
+    flex: 4;
+}
+.spacer{
+    flex: 1;
+}
+@media only screen and (max-width: 960px) 
+{
+    .main{
+        display: block;
+    }
+}

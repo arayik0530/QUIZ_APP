@@ -1,6 +1,5 @@
 package com.workfront.quiz.service.impl;
 
-import com.workfront.quiz.dto.answer.AnswerDto;
 import com.workfront.quiz.dto.question.QuestionDto;
 import com.workfront.quiz.dto.quiz.*;
 import com.workfront.quiz.entity.*;
@@ -17,7 +16,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -109,7 +107,6 @@ public class QuizServiceImpl implements QuizService {
         quizRepository.save(quizEntity);
         upComingQuizRepository.delete(upcomingQuizEntity);
 
-//TODO need to split his method
 
         QuizQuestionEntity quizQuestionEntity = quizEntity.getQuizQuestions().get(startId);
         if (quizQuestionEntity.getQuestion() == null) {
@@ -251,7 +248,7 @@ public class QuizServiceImpl implements QuizService {
                 .orElseThrow(() -> new UpcomingQuizNotFoundException(upcomingQuizId));
 
 
-        UserEntity userEntity = userRepository.findById(userService.getMe()).orElseThrow(
+        UserEntity userEntity = userRepository.findById(upcomingQuizEntity.getUser().getId()).orElseThrow(
                 () -> new UserNotFoundException(userService.getMe()));
 
         QuizEntity quizEntity = new QuizEntity();

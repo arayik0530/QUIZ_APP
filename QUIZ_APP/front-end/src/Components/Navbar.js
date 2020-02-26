@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import User from './User';
+import Admin from './Admin/Admin';
 import '../Css/styles.css';
 import { makeStyles, fade } from '@material-ui/core/styles';
 import {
@@ -126,12 +127,12 @@ function Navbar() {
                 </Button> </Link>
 
 
-                 
+                <Link style={{ color: 'white', textDecoration: 'none' }} to="/admin">    <Button onClick={toggleDrawer(false)} fullWidth color="primary" >
+                    Admin
+                </Button> </Link>
 
 
-                  <Link style={{ color: 'white', textDecoration: 'none' }} to="/">  <Button onClick={toggleDrawer(false)} fullWidth color="primary" >
-                    Contact
-                </Button></Link>
+                  
 
 
                   <Link style={{ color: 'white', textDecoration: 'none' }} to="/">  <Button onClick={toggleDrawer(false)} fullWidth color="primary" >
@@ -147,12 +148,11 @@ function Navbar() {
               <Link style={{ color: 'white', textDecoration: 'none' }} to="/users">    <Button color="inherit" >
                 User
                 </Button> </Link>
-
-           
-
-              <Button color="inherit"  >
-                Contact
-                    </Button>
+                <Link style={{ color: 'white', textDecoration: 'none' }} to="/admin">    <Button color="inherit" >
+                Admin
+                </Button> </Link>
+  
+              
                     <Link style={{ color: 'white', textDecoration: 'none' }} to="/">    <Button onClick={()=>{window.location.replace("/");}} color="inherit" >
                 Logout
                 </Button> </Link>
@@ -187,6 +187,9 @@ function Navbar() {
           </Route>
           <Route   path="/main">
             Hello
+            </Route>
+            <Route   path="/admin">
+            <Admin></Admin>
             </Route>
             <Route  exact path= {`/search/${search}`}>
             <Search_List input={search} />

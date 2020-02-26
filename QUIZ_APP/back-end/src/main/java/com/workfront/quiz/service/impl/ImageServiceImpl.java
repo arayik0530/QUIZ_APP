@@ -8,6 +8,7 @@ import com.workfront.quiz.repository.SmallImageRepository;
 import com.workfront.quiz.repository.UserRepository;
 import com.workfront.quiz.service.ImageService;
 import com.workfront.quiz.service.util.exception.UserNotFoundException;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,6 +22,7 @@ import java.io.IOException;
 
 @Service
 @Transactional(readOnly = true)
+@AllArgsConstructor
 public class ImageServiceImpl implements ImageService {
     private ImageRepository imageRepository;
     private UserRepository userRepository;
@@ -80,6 +82,7 @@ public class ImageServiceImpl implements ImageService {
         graphics2D.dispose();
         return bufferedImage;
     }
+
     @Override
     @Transactional
     public void saveOriginalImage(byte[] imagesBytes, Long userId) {
@@ -92,6 +95,7 @@ public class ImageServiceImpl implements ImageService {
         userRepository.save(userEntity);
 
     }
+
     @Override
     @Transactional
     public void saveSmallImage(byte[] imageBytes, Long userId) {

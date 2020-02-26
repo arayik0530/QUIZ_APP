@@ -4,8 +4,6 @@ import com.workfront.quiz.dto.user.PasswordChangingDto;
 import com.workfront.quiz.dto.user.UserInfoDto;
 import com.workfront.quiz.dto.user.UserRegistrationDto;
 import com.workfront.quiz.entity.ConfirmationTokenEntity;
-import com.workfront.quiz.entity.ImageEntity;
-import com.workfront.quiz.entity.SmallImageEntity;
 import com.workfront.quiz.entity.UserEntity;
 import com.workfront.quiz.entity.enums.UserRole;
 import com.workfront.quiz.repository.ConfirmationTokenRepository;
@@ -87,7 +85,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public void update(UserInfoDto user) { //TODO jshtel es method@ sxala ashxatum, mek el imageId loading@ stex
+    public void update(UserInfoDto user) {
         UserEntity userEntity = userRepository.findById(user.getId())
                 .orElseThrow(() -> new UserNotFoundException(user.getId()));
         user.toEntity(userEntity);

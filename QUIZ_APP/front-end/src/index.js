@@ -5,9 +5,9 @@ import Navbar from './Components/Navbar';
 import * as serviceWorker from './serviceWorker';
 import Register from './Components/Register';
 import Controller from './Components/Controller'
+import Admin from './Components/Admin/Admin'
 
-
-ReactDOM.render(<Controller/>, document.getElementById('root'));
+ReactDOM.render(<Admin/>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
