@@ -17,7 +17,7 @@ const useStyles = makeStyles({
 export default function Question() {
     const classes =useStyles();
     const [Topic, SetTopic] = React.useState(null); 
-    const [Topics,SetTopics]=React.useState([{}]);
+    const [Topics,SetTopics]=React.useState([]);
     const [text,Settext]=React.useState("");
     const [state,Setstate]=React.useState([]);
 
@@ -57,13 +57,29 @@ export default function Question() {
         Setstate(x)
         
     }
-    const HandleAdd = () => {
+    const HandleAdd = async () => {
         let isMultiAnswer=false;
         let total=0;
         state.forEach((x)=>{if(x.isRight)total=total+1})
         if(total>=2)isMultiAnswer=true;
+        let response = await fetch("http://localhost:8090/api/question/create",{
+          method:"POST",
+          headers:{
+          "Content-Type":"application/json",
+          "Authorization": "Bearer_ "+localStorage.getItem("token")
+          },
+          body:JSON.stringify({
+            "createAnswerDtoList":state,
+            "isMultiAnswer":isMultiAnswer,
+            "text":text,
+            "topicId":Topic.id
+          })
+
+        });
+        console.log(response)
         Settext("");
         Setstate([]);
+
 
     }
     return (

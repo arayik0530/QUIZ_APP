@@ -12,6 +12,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/user/")
 @CrossOrigin(origins = "*")
@@ -89,5 +91,12 @@ public class UserControllerImpl implements UserController {
     @PostMapping("upload-image")
     public void uploadImage(MultipartFile image) {
         userService.saveImage(image, userService.getMe());
+    }
+
+    @Override
+    @GetMapping(value = "all-users")
+    @PreAuthorize(value = "hasAuthority('ADMIN')")
+    public List<UserInfoDto> findAllUsers() {
+        return userService.findAllUsers();
     }
 }

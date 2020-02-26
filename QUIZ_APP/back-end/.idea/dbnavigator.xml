@@ -2,7 +2,7 @@
 <project version="4">
   <component name="DBNavigator.Project.DataEditorManager">
     <record-view-column-sorting-type value="BY_INDEX" />
-    <value-preview-text-wrapping value="true" />
+    <value-preview-text-wrapping value="false" />
     <value-preview-pinned value="false" />
   </component>
   <component name="DBNavigator.Project.DataExportManager">
@@ -23,13 +23,7 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes>
-      <connection connection-id="9831a7a5-f8ab-4081-842e-fe5c739d9954">
-        <schema name="information_schema" object-types="sequence, table, view, function" />
-        <schema name="pg_catalog" object-types="function" />
-        <schema name="public" object-types="sequence, dataset trigger, table, index, view, function, column, constraint" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="9831a7a5-f8ab-4081-842e-fe5c739d9954">
@@ -85,7 +79,7 @@
           <database value="quiz_app" />
           <type value="USER_PASSWORD" />
           <user value="postgres" />
-          <deprecated-pwd value="MTIz" />
+          <deprecated-pwd value="" />
         </database>
         <properties>
           <auto-commit value="false" />

@@ -16,7 +16,7 @@ const useStyles = makeStyles({
 export default function Topics()
 {  const classes =useStyles();
   const [Topic, SetTopic] = React.useState(null); 
-  const [Topics,SetTopics]=React.useState([{}]);
+  const [Topics,SetTopics]=React.useState([]);
   const [NewTopic,SetNewTopic]=React.useState("")
   const [NewUpdateTopic,SetNewUpdateTopic]=React.useState("")
   useEffect(  ()=>{
@@ -48,22 +48,23 @@ export default function Topics()
        "Authorization": "Bearer_ "+localStorage.getItem("token")
       },
       body:JSON.stringify({
-        "topic":NewTopic
+        "title":NewTopic
       })
     });
     
   
   }
   const UpdateTopic = async ()=>{
-    
+    console.log(NewUpdateTopic)
     let response = await fetch("http://localhost:8090/api/topic/update",{
       method:"PUT",
       headers:{
        "Content-Type":"application/json",
        "Authorization": "Bearer_ "+localStorage.getItem("token")
       },
-      body:JSON.stringify(NewUpdateTopic)
+      body:JSON.stringify({title:NewUpdateTopic,id:Topic.id})
     });
+    console.log(response)
   }
     return(
         <div >
@@ -89,7 +90,7 @@ export default function Topics()
     />
        </div>
        
-            <TextField size="medium" variant="standard"></TextField>
+            <TextField  value={NewUpdateTopic} onChange={(e)=>{SetNewUpdateTopic(e.target.value)}} size="medium" variant="standard"></TextField>
            
             <IconButton onClick={UpdateTopic}><CheckIcon></CheckIcon></IconButton>
             </div>

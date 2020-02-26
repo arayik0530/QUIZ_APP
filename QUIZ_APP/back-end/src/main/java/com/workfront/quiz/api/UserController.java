@@ -5,8 +5,11 @@ import com.workfront.quiz.dto.user.UserInfoDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.multipart.MultipartFile;
-public interface UserController {
 
+import java.util.List;
+
+public interface UserController {
+    List<UserInfoDto> findAllUsers();
     UserInfoDto getById(Long id);
 
     Page<UserInfoDto> search(String text, Pageable pageable);

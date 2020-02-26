@@ -25,7 +25,7 @@ public class TopicControllerImpl implements TopicController {
 
     @Override
     @PostMapping("create")
-    @PreAuthorize(value = "hasAuthority('ADMIN')")
+   // @PreAuthorize(value = "hasAuthority('ADMIN')")
     public void create(@RequestBody TopicOnlyTitleDto topicDto) {
         topicService.create(topicDto);
     }
@@ -50,14 +50,14 @@ public class TopicControllerImpl implements TopicController {
 
     @Override
     @DeleteMapping("{id}")
-    @PreAuthorize(value = "hasAuthority('ADMIN')")
+   // @PreAuthorize(value = "hasAuthority('ADMIN')")
     public void remove(@PathVariable Long id) {
         topicService.remove(id);
     }
 
     @Override
     @PutMapping("update")
-    public void update(TopicDto topic) {
+    public void update(@RequestBody TopicDto topic) {
         topicService.update(topic);
     }
 }
