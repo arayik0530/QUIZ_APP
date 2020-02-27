@@ -1,10 +1,6 @@
 import React,{useEffect,useContext, useState} from 'react';
 import '../Css/styles.css';
-import { useRef } from 'react';
 import Button from '@material-ui/core/Button';
-import EditIcon from '@material-ui/icons/Edit';
-import { Dialog } from '@material-ui/core';
-import LockIcon from '@material-ui/icons/Lock';
 import LanguageIcon from '@material-ui/icons/Language';
 import TextField from '@material-ui/core/TextField';
 import image from '../Image/user-male.jpg';
@@ -12,23 +8,31 @@ import {UserContext} from '../Contexts/user';
 import QuizItem from './QuizItem.js';
 import IconButton from '@material-ui/core/IconButton';
 import SecurityIcon from '@material-ui/icons/Security';
+import Alert from './Alert';
 
 function User() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     
     return (
-        <div className="main-container"  >
+        <div className="main-container">
          
-            <GeneralInfo ></GeneralInfo>
+            <GeneralInfo></GeneralInfo>
             <ActiveExams></ActiveExams>
-
+            
         </div>
     );
 
 }
 function UserGeneral()
-{ let [state,Setstate]= useState({firstName:"",lastName:"",email:"",phone:""});
-const User = useContext(UserContext);
+{   let [state,Setstate]= useState({firstName:"",lastName:"",email:"",phone:""});
+    const User = useContext(UserContext);
+    const Severities={success:"success",error:"error",warning:"warning",info:"info"};
+    const [open, setOpen] = React.useState(false);
+    const [severity,Setseverity]=React.useState("");
+    const [message,Setmessage]=React.useState("");
+    const handleClose = () => {
+    setOpen(false);
+  };
 useEffect(()=>{
     async function getdata()
     {
@@ -46,7 +50,7 @@ useEffect(()=>{
     getdata();
 },[]);
  const uploadData = async ()=>{
-     console.log("asd")
+    
      let response = await fetch("http://localhost:8090/api/user/update",{
          method:"PUT",
          headers:{
@@ -64,6 +68,17 @@ useEffect(()=>{
     
          
      });
+     let result =response.status;
+     if(result=='200')
+     {  Setseverity(Severities.success)
+        Setmessage(" Change was successfull");
+        setOpen(true);
+     }
+     else{
+        Setseverity(Severities.warning)
+        Setmessage(" Something went wrong");
+        setOpen(true);
+     }
     
  }
 return ( <div style={{paddingRight:"20px"}}>
@@ -72,11 +87,14 @@ return ( <div style={{paddingRight:"20px"}}>
 <div className="about-container-list-item"><TextField   helperText="Email" fullWidth="true" variant="filled"   onChange={(e)=>Setstate({...state,email:e.target.value})} value={state.email}></TextField></div>
 <div className="about-container-list-item"><TextField   helperText="Phone" fullWidth="true" variant="filled"   onChange={(e)=>Setstate({...state,phone:e.target.value})} value={state.phone}></TextField></div>
 <Button onClick={uploadData} color="primary" variant="contained">Change</Button>
+<Alert open={open} message={message} handleClose={handleClose} severity={severity}></Alert>
+       
 </div>)
 }
 function UserSecurity()
 {const User = useContext(UserContext);
     let [state,Setstate]=useState({});
+    
     
     const uploadData=  async ()=>{
         
@@ -101,6 +119,7 @@ function UserSecurity()
             //alert password changed successfully
         }
     }
+   
     return ( <div style={{paddingRight:"20px"}}>
 <div className="about-container-list-item"><TextField helperText="Old Password" fullWidth="true" variant="filled"  onChange={(e)=>Setstate({...state,oldPassword:e.target.value})} value={state.oldPassword}></TextField></div>
 <div className="about-container-list-item"><TextField  helperText="New Password" fullWidth="true" variant="filled"  onChange={(e)=>Setstate({...state,newPassword:e.target.value})}  value={state.newPassword}></TextField></div>
@@ -110,18 +129,45 @@ function UserSecurity()
     
 }
 function GeneralInfo(props) {
-  let [state,Setstate]=useState({info:<UserGeneral></UserGeneral>})
-   
+  const [state,Setstate]=useState({info:<UserGeneral></UserGeneral>})
+  const [Image,SetImage]=useState(null);
+  
+  const UploadImage = ()=>{
+    
+    document.getElementById('fileInput').click();
+}
+const onChangeHandler =  async (event)=>{
+    let x=event.target.files[0];
+    const data = new FormData() 
+    data.append('file',x);
+    let response = await fetch("http://localhost:8090/api/user/upload-image",{
+        method:"POST",
+        headers:{
+           
+            "Authorization": "Bearer_ "+localStorage.getItem("token")
+
+        },
+        body:data
+    });
+    console.log(response)
+    
+
+}
     return (
         <div className="general-row">
-            <div className='image-container-row' >
-                <div className="image-container" >
+            <div className='image-container-row'>
+                <div className="image-container">
                     <img src={image} alt='userImage' className='image' ></img>
                     <div className="middle">
-                        <Button  color='primary' variant='contained' >Upload</Button>
+             
+                        <Button  color='primary' variant='contained' onClick={UploadImage} >Upload</Button>
+                        <div style={{height:0,overflow:"hidden"}}>
+   <input type="file" id="fileInput" name="fileInput" onChange={onChangeHandler} />
+                        </div>
                     </div>
+                    
                 </div>
-                <input type="file"  style={{ display: "none" }} ></input>
+              
                 
 
             </div>
@@ -130,7 +176,7 @@ function GeneralInfo(props) {
             <IconButton onClick={()=>Setstate({info:<UserSecurity></UserSecurity>})} color="primary"><SecurityIcon></SecurityIcon></IconButton>
             {state.info}
             </div>
-        </div>
+             </div>
     );
 }
 

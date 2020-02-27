@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useContext, useEffect} from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Drawer from '@material-ui/core/Drawer';
@@ -18,7 +18,7 @@ import {
   Link
 } from "react-router-dom";
 import Search_List from './Search_List';
-
+import {UserContext} from '../Contexts/user';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -76,13 +76,17 @@ const useStyles = makeStyles(theme => ({
 function Navbar() {
   //states
   
-  
+  const user = useContext(UserContext);
   const classes = useStyles();
   const [state, Setstate] = React.useState(false);
   const [search, Setsearchstate] = React.useState("");
-
+  
   const toggleDrawer = (e) => () => Setstate(e)
  
+   let x= user.roles[0];
+   let s1=x.substr(0,x.length-1).substr(1).split(',');
+  
+
   return (
     <Router>
       
@@ -117,20 +121,17 @@ function Navbar() {
 
               <Drawer open={state} onClose={toggleDrawer(false)}>
                 <div className="drawer">
-                  <Link style={{ color: 'white', textDecoration: 'none' }} to="/">  <Button onClick={toggleDrawer(false)} fullWidth color="primary" >
-                    Main
-                </Button></Link>
+                
 
 
-                  <Link style={{ color: 'white', textDecoration: 'none' }} to="/users">    <Button onClick={toggleDrawer(false)} fullWidth color="primary" >
+                  <Link style={{ color: 'white', textDecoration: 'none' }} to="/">    <Button onClick={toggleDrawer(false)} fullWidth color="primary" >
                     User
                 </Button> </Link>
 
 
-                <Link style={{ color: 'white', textDecoration: 'none' }} to="/admin">    <Button onClick={toggleDrawer(false)} fullWidth color="primary" >
+               { s1.includes("ADMIN") && <Link style={{ color: 'white', textDecoration: 'none' }} to="/admin">    <Button onClick={toggleDrawer(false)} fullWidth color="primary" >
                     Admin
-                </Button> </Link>
-
+                </Button> </Link>}
 
                   
 
@@ -142,15 +143,13 @@ function Navbar() {
               </Drawer>
             </div>
             <div className="navbar-menu">
-              <Link style={{ color: 'white', textDecoration: 'none' }} to="/main">  <Button color="inherit" >
-                Main
-                </Button></Link>
-              <Link style={{ color: 'white', textDecoration: 'none' }} to="/users">    <Button color="inherit" >
+             
+              <Link style={{ color: 'white', textDecoration: 'none' }} to="/">    <Button color="inherit" >
                 User
                 </Button> </Link>
-                <Link style={{ color: 'white', textDecoration: 'none' }} to="/admin">    <Button color="inherit" >
+            { s1.includes("ADMIN") &&  <Link style={{ color: 'white', textDecoration: 'none' }} to="/admin">    <Button color="inherit" >
                 Admin
-                </Button> </Link>
+                </Button> </Link>}
   
               
                     <Link style={{ color: 'white', textDecoration: 'none' }} to="/">    <Button onClick={()=>{window.location.replace("/");}} color="inherit" >
@@ -182,13 +181,11 @@ function Navbar() {
        
         <Switch>
 
-          <Route path="/users">
+          <Route  exact path="/">
             <User />
           </Route>
-          <Route   path="/main">
-            Hello
-            </Route>
-            <Route   path="/admin">
+        
+            <Route path="/admin">
             <Admin></Admin>
             </Route>
             <Route  exact path= {`/search/${search}`}>

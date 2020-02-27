@@ -18,7 +18,7 @@ function Search_List(props) {
       method:"GET",
       headers:{
       "Content-Type":"application/json",
-      "Authorization": "Bearer_ "+User.token
+      "Authorization": "Bearer_ "+localStorage.getItem("token")
     }})
       .then((response) => {
         return response.json();
@@ -26,7 +26,7 @@ function Search_List(props) {
       .then((myJson) => {
         console.log(myJson);
 
-        let x = myJson.content.map((a) => { return <UserField name={a.firstName} surname={a.lastName} email={a.email}></UserField> })
+        let x = myJson.content.map( (a) => { return <UserField name={a.firstName} surname={a.lastName} email={a.email}></UserField> })
         Setstate(x);
       });
 

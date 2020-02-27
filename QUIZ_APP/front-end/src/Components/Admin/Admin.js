@@ -6,7 +6,7 @@ import Quiz from './Quiz';
 import Button from '@material-ui/core/Button'
 
 export default function Admin()
-{ const [state,Setstate]= React.useState(<Question></Question>)
+{ const [state,Setstate]= React.useState(<Topics></Topics>)
     return(
         <div className="main">
            

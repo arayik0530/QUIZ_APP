@@ -89,7 +89,7 @@ public class UserControllerImpl implements UserController {
 
     @Override
     @PostMapping("upload-image")
-    public void uploadImage(MultipartFile image) {
+    public void uploadImage(@RequestBody MultipartFile image) {
         userService.saveImage(image, userService.getMe());
     }
 

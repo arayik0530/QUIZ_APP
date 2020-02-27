@@ -71,8 +71,8 @@ function Register_comp() {
      
     <div className="register-main">
     {loading && <LinearProgress></LinearProgress>}
-    <br></br>
-      <img width='50px' src={icon}></img>
+    
+      <img style={{marginTop:50}} width='50px' src={icon}></img>
       <h2 style={{ color: "#1976d2", textDecoration: "underline" }}>Register</h2>
       <TextField onChange={(e) => { Setstate({ ...state, firstName: e.target.value }) }} style={{ backgroundColor: 'whitesmoke' }} label="Name" variant="outlined"></TextField>
       <br />
