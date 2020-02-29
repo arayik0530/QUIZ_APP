@@ -1,0 +1,15 @@
+.container{
+    margin-left: 20vw;
+    margin-right: 20vw;
+    margin-top: 10vh;
+}
+.questionContainer{
+    margin-left: 20vw;
+}
+.nextButtonContainer{
+    margin-top: 5vh;
+}
+.timer{
+    margin-left: 10vw;
+    padding-left: 20vw;
+}

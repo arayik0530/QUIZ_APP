@@ -13,7 +13,7 @@ public class WebConfig {
     MultipartConfigElement multipartConfigElement() {
         MultipartConfigFactory factory = new MultipartConfigFactory();
         factory.setMaxFileSize(DataSize.ofMegabytes(5));
-        factory.setMaxRequestSize(DataSize.ofKilobytes(128));
+        factory.setMaxRequestSize(DataSize.ofMegabytes(5));
         return factory.createMultipartConfig();
     }
 }

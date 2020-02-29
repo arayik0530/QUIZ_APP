@@ -5,15 +5,25 @@ import LanguageIcon from '@material-ui/icons/Language';
 import TextField from '@material-ui/core/TextField';
 import image from '../../Image/user-male.jpg';
 import {UserContext} from '../../Contexts/user';
-import QuizItem from '../QuizItem.js';
+import QuizItem from './QuizItem.js';
 import IconButton from '@material-ui/core/IconButton';
 import SecurityIcon from '@material-ui/icons/Security';
-import Alert from '../Alert';
-
+import Alert from '../Alert/Alert';
+import {UpdateIdContext} from '../../Contexts/idcontext';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    useRouteMatch,
+    useHistory
+  } from "react-router-dom";
 function ActiveExams() {
-     
+    let history = useHistory();
     let [state,Setstate]=useState([]);
     let [passedExams,SetpassedExams]=useState([]);
+    const [id,Setid]=useState();
+    const UpdateId = useContext(UpdateIdContext);
     useEffect(()=>{
         async function getdata()
         {
@@ -26,6 +36,7 @@ function ActiveExams() {
         });
 
         let x = await response.json();
+        
      Setstate(x.content);
       response =await fetch("http://localhost:8090/api/quiz/own",{
         method:"GET",
@@ -43,19 +54,28 @@ function ActiveExams() {
     getdata();
 
     },[]);
-
+  const OpenUpcomingExam=(id)=>{
+      history.push("/exams");
+    UpdateId(id);
+  }
     return (
+        
         <div className="activeExams-container">
             <h1 >Active Exams</h1>
             <div className="activeExamsList-container">
-    {state && state.map((x)=>{ return <QuizItem props={[x.topic,x.deadline]}></QuizItem>})}
+    {state && state.map((x)=>{ return <QuizItem onClick={()=>OpenUpcomingExam(x.id)} props={[x.topic,x.deadline]}></QuizItem>})}
             </div>
             <h1 >Passed Exams</h1>
             <div className="activeExamsList-container">
             {passedExams && passedExams.map((x)=>{ return <div className="activeExamsList-container-Item"><div className='title'>{x.topic}<br></br>{x.successPercent}</div></div>})}
                 </div>
+             
         </div>
+     
+   
+
     )
+
 }
 function UserGeneral()
 {   let [state,Setstate]= useState({firstName:"",lastName:"",email:"",phone:""});
@@ -183,7 +203,7 @@ const onChangeHandler =  async (event)=>{
         },
         body:data
     });
-    console.log(response)
+    
     
 
 }

@@ -7,9 +7,10 @@ import SearchIcon from '@material-ui/icons/Search';
 import Button from '@material-ui/core/Button';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import User from './User/User';
-import Admin from './Admin/Admin';
-import '../Css/styles.css';
+import User from '../User/User';
+import Admin from '../Admin/Admin';
+import App from '../Exam/App';
+import '../../Css/styles.css';
 import { makeStyles, fade } from '@material-ui/core/styles';
 import {
   BrowserRouter as Router,
@@ -17,9 +18,11 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import Search_List from './Search_List';
-import {UserContext} from '../Contexts/user';
-
+import Search_List from '../User/Search_List';
+import {UserContext} from '../../Contexts/user';
+import store from "../../redux/store";
+import { Provider } from "react-redux";
+import {IdContext} from '../../Contexts/idcontext';
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -76,16 +79,18 @@ const useStyles = makeStyles(theme => ({
 function Navbar() {
   //states
   
-  const user = useContext(UserContext);
+  const user =JSON.parse(localStorage.getItem("UserContext"));
   const classes = useStyles();
   const [state, Setstate] = React.useState(false);
   const [search, Setsearchstate] = React.useState("");
-  
+  const ID=useContext(IdContext);
   const toggleDrawer = (e) => () => Setstate(e)
  
    let x= user.roles[0];
-   let s1=x.substr(0,x.length-1).substr(1).split(',');
-  
+   let roles=[];
+   x.substr(0,x.length-1).substr(1).split(',').forEach(x=>{roles.push(x.trim())});
+ 
+ 
 
   return (
     <Router>
@@ -129,9 +134,12 @@ function Navbar() {
                 </Button> </Link>
 
 
-               { s1.includes("ADMIN") && <Link style={{ color: 'white', textDecoration: 'none' }} to="/admin">    <Button onClick={toggleDrawer(false)} fullWidth color="primary" >
+               { roles.includes("ADMIN") && <Link style={{ color: 'white', textDecoration: 'none' }} to="/admin">    <Button onClick={toggleDrawer(false)} fullWidth color="primary" >
                     Admin
                 </Button> </Link>}
+                { ID && <Link style={{ color: 'white', textDecoration: 'none' }} to="/exams">    <Button color="inherit" >
+                Exams
+                </Button> </Link>   }  
 
                   
 
@@ -147,12 +155,15 @@ function Navbar() {
               <Link style={{ color: 'white', textDecoration: 'none' }} to="/">    <Button color="inherit" >
                 User
                 </Button> </Link>
-            { s1.includes("ADMIN") &&  <Link style={{ color: 'white', textDecoration: 'none' }} to="/admin">    <Button color="inherit" >
+                
+            { roles.includes('ADMIN') &&  <Link style={{ color: 'white', textDecoration: 'none' }} to="/admin">    <Button color="inherit" >
                 Admin
                 </Button> </Link>}
-  
+              { ID && <Link style={{ color: 'white', textDecoration: 'none' }} to="/exams">    <Button color="inherit" >
+                Exams
+                </Button> </Link>   }  
               
-                    <Link style={{ color: 'white', textDecoration: 'none' }} to="/">    <Button onClick={()=>{window.location.replace("/");}} color="inherit" >
+                    <Link style={{ color: 'white', textDecoration: 'none' }} to="/">    <Button onClick={()=>{localStorage.clear();window.location.replace("/");}} color="inherit" >
                 Logout
                 </Button> </Link>
                     <div className="spacer"></div>
@@ -184,13 +195,18 @@ function Navbar() {
           <Route  exact path="/">
             <User />
           </Route>
-        
+           
             <Route path="/admin">
             <Admin></Admin>
             </Route>
             <Route  exact path= {`/search/${search}`}>
             <Search_List input={search} />
           </Route>
+          <Route exact path='/exams'>
+           <Provider store={store}>
+           <App/> 
+           </Provider>
+           </Route>
         </Switch>
       </div>
     </Router>

@@ -3,11 +3,11 @@ import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import EmailIcon from '@material-ui/icons/Email';
 import Button from "@material-ui/core/Button";
-import icon from '../Image/quiz.png';
-import '../Css/styles.css';
-import {UpdateUserContext} from '../Contexts/user';
-import {postData} from '../utlis/utils';
-import Alert from './Alert';
+import icon from '../../Image/quiz.png';
+import '../../Css/styles.css';
+import {UpdateUserContext} from '../../Contexts/user';
+import {postData} from '../../utils/utils';
+import Alert from '../Alert/Alert';
 
  export default function Login()
 { const Severities={success:"success",error:"error",warning:"warning",info:"info"};
@@ -53,7 +53,9 @@ import Alert from './Alert';
             }
         });
          x= await response.json();
+         localStorage.setItem("UserContext",JSON.stringify(x))
       updateUser(x);
+    
       
     }
      if(respone.status=="404" || respone.status=="403")

@@ -60,7 +60,9 @@ public class QuizControllerImpl implements QuizController {
     @Override
     @GetMapping("start/{upComingQuizId}")
     public QuestionDto startQuiz(@PathVariable Long upComingQuizId) {
-        return quizService.generateQuiz(upComingQuizId);
+
+        Long quizId = quizService.generateQuiz(upComingQuizId);
+        return quizService.getFirstQuestion(quizId);
     }
 
     @Override

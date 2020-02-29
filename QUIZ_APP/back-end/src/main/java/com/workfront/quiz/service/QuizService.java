@@ -6,6 +6,7 @@ import com.workfront.quiz.dto.quiz.*;
 import com.workfront.quiz.entity.TopicEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 import java.util.List;
@@ -18,11 +19,14 @@ public interface QuizService {
 
     Page<QuizDto> getQuizesByTopic(TopicEntity topic, Pageable pageable);
 
-    QuestionDto generateQuiz(Long topicId);
+    Long generateQuiz(Long topicId);
 
     void remove(Long id);
 
     Page<QuizDtoShortInfo> getQuizesByUserId(Long userId, Pageable pageable);
+
+    @Transactional
+    QuestionDto getFirstQuestion(Long quizId);
 
     PastQuizInfoDto getQuizInfo(Long quizId);
 

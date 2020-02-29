@@ -1,11 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './Css/index.css';
-import Navbar from './Components/Navbar';
 import * as serviceWorker from './serviceWorker';
-import Register from './Components/Register';
-import Controller from './Components/Controller'
-import Admin from './Components/Admin/Admin'
+import Controller from './Components/Auth/Controller'
+
 
 ReactDOM.render(<Controller/>, document.getElementById('root'));
 

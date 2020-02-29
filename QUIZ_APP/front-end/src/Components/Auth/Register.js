@@ -1,6 +1,6 @@
 import React,{useEffect} from 'react';
-import '../Css/styles.css';
-import icon from '../Image/quiz.png';
+import '../../Css/styles.css';
+import icon from '../../Image/quiz.png';
 import TextField from '@material-ui/core/TextField';
 import Button from "@material-ui/core/Button";
 import Login from './Login';
@@ -14,8 +14,8 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import { postData } from '../utlis/utils.js';
-import Alert from './Alert';
+import { postData } from '../../utils/utils';
+import Alert from '../Alert/Alert';
 
 const useStyles = makeStyles(theme => ({
   backdrop: {

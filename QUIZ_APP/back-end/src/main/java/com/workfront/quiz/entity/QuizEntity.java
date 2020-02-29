@@ -4,7 +4,6 @@ import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -44,7 +43,7 @@ public class QuizEntity {
     @Column(name = "expected_duration")
     private Integer duration;
 
-    @Column(name = "success_percent", updatable = false, scale = 2, precision = 5)
+    @Column(name = "success_percent", scale = 2, precision = 5)
     private Double successPercent;
 
     @Column(name = "is_finished", nullable = false)

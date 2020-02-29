@@ -2,8 +2,133 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8f781bac-a305-459e-98b8-67823d07390e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/88406101-a4dc-4e8a-a8a1-838a9ce8fa0f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/88406101-a4dc-4e8a-a8a1-838a9ce8fa0f.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/88406101-a4dc-4e8a-a8a1-838a9ce8fa0f/storage_v2/_src_/database/quiz_app.N5muwQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/88406101-a4dc-4e8a-a8a1-838a9ce8fa0f/storage_v2/_src_/database/quiz_app.N5muwQ/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/98325dc5-4a2a-40e0-b255-939b13876c73.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/98325dc5-4a2a-40e0-b255-939b13876c73.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/98325dc5-4a2a-40e0-b255-939b13876c73/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/98325dc5-4a2a-40e0-b255-939b13876c73/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/e/1e1756305307c6cd2505e9dc312ff3e0d0f90694" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/e/1e1756305307c6cd2505e9dc312ff3e0d0f90694" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/3/53335b4b411d8c5d4eaaaeecc9dcb41c4fbf7ac0" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/3/53335b4b411d8c5d4eaaaeecc9dcb41c4fbf7ac0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/6/a641cba118e332e1aeb572aed54dc640f03dd8fa" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/6/a641cba118e332e1aeb572aed54dc640f03dd8fa" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/7/b775fa101dca022ba30819ec6bbe083e658d6646" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/7/b775fa101dca022ba30819ec6bbe083e658d6646" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/0/d0b43964d06e051c76ef11a3896e11232196c655" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/0/d0b43964d06e051c76ef11a3896e11232196c655" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/d/ed5518a592e23290560b9d9c3ff9188340412f98" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/d/ed5518a592e23290560b9d9c3ff9188340412f98" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/Bootstrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/Bootstrap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/QuestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/QuestionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/QuizController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/QuizController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/TopicController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/TopicController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/impl/AuthControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/impl/AuthControllerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/impl/ExceptionHandlerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/impl/ExceptionHandlerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/impl/QuestionControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/impl/QuestionControllerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/impl/QuizControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/impl/QuizControllerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/impl/TopicControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/impl/TopicControllerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/impl/UserControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/api/impl/UserControllerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/config/ExceptionHandlerControllerConfig/ExceptionHandlerControllerProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/config/ExceptionHandlerControllerConfig/ExceptionHandlerControllerProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/config/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/config/SwaggerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/config/WebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/answer/AnswerDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/answer/AnswerDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/answer/AnswerForPastQuizDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/answer/AnswerForPastQuizDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/answer/CreateAnswerDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/answer/CreateAnswerDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/question/CreateQuestionDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/question/CreateQuestionDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/question/QuestionDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/question/QuestionDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/question/QuestionForPastQuizDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/question/QuestionForPastQuizDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/quiz/PastQuizInfoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/quiz/PastQuizInfoDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/quiz/QuizDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/quiz/QuizDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/quiz/QuizDtoForLocalStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/quiz/QuizDtoForLocalStorage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/quiz/QuizDtoShortInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/quiz/QuizDtoShortInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/quiz/QuizQuestionDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/quiz/QuizQuestionDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/quiz/UpcomingQuizCreationDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/quiz/UpcomingQuizCreationDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/quiz/UpcomingQuizDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/quiz/UpcomingQuizDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/topic/TopicDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/topic/TopicDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/topic/TopicOnlyTitleDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/topic/TopicOnlyTitleDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/user/LoginRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/user/LoginRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/user/PasswordChangingDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/user/PasswordChangingDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/user/UserInfoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/user/UserInfoDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/user/UserRegistrationDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/dto/user/UserRegistrationDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/entity/AnswerEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/entity/AnswerEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/entity/ConfirmationTokenEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/entity/ConfirmationTokenEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/entity/ImageEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/entity/ImageEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/entity/QuestionEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/entity/QuestionEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/entity/QuizEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/entity/QuizEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/entity/QuizQuestionEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/entity/QuizQuestionEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/entity/SmallImageEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/entity/SmallImageEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/entity/TopicEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/entity/TopicEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/entity/UpcomingQuizEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/entity/UpcomingQuizEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/entity/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/entity/UserEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/entity/enums/UserRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/entity/enums/UserRole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/repository/AnswerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/repository/AnswerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/repository/ConfirmationTokenRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/repository/ConfirmationTokenRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/repository/ImageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/repository/ImageRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/repository/QuestionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/repository/QuestionRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/repository/QuizQuestionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/repository/QuizQuestionRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/repository/QuizRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/repository/QuizRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/repository/SmallImageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/repository/SmallImageRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/repository/TopicRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/repository/TopicRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/repository/UpComingQuizRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/repository/UpComingQuizRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/security/JwtUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/security/JwtUserDetailsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/security/jwt/JwtAuthenticationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/security/jwt/JwtAuthenticationException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/security/jwt/JwtConfigurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/security/jwt/JwtConfigurer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/security/jwt/JwtTokenFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/security/jwt/JwtTokenFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/security/jwt/JwtTokenProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/security/jwt/JwtTokenProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/security/jwt/JwtUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/security/jwt/JwtUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/ImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/ImageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/QuestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/QuestionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/QuizService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/QuizService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/TopicService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/TopicService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/impl/ImageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/impl/ImageServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/impl/QuestionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/impl/QuestionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/impl/QuizServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/impl/QuizServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/impl/TopicServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/impl/TopicServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/scheduler/DeadlineCheckerScheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/scheduler/DeadlineCheckerScheduler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/scheduler/QuizDurationChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/scheduler/QuizDurationChecker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/ActionForbiddenException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/ActionForbiddenException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/AnswerNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/AnswerNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/InactiveUserException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/InactiveUserException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/InvalidAnswerCountException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/InvalidAnswerCountException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/InvalidTokenException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/InvalidTokenException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/QuestionAlreadyExistException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/QuestionAlreadyExistException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/QuestionAreNotAvailableException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/QuestionAreNotAvailableException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/QuestionIsAlreadyAnsweredException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/QuestionIsAlreadyAnsweredException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/QuestionNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/QuestionNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/QuizFinishedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/QuizFinishedException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/QuizNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/QuizNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/QuizQuestionNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/QuizQuestionNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/TopicAlreadyExistException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/TopicAlreadyExistException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/TopicNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/TopicNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/UpcomingQuizNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/UpcomingQuizNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/UserAlreadyExistsException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/UserAlreadyExistsException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/UserNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/UserNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/WrongPasswordException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/workfront/quiz/service/util/exception/WrongPasswordException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DDL.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/DDL.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DDL_after_mail_confirmation.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/DDL_after_mail_confirmation.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/workfront/quiz/service/UserServiceImplUT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/workfront/quiz/service/UserServiceImplUT.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DDL.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DDL.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DDL_after_mail_confirmation.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DDL_after_mail_confirmation.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/src/Components/Navbar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/src/Components/QuizItem.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/src/Components/User/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/../front-end/src/Components/User/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front-end/src/utlis/utils.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +151,47 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand />
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="quiz_app@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="quiz_app@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="quiz_app@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="quiz_app: database" type="162271b6:PgImplModel$Database" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="quiz_app@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="quiz_app: database" type="162271b6:PgImplModel$Database" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="quiz_app@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="quiz_app: database" type="162271b6:PgImplModel$Database" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="quiz_app@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="quiz_app: database" type="162271b6:PgImplModel$Database" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
+        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+    </expand>
     <select />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -49,7 +214,6 @@
       <find>JwtUser</find>
       <find>startQuiz</find>
       <find>genera</find>
-      <find>getNe</find>
       <find>quizDuration</find>
       <find>start</find>
       <find>next</find>
@@ -57,6 +221,12 @@
       <find>fini</find>
       <find>answer</find>
       <find>answers</find>
+      <find>ForeignKe</find>
+      <find>gene</find>
+      <find>getNe</find>
+      <find>new Arr</find>
+      <find>atta</find>
+      <find>firs</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -88,7 +258,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1582647202252" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1582918075889" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -97,7 +267,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="ExtractSuperBase.RECENT_KEYS">
@@ -254,11 +424,13 @@
       <workItem from="1582622638289" duration="12000" />
       <workItem from="1582631270426" duration="29000" />
       <workItem from="1582645469432" duration="1717000" />
+      <workItem from="1582892228803" duration="17326000" />
+      <workItem from="1582957313476" duration="34000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1865000" />
+    <option name="totallyTimeSpent" value="19225000" />
   </component>
   <component name="TodoView" selected-index="2" />
   <component name="TypeScriptGeneratedFilesManager">
@@ -324,30 +496,30 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1582380916193" />
-    <state width="1877" height="225" key="GridCell.Tab.0.bottom" timestamp="1582903009692">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1493" height="258" key="GridCell.Tab.0.bottom" timestamp="1582824370779">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1397" height="356" key="GridCell.Tab.0.bottom/0.0.1440.860@0.0.1440.860" timestamp="1582619689285" />
     <state width="1493" height="258" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1582824370779" />
-    <state width="1877" height="225" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1582903009692" />
-    <state width="1877" height="225" key="GridCell.Tab.0.center" timestamp="1582903009692">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1877" height="225" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1582698833731" />
+    <state width="1493" height="258" key="GridCell.Tab.0.center" timestamp="1582824370779">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1397" height="356" key="GridCell.Tab.0.center/0.0.1440.860@0.0.1440.860" timestamp="1582619689285" />
     <state width="1493" height="258" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1582824370779" />
-    <state width="1877" height="225" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1582903009692" />
-    <state width="1877" height="225" key="GridCell.Tab.0.left" timestamp="1582903009692">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1877" height="225" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1582698833731" />
+    <state width="1493" height="258" key="GridCell.Tab.0.left" timestamp="1582824370779">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1397" height="356" key="GridCell.Tab.0.left/0.0.1440.860@0.0.1440.860" timestamp="1582619689285" />
     <state width="1493" height="258" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1582824370779" />
-    <state width="1877" height="225" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1582903009692" />
-    <state width="1877" height="225" key="GridCell.Tab.0.right" timestamp="1582903009692">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1877" height="225" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1582698833731" />
+    <state width="1493" height="258" key="GridCell.Tab.0.right" timestamp="1582824370779">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1397" height="356" key="GridCell.Tab.0.right/0.0.1440.860@0.0.1440.860" timestamp="1582619689285" />
     <state width="1493" height="258" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1582824370779" />
-    <state width="1877" height="225" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1582903009692" />
+    <state width="1877" height="225" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1582698833731" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1582741553765">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -374,6 +546,45 @@
     <state x="346" y="135" key="SettingsEditor/0.0.1440.860@0.0.1440.860" timestamp="1582617614006" />
     <state x="369" y="110" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1582725085266" />
     <state x="461" y="163" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1582697535929" />
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="evaluateCodeFragment">
+      <expression>
+        <expression-string>questionDto</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>currentQuizQuestionEntity</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>quiz.getQuizQuestions()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>quizQuiestionList</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>quiz</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>getQuizQuestions</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>quizQuestionEntity</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+    </expressions>
   </component>
   <component name="masterDetails">
     <states>
