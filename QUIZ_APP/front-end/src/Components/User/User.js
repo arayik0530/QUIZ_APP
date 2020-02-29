@@ -1,27 +1,61 @@
 import React,{useEffect,useContext, useState} from 'react';
-import '../Css/styles.css';
+import '../../Css/styles.css';
 import Button from '@material-ui/core/Button';
 import LanguageIcon from '@material-ui/icons/Language';
 import TextField from '@material-ui/core/TextField';
-import image from '../Image/user-male.jpg';
-import {UserContext} from '../Contexts/user';
-import QuizItem from './QuizItem.js';
+import image from '../../Image/user-male.jpg';
+import {UserContext} from '../../Contexts/user';
+import QuizItem from '../QuizItem.js';
 import IconButton from '@material-ui/core/IconButton';
 import SecurityIcon from '@material-ui/icons/Security';
-import Alert from './Alert';
+import Alert from '../Alert';
 
-function User() {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
+function ActiveExams() {
+     
+    let [state,Setstate]=useState([]);
+    let [passedExams,SetpassedExams]=useState([]);
+    useEffect(()=>{
+        async function getdata()
+        {
+        let response = await fetch("http://localhost:8090/api/quiz/upcoming/own",{
+            method:"GET",
+            headers:{
+                "Content-Type":"application/json",
+                "Authorization": "Bearer_ "+localStorage.getItem("token")
+              }
+        });
+
+        let x = await response.json();
+     Setstate(x.content);
+      response =await fetch("http://localhost:8090/api/quiz/own",{
+        method:"GET",
+        headers:{
+            "Content-Type":"application/json",
+            "Authorization": "Bearer_ "+localStorage.getItem("token")
+          }
+    });
+    x= await response.json();
+    SetpassedExams(x.content);
     
-    return (
-        <div className="main-container">
-         
-            <GeneralInfo></GeneralInfo>
-            <ActiveExams></ActiveExams>
-            
-        </div>
-    );
+        
 
+    }
+    getdata();
+
+    },[]);
+
+    return (
+        <div className="activeExams-container">
+            <h1 >Active Exams</h1>
+            <div className="activeExamsList-container">
+    {state && state.map((x)=>{ return <QuizItem props={[x.topic,x.deadline]}></QuizItem>})}
+            </div>
+            <h1 >Passed Exams</h1>
+            <div className="activeExamsList-container">
+            {passedExams && passedExams.map((x)=>{ return <div className="activeExamsList-container-Item"><div className='title'>{x.topic}<br></br>{x.successPercent}</div></div>})}
+                </div>
+        </div>
+    )
 }
 function UserGeneral()
 {   let [state,Setstate]= useState({firstName:"",lastName:"",email:"",phone:""});
@@ -82,9 +116,9 @@ useEffect(()=>{
     
  }
 return ( <div style={{paddingRight:"20px"}}>
-<div className="about-container-list-item"><TextField helperText="Name" fullWidth="true" variant="filled"  onChange={(e)=>Setstate({...state,firstName:e.target.value})} value={state.firstName}></TextField></div>
-<div className="about-container-list-item"><TextField  helperText="Surname" fullWidth="true" variant="filled"  onChange={(e)=>Setstate({...state,lastName:e.target.value})}  value={state.lastName}></TextField></div>
-<div className="about-container-list-item"><TextField   helperText="Email" fullWidth="true" variant="filled"   onChange={(e)=>Setstate({...state,email:e.target.value})} value={state.email}></TextField></div>
+<div className="about-container-list-item"><TextField id='Name'  helperText="Name" fullWidth="true" variant="filled"  onChange={(e)=>Setstate({...state,firstName:e.target.value})} value={state.firstName}></TextField></div>
+<div className="about-container-list-item"><TextField id="Surname"  helperText="Surname" fullWidth="true" variant="filled"  onChange={(e)=>Setstate({...state,lastName:e.target.value})}  value={state.lastName}></TextField></div>
+<div className="about-container-list-item"><TextField id="Email"   helperText="Email" fullWidth="true" variant="filled"   onChange={(e)=>Setstate({...state,email:e.target.value})} value={state.email}></TextField></div>
 <div className="about-container-list-item"><TextField   helperText="Phone" fullWidth="true" variant="filled"   onChange={(e)=>Setstate({...state,phone:e.target.value})} value={state.phone}></TextField></div>
 <Button onClick={uploadData} color="primary" variant="contained">Change</Button>
 <Alert open={open} message={message} handleClose={handleClose} severity={severity}></Alert>
@@ -179,54 +213,19 @@ const onChangeHandler =  async (event)=>{
              </div>
     );
 }
-
-
-
-function ActiveExams() {
-     
-    let [state,Setstate]=useState([]);
-    let [passedExams,SetpassedExams]=useState([]);
-    useEffect(()=>{
-        async function getdata()
-        {
-        let response = await fetch("http://localhost:8090/api/quiz/upcoming/own",{
-            method:"GET",
-            headers:{
-                "Content-Type":"application/json",
-                "Authorization": "Bearer_ "+localStorage.getItem("token")
-              }
-        });
-
-        let x = await response.json();
-     Setstate(x.content);
-      response =await fetch("http://localhost:8090/api/quiz/own",{
-        method:"GET",
-        headers:{
-            "Content-Type":"application/json",
-            "Authorization": "Bearer_ "+localStorage.getItem("token")
-          }
-    });
-    x= await response.json();
-    SetpassedExams(x.content);
+function User() {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     
-        
-
-    }
-    getdata();
-
-    },[]);
-
     return (
-        <div className="activeExams-container">
-            <h1 >Active Exams</h1>
-            <div className="activeExamsList-container">
-    {state.map((x)=>{ return <QuizItem props={[x.topic,x.deadline]}></QuizItem>})}
-            </div>
-            <h1 >Passed Exams</h1>
-            <div className="activeExamsList-container">
-            {passedExams.map((x)=>{ return <div className="activeExamsList-container-Item"><div className='title'>{x.topic}<br></br>{x.successPercent}</div></div>})}
-                </div>
+        <div className="main-container">
+         
+            <GeneralInfo></GeneralInfo>
+           <ActiveExams></ActiveExams>
+            
         </div>
-    )
+    );
+
 }
+
+
 export default User;

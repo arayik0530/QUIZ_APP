@@ -7,7 +7,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import Button from '@material-ui/core/Button';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import User from './User';
+import User from './User/User';
 import Admin from './Admin/Admin';
 import '../Css/styles.css';
 import { makeStyles, fade } from '@material-ui/core/styles';
