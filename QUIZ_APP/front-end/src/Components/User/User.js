@@ -222,7 +222,9 @@ const onChangeHandler =  async (event)=>{
     
 
 }
-        useEffect( async ()=>{
+        useEffect( ()=>{
+            async function getdata()
+            {
          let   response= await fetch(`http://localhost:8090/api/user/image/${JSON.parse(localStorage.getItem("UserContext")).id}`,
             {
                 method:"GET",
@@ -236,6 +238,9 @@ const onChangeHandler =  async (event)=>{
                console.log
                (URL.createObjectURL(x))
                SetImage(URL.createObjectURL(x))
+      
+            }
+        getdata()
         },[])
     return (
         <div className="general-row">
