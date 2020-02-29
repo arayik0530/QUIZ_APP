@@ -1,7 +1,6 @@
 import React from 'react';
 export default function Result(props) {
-    console.log
-    (props)
+  
     return (
         <>
             <div style={{marginTop: '5vh', marginLeft: '10vw'}}>

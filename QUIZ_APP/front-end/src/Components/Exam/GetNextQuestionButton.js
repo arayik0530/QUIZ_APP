@@ -17,7 +17,11 @@ makePost(`/api/quiz/finish?quizId=${Number(localStorage.getItem('quizId'))}`, nu
 .then(res => {
 clearInterval(window.timerId);
 finish(res);
+let user=localStorage.getItem("UserContext");
+let token=localStorage.getItem("token");
 localStorage.clear();
+localStorage.setItem("UserContext",user)
+localStorage.setItem("token",token);
 })
 .catch(err => alert(err.message))
 } else {
