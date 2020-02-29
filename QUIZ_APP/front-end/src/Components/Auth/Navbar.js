@@ -23,6 +23,8 @@ import {UserContext} from '../../Contexts/user';
 import store from "../../redux/store";
 import { Provider } from "react-redux";
 import {IdContext} from '../../Contexts/idcontext';
+import Result from '../Exam/Result';
+import {ResultContext} from '../../Contexts/ResultContext';
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -78,8 +80,8 @@ const useStyles = makeStyles(theme => ({
 
 function Navbar() {
   //states
-  
-  const user =JSON.parse(localStorage.getItem("UserContext"));
+  const result = useContext(ResultContext);
+  const user = JSON.parse(localStorage.getItem("UserContext"));
   const classes = useStyles();
   const [state, Setstate] = React.useState(false);
   const [search, Setsearchstate] = React.useState("");
@@ -206,6 +208,9 @@ function Navbar() {
            <Provider store={store}>
            <App/> 
            </Provider>
+           </Route>
+           <Route exact path="/result">
+             <Result  {...result} ></Result>
            </Route>
         </Switch>
       </div>

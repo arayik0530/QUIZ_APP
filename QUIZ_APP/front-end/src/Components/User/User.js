@@ -18,11 +18,13 @@ import {
     useRouteMatch,
     useHistory
   } from "react-router-dom";
+  import {UpdateResultContext} from '../../Contexts/ResultContext';
 function ActiveExams() {
     let history = useHistory();
     let [state,Setstate]=useState([]);
+    
     let [passedExams,SetpassedExams]=useState([]);
-    const [id,Setid]=useState();
+    const UpdateResult=useContext(UpdateResultContext);
     const UpdateId = useContext(UpdateIdContext);
     useEffect(()=>{
         async function getdata()
@@ -47,16 +49,28 @@ function ActiveExams() {
     });
     x= await response.json();
     SetpassedExams(x.content);
-    
-        
-
     }
     getdata();
 
     },[]);
   const OpenUpcomingExam=(id)=>{
-      history.push("/exams");
+     
     UpdateId(id);
+    history.push("/exams");
+  }
+  const OpenPassedExam= async (id)=>{
+      let response = await fetch(`http://localhost:8090/api/quiz/${id}`,{
+          method:"GET",
+          headers:{
+            "Content-Type":"application/json",
+            "Authorization": "Bearer_ "+localStorage.getItem("token")
+          }
+      });
+      let x= await response.json();
+      
+      UpdateResult(x);
+     history.push('/result');
+     
   }
     return (
         
@@ -67,7 +81,7 @@ function ActiveExams() {
             </div>
             <h1 >Passed Exams</h1>
             <div className="activeExamsList-container">
-            {passedExams && passedExams.map((x)=>{ return <div className="activeExamsList-container-Item"><div className='title'>{x.topic}<br></br>{x.successPercent}</div></div>})}
+            {passedExams && passedExams.map((x)=>{ return <QuizItem onClick={()=>OpenPassedExam(x.id)} props={[x.topic,x.successPercent+"%"]}></QuizItem>})}
                 </div>
              
         </div>
@@ -191,9 +205,10 @@ function GeneralInfo(props) {
     document.getElementById('fileInput').click();
 }
 const onChangeHandler =  async (event)=>{
+    console.log("I am here")
     let x=event.target.files[0];
     const data = new FormData() 
-    data.append('file',x);
+    data.append('image',x);
     let response = await fetch("http://localhost:8090/api/user/upload-image",{
         method:"POST",
         headers:{
@@ -203,15 +218,30 @@ const onChangeHandler =  async (event)=>{
         },
         body:data
     });
-    
+    console.log(response)
     
 
 }
+        useEffect( async ()=>{
+         let   response= await fetch(`http://localhost:8090/api/user/image/${JSON.parse(localStorage.getItem("UserContext")).id}`,
+            {
+                method:"GET",
+                headers:{
+                    "Content-Type":"application/x-www-form-urlencoded",
+                    "Authorization": "Bearer_ "+localStorage.getItem("token")
+                }
+            })
+            
+             let  x=  await response.blob();
+               console.log
+               (URL.createObjectURL(x))
+               SetImage(URL.createObjectURL(x))
+        },[])
     return (
         <div className="general-row">
             <div className='image-container-row'>
                 <div className="image-container">
-                    <img src={image} alt='userImage' className='image' ></img>
+                    <img src={Image} alt='userImage' className='image' />
                     <div className="middle">
              
                         <Button  color='primary' variant='contained' onClick={UploadImage} >Upload</Button>
