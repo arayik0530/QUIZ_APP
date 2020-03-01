@@ -5,11 +5,14 @@ import {useHistory} from 'react-router-dom';
 import {UserContext} from '../../Contexts/user';
 const x = "<<", y = ">>";
 let index = 0;
+
 function Search_List(props) {
    
   const User = useContext(UserContext);
 
   let [state, Setstate] = React.useState(null);
+  let images=[];
+  
   useEffect(() => {
     
     let url = new URL("http://localhost:8090/api/user/search")
@@ -24,10 +27,28 @@ function Search_List(props) {
         return response.json();
       })
       .then((myJson) => {
-        console.log(myJson);
+        myJson.content.forEach(element => {
+          async function getdata()
+{
+let   response= await fetch(`http://localhost:8090/api/user/image/${element.id}`,
+{
+    method:"GET",
+    headers:{
+      "Content-Type":"application/x-www-form-urlencoded",
+        "Authorization": "Bearer_ "+localStorage.getItem("token")
+    }
+})
 
-        let x = myJson.content.map( (a) => { return <UserField name={a.firstName} surname={a.lastName} email={a.email}></UserField> })
-        Setstate(x);
+ let  x=  await response.blob();
+ images.push(URL.createObjectURL(x)) ;
+
+
+}
+         getdata().then(()=>{  let x = myJson.content.map( (a,index) => { return <UserField name={a.firstName} surname={a.lastName} email={a.email} image={images[0]}  ></UserField> })
+         Setstate(x);});
+        
+        });
+        
       });
 
 
@@ -53,8 +74,8 @@ function Search_List(props) {
       }});
       let myJson = await x.json();
       if (myJson.content.length != 0) {
-
-        let y = myJson.content.map((a) => { return <UserField name={a.firstName} surname={a.lastName} email={a.email}></UserField> })
+        
+        let y = myJson.content.map((a) => { return <UserField name={a.firstName} surname={a.lastName} email={a.email} image={Image}></UserField> })
         Setstate(y);
 
         index = k;

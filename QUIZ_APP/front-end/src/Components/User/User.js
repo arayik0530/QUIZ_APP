@@ -235,8 +235,6 @@ const onChangeHandler =  async (event)=>{
             })
             
              let  x=  await response.blob();
-               console.log
-               (URL.createObjectURL(x))
                SetImage(URL.createObjectURL(x))
       
             }
