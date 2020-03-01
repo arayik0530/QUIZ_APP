@@ -5,15 +5,11 @@ import TextField from '@material-ui/core/TextField';
 import Button from "@material-ui/core/Button";
 import Login from './Login';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import Backdrop from '@material-ui/core/Backdrop';
 import { makeStyles } from '@material-ui/core/styles';
-
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
-} from "react-router-dom";
+  Route} from "react-router-dom";
 import { postData } from '../../utils/utils';
 import Alert from '../Alert/Alert';
 
@@ -26,7 +22,6 @@ const useStyles = makeStyles(theme => ({
 
 function Register_comp() {
 
-  const classes = useStyles();
   const Severities={success:"success",error:"error",warning:"warning",info:"info"};
   const [open, setOpen] = React.useState(false);
   const [severity,Setseverity]=React.useState("");
@@ -39,31 +34,68 @@ function Register_comp() {
     Confirmpassword:""
   });
   const [loading, setLoading] = React.useState(false);
-  const [Validation,SetValidation]=React.useState("");
+  const [ValidationState,SetValidationState]=React.useState([]);
   const handleClose = () => {
     setOpen(false);
   };
   const HandleRegister = async () => {
-    const  pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/"
+    document.getElementById("Validation").innerHTML='';
+    SetValidationState([]);
+    const  pattern=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     let regex=RegExp(pattern);
-    console.log(regex)
+    //check for email
     if(!(regex.test(state.email)))
     {
-      SetValidation("Wrong Email Address")
+         let x= [...ValidationState];
+         x.push("Wrong Email Address")
+      SetValidationState(x)
       return;
     }
+    //check for password
     else
-    {
+    {   //check if passwords match
       if(state.Confirmpassword!=state.password)
-    {
-      SetValidation("Wrong Password")
+    {  let x= [...ValidationState];
+      x.push("Password does not match")
+      SetValidationState(x)
       return;
     }
+    //check for password validity
        else{
-         //TODO PASSWORD VERIFICATION
+         //check for length
+         let x=[...ValidationState];
+         if(state.password.length<=8)
+         {  
+         
+           x.push("Length is less than 8 character")
+           
+
+         }
+         if(!(/\d/.test(state.password)))
+         {  
+           
+           x.push("Does not contain a digit");
+           
+
+         }
+        
+         if(state.password==state.password.toLowerCase()){
+            x.push("Does not contain an uppercase letter")
+         }
+        
+         if(!(/[!@#$%^&*(),.?":{}|<>]/.test(state.password)))
+         { 
+           x.push("Does not contain a special character")
+
+         }
+         SetValidationState(x);
+         
          
        }
     }
+    console.log(ValidationState)
+    if(ValidationState.length==0)
+    { console.log("i am here")
     
     setLoading(true);
     let response = await postData("http://localhost:8090/api/auth/register", state)
@@ -82,7 +114,7 @@ function Register_comp() {
       
       setOpen(true);
     }
-
+  }
   }
   const HandleBack = () => {
     window.location.href = '/'
@@ -110,9 +142,7 @@ function Register_comp() {
       <TextField style={{marginBottom:10}} onChange={(e) => { Setstate({ ...state, password: e.target.value }) }} style={{ backgroundColor: 'whitesmoke' }} required label="password" type='password' variant="outlined"></TextField>
       </div>
       <div style={{marginBottom:10}}>
-      <TextField style={{marginBottom:10}} onChange={(e) => { Setstate({ ...state, password: e.target.value }) }} style={{ backgroundColor: 'whitesmoke' }} required label="password" type='password' variant="outlined"></TextField>
-      </div>
-      <div style={{marginBottom:10}}>
+      
       <TextField style={{marginBottom:10}} onChange={(e) => { Setstate({ ...state, Confirmpassword: e.target.value }) }} style={{ backgroundColor: 'whitesmoke' }} required label="Confirm password" type='password' variant="outlined"></TextField>
       </div>
       <Button style={{ marginRight: '10px' }} onClick={HandleBack} color='primary' variant='contained'>Go Back</Button>
@@ -122,11 +152,11 @@ function Register_comp() {
         color="primary"
 
         disabled={loading}
-        onClick={HandleRegister}
+        onClick={()=>{HandleRegister()}}
       >
         Register
         </Button>
-        <div >{Validation}</div>
+        <div id='Validation' style={{marginTop:20}} >{ValidationState.map((x)=>{return <div style={{color:"Red",marginBottom:10}}>{x}</div>})}</div>
         <Alert open={open} message={message} handleClose={handleClose} severity={severity}></Alert>
         
 
