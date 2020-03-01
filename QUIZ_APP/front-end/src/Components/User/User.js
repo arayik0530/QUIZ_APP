@@ -13,78 +13,7 @@ import {
     useHistory
   } from "react-router-dom";
   import {UpdateResultContext} from '../../Contexts/ResultContext';
-function ActiveExams() {
-    let history = useHistory();
-    let [state,Setstate]=useState([]);
-    
-    let [passedExams,SetpassedExams]=useState([]);
-    const UpdateResult=useContext(UpdateResultContext);
-    const UpdateId = useContext(UpdateIdContext);
-    useEffect(()=>{
-        async function getdata()
-        {
-        let response = await fetch("http://localhost:8090/api/quiz/upcoming/own",{
-            method:"GET",
-            headers:{
-                "Content-Type":"application/json",
-                "Authorization": "Bearer_ "+localStorage.getItem("token")
-              }
-        });
-
-        let x = await response.json();
-        
-     Setstate(x.content);
-      response =await fetch("http://localhost:8090/api/quiz/own",{
-        method:"GET",
-        headers:{
-            "Content-Type":"application/json",
-            "Authorization": "Bearer_ "+localStorage.getItem("token")
-          }
-    });
-    x= await response.json();
-    SetpassedExams(x.content);
-    }
-    getdata();
-
-    },[]);
-  const OpenUpcomingExam=(id)=>{
-     
-    UpdateId(id);
-    history.push("/exams");
-  }
-  const OpenPassedExam= async (id)=>{
-      let response = await fetch(`http://localhost:8090/api/quiz/${id}`,{
-          method:"GET",
-          headers:{
-            "Content-Type":"application/json",
-            "Authorization": "Bearer_ "+localStorage.getItem("token")
-          }
-      });
-      let x= await response.json();
-      
-      UpdateResult(x);
-     history.push('/result');
-     
-  }
-    return (
-        
-        <div className="activeExams-container">
-            <h1 >Active Exams</h1>
-            <div className="activeExamsList-container">
-    {state && state.map((x)=>{ return <QuizItem onClick={()=>OpenUpcomingExam(x.id)} props={[x.topic,x.deadline]}></QuizItem>})}
-            </div>
-            <h1 >Passed Exams</h1>
-            <div className="activeExamsList-container">
-            {passedExams && passedExams.map((x)=>{ return <QuizItem onClick={()=>OpenPassedExam(x.id)} props={[x.topic,x.successPercent+"%"]}></QuizItem>})}
-                </div>
-             
-        </div>
-     
-   
-
-    )
-
-}
+import ActiveExams from './ActiveExams';
 function UserGeneral()
 {   let [state,Setstate]= useState({firstName:"",lastName:"",email:"",phone:""});
     const User = useContext(UserContext);

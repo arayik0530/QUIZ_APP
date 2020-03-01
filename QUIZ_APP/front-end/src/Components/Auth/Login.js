@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react"
+import React, { useEffect, useContext } from "react";
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import EmailIcon from '@material-ui/icons/Email';
@@ -74,7 +74,7 @@ import Alert from '../Alert/Alert';
    
   }
   return(  <div className="login">
-  <img width='50px' src={icon}></img>
+  <img  width='50px' src={icon}></img>
   <h2 style={{color:"#1976d2",textDecoration:"underline"}}>Login</h2>
 
 

@@ -183,12 +183,12 @@ display: flex;
 }
 .login
 {  background-color:antiquewhite;
-    padding: 50px 0 600px 0px;
+    padding: 20px 0 600px 0px;
     text-align: center;
     box-shadow: 10px 10px 5px grey;
 }
 .register-main
 {   text-align: center;
     background-color: antiquewhite;
-    padding: 0px 0px 100% 0%;
+    padding: 20px 0px 100% 0%;
 }

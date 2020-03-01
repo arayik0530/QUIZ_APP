@@ -35,13 +35,36 @@ function Register_comp() {
     email: "",
     password: "",
     firstName: "",
-    lastName: ""
+    lastName: "",
+    Confirmpassword:""
   });
   const [loading, setLoading] = React.useState(false);
+  const [Validation,SetValidation]=React.useState("");
   const handleClose = () => {
     setOpen(false);
   };
   const HandleRegister = async () => {
+    const  pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/"
+    let regex=RegExp(pattern);
+    console.log(regex)
+    if(!(regex.test(state.email)))
+    {
+      SetValidation("Wrong Email Address")
+      return;
+    }
+    else
+    {
+      if(state.Confirmpassword!=state.password)
+    {
+      SetValidation("Wrong Password")
+      return;
+    }
+       else{
+         //TODO PASSWORD VERIFICATION
+         
+       }
+    }
+    
     setLoading(true);
     let response = await postData("http://localhost:8090/api/auth/register", state)
 
@@ -72,20 +95,26 @@ function Register_comp() {
     <div className="register-main">
     {loading && <LinearProgress></LinearProgress>}
     
-      <img style={{marginTop:50}} width='50px' src={icon}></img>
+      <img  width='50px' src={icon}></img>
       <h2 style={{ color: "#1976d2", textDecoration: "underline" }}>Register</h2>
-      <TextField onChange={(e) => { Setstate({ ...state, firstName: e.target.value }) }} style={{ backgroundColor: 'whitesmoke' }} label="Name" variant="outlined"></TextField>
-      <br />
-      <br />
-      <TextField onChange={(e) => { Setstate({ ...state, lastName: e.target.value }) }} style={{ backgroundColor: 'whitesmoke' }} label="Surname" variant="outlined"></TextField>
-      <br />
-      <br />
-      <TextField onChange={(e) => { Setstate({ ...state, email: e.target.value }) }} style={{ backgroundColor: 'whitesmoke' }} required label="email" variant="outlined"></TextField>
-      <br />
-      <br />
-      <TextField onChange={(e) => { Setstate({ ...state, password: e.target.value }) }} style={{ backgroundColor: 'whitesmoke' }} required label="password" type='password' variant="outlined"></TextField>
-      <br></br>
-      <br></br>
+      <div style={{marginBottom:10}}>
+      <TextField style={{marginBottom:10}} onChange={(e) => { Setstate({ ...state, firstName: e.target.value }) }} style={{ backgroundColor: 'whitesmoke' }} label="Name" variant="outlined"></TextField>
+      </div>
+      <div style={{marginBottom:10}}>
+      <TextField style={{marginBottom:10}} onChange={(e) => { Setstate({ ...state, lastName: e.target.value }) }} style={{ backgroundColor: 'whitesmoke' }} label="Surname" variant="outlined"></TextField>
+      </div>
+     <div style={{marginBottom:10}}>
+      <TextField style={{marginBottom:10}} onChange={(e) => { Setstate({ ...state, email: e.target.value }) }} style={{ backgroundColor: 'whitesmoke' }}  label="email" variant="outlined" type="email" required></TextField>
+      </div>
+     <div style={{marginBottom:10}}>
+      <TextField style={{marginBottom:10}} onChange={(e) => { Setstate({ ...state, password: e.target.value }) }} style={{ backgroundColor: 'whitesmoke' }} required label="password" type='password' variant="outlined"></TextField>
+      </div>
+      <div style={{marginBottom:10}}>
+      <TextField style={{marginBottom:10}} onChange={(e) => { Setstate({ ...state, password: e.target.value }) }} style={{ backgroundColor: 'whitesmoke' }} required label="password" type='password' variant="outlined"></TextField>
+      </div>
+      <div style={{marginBottom:10}}>
+      <TextField style={{marginBottom:10}} onChange={(e) => { Setstate({ ...state, Confirmpassword: e.target.value }) }} style={{ backgroundColor: 'whitesmoke' }} required label="Confirm password" type='password' variant="outlined"></TextField>
+      </div>
       <Button style={{ marginRight: '10px' }} onClick={HandleBack} color='primary' variant='contained'>Go Back</Button>
 
       <Button
@@ -97,8 +126,9 @@ function Register_comp() {
       >
         Register
         </Button>
+        <div >{Validation}</div>
         <Alert open={open} message={message} handleClose={handleClose} severity={severity}></Alert>
-     
+        
 
 
     </div>
