@@ -70,12 +70,26 @@ let   response= await fetch(`http://localhost:8090/api/user/image/${element.id}`
         method:"GET",
         headers:{
         "Content-Type":"application/json",
-        "Authorization": "Bearer_ "+User.token
+        "Authorization": "Bearer_ "+localStorage.getItem("token")
       }});
       let myJson = await x.json();
       if (myJson.content.length != 0) {
+        images=[];
+        myJson.content.forEach( async (element)=>{
+          let   response= await fetch(`http://localhost:8090/api/user/image/${element.id}`,
+          {
+              method:"GET",
+              headers:{
+                "Content-Type":"application/x-www-form-urlencoded",
+                  "Authorization": "Bearer_ "+localStorage.getItem("token")
+              }
+          });
+          
+           let  x=  await response.blob();
+           images.push(URL.createObjectURL(x)) ;
+        });
         
-        let y = myJson.content.map((a) => { return <UserField name={a.firstName} surname={a.lastName} email={a.email} image={Image}></UserField> })
+        let y = myJson.content.map((a,index) => { return <UserField name={a.firstName} surname={a.lastName} email={a.email} image={images[index]}></UserField> })
         Setstate(y);
 
         index = k;

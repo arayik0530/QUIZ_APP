@@ -3,7 +3,6 @@ import '../../Css/styles.css';
 import Button from '@material-ui/core/Button';
 import LanguageIcon from '@material-ui/icons/Language';
 import TextField from '@material-ui/core/TextField';
-import image from '../../Image/user-male.jpg';
 import {UserContext} from '../../Contexts/user';
 import QuizItem from './QuizItem.js';
 import IconButton from '@material-ui/core/IconButton';
@@ -11,11 +10,6 @@ import SecurityIcon from '@material-ui/icons/Security';
 import Alert from '../Alert/Alert';
 import {UpdateIdContext} from '../../Contexts/idcontext';
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    useRouteMatch,
     useHistory
   } from "react-router-dom";
   import {UpdateResultContext} from '../../Contexts/ResultContext';
@@ -196,7 +190,7 @@ function UserSecurity()
 </div>)
     
 }
-function GeneralInfo(props) {
+function GeneralInfo() {
   const [state,Setstate]=useState({info:<UserGeneral></UserGeneral>})
   const [Image,SetImage]=useState(null);
   
@@ -279,6 +273,5 @@ function User() {
     );
 
 }
-
 
 export default User;
