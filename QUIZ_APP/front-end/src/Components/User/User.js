@@ -212,7 +212,17 @@ const onChangeHandler =  async (event)=>{
         },
         body:data
     });
-    console.log(response)
+       response= await fetch(`http://localhost:8090/api/user/image/${JSON.parse(localStorage.getItem("UserContext")).id}`,
+    {
+        method:"GET",
+        headers:{
+            "Content-Type":"application/x-www-form-urlencoded",
+            "Authorization": "Bearer_ "+localStorage.getItem("token")
+        }
+    })
+    
+       x=  await response.blob();
+       SetImage(URL.createObjectURL(x))
     
 
 }
