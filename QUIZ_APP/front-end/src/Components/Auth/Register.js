@@ -39,31 +39,30 @@ function Register_comp() {
     setOpen(false);
   };
   const HandleRegister = async () => {
-    document.getElementById("Validation").innerHTML='';
-    SetValidationState([]);
+    
     const  pattern=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    let x=[];
     let regex=RegExp(pattern);
     //check for email
     if(!(regex.test(state.email)))
     {
-         let x= [...ValidationState];
-         x.push("Wrong Email Address")
-      SetValidationState(x)
+       
+      SetValidationState(["Wrong Email Address"])
       return;
     }
     //check for password
     else
     {   //check if passwords match
       if(state.Confirmpassword!=state.password)
-    {  let x= [...ValidationState];
-      x.push("Password does not match")
-      SetValidationState(x)
+    {  
+      
+      SetValidationState(["Password Does not match"])
       return;
     }
     //check for password validity
        else{
          //check for length
-         let x=[...ValidationState];
+         
          if(state.password.length<=8)
          {  
          
@@ -88,14 +87,15 @@ function Register_comp() {
            x.push("Does not contain a special character")
 
          }
+         
          SetValidationState(x);
          
          
        }
     }
-    console.log(ValidationState)
-    if(ValidationState.length==0)
-    { console.log("i am here")
+    
+    if(x.length==0)
+    { 
     
     setLoading(true);
     let response = await postData("http://localhost:8090/api/auth/register", state)
