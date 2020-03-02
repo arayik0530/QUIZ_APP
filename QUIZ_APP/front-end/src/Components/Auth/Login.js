@@ -74,7 +74,7 @@ import Alert from '../Alert/Alert';
   catch(error){
     setOpen(true)
     Setseverity(Severities.error)
-    Setmessage(error.message)
+    Setmessage("No Connection")
   }
    
   }

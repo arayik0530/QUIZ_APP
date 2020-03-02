@@ -37,7 +37,7 @@ async function request(url, headers = {}, method, body = {}) {
       return data;
     }
     catch (e) {
-        alert(e.message);
+        return response;
     }
 }
 export const makeGet = async (url, headers, body) => request(url, headers, 'GET', body);

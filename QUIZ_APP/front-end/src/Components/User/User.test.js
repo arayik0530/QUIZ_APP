@@ -37,7 +37,6 @@ afterEach(() => {
       }
       localStorage.setItem("UserContext",JSON.stringify(fakeUser))
     
-      
       jest.spyOn(global, "fetch").mockImplementation(() =>
       Promise.resolve({
         json: () => Promise.resolve(fakeUser)
@@ -48,6 +47,7 @@ afterEach(() => {
         render(<User/>,container)
 
     });
+    
     expect(container.querySelector("[id='Name']").getAttribute("value")).toBe(fakeUser.firstName);
     expect(container.querySelector("[id='Surname']").getAttribute("value")).toBe(fakeUser.lastName);
     expect(container.querySelector("[id='Email']").getAttribute("value")).toBe(fakeUser.email);

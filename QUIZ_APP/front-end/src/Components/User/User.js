@@ -126,10 +126,14 @@ function UserSecurity()
 </div>)
     
 }
-function GeneralInfo() {
+function GeneralInfo({Setmessage,setOpen,Setseverity}) {
+    const Severities={success:"success",error:"error",warning:"warning",info:"info"};
   const [state,Setstate]=useState({info:<UserGeneral></UserGeneral>})
   const [Image,SetImage]=useState(null);
   
+ 
+  
+
   const UploadImage = ()=>{
     
     document.getElementById('fileInput').click();
@@ -165,6 +169,7 @@ const onChangeHandler =  async (event)=>{
         useEffect( ()=>{
             async function getdata()
             {
+               try{
          let   response= await fetch(`http://localhost:8090/api/user/image/${JSON.parse(localStorage.getItem("UserContext")).id}`,
             {
                 method:"GET",
@@ -177,7 +182,14 @@ const onChangeHandler =  async (event)=>{
             
              let  x=  await response.blob();
                SetImage(URL.createObjectURL(x))
-            
+        
+               }
+               catch(error){
+   
+                setOpen(true)
+                Setseverity(Severities.error)
+                Setmessage("No Connection")
+               }
             }
         getdata()
         },[])
@@ -211,13 +223,20 @@ const onChangeHandler =  async (event)=>{
 }
 function User() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    
+    const [open, setOpen] = React.useState(false);
+    const [severity,Setseverity]=React.useState("");
+      const handleClose = () => {
+          setOpen(false);
+        };
+    const [message,Setmessage]=React.useState("");
     return (
+
         <div className="main-container">
          
-            <GeneralInfo></GeneralInfo>
+            <GeneralInfo Setmessage={(e)=>Setmessage(e)} Setseverity={(e)=>Setseverity(e)} setOpen={(e)=>setOpen(e)}></GeneralInfo>
            <ActiveExams></ActiveExams>
-            
+           <Alert open={open} message={message} handleClose={handleClose} severity={severity}></Alert>
+
         </div>
     );
 

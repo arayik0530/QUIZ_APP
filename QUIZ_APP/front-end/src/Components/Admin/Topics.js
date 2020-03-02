@@ -13,8 +13,10 @@ const useStyles = makeStyles({
   
 });
 
-export default function Topics()
+export default function Topics({Setmessage,setOpen,Setseverity})
 {  const classes =useStyles();
+  const Severities={success:"success",error:"error",warning:"warning",info:"info"};
+  
   const [Topic, SetTopic] = React.useState(null); 
   const [Topics,SetTopics]=React.useState([]);
   const [NewTopic,SetNewTopic]=React.useState("")
@@ -22,7 +24,8 @@ export default function Topics()
   useEffect(  ()=>{
     async function getData()
     { 
-      
+    
+      try{
    let response = await fetch("http://localhost:8090/api/topic/all",{
      method:"GET",
      headers:{
@@ -32,7 +35,12 @@ export default function Topics()
    });
    let  x = await response.json();
    SetTopics(x.content);
-  
+      }
+      catch(error){
+        setOpen(true)
+        Setseverity(Severities.error)
+        Setmessage("No connection")
+      }
   
   
    

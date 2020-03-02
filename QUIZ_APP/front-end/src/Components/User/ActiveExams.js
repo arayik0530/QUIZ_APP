@@ -7,7 +7,6 @@ import {UserContext} from '../../Contexts/user';
 import QuizItem from './QuizItem.js';
 import IconButton from '@material-ui/core/IconButton';
 import SecurityIcon from '@material-ui/icons/Security';
-import Alert from '../Alert/Alert';
 import {UpdateIdContext} from '../../Contexts/idcontext';
   import {UpdateResultContext} from '../../Contexts/ResultContext';
 import {
