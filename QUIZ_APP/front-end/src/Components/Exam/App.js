@@ -74,9 +74,8 @@ function App(props) {
     } else {
         return (
             <>
-                {props.remainingTime &&
-                <p className="timer">Time {(props.remainingTime > 0) ? (`${Math.floor(props.remainingTime / 60)} : ${props.remainingTime % 60}`) :
-                    `is over`}</p>}
+               {(props.remainingTime > 0) ? <p className="timer">Time  {Math.floor(props.remainingTime/60)} : {props.remainingTime%60}</p> :
+                        <p className="timer">Time is over</p>}
                         {isMulti ? <MultipleChoice  {...props} /> : <SingleChoice {...props} />}
                         <div style={{display: 'flex', justifyContent: 'center'}}><GetNextQuestionButton/></div>
             </>

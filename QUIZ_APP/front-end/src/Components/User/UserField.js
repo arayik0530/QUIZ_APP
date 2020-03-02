@@ -1,9 +1,10 @@
 import React from 'react';
 import '../../Css/styles.css';
+
 const UserField=({name,surname,email,image})=>
 
 {
-   console.log("image",image)
+   
   return (<div className="UserField">
       <div className="UserFieldImage"><img className="UserFieldImage" src={image} alt='userImage'></img></div>
       
@@ -13,4 +14,4 @@ const UserField=({name,surname,email,image})=>
   </div>
 </div>)
 }
-export default UserField;
+export default  UserField;

@@ -21,11 +21,13 @@ const useStyles = makeStyles({
     
   });
 export default function Quiz()
-{   const classes=useStyles();
+{   let date= new Date();
+ date.setDate(date.getDate()+1) ;
+  const classes=useStyles();
     const [Duration,SetDuration]=React.useState(null);
     const [questionCount,SetquestionCount]=React.useState(null)
     const [User,SetUser]=React.useState({});
-    const [selectedDate, setSelectedDate] = React.useState( new Date());
+    const [selectedDate, setSelectedDate] = React.useState( date);
     const [Users,SetUsers]=React.useState([]);
     const [Topic,SetTopic]=React.useState(null);
     const [Topics,SetTopics]=React.useState([]);

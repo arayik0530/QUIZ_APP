@@ -4,16 +4,10 @@ import Button from '@material-ui/core/Button';
 import LanguageIcon from '@material-ui/icons/Language';
 import TextField from '@material-ui/core/TextField';
 import {UserContext} from '../../Contexts/user';
-import QuizItem from './QuizItem.js';
 import IconButton from '@material-ui/core/IconButton';
 import SecurityIcon from '@material-ui/icons/Security';
 import Alert from '../Alert/Alert';
-import {UpdateIdContext} from '../../Contexts/idcontext';
-import {
-    useHistory
-  } from "react-router-dom";
-  import {UpdateResultContext} from '../../Contexts/ResultContext';
-  import PublishIcon from '@material-ui/icons/Publish';
+import PublishIcon from '@material-ui/icons/Publish';
 import ActiveExams from './ActiveExams';
 const styles = {
 
@@ -141,7 +135,7 @@ function GeneralInfo() {
     document.getElementById('fileInput').click();
 }
 const onChangeHandler =  async (event)=>{
-    console.log("I am here")
+    
     let x=event.target.files[0];
     const data = new FormData() 
     data.append('image',x);

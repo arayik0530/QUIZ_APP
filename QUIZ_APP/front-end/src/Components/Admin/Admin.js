@@ -1,9 +1,9 @@
 import React from "react";
-import '../../Css/Admin.css';
 import Question from './Question';
 import Topics from './Topics';
 import Quiz from './Quiz';
 import Button from '@material-ui/core/Button'
+import '../../Css/Admin.css';
 
 export default function Admin()
 { const [state,Setstate]= React.useState(0);
