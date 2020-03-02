@@ -198,7 +198,6 @@ public class QuizServiceImpl implements QuizService {
 
         QuestionDto questionDto = QuestionDto.mapFromEntity(quizQuestionEntity.getQuestion());
         questionDto.setQuizQuestionId(quizQuestionEntity.getId());
-        System.out.println("Next quizQuestion id:" + quizQuestionEntity.getNextQuestionId());//TODO NEED TO REMOVE
         questionDto.setNextQuizQuestionId(quizQuestionEntity.getNextQuestionId());
         return questionDto;
     }
@@ -209,7 +208,6 @@ public class QuizServiceImpl implements QuizService {
         QuizEntity quizEntity = quizRepository.findById(quizId).orElseThrow(() -> new QuizNotFoundException(quizId));
 
         List<QuizQuestionEntity> quizQuestions = quizEntity.getQuizQuestions();
-        int answersCount = quizQuestions.size();//for computing percentage
         double userScoreCount = 0;
         for (QuizQuestionEntity quizQuestion : quizQuestions) {
             QuestionEntity question = quizQuestion.getQuestion();

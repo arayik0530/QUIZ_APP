@@ -105,6 +105,7 @@ public class QuizServiceImplUT {
     public void test_getAllQuizes_success() {
         when(quizRepositoryMock.findAll(any(Pageable.class)))
                 .thenReturn(new PageImpl<>(Collections.singletonList(getQuizEntity())));
+
         final Page<QuizDto> allQuizes = quizService.getAllQuizes(Pageable.unpaged());
 
 
