@@ -94,7 +94,11 @@ export default function Quiz()
          
          })
      
-   
+         SetSelectedUsers([]);
+         SetUser({});
+         SetTopic(null)
+         SetquestionCount("");
+         SetDuration("")
         Setsuccess(true)
         setTimeout(()=>{Setsuccess(false)},2000)
       
