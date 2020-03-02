@@ -22,6 +22,7 @@ let token=localStorage.getItem("token");
 localStorage.clear();
 localStorage.setItem("UserContext",user);
 localStorage.setItem("token",token);
+window.location.replace("/");
 })
 .catch(err => console.log(err))
 } else {

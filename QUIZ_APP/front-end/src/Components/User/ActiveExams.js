@@ -50,7 +50,6 @@ export default function ActiveExams() {
   const OpenUpcomingExam=(id)=>{
      
     UpdateId(id);
-    
     history.push("/exams");
   }
   const OpenPassedExam= async (id)=>{

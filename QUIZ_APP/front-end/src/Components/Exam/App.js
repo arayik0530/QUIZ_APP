@@ -13,7 +13,7 @@ function App(props) {
     const {isMulti} = props;
     let initData;
     let remainingTime;
-    let upComingQuizId = useContext(IdContext)||localStorage.getItem(); //TODO tiv@ test anelu hamara, id-n stanumenq erb user@ sxmuma upcomingquizi vra
+    let upComingQuizId = useContext(IdContext)||localStorage.getItem('quizId'); //TODO tiv@ test anelu hamara, id-n stanumenq erb user@ sxmuma upcomingquizi vra
     let questionNumber = 1;
     useEffect(() => {
         
@@ -67,11 +67,7 @@ function App(props) {
                 .catch(err => alert(err.message));
         }
     }, []);
-    if (props.result) {
-        return (
-            <Result {...props.result}/>
-        );
-    } else {
+   
         return (
             <>
                {(props.remainingTime > 0) ? <p className="timer">Time  {Math.floor(props.remainingTime/60)} : {props.remainingTime%60}</p> :
@@ -80,7 +76,7 @@ function App(props) {
                         <div style={{display: 'flex', justifyContent: 'center'}}><GetNextQuestionButton/></div>
             </>
         );
-    }
+    
 }
 const mapStateToProps = (state) => {
     return {

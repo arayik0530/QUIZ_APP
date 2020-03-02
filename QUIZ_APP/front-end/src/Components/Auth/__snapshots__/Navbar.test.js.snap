@@ -165,7 +165,6 @@ exports[`renders correctly 1`] = `
           </button>
            
         </a>
-        0
         <a
           href="/"
           onClick={[Function]}
@@ -289,57 +288,75 @@ exports[`renders correctly 1`] = `
       <div
         className="image-container-row"
       >
+        <img
+          alt="userImage"
+          className="image"
+          src={null}
+        />
         <div
-          className="image-container"
+          style={
+            Object {
+              "height": 0,
+              "overflow": "hidden",
+            }
+          }
         >
-          <img
-            alt="userImage"
-            className="image"
-            src={null}
+          <input
+            id="fileInput"
+            name="fileInput"
+            onChange={[Function]}
+            type="file"
           />
-          <div
-            className="middle"
-          >
-            <button
-              className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
-              disabled={false}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onDragLeave={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              tabIndex={0}
-              type="button"
-            >
-              <span
-                className="MuiButton-label"
-              >
-                Upload
-              </span>
-            </button>
-            <div
-              style={
-                Object {
-                  "height": 0,
-                  "overflow": "hidden",
-                }
+        </div>
+        <div>
+            
+          <button
+            className="MuiButtonBase-root MuiIconButton-root"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            style={
+              Object {
+                "height": 50,
+                "width": 50,
               }
+            }
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className="MuiIconButton-label"
             >
-              <input
-                id="fileInput"
-                name="fileInput"
-                onChange={[Function]}
-                type="file"
-              />
-            </div>
-          </div>
+               
+              <svg
+                aria-hidden="true"
+                className="MuiSvgIcon-root MuiSvgIcon-colorPrimary"
+                focusable="false"
+                role="presentation"
+                style={
+                  Object {
+                    "height": 30,
+                    "width": 30,
+                  }
+                }
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M5 4v2h14V4H5zm0 10h4v6h6v-6h4l-7-7-7 7z"
+                />
+              </svg>
+            </span>
+          </button>
         </div>
       </div>
       <div
@@ -533,10 +550,12 @@ exports[`renders correctly 1`] = `
                 onClick={[Function]}
               >
                 <input
+                  aria-describedby="Phone-helper-text"
                   aria-invalid={false}
                   autoFocus={false}
                   className="MuiInputBase-input MuiFilledInput-input"
                   disabled={false}
+                  id="Phone"
                   onAnimationStart={[Function]}
                   onBlur={[Function]}
                   onChange={[Function]}
@@ -548,6 +567,7 @@ exports[`renders correctly 1`] = `
               </div>
               <p
                 className="MuiFormHelperText-root MuiFormHelperText-contained"
+                id="Phone-helper-text"
               >
                 Phone
               </p>

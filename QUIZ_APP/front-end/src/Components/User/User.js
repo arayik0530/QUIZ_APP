@@ -174,9 +174,10 @@ const onChangeHandler =  async (event)=>{
                 }
             })
             
+            
              let  x=  await response.blob();
                SetImage(URL.createObjectURL(x))
-      
+            
             }
         getdata()
         },[])
@@ -185,7 +186,7 @@ const onChangeHandler =  async (event)=>{
             <div className='image-container-row'>
               
                    
-                <img src={Image} alt='userImage' className='image' />
+                <img src={Image } alt='userImage' className='image' />
              
                       
                         <div style={{height:0,overflow:"hidden"}}>
