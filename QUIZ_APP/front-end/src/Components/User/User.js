@@ -23,7 +23,7 @@ const styles = {
   
 function UserGeneral()
 {   let [state,Setstate]= useState({firstName:"",lastName:"",email:"",phone:""});
-    const User = useContext(UserContext);
+    const User = useContext(UserContext) ||  JSON.parse(localStorage.getItem("UserContext"));
     const Severities={success:"success",error:"error",warning:"warning",info:"info"};
     const [open, setOpen] = React.useState(false);
     const [severity,Setseverity]=React.useState("");
@@ -119,8 +119,8 @@ function UserSecurity()
     }
    
     return ( <div style={{paddingRight:"20px"}}>
-<div className="about-container-list-item"><TextField helperText="Old Password" fullWidth="true" variant="filled"  onChange={(e)=>Setstate({...state,oldPassword:e.target.value})} value={state.oldPassword}></TextField></div>
-<div className="about-container-list-item"><TextField  helperText="New Password" fullWidth="true" variant="filled"  onChange={(e)=>Setstate({...state,newPassword:e.target.value})}  value={state.newPassword}></TextField></div>
+<div className="about-container-list-item"><TextField type="password" helperText="Old Password" fullWidth="true" variant="filled"  onChange={(e)=>Setstate({...state,oldPassword:e.target.value})} value={state.oldPassword}></TextField></div>
+<div className="about-container-list-item"><TextField type="password"  helperText="New Password" fullWidth="true" variant="filled"  onChange={(e)=>Setstate({...state,newPassword:e.target.value})}  value={state.newPassword}></TextField></div>
 
 <Button onClick={uploadData} color="primary" variant="contained">Change</Button>
 </div>)

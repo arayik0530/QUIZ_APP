@@ -20,7 +20,7 @@ finish(res);
 let user=localStorage.getItem("UserContext");
 let token=localStorage.getItem("token");
 localStorage.clear();
-localStorage.setItem("UserContext",user)
+localStorage.setItem("UserContext",user);
 localStorage.setItem("token",token);
 })
 .catch(err => console.log(err))
@@ -68,7 +68,8 @@ disabled={disabled}
 onClick={(e) => handleButtonClick(e, nextQuestionId, saveInitialData,
 selectedAnswers, currentQuestionId, questionNumber, countOfQuestions, answers, chooseAnswers, finish)}
 color="primary">{(questionNumber !== countOfQuestions) ? "next" : "finish"}
-</Button>}
+</Button>
+}
 </div>
 };
 const mapStateToProps = (state) => ({

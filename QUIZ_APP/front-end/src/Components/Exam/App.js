@@ -13,7 +13,7 @@ function App(props) {
     const {isMulti} = props;
     let initData;
     let remainingTime;
-    let upComingQuizId = useContext(IdContext); //TODO tiv@ test anelu hamara, id-n stanumenq erb user@ sxmuma upcomingquizi vra
+    let upComingQuizId = useContext(IdContext)||localStorage.getItem(); //TODO tiv@ test anelu hamara, id-n stanumenq erb user@ sxmuma upcomingquizi vra
     let questionNumber = 1;
     useEffect(() => {
         

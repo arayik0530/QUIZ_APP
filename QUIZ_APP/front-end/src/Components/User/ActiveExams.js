@@ -17,7 +17,6 @@ import {
 export default function ActiveExams() {
     let history = useHistory();
     let [state,Setstate]=useState([]);
-    
     let [passedExams,SetpassedExams]=useState([]);
     const UpdateResult=useContext(UpdateResultContext);
     const UpdateId = useContext(UpdateIdContext);
