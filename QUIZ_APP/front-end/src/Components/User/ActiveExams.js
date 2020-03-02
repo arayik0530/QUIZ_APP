@@ -51,6 +51,7 @@ export default function ActiveExams() {
   const OpenUpcomingExam=(id)=>{
      
     UpdateId(id);
+    
     history.push("/exams");
   }
   const OpenPassedExam= async (id)=>{
@@ -76,7 +77,7 @@ export default function ActiveExams() {
             </div>
             <h1 >Passed Exams</h1>
             <div className="activeExamsList-container">
-            {passedExams && passedExams.map((x)=>{ return <QuizItem onClick={()=>OpenPassedExam(x.id)} props={[x.topic,x.successPercent+"%"]}></QuizItem>})}
+            {passedExams && passedExams.map((x)=>{ return <QuizItem onClick={()=>OpenPassedExam(x.id)} props={[x.topic,x.successPercent==null?"Pending":(x.successPercent+"%")]}></QuizItem>})}
                 </div>
              
         </div>

@@ -5,7 +5,7 @@ import {getInitialState, selectAnswers, finisher} from "../../redux/actions";
 import '../../Css/Question.css';
 import {makeGet, makePost} from "../../utils/requestMaker";
 
-const handleButtonClick = async (e, nextQuestionId, saveInitialData, selectedAnswers,
+const handleButtonClick =  (e, nextQuestionId, saveInitialData, selectedAnswers,
     currentQuestionId, questionNumber, countOfQuestions, answers,
     chooseAnswers, finish) => {
 const answerIds = [];
@@ -23,7 +23,7 @@ localStorage.clear();
 localStorage.setItem("UserContext",user)
 localStorage.setItem("token",token);
 })
-.catch(err => alert(err.message))
+.catch(err => console.log(err))
 } else {
 makeGet(`/api/quiz/next-question?nextQuestionId=${nextQuestionId}`, null, null)
 .then(res => {

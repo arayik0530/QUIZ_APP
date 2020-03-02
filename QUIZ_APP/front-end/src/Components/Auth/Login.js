@@ -36,7 +36,7 @@ import Alert from '../Alert/Alert';
   useEffect(() => {document.body.style.overflow="hidden" }, []);
   
   const handleLogin= async ()=>
-  {   
+  {   try{
      let respone = await postData("http://localhost:8090/api/auth/login",{
       email:values.email,
       password:values.password
@@ -70,7 +70,12 @@ import Alert from '../Alert/Alert';
       Setmessage("User is not activated")
       
     }
-
+  }
+  catch(error){
+    setOpen(true)
+    Setseverity(Severities.error)
+    Setmessage(error.message)
+  }
    
   }
   return(  <div className="login">

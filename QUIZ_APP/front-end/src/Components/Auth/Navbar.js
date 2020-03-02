@@ -85,7 +85,8 @@ function Navbar() {
   const classes = useStyles();
   const [state, Setstate] = React.useState(false);
   const [search, Setsearchstate] = React.useState("");
-  const ID=useContext(IdContext);
+  const ID=useContext(IdContext) || localStorage.getItem("quizId") ;
+
   const toggleDrawer = (e) => () => Setstate(e)
  
    let x= user.roles[0];
@@ -161,9 +162,9 @@ function Navbar() {
             { roles.includes('ADMIN') &&  <Link style={{ color: 'white', textDecoration: 'none' }} to="/admin">    <Button color="inherit" >
                 Admin
                 </Button> </Link>}
-              { ID && <Link style={{ color: 'white', textDecoration: 'none' }} to="/exams">    <Button color="inherit" >
+              { ID ? <Link style={{ color: 'white', textDecoration: 'none' }} to="/exams">    <Button color="inherit" >
                 Exams
-                </Button> </Link>   }  
+                </Button> </Link>:null   }  
               
                     <Link style={{ color: 'white', textDecoration: 'none' }} to="/">    <Button onClick={()=>{localStorage.clear();window.location.replace("/");}} color="inherit" >
                 Logout
