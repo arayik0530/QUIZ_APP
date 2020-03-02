@@ -9,6 +9,7 @@ import javax.servlet.MultipartConfigElement;
 
 @Configuration
 public class WebConfig {
+
     @Bean
     MultipartConfigElement multipartConfigElement() {
         MultipartConfigFactory factory = new MultipartConfigFactory();

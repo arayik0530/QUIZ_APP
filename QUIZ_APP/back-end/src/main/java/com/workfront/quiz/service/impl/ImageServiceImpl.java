@@ -103,7 +103,7 @@ public class ImageServiceImpl implements ImageService {
     @Override
     @Transactional
     public void saveSmallImage(byte[] imageBytes, Long userId) {
-        byte[] resizedImageBytes = resize(imageBytes, 50, 50);
+        byte[] resizedImageBytes = resize(imageBytes, 200, 200);
         SmallImageEntity smallImageEntity = new SmallImageEntity();
         smallImageEntity.setPicture(resizedImageBytes);
         smallImageEntity = smallImageRepository.save(smallImageEntity);
@@ -112,14 +112,6 @@ public class ImageServiceImpl implements ImageService {
         userRepository.save(userEntity);
     }
 
-    @Transactional
-    public void saveSmallImage(byte[] imageBytes) {
-        byte[] resizedImageBytes = resize(imageBytes, 50, 50);
-        SmallImageEntity smallImageEntity = new SmallImageEntity();
-        smallImageEntity.setId(1L);
-        smallImageEntity.setPicture(resizedImageBytes);
-        smallImageRepository.save(smallImageEntity);
-    }
 
     @Override
     public byte[] getStandardImage() {

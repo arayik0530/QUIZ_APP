@@ -80,7 +80,9 @@ public class QuizServiceImpl implements QuizService {
 
 
         Long userId = userService.getMe();
-
+        if (!upcomingQuizEntity.getUser().getId().equals(userId)) {
+            throw new IllegalArgumentException();
+        }
         UserEntity userEntity = userRepository.findById(userId).orElseThrow(
                 () -> new UserNotFoundException(userId));
 

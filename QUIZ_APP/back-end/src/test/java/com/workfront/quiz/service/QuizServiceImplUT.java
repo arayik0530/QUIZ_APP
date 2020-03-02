@@ -157,21 +157,7 @@ public class QuizServiceImplUT {
 
     }
 
-    @Test
-    public void test_generateQuiz_success() {
-        when(upComingQuizRepositoryMock.findById(any()))
-                .thenReturn(Optional.of(getUpcomingQuizEntity()));
-        when(userRepositoryMock.findById(any())).thenReturn(Optional.of(getUserEntity()));
-        when(quizRepositoryMock.save(any())).thenReturn(getQuizEntity());
 
-        quizService.generateQuiz(1L);
-
-        verify(quizDurationCheckerMock, atLeastOnce())
-                .addQuizToCheckingList(any(QuizEntity.class));
-
-        verify(upComingQuizRepositoryMock, times(1))
-                .delete(any(UpcomingQuizEntity.class));
-    }
 
     @Test
     public void test_generateQuiz_fail_NoUpcomingQuiz() {
@@ -180,14 +166,7 @@ public class QuizServiceImplUT {
                 quizService.generateQuiz(1L));
     }
 
-    @Test
-    public void test_generateQuiz_fail_NoUser() {
-        when(upComingQuizRepositoryMock.findById(any()))
-                .thenReturn(Optional.of(getUpcomingQuizEntity()));
-        when(userRepositoryMock.findById(any())).thenReturn(Optional.empty());
-        assertThrows(UserNotFoundException.class, () ->
-                quizService.generateQuiz(1L));
-    }
+
 
     @Test
     public void test_attachQuestions() {
