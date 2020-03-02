@@ -167,13 +167,19 @@ public class UserServiceImpl implements UserService {
     @Override
     public byte[] getOriginalImage(Long userId) {
         UserEntity userEntity = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException(userId));
-        return userEntity.getProfileImage().getPicture();
+        if (userEntity.getProfileImage() != null) {
+            return userEntity.getProfileImage().getPicture();
+        }
+        return imageService.getStandardImage();
     }
 
     @Override
     public byte[] getSmallImage(Long userId) {
         UserEntity userEntity = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException(userId));
-        return userEntity.getSmallImage().getPicture();
+        if (userEntity.getSmallImage() != null) {
+            return userEntity.getSmallImage().getPicture();
+        }
+        return imageService.getStandardImage();
     }
 
     @Override

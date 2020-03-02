@@ -34,7 +34,6 @@ public class QuizDurationChecker {
 
 
 
-    @Async
     public void checkDuration() {
         while (true) {
             try {

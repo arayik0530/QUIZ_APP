@@ -19,11 +19,14 @@ import java.awt.image.RenderedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
 @AllArgsConstructor
 public class ImageServiceImpl implements ImageService {
+
+    private byte[] standardImage;
     private ImageRepository imageRepository;
     private UserRepository userRepository;
     private SmallImageRepository smallImageRepository;
@@ -55,7 +58,8 @@ public class ImageServiceImpl implements ImageService {
         }
     }
 
-    private byte[] bytesFromImage(RenderedImage image) throws IOException {
+    @Override
+    public byte[] bytesFromImage(RenderedImage image) throws IOException {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         ImageIO.write(image, "jpg", outputStream);
         return outputStream.toByteArray();
@@ -107,5 +111,26 @@ public class ImageServiceImpl implements ImageService {
         userEntity.setSmallImage(smallImageEntity);
         userRepository.save(userEntity);
     }
+
+    @Transactional
+    public void saveSmallImage(byte[] imageBytes) {
+        byte[] resizedImageBytes = resize(imageBytes, 50, 50);
+        SmallImageEntity smallImageEntity = new SmallImageEntity();
+        smallImageEntity.setId(1L);
+        smallImageEntity.setPicture(resizedImageBytes);
+        smallImageRepository.save(smallImageEntity);
+    }
+
+    @Override
+    public byte[] getStandardImage() {
+        return standardImage;
+    }
+
+    @Override
+    public void setStandardImage(byte[] imgBytes) {
+        this.standardImage = imgBytes;
+    }
+
+
 
 }
