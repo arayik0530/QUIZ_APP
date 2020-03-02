@@ -5,7 +5,6 @@ import TextField from '@material-ui/core/TextField';
 import Button from "@material-ui/core/Button";
 import Login from './Login';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import { makeStyles } from '@material-ui/core/styles';
 import {
   BrowserRouter as Router,
   Switch,
@@ -13,12 +12,6 @@ import {
 import { postData } from '../../utils/utils';
 import Alert from '../Alert/Alert';
 
-const useStyles = makeStyles(theme => ({
-  backdrop: {
-    zIndex: theme.zIndex.drawer + 1,
-    color: '#fff',
-  },
-}));
 
 function Register_comp() {
 

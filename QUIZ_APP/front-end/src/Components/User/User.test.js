@@ -2,8 +2,15 @@ import React from "react";
 import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
 import User from './User';
-
+jest.mock('./ActiveExams',()=>{
+  return function ActiveExams(){
+  return(
+  <div></div>
+  );
+}
+})
 let container = null;
+
 beforeEach(() => {
   // setup a DOM element as a render target
   container = document.createElement("div");
@@ -15,7 +22,7 @@ afterEach(() => {
     container.remove();
     container = null;
   });
-
+  
   it("Displays user information", async ()=>{
       const fakeUser={
         email: "poghosyan26@gmail.com",
@@ -28,11 +35,15 @@ afterEach(() => {
           "USER"
         ]
       }
+      localStorage.setItem("UserContext",JSON.stringify(fakeUser))
+    
+      
       jest.spyOn(global, "fetch").mockImplementation(() =>
       Promise.resolve({
         json: () => Promise.resolve(fakeUser)
       })
     );
+   
     await act( async ()=>{
         render(<User/>,container)
 

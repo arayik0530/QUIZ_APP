@@ -13,7 +13,20 @@ import {
     useHistory
   } from "react-router-dom";
   import {UpdateResultContext} from '../../Contexts/ResultContext';
+  import PublishIcon from '@material-ui/icons/Publish';
 import ActiveExams from './ActiveExams';
+const styles = {
+
+    largeButton: {
+      width: 50,
+      height: 50,
+    },
+    largeIcon:{
+        width:30,
+        height:30
+    }
+  };
+  
 function UserGeneral()
 {   let [state,Setstate]= useState({firstName:"",lastName:"",email:"",phone:""});
     const User = useContext(UserContext);
@@ -73,10 +86,10 @@ useEffect(()=>{
     
  }
 return ( <div style={{paddingRight:"20px"}}>
-<div className="about-container-list-item"><TextField id='Name'  helperText="Name" fullWidth="true" variant="filled"  onChange={(e)=>Setstate({...state,firstName:e.target.value})} value={state.firstName}></TextField></div>
-<div className="about-container-list-item"><TextField id="Surname"  helperText="Surname" fullWidth="true" variant="filled"  onChange={(e)=>Setstate({...state,lastName:e.target.value})}  value={state.lastName}></TextField></div>
-<div className="about-container-list-item"><TextField id="Email"   helperText="Email" fullWidth="true" variant="filled"   onChange={(e)=>Setstate({...state,email:e.target.value})} value={state.email}></TextField></div>
-<div className="about-container-list-item"><TextField   helperText="Phone" fullWidth="true" variant="filled"   onChange={(e)=>Setstate({...state,phone:e.target.value})} value={state.phone}></TextField></div>
+<div className="about-container-list-item"><TextField  id='Name'  helperText="Name" fullWidth="true" variant="filled"  onChange={(e)=>Setstate({...state,firstName:e.target.value})} value={state.firstName}></TextField></div>
+<div className="about-container-list-item"><TextField  id="Surname"  helperText="Surname" fullWidth="true" variant="filled"  onChange={(e)=>Setstate({...state,lastName:e.target.value})}  value={state.lastName}></TextField></div>
+<div className="about-container-list-item"><TextField  id="Email"   helperText="Email" fullWidth="true" variant="filled"   onChange={(e)=>Setstate({...state,email:e.target.value})} value={state.email}></TextField></div>
+<div className="about-container-list-item"><TextField  id="Phone" helperText="Phone" fullWidth="true" variant="filled"   onChange={(e)=>Setstate({...state,phone:e.target.value})} value={state.phone}></TextField></div>
 <Button onClick={uploadData} color="primary" variant="contained">Change</Button>
 <Alert open={open} message={message} handleClose={handleClose} severity={severity}></Alert>
        
@@ -176,21 +189,23 @@ const onChangeHandler =  async (event)=>{
     return (
         <div className="general-row">
             <div className='image-container-row'>
-                <div className="image-container">
-                    <img src={Image} alt='userImage' className='image' />
-                    <div className="middle">
+              
+                   
+                <img src={Image} alt='userImage' className='image' />
              
-                        <Button  color='primary' variant='contained' onClick={UploadImage} >Upload</Button>
+                      
                         <div style={{height:0,overflow:"hidden"}}>
    <input type="file" id="fileInput" name="fileInput" onChange={onChangeHandler} />
                         </div>
-                    </div>
-                    
-                </div>
+                   
+                         
+                      
+         
               
-                
-
+               
+                        <div>  <IconButton size="medium" style={styles.largeButton} onClick={UploadImage} > <PublishIcon style={styles.largeIcon} color='primary'></PublishIcon></IconButton></div>
             </div>
+          
             <div className='about-container-row'>
             <IconButton onClick={()=>Setstate({info:<UserGeneral></UserGeneral>})} color='primary'><LanguageIcon></LanguageIcon></IconButton>
             <IconButton onClick={()=>Setstate({info:<UserSecurity></UserSecurity>})} color="primary"><SecurityIcon></SecurityIcon></IconButton>
